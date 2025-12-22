@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disclosure Day Prediction Wall | Make Your Prediction</title>
+  <meta name="description" content="Make your prediction about Disclosure Day before it releases. Will the aliens be friendly? How does it end? We'll see who was right on June 12, 2026.">
+  <link rel="canonical" href="https://disclosureday.nicedreamzwholesale.com/community/predictions.html">
+
+  <style>
+    :root{--bg:#000408;--card:#0a0d14;--fg:#e9eef7;--muted:#8b95a5;--accent:#ff6b35;--line:rgba(0,255,204,.15)}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--bg);color:var(--fg);font-family:system-ui,sans-serif;line-height:1.7}
+    a{color:var(--accent)}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(2,3,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:12px 20px}
+    .nav-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+    .nav-logo{font-weight:800;font-size:16px;color:var(--fg);text-decoration:none}
+    .container{max-width:1200px;margin:0 auto;padding:80px 20px 60px}
+    h1{font-size:clamp(28px,5vw,42px);text-align:center;margin-bottom:12px}
+    .subtitle{text-align:center;color:var(--muted);margin-bottom:30px}
+
+    .prediction-form{background:linear-gradient(135deg,rgba(255,107,53,.15),var(--card));border:2px solid var(--accent);border-radius:20px;padding:30px;max-width:600px;margin:0 auto 40px}
+    .prediction-form h3{color:var(--accent);margin-bottom:16px;text-align:center}
+    .form-row{display:flex;gap:12px;margin-bottom:16px}
+    .form-row input{flex:1}
+    input,textarea{width:100%;padding:12px;background:var(--bg);border:1px solid var(--line);border-radius:8px;color:var(--fg);font-size:15px;font-family:inherit}
+    input:focus,textarea:focus{outline:none;border-color:var(--accent)}
+    textarea{min-height:80px;resize:none}
+    .submit-btn{width:100%;padding:14px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:16px;font-weight:700;cursor:pointer;transition:all .2s}
+    .submit-btn:hover{transform:scale(1.02)}
+
+    .wall{margin-top:40px}
+    .wall h2{text-align:center;margin-bottom:24px;color:var(--accent)}
+    .predictions-grid{column-count:3;column-gap:16px}
+    @media(max-width:900px){.predictions-grid{column-count:2}}
+    @media(max-width:600px){.predictions-grid{column-count:1}}
+
+    .prediction-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px;break-inside:avoid}
+    .prediction-card .author{font-weight:600;color:var(--accent);margin-bottom:4px}
+    .prediction-card .date{font-size:12px;color:var(--muted);margin-bottom:8px}
+    .prediction-card .text{font-size:15px}
+
+    .countdown{text-align:center;margin:30px 0;padding:20px;background:var(--card);border-radius:12px}
+    .countdown-label{color:var(--muted);font-size:14px}
+    .countdown-text{font-size:24px;font-weight:700;color:var(--accent)}
+
+    .footer{text-align:center;padding:40px 20px;border-top:1px solid var(--line);margin-top:40px;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner"><a href="/" class="nav-logo">Disclosure Day Hub</a><a href="/community/">Community</a></div></nav>
+
+<div class="container">
+  <h1>🔮 Prediction Wall</h1>
+  <p class="subtitle">Make your prediction before the movie releases. Let's see who got it right!</p>
+
+  <div class="countdown">
+    <div class="countdown-label">Time until we find out who's right:</div>
+    <div class="countdown-text" id="countdown">--- days</div>
+  </div>
+
+  <div class="prediction-form">
+    <h3>Make Your Prediction</h3>
+    <form id="prediction-form">
+      <div class="form-row">
+        <input type="text" id="name" placeholder="Your name" required>
+        <input type="text" id="location" placeholder="City/Country (optional)">
+      </div>
+      <textarea id="prediction" placeholder="I predict that in Disclosure Day..." required></textarea>
+      <button type="submit" class="submit-btn" style="margin-top:12px">Post Prediction</button>
+    </form>
+  </div>
+
+  <div class="wall">
+    <h2>The Wall of Predictions</h2>
+    <div class="predictions-grid" id="predictions">
+      <p style="text-align:center;color:var(--muted);grid-column:1/-1">Loading predictions...</p>
+    </div>
+  </div>
+</div>
+
+<footer class="footer"><p><strong>Disclosure Day Hub</strong></p></footer>
+
+<script>
+// Countdown
+const release = new Date('2026-06-12').getTime();
+function updateCountdown() {
+  const diff = release - Date.now();
+  const days = Math.floor(diff / 86400000);
+  document.getElementById('countdown').textContent = days + ' days';
+}
+updateCountdown();
+
+// Form submission
+const form = document.getElementById('prediction-form');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const data = {
+    type: 'prediction',
+    name: document.getElementById('name').value,
+    location: document.getElementById('location').value,
+    prediction: document.getElementById('prediction').value,
+    timestamp: new Date().toISOString()
+  };
+
+  try {
+    await fetch('/community/submit.php', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    });
+
+    // Add to wall immediately
+    const grid = document.getElementById('predictions');
+    const card = document.createElement('div');
+    card.className = 'prediction-card';
+    card.innerHTML = `
+      <div class="author">${data.name}${data.location ? ' • ' + data.location : ''}</div>
+      <div class="date">Just now</div>
+      <div class="text">${data.prediction}</div>
+    `;
+    grid.insertBefore(card, grid.firstChild);
+
+    form.reset();
+  } catch (err) {
+    alert('Failed to submit. Please try again.');
+  }
+});
+
+// Load predictions
+fetch('/community/predictions.json')
+  .then(r => r.json())
+  .then(predictions => {
+    const grid = document.getElementById('predictions');
+    if (predictions.length === 0) {
+      grid.innerHTML = '<p style="text-align:center;color:var(--muted)">No predictions yet. Be the first!</p>';
+      return;
+    }
+    grid.innerHTML = predictions.map(p => `
+      <div class="prediction-card">
+        <div class="author">${p.name}${p.location ? ' • ' + p.location : ''}</div>
+        <div class="date">${new Date(p.timestamp).toLocaleDateString()}</div>
+        <div class="text">${p.prediction}</div>
+      </div>
+    `).join('');
+  })
+  .catch(() => {
+    document.getElementById('predictions').innerHTML = '<p style="text-align:center;color:var(--muted)">No predictions yet. Be the first!</p>';
+  });
+</script>
+
+</body>
+</html>

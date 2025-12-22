@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submit Your Disclosure Day Theory | Fan Theories</title>
+  <meta name="description" content="Share your theory about Disclosure Day. What do the aliens want? How does it end? Submit your speculation and see others' theories.">
+  <link rel="canonical" href="https://disclosureday.nicedreamzwholesale.com/community/submit-theory.html">
+
+  <style>
+    :root{--bg:#000408;--card:#0a0d14;--fg:#e9eef7;--muted:#8b95a5;--accent:#00ffcc;--line:rgba(0,255,204,.15)}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--bg);color:var(--fg);font-family:system-ui,sans-serif;line-height:1.7}
+    a{color:var(--accent)}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(2,3,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--line);padding:12px 20px}
+    .nav-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+    .nav-logo{font-weight:800;font-size:16px;color:var(--fg);text-decoration:none}
+    .container{max-width:700px;margin:0 auto;padding:80px 20px 60px}
+    h1{font-size:clamp(28px,5vw,40px);margin-bottom:12px}
+    .subtitle{color:var(--muted);margin-bottom:30px}
+
+    .form-group{margin-bottom:24px}
+    label{display:block;margin-bottom:8px;font-weight:600;color:var(--accent)}
+    input,textarea,select{width:100%;padding:14px;background:var(--card);border:2px solid var(--line);border-radius:10px;color:var(--fg);font-size:16px;font-family:inherit}
+    input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent)}
+    textarea{min-height:150px;resize:vertical}
+    select{cursor:pointer}
+
+    .submit-btn{width:100%;padding:16px;background:var(--accent);color:#000;border:none;border-radius:10px;font-size:18px;font-weight:700;cursor:pointer;transition:all .2s}
+    .submit-btn:hover{transform:scale(1.02);box-shadow:0 0 30px rgba(0,255,204,.3)}
+    .submit-btn:disabled{opacity:.5;cursor:not-allowed}
+
+    .success-msg{display:none;background:rgba(0,255,204,.15);border:2px solid var(--accent);border-radius:12px;padding:24px;text-align:center;margin-top:20px}
+    .success-msg h3{color:var(--accent);margin-bottom:8px}
+
+    .theories-list{margin-top:50px}
+    .theories-list h2{font-size:24px;margin-bottom:20px;color:var(--accent)}
+    .theory-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}
+    .theory-meta{font-size:13px;color:var(--muted);margin-bottom:10px}
+    .theory-category{background:var(--accent);color:#000;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600}
+
+    .footer{text-align:center;padding:40px 20px;border-top:1px solid var(--line);margin-top:40px;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner"><a href="/" class="nav-logo">Disclosure Day Hub</a><a href="/community/">Community</a></div></nav>
+
+<div class="container">
+  <h1>🛸 Submit Your Theory</h1>
+  <p class="subtitle">What do you think happens in Disclosure Day? Share your speculation.</p>
+
+  <form id="theory-form">
+    <div class="form-group">
+      <label for="name">Your Name (or Alias)</label>
+      <input type="text" id="name" name="name" placeholder="Agent X" required>
+    </div>
+
+    <div class="form-group">
+      <label for="category">Theory Category</label>
+      <select id="category" name="category" required>
+        <option value="">Select a category...</option>
+        <option value="alien-intentions">Alien Intentions</option>
+        <option value="plot-prediction">Plot Prediction</option>
+        <option value="ending-theory">Ending Theory</option>
+        <option value="character-theory">Character Theory</option>
+        <option value="real-uap-connection">Real UAP Connection</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="title">Theory Title</label>
+      <input type="text" id="title" name="title" placeholder="The aliens are actually..." required>
+    </div>
+
+    <div class="form-group">
+      <label for="theory">Your Theory</label>
+      <textarea id="theory" name="theory" placeholder="I think what happens is..." required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="evidence">Supporting Evidence (optional)</label>
+      <textarea id="evidence" name="evidence" placeholder="Based on the trailer... / In Close Encounters, Spielberg..."></textarea>
+    </div>
+
+    <button type="submit" class="submit-btn">Submit Theory</button>
+  </form>
+
+  <div class="success-msg" id="success">
+    <h3>Theory Received!</h3>
+    <p>Thanks for sharing. Your theory has been submitted for review and may be featured on the site.</p>
+    <p style="margin-top:12px"><a href="/community/">← Back to Community</a></p>
+  </div>
+
+  <div class="theories-list" id="theories-container">
+    <h2>Recent Fan Theories</h2>
+    <div id="theories-list">
+      <p style="color:var(--muted)">Loading theories...</p>
+    </div>
+  </div>
+</div>
+
+<footer class="footer"><p><strong>Disclosure Day Hub</strong></p></footer>
+
+<script>
+const form = document.getElementById('theory-form');
+const success = document.getElementById('success');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const btn = form.querySelector('.submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+
+  const data = {
+    name: document.getElementById('name').value,
+    category: document.getElementById('category').value,
+    title: document.getElementById('title').value,
+    theory: document.getElementById('theory').value,
+    evidence: document.getElementById('evidence').value,
+    timestamp: new Date().toISOString()
+  };
+
+  try {
+    await fetch('/community/submit.php', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({type: 'theory', ...data})
+    });
+
+    form.style.display = 'none';
+    success.style.display = 'block';
+  } catch (err) {
+    alert('Submission failed. Please try again.');
+    btn.disabled = false;
+    btn.textContent = 'Submit Theory';
+  }
+});
+
+// Load existing theories
+fetch('/community/theories.json')
+  .then(r => r.json())
+  .then(theories => {
+    const container = document.getElementById('theories-list');
+    if (theories.length === 0) {
+      container.innerHTML = '<p style="color:var(--muted)">No theories yet. Be the first!</p>';
+      return;
+    }
+    container.innerHTML = theories.slice(0, 10).map(t => `
+      <div class="theory-card">
+        <div class="theory-meta">
+          <span class="theory-category">${t.category}</span>
+          <span style="margin-left:8px">${t.name} • ${new Date(t.timestamp).toLocaleDateString()}</span>
+        </div>
+        <h4 style="margin-bottom:8px">${t.title}</h4>
+        <p style="color:var(--muted);font-size:15px">${t.theory.substring(0, 200)}${t.theory.length > 200 ? '...' : ''}</p>
+      </div>
+    `).join('');
+  })
+  .catch(() => {
+    document.getElementById('theories-list').innerHTML = '<p style="color:var(--muted)">No theories yet. Be the first!</p>';
+  });
+</script>
+
+</body>
+</html>
