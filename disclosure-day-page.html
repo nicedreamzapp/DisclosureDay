@@ -1,0 +1,1164 @@
+<!--
+  DISCLOSURE DAY - Marketing Hub
+  WordPress Custom HTML - Paste this into a Custom HTML block or Page Builder
+  Version 1.0 - The Truth Is Coming
+-->
+
+<style>
+/* ============================================
+   DISCLOSURE DAY - CINEMATIC STYLES
+   ============================================ */
+
+:root {
+  --dd-black: #0a0a0f;
+  --dd-dark: #0d1117;
+  --dd-navy: #1a1f35;
+  --dd-blue: #0066ff;
+  --dd-cyan: #00d4ff;
+  --dd-gold: #ffd700;
+  --dd-white: #f0f6fc;
+  --dd-gray: #8b949e;
+  --dd-glow: 0 0 30px rgba(0, 212, 255, 0.5);
+}
+
+/* Reset for WordPress */
+.disclosure-day-hub * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.disclosure-day-hub {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--dd-black);
+  color: var(--dd-white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   HERO SECTION - CINEMATIC OPENING
+   ============================================ */
+
+.dd-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(180deg,
+    var(--dd-black) 0%,
+    var(--dd-navy) 50%,
+    var(--dd-dark) 100%);
+  overflow: hidden;
+}
+
+.dd-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="white" opacity="0.3"/></svg>');
+  background-size: 50px 50px;
+  animation: starfield 100s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes starfield {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100%); }
+}
+
+.dd-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  padding: 2rem;
+}
+
+.dd-tagline {
+  font-size: 1rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--dd-cyan);
+  margin-bottom: 1rem;
+  animation: flicker 3s infinite;
+}
+
+@keyframes flicker {
+  0%, 90%, 100% { opacity: 1; }
+  92%, 98% { opacity: 0.8; }
+  95% { opacity: 0.4; }
+}
+
+.dd-title {
+  font-size: clamp(3rem, 10vw, 7rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--dd-white) 0%, var(--dd-cyan) 50%, var(--dd-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: var(--dd-glow);
+  animation: title-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes title-glow {
+  from { filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.3)); }
+  to { filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.6)); }
+}
+
+.dd-subtitle {
+  font-size: 1.5rem;
+  color: var(--dd-gray);
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.dd-release-date {
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  border: 2px solid var(--dd-cyan);
+  border-radius: 50px;
+  font-size: 1.2rem;
+  color: var(--dd-cyan);
+  margin-bottom: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.dd-release-date::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.2), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  to { left: 100%; }
+}
+
+/* ============================================
+   COUNTDOWN SECTION
+   ============================================ */
+
+.dd-countdown {
+  background: linear-gradient(135deg, var(--dd-dark) 0%, var(--dd-navy) 100%);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.dd-countdown-title {
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--dd-cyan);
+  margin-bottom: 2rem;
+}
+
+.dd-countdown-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.dd-countdown-item {
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  min-width: 120px;
+  backdrop-filter: blur(10px);
+}
+
+.dd-countdown-number {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--dd-white);
+  line-height: 1;
+}
+
+.dd-countdown-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--dd-gray);
+  margin-top: 0.5rem;
+}
+
+/* ============================================
+   TRAILER SECTION
+   ============================================ */
+
+.dd-trailer {
+  background: var(--dd-black);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.dd-section-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--dd-white);
+}
+
+.dd-section-subtitle {
+  font-size: 1rem;
+  color: var(--dd-gray);
+  margin-bottom: 2rem;
+}
+
+.dd-trailer-container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), var(--dd-glow);
+}
+
+.dd-trailer-placeholder {
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, var(--dd-navy), var(--dd-dark));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dd-trailer-placeholder:hover {
+  background: linear-gradient(135deg, var(--dd-dark), var(--dd-navy));
+}
+
+.dd-play-icon {
+  width: 80px;
+  height: 80px;
+  border: 3px solid var(--dd-cyan);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.dd-play-icon::after {
+  content: '';
+  border: 15px solid transparent;
+  border-left: 25px solid var(--dd-cyan);
+  margin-left: 8px;
+}
+
+.dd-trailer-placeholder:hover .dd-play-icon {
+  transform: scale(1.1);
+  box-shadow: var(--dd-glow);
+}
+
+/* ============================================
+   CAST SECTION - THE STARS
+   ============================================ */
+
+.dd-cast {
+  background: linear-gradient(180deg, var(--dd-dark) 0%, var(--dd-navy) 100%);
+  padding: 4rem 2rem;
+}
+
+.dd-cast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.dd-cast-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.dd-cast-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--dd-blue), var(--dd-cyan));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.dd-cast-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--dd-cyan);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 212, 255, 0.1);
+}
+
+.dd-cast-card:hover::before {
+  transform: scaleX(1);
+}
+
+.dd-cast-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1.5rem;
+  border: 3px solid var(--dd-navy);
+  transition: border-color 0.3s ease;
+  background: var(--dd-navy);
+}
+
+.dd-cast-card:hover .dd-cast-image {
+  border-color: var(--dd-cyan);
+}
+
+.dd-cast-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--dd-white);
+}
+
+.dd-cast-character {
+  font-size: 0.9rem;
+  color: var(--dd-cyan);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.dd-cast-bio {
+  font-size: 0.9rem;
+  color: var(--dd-gray);
+  line-height: 1.6;
+}
+
+.dd-cast-filmography {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.8rem;
+  color: var(--dd-gray);
+}
+
+/* ============================================
+   CREATORS SECTION - THE VISIONARIES
+   ============================================ */
+
+.dd-creators {
+  background: var(--dd-black);
+  padding: 4rem 2rem;
+}
+
+.dd-creator-featured {
+  max-width: 1000px;
+  margin: 0 auto 3rem;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 212, 255, 0.05));
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-radius: 20px;
+  padding: 3rem;
+}
+
+@media (max-width: 768px) {
+  .dd-creator-featured {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.dd-creator-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--dd-cyan);
+  margin: 0 auto;
+  background: var(--dd-navy);
+}
+
+.dd-creator-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.dd-creator-role {
+  font-size: 1rem;
+  color: var(--dd-cyan);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.dd-creator-bio {
+  color: var(--dd-gray);
+  line-height: 1.8;
+}
+
+.dd-creator-highlight {
+  color: var(--dd-cyan);
+  font-weight: 600;
+}
+
+.dd-creators-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.dd-creator-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.dd-creator-card:hover {
+  border-color: var(--dd-cyan);
+  transform: translateY(-5px);
+}
+
+.dd-creator-card .dd-creator-image {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 1rem;
+}
+
+.dd-creator-card .dd-creator-name {
+  font-size: 1.3rem;
+}
+
+.dd-creator-card .dd-creator-bio {
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   NEWS FEED - LIVE UPDATES
+   ============================================ */
+
+.dd-news {
+  background: linear-gradient(180deg, var(--dd-navy) 0%, var(--dd-dark) 100%);
+  padding: 4rem 2rem;
+}
+
+.dd-news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.dd-news-live {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--dd-cyan);
+  font-size: 0.9rem;
+}
+
+.dd-live-dot {
+  width: 10px;
+  height: 10px;
+  background: #ff4444;
+  border-radius: 50%;
+  animation: pulse-live 1.5s infinite;
+}
+
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+.dd-news-feed {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dd-news-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1.5rem;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.dd-news-item:hover {
+  border-color: var(--dd-cyan);
+  background: rgba(0, 212, 255, 0.05);
+}
+
+.dd-news-source {
+  width: 50px;
+  height: 50px;
+  background: var(--dd-navy);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: var(--dd-cyan);
+}
+
+.dd-news-content h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--dd-white);
+}
+
+.dd-news-content p {
+  font-size: 0.9rem;
+  color: var(--dd-gray);
+}
+
+.dd-news-time {
+  font-size: 0.8rem;
+  color: var(--dd-gray);
+  white-space: nowrap;
+}
+
+.dd-news-item.featured {
+  border-color: var(--dd-gold);
+  background: rgba(255, 215, 0, 0.05);
+}
+
+.dd-news-item.featured .dd-news-source {
+  background: var(--dd-gold);
+  color: var(--dd-black);
+}
+
+/* ============================================
+   MYSTERY SECTION - ARG ELEMENTS
+   ============================================ */
+
+.dd-mystery {
+  background: var(--dd-black);
+  padding: 4rem 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.dd-mystery::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.dd-classified {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.02);
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 3rem;
+  position: relative;
+}
+
+.dd-classified-stamp {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #ff4444;
+  font-weight: 900;
+  font-size: 1.2rem;
+  transform: rotate(15deg);
+  border: 3px solid #ff4444;
+  padding: 0.5rem 1rem;
+  opacity: 0.7;
+}
+
+.dd-classified-code {
+  font-family: 'Courier New', monospace;
+  font-size: 1.5rem;
+  color: var(--dd-cyan);
+  margin-bottom: 1rem;
+  letter-spacing: 0.3em;
+}
+
+.dd-classified-message {
+  color: var(--dd-gray);
+  margin-bottom: 2rem;
+}
+
+.dd-classified-input {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.dd-classified-input input {
+  background: var(--dd-dark);
+  border: 1px solid var(--dd-navy);
+  border-radius: 5px;
+  padding: 0.75rem 1rem;
+  color: var(--dd-white);
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  width: 200px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.dd-classified-input input:focus {
+  outline: none;
+  border-color: var(--dd-cyan);
+}
+
+.dd-classified-input button {
+  background: linear-gradient(135deg, var(--dd-blue), var(--dd-cyan));
+  border: none;
+  border-radius: 5px;
+  padding: 0.75rem 2rem;
+  color: var(--dd-white);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dd-classified-input button:hover {
+  transform: scale(1.05);
+  box-shadow: var(--dd-glow);
+}
+
+/* ============================================
+   FOOTER - SOCIAL & LINKS
+   ============================================ */
+
+.dd-footer {
+  background: var(--dd-dark);
+  padding: 3rem 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dd-social {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.dd-social a {
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dd-white);
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.dd-social a:hover {
+  background: var(--dd-cyan);
+  border-color: var(--dd-cyan);
+  color: var(--dd-black);
+  transform: translateY(-5px);
+}
+
+.dd-footer-text {
+  color: var(--dd-gray);
+  font-size: 0.9rem;
+}
+
+.dd-footer-text a {
+  color: var(--dd-cyan);
+  text-decoration: none;
+}
+
+.dd-footer-credits {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .dd-countdown-grid {
+    gap: 1rem;
+  }
+
+  .dd-countdown-item {
+    min-width: 80px;
+    padding: 1rem;
+  }
+
+  .dd-countdown-number {
+    font-size: 2rem;
+  }
+
+  .dd-news-item {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .dd-news-source {
+    margin: 0 auto;
+  }
+}
+</style>
+
+<!-- ============================================
+     DISCLOSURE DAY - HTML STRUCTURE
+     ============================================ -->
+
+<div class="disclosure-day-hub">
+
+  <!-- HERO SECTION -->
+  <section class="dd-hero">
+    <div class="dd-hero-content">
+      <p class="dd-tagline">A Steven Spielberg Film</p>
+      <h1 class="dd-title">Disclosure Day</h1>
+      <p class="dd-subtitle">The truth has been waiting. We weren't ready. Now we have no choice.</p>
+      <div class="dd-release-date">June 12, 2026 - In Theaters & IMAX</div>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section class="dd-countdown">
+    <h2 class="dd-countdown-title">Time Until Disclosure</h2>
+    <div class="dd-countdown-grid" id="countdown">
+      <div class="dd-countdown-item">
+        <div class="dd-countdown-number" id="days">---</div>
+        <div class="dd-countdown-label">Days</div>
+      </div>
+      <div class="dd-countdown-item">
+        <div class="dd-countdown-number" id="hours">--</div>
+        <div class="dd-countdown-label">Hours</div>
+      </div>
+      <div class="dd-countdown-item">
+        <div class="dd-countdown-number" id="minutes">--</div>
+        <div class="dd-countdown-label">Minutes</div>
+      </div>
+      <div class="dd-countdown-item">
+        <div class="dd-countdown-number" id="seconds">--</div>
+        <div class="dd-countdown-label">Seconds</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAILER -->
+  <section class="dd-trailer">
+    <h2 class="dd-section-title">Official Teaser Trailer</h2>
+    <p class="dd-section-subtitle">First contact has never felt this real</p>
+    <div class="dd-trailer-container">
+      <div class="dd-trailer-placeholder" id="trailerPlaceholder">
+        <div class="dd-play-icon"></div>
+        <span>Watch Teaser Trailer</span>
+      </div>
+      <!-- Replace with actual YouTube embed when available -->
+      <div id="trailerEmbed" style="display: none;">
+        <iframe
+          width="100%"
+          height="506"
+          src=""
+          id="trailerIframe"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAST -->
+  <section class="dd-cast">
+    <h2 class="dd-section-title" style="text-align: center; margin-bottom: 0.5rem;">The Cast</h2>
+    <p class="dd-section-subtitle" style="text-align: center; margin-bottom: 3rem;">An extraordinary ensemble brings disclosure to life</p>
+
+    <div class="dd-cast-grid">
+
+      <div class="dd-cast-card">
+        <div class="dd-cast-image" style="background: linear-gradient(135deg, #1a1f35, #0d1117);"></div>
+        <h3 class="dd-cast-name">Emily Blunt</h3>
+        <p class="dd-cast-character">The Meteorologist</p>
+        <p class="dd-cast-bio">A local weather reporter whose live broadcast becomes the moment everything changes. Overcome by a mysterious extraterrestrial force on air.</p>
+        <div class="dd-cast-filmography">Known for: A Quiet Place, Oppenheimer, Edge of Tomorrow</div>
+      </div>
+
+      <div class="dd-cast-card">
+        <div class="dd-cast-image" style="background: linear-gradient(135deg, #1a1f35, #0d1117);"></div>
+        <h3 class="dd-cast-name">Josh O'Connor</h3>
+        <p class="dd-cast-character">The Whistleblower</p>
+        <p class="dd-cast-bio">A passionate UFO truth-seeker determined to share what he knows with the world. The voice screaming into the void suddenly finds an audience.</p>
+        <div class="dd-cast-filmography">Known for: The Crown, Challengers, La Chimera</div>
+      </div>
+
+      <div class="dd-cast-card">
+        <div class="dd-cast-image" style="background: linear-gradient(135deg, #1a1f35, #0d1117);"></div>
+        <h3 class="dd-cast-name">Colin Firth</h3>
+        <p class="dd-cast-character">Role TBA</p>
+        <p class="dd-cast-bio">Academy Award winner brings gravitas to a pivotal role in humanity's most important day.</p>
+        <div class="dd-cast-filmography">Known for: The King's Speech, Kingsman, A Single Man</div>
+      </div>
+
+      <div class="dd-cast-card">
+        <div class="dd-cast-image" style="background: linear-gradient(135deg, #1a1f35, #0d1117);"></div>
+        <h3 class="dd-cast-name">Colman Domingo</h3>
+        <p class="dd-cast-character">Role TBA</p>
+        <p class="dd-cast-bio">Emmy and Tony Award winner, fresh off his stunning performance in Sing Sing, joins Spielberg's vision.</p>
+        <div class="dd-cast-filmography">Known for: Euphoria, Sing Sing, The Color Purple</div>
+      </div>
+
+      <div class="dd-cast-card">
+        <div class="dd-cast-image" style="background: linear-gradient(135deg, #1a1f35, #0d1117);"></div>
+        <h3 class="dd-cast-name">Eve Hewson</h3>
+        <p class="dd-cast-character">Role TBA</p>
+        <p class="dd-cast-bio">Rising star known for her intense performances brings mystery to the ensemble.</p>
+        <div class="dd-cast-filmography">Known for: Bad Sisters, Flora and Son, Behind Her Eyes</div>
+      </div>
+
+      <div class="dd-cast-card">
+        <div class="dd-cast-image" style="background: linear-gradient(135deg, #1a1f35, #0d1117);"></div>
+        <h3 class="dd-cast-name">Wyatt Russell</h3>
+        <p class="dd-cast-character">Role TBA</p>
+        <p class="dd-cast-bio">From Captain America to close encounters - continues building an impressive genre filmography.</p>
+        <div class="dd-cast-filmography">Known for: The Falcon and the Winter Soldier, Overlord, Lodge 49</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CREATORS -->
+  <section class="dd-creators">
+    <h2 class="dd-section-title" style="text-align: center; margin-bottom: 0.5rem;">The Visionaries</h2>
+    <p class="dd-section-subtitle" style="text-align: center; margin-bottom: 3rem;">The master storytellers behind Disclosure Day</p>
+
+    <!-- Spielberg Featured -->
+    <div class="dd-creator-featured">
+      <div>
+        <div class="dd-creator-image" style="background: linear-gradient(135deg, #1a1f35, #0d1117);"></div>
+      </div>
+      <div>
+        <h3 class="dd-creator-name">Steven Spielberg</h3>
+        <p class="dd-creator-role">Director & Story</p>
+        <p class="dd-creator-bio">
+          The filmmaker who defined the UFO genre returns. From <span class="dd-creator-highlight">Close Encounters of the Third Kind</span> (1977) to <span class="dd-creator-highlight">E.T.</span> (1982) to <span class="dd-creator-highlight">War of the Worlds</span> (2005), Spielberg has shaped how humanity imagines first contact.
+          <br><br>
+          Now, with <span class="dd-creator-highlight">Disclosure Day</span>, he asks a different question: What happens when the truth can no longer be hidden?
+          <br><br>
+          This marks his <strong>37th feature film</strong> as director.
+        </p>
+      </div>
+    </div>
+
+    <div class="dd-creators-grid">
+
+      <div class="dd-creator-card">
+        <div class="dd-creator-image" style="background: linear-gradient(135deg, #1a1f35, #0d1117);"></div>
+        <h3 class="dd-creator-name">David Koepp</h3>
+        <p class="dd-creator-role">Screenwriter</p>
+        <p class="dd-creator-bio">Spielberg's trusted collaborator on Jurassic Park, The Lost World, War of the Worlds, and Indiana Jones. The architect of blockbuster tension.</p>
+      </div>
+
+      <div class="dd-creator-card">
+        <div class="dd-creator-image" style="background: linear-gradient(135deg, #1a1f35, #0d1117);"></div>
+        <h3 class="dd-creator-name">Kristie Macosko Krieger</h3>
+        <p class="dd-creator-role">Producer</p>
+        <p class="dd-creator-bio">Five-time Academy Award nominee. 27 years as Spielberg's producing partner. The force behind The Fabelmans, West Side Story, Ready Player One, and now Disclosure Day.</p>
+      </div>
+
+      <div class="dd-creator-card">
+        <div class="dd-creator-image" style="background: linear-gradient(135deg, #1a1f35, #0d1117);"></div>
+        <h3 class="dd-creator-name">Janusz Kaminski</h3>
+        <p class="dd-creator-role">Cinematographer</p>
+        <p class="dd-creator-bio">Two-time Oscar winner (Schindler's List, Saving Private Ryan). The eye behind every Spielberg film since 1993. Visual poetry meets alien contact.</p>
+      </div>
+
+      <div class="dd-creator-card">
+        <div class="dd-creator-image" style="background: linear-gradient(135deg, #1a1f35, #0d1117);"></div>
+        <h3 class="dd-creator-name">John Williams</h3>
+        <p class="dd-creator-role">Composer</p>
+        <p class="dd-creator-bio">The 93-year-old legend said he retired. Then Steven called. The five-note motif of Close Encounters may get a spiritual successor.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NEWS FEED -->
+  <section class="dd-news">
+    <div class="dd-news-header">
+      <div>
+        <h2 class="dd-section-title">Live Updates</h2>
+        <p class="dd-section-subtitle">Latest news and buzz around Disclosure Day</p>
+      </div>
+      <div class="dd-news-live">
+        <span class="dd-live-dot"></span>
+        <span>Live Feed</span>
+      </div>
+    </div>
+
+    <div class="dd-news-feed" id="newsFeed">
+
+      <div class="dd-news-item featured">
+        <div class="dd-news-source">NEW</div>
+        <div class="dd-news-content">
+          <h4>First Teaser Trailer Released</h4>
+          <p>Steven Spielberg's mysterious UFO movie finally reveals itself with haunting first footage.</p>
+        </div>
+        <div class="dd-news-time">Just now</div>
+      </div>
+
+      <div class="dd-news-item">
+        <div class="dd-news-source">VAR</div>
+        <div class="dd-news-content">
+          <h4>Emily Blunt Describes "Career-Defining" Role</h4>
+          <p>Actress calls meteorologist character "unlike anything I've done before."</p>
+        </div>
+        <div class="dd-news-time">2 hours ago</div>
+      </div>
+
+      <div class="dd-news-item">
+        <div class="dd-news-source">THR</div>
+        <div class="dd-news-content">
+          <h4>John Williams Confirms Return for "One More"</h4>
+          <p>Legendary composer came out of retirement for Spielberg's UFO epic.</p>
+        </div>
+        <div class="dd-news-time">Yesterday</div>
+      </div>
+
+      <div class="dd-news-item">
+        <div class="dd-news-source">WIKI</div>
+        <div class="dd-news-content">
+          <h4>Production Wrapped in New Jersey</h4>
+          <p>Principal photography completed after filming across NJ, Atlanta, and NYC.</p>
+        </div>
+        <div class="dd-news-time">May 2025</div>
+      </div>
+
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem;">
+      <button onclick="loadMoreNews()" style="background: transparent; border: 1px solid var(--dd-cyan); color: var(--dd-cyan); padding: 0.75rem 2rem; border-radius: 5px; cursor: pointer; font-size: 0.9rem; transition: all 0.3s ease;">
+        Load More Updates
+      </button>
+    </div>
+  </section>
+
+  <!-- MYSTERY / ARG -->
+  <section class="dd-mystery">
+    <h2 class="dd-section-title">Classified</h2>
+    <p class="dd-section-subtitle" style="margin-bottom: 2rem;">Some secrets are hidden in plain sight</p>
+
+    <div class="dd-classified">
+      <div class="dd-classified-stamp">TOP SECRET</div>
+      <div class="dd-classified-code" id="classifiedCode">/// SIGNAL DETECTED ///</div>
+      <p class="dd-classified-message">Enter access code to unlock classified content. Hint: The truth has five notes.</p>
+      <div class="dd-classified-input">
+        <input type="text" id="accessCode" placeholder="ACCESS CODE" maxlength="10">
+        <button onclick="checkAccessCode()">DECRYPT</button>
+      </div>
+      <p id="codeResponse" style="margin-top: 1rem; font-size: 0.9rem;"></p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="dd-footer">
+    <div class="dd-social">
+      <a href="#" title="Twitter/X">X</a>
+      <a href="#" title="Instagram">IG</a>
+      <a href="#" title="Facebook">FB</a>
+      <a href="#" title="YouTube">YT</a>
+      <a href="#" title="TikTok">TT</a>
+    </div>
+    <p class="dd-footer-text">
+      <strong>Disclosure Day</strong> - Coming June 12, 2026<br>
+      Produced by <a href="#">Amblin Entertainment</a> | Distributed by <a href="#">Universal Pictures</a>
+    </p>
+    <p class="dd-footer-credits">
+      Fan hub by Nice Dreamz | Not affiliated with Amblin Entertainment or Universal Pictures
+    </p>
+  </footer>
+
+</div>
+
+<!-- ============================================
+     JAVASCRIPT - INTERACTIVITY
+     ============================================ -->
+
+<script>
+// Countdown Timer to June 12, 2026
+function updateCountdown() {
+  const releaseDate = new Date('June 12, 2026 00:00:00').getTime();
+  const now = new Date().getTime();
+  const distance = releaseDate - now;
+
+  if (distance > 0) {
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+  }
+}
+
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// Trailer Player
+document.getElementById('trailerPlaceholder').addEventListener('click', function() {
+  // Replace with actual YouTube trailer ID when available
+  const trailerId = 'YOUR_YOUTUBE_TRAILER_ID';
+  const iframe = document.getElementById('trailerIframe');
+
+  if (trailerId !== 'YOUR_YOUTUBE_TRAILER_ID') {
+    iframe.src = `https://www.youtube.com/embed/${trailerId}?autoplay=1`;
+    document.getElementById('trailerPlaceholder').style.display = 'none';
+    document.getElementById('trailerEmbed').style.display = 'block';
+  } else {
+    alert('Official trailer coming soon! Check back for updates.');
+  }
+});
+
+// ARG Access Code System
+function checkAccessCode() {
+  const code = document.getElementById('accessCode').value.toUpperCase();
+  const response = document.getElementById('codeResponse');
+
+  // Easter egg codes
+  const codes = {
+    'CLOSE': 'D-E-G-E-C... The five notes. You remember.',
+    'TRUTH': 'ACCESS GRANTED: The truth isn\'t out there. It\'s here.',
+    'JUNE12': 'Mark your calendar. Everything changes.',
+    'SPIELBERG': 'The master returns to where it all began.',
+    'BLUNT': 'She saw something. On air. Live. And couldn\'t look away.',
+    'KRISTIE': 'You found it! Producer extraordinaire - 27 years of magic.',
+    'AMBLIN': 'Where dreams become reality.',
+  };
+
+  if (codes[code]) {
+    response.style.color = '#00d4ff';
+    response.textContent = codes[code];
+
+    // Visual feedback
+    document.querySelector('.dd-classified').style.borderColor = '#00d4ff';
+    document.querySelector('.dd-classified').style.boxShadow = '0 0 30px rgba(0, 212, 255, 0.3)';
+  } else if (code.length > 0) {
+    response.style.color = '#ff4444';
+    response.textContent = 'ACCESS DENIED. Keep searching.';
+  }
+}
+
+// Enter key support for code input
+document.getElementById('accessCode').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    checkAccessCode();
+  }
+});
+
+// Load More News (placeholder for API integration)
+function loadMoreNews() {
+  const feed = document.getElementById('newsFeed');
+  const loadingItem = document.createElement('div');
+  loadingItem.className = 'dd-news-item';
+  loadingItem.innerHTML = `
+    <div class="dd-news-source">...</div>
+    <div class="dd-news-content">
+      <h4>Loading more updates...</h4>
+      <p>Connecting to news feeds and social monitoring...</p>
+    </div>
+    <div class="dd-news-time">Now</div>
+  `;
+  feed.appendChild(loadingItem);
+
+  // Simulate loading - replace with actual API call
+  setTimeout(() => {
+    loadingItem.innerHTML = `
+      <div class="dd-news-source">API</div>
+      <div class="dd-news-content">
+        <h4>Connect Your News API</h4>
+        <p>Add your NewsAPI.org or Twitter API keys to enable live updates.</p>
+      </div>
+      <div class="dd-news-time">Setup Required</div>
+    `;
+  }, 1500);
+}
+
+// Konami Code Easter Egg
+let konamiCode = [];
+const konamiPattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+
+document.addEventListener('keydown', function(e) {
+  konamiCode.push(e.key);
+  konamiCode = konamiCode.slice(-10);
+
+  if (konamiCode.join(',') === konamiPattern.join(',')) {
+    document.body.style.animation = 'flash 0.5s';
+    alert('CLASSIFIED: "They\'ve been watching us since Roswell. Now they\'re ready to talk." - Project Disclosure');
+  }
+});
+
+// Glitch effect on scroll
+let lastScroll = 0;
+window.addEventListener('scroll', function() {
+  const title = document.querySelector('.dd-title');
+  if (title && Math.abs(window.scrollY - lastScroll) > 100) {
+    title.style.animation = 'none';
+    setTimeout(() => {
+      title.style.animation = 'title-glow 4s ease-in-out infinite alternate';
+    }, 50);
+    lastScroll = window.scrollY;
+  }
+});
+
+console.log('%c/// DISCLOSURE DAY ///', 'color: #00d4ff; font-size: 20px; font-weight: bold;');
+console.log('%cThe truth is in the code. Look closer.', 'color: #8b949e;');
+console.log('%cHint: Try the access codes - CLOSE, TRUTH, KRISTIE', 'color: #ffd700;');
+</script>

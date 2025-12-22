@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Question Humanity Has Always Asked | Disclosure Day Hub</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👁️</text></svg>">
+  <style>
+    :root {
+      --bg: #000408;
+      --card: #0a0d14;
+      --fg: #e9eef7;
+      --muted: #8b95a5;
+      --accent: #00ffcc;
+      --alien: #39ff14;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: Georgia, serif;
+      line-height: 1.9;
+      overflow-x: hidden;
+    }
+
+    /* Starfield */
+    .starfield {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 3s infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    /* Scanlines */
+    .scanlines {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px);
+      opacity: 0.2;
+    }
+
+    /* Header */
+    header {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 80px 20px 40px;
+      background: radial-gradient(ellipse at center top, rgba(0,255,204,.2) 0%, transparent 70%);
+    }
+    .back-link {
+      display: inline-block;
+      color: var(--accent);
+      text-decoration: none;
+      font-family: monospace;
+      font-size: 14px;
+      margin-bottom: 30px;
+      padding: 10px 20px;
+      border: 1px solid var(--accent);
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    .back-link:hover {
+      background: var(--accent);
+      color: #000;
+    }
+    h1 {
+      font-size: clamp(32px, 6vw, 56px);
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-shadow: 0 0 30px var(--accent);
+      margin-bottom: 20px;
+    }
+    .subtitle {
+      font-size: 18px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* Article */
+    article {
+      position: relative;
+      z-index: 10;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px 100px;
+    }
+
+    .lead {
+      font-size: 24px;
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 60px;
+      line-height: 1.6;
+    }
+
+    h2 {
+      color: var(--alien);
+      font-size: 28px;
+      margin: 60px 0 30px;
+      text-shadow: 0 0 20px var(--alien);
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+
+    p {
+      margin-bottom: 24px;
+      font-size: 18px;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .warning {
+      color: #ff6b6b;
+      font-weight: bold;
+    }
+
+    ul {
+      list-style: none;
+      margin: 30px 0;
+    }
+    ul li {
+      padding: 12px 0;
+      padding-left: 30px;
+      position: relative;
+      font-size: 17px;
+    }
+    ul li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 20px 30px;
+      margin: 40px 0;
+      background: rgba(0,255,204,.05);
+      font-style: italic;
+      font-size: 20px;
+    }
+
+    .fact-box {
+      background: rgba(57,255,20,.1);
+      border: 1px solid var(--alien);
+      border-radius: 8px;
+      padding: 30px;
+      margin: 40px 0;
+    }
+    .fact-box h3 {
+      color: var(--alien);
+      margin-bottom: 15px;
+      font-family: monospace;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+    }
+
+    .classified {
+      background: rgba(255,50,50,.1);
+      border: 1px solid rgba(255,50,50,.5);
+      border-radius: 8px;
+      padding: 30px;
+      margin: 40px 0;
+    }
+    .classified h3 {
+      color: #ff6b6b;
+      margin-bottom: 15px;
+      font-family: monospace;
+    }
+
+    .question {
+      text-align: center;
+      font-size: 24px;
+      color: var(--accent);
+      margin: 50px 0;
+      padding: 30px;
+      border-top: 1px solid var(--accent);
+      border-bottom: 1px solid var(--accent);
+    }
+
+    /* Image placeholders */
+    .image-container {
+      margin: 40px 0;
+      text-align: center;
+    }
+    .image-container img {
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--accent);
+      box-shadow: 0 0 30px rgba(0,255,204,.3);
+    }
+    .image-caption {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+      font-family: monospace;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      position: relative;
+      z-index: 10;
+    }
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .final-message {
+      font-size: 32px;
+      color: var(--accent);
+      text-align: center;
+      margin: 80px 0;
+      text-shadow: 0 0 30px var(--accent);
+    }
+  </style>
+</head>
+<body>
+
+<div class="starfield" id="starfield"></div>
+<div class="scanlines"></div>
+
+<header>
+  <a href="/" class="back-link">← RETURN TO HUB</a>
+  <h1>The Question</h1>
+  <p class="subtitle">What brought us to this point?</p>
+</header>
+
+<article>
+  <p class="lead">
+    For most of human history, we believed the universe was silent.<br>
+    Empty.<br>
+    Indifferent.<br><br>
+    <span class="highlight">But what if that was never true?</span><br><br>
+    What if the silence was intentional?
+  </p>
+
+  <h2>The Question Humanity Has Always Asked</h2>
+
+  <p>From the earliest cave paintings to modern radio telescopes, humanity has searched the sky for answers. Every civilization has left behind stories of beings from above, visitors from the stars, watchers who arrived in moments of crisis.</p>
+
+  <p>For centuries, those stories were dismissed as myth.</p>
+
+  <p class="highlight">Until science caught up.</p>
+
+  <div class="fact-box">
+    <h3>[ DOCUMENTED PROGRESS ]</h3>
+    <p>In the last 100 years alone, humanity has:</p>
+    <ul>
+      <li>Split the atom</li>
+      <li>Left its home planet</li>
+      <li>Detected planets orbiting distant stars</li>
+      <li>Found organic molecules in deep space</li>
+      <li>Discovered that life's building blocks are everywhere</li>
+    </ul>
+  </div>
+
+  <p>Statistically, the universe should be alive.</p>
+
+  <p class="question">So why haven't we seen them?</p>
+
+  <p>That question has a name: <span class="highlight">The Fermi Paradox</span>.</p>
+  <p>And it haunts modern science.</p>
+
+  <h2>What Science Says (And What It Can't Explain)</h2>
+
+  <p>Astronomers now estimate there are hundreds of billions of galaxies, each with billions of stars, many with Earth-like planets.</p>
+
+  <p>Life should be common.<br>
+  Intelligent life should be inevitable.</p>
+
+  <p>And yet…</p>
+
+  <blockquote>
+    No confirmed contact.<br>
+    No undeniable signal.<br>
+    No clear proof.<br><br>
+    <span class="warning">Unless the proof was never meant to be public.</span>
+  </blockquote>
+
+  <div class="classified">
+    <h3>⚠️ UNEXPLAINED PHENOMENA</h3>
+    <p>Over the last two decades, governments have quietly acknowledged phenomena they cannot explain:</p>
+    <ul>
+      <li>Objects accelerating without propulsion</li>
+      <li>Craft outperforming known physics</li>
+      <li>Encounters recorded by military pilots</li>
+      <li>Sensor data that defies conventional explanation</li>
+    </ul>
+    <p style="margin-top:20px;color:#ff9999;">Scientists admit something unprecedented is happening. But they don't agree on what it is.</p>
+  </div>
+
+  <h2>What Leaders Know</h2>
+
+  <p>Behind closed doors, world governments have shared information the public has never seen.</p>
+
+  <p>Classified briefings.<br>
+  Recovered materials.<br>
+  Restricted research programs buried under layers of secrecy.</p>
+
+  <p class="highlight">Why?</p>
+
+  <p>Because the implications aren't just scientific. They're existential.</p>
+
+  <div class="fact-box">
+    <h3>[ THE REAL QUESTIONS ]</h3>
+    <ul>
+      <li>What happens to religion, power, money, borders, and authority if humanity learns it is not alone?</li>
+      <li>What happens if technology exists that could eliminate energy scarcity overnight?</li>
+      <li>What happens if we discover we've been observed for decades… or centuries?</li>
+    </ul>
+  </div>
+
+  <p>Secrecy, some argue, was never about hiding aliens.</p>
+  <p class="highlight">It was about maintaining order.</p>
+
+  <h2>What Might Be Hidden</h2>
+
+  <p>Conspiracy theorists have speculated for years. Most were dismissed.</p>
+
+  <p>But recently, former officials, pilots, scientists, and intelligence officers have all begun saying the same thing:</p>
+
+  <blockquote>"There is more we're not being told."</blockquote>
+
+  <div class="classified">
+    <h3>⚠️ ALLEGED REVELATIONS</h3>
+    <p>They hint at:</p>
+    <ul>
+      <li>Non-human technology not created by any nation</li>
+      <li>Programs operating outside normal government oversight</li>
+      <li>Scientific breakthroughs locked behind classification</li>
+      <li>A timeline of contact far older than publicly admitted</li>
+    </ul>
+    <p style="margin-top:20px;color:#ff9999;">And one terrifying possibility: That disclosure has been delayed not because leaders lacked proof — but because they feared the truth would arrive before humanity was ready.</p>
+  </div>
+
+  <h2>Why Now?</h2>
+
+  <p>Why, after decades of denial, are governments suddenly changing their tone?</p>
+
+  <ul>
+    <li>Why are classified programs being acknowledged?</li>
+    <li>Why are scientists speaking more openly?</li>
+    <li>Why are new space telescopes coming online now?</li>
+    <li>Why are private companies racing toward the stars?</li>
+  </ul>
+
+  <p>Some believe it's coincidence.</p>
+  <p>Others believe it's inevitability.</p>
+
+  <p class="highlight">And some believe something else entirely:</p>
+
+  <blockquote>
+    That we were never meant to find them.<br><br>
+    That they were waiting for us to find ourselves.
+  </blockquote>
+
+  <h2>The Question No One Can Avoid</h2>
+
+  <p>What if contact doesn't come as an invasion?</p>
+  <p>What if it comes as a revelation?</p>
+  <p class="highlight">What if the most dangerous thing isn't what's out there… but what we become when the truth finally arrives?</p>
+
+  <div class="fact-box">
+    <h3>[ DISCLOSURE DAY ]</h3>
+    <p>This is not a story about little green men or flying saucers.</p>
+    <p style="margin-top:15px;">It's about:</p>
+    <ul>
+      <li>Power and secrecy</li>
+      <li>Fear and hope</li>
+      <li>Science versus belief</li>
+      <li>Humanity standing at the edge of a greater reality</li>
+    </ul>
+  </div>
+
+  <p>It explores the moment when the world is forced to confront a truth too large to ignore.</p>
+
+  <p>A day when every screen goes dark.<br>
+  Every lie comes into question.<br>
+  And the sky stops being empty.</p>
+
+  <h2>Is Any of This True?</h2>
+
+  <p>That's the most unsettling part.</p>
+
+  <p>Some of it is documented.<br>
+  Some of it is classified.<br>
+  Some of it is theory.<br>
+  Some of it is testimony.</p>
+
+  <p class="warning">And some of it… may only be revealed when it's too late to turn back.</p>
+
+  <p class="final-message">
+    The truth isn't coming.<br>
+    It's already here.<br><br>
+    👁️
+  </p>
+</article>
+
+<footer>
+  <p><a href="/">← Return to Disclosure Day Hub</a></p>
+  <p style="margin-top:20px;font-size:12px;color:var(--muted);">June 12, 2026 — The countdown continues.</p>
+</footer>
+
+<script>
+// Generate stars
+const starfield = document.getElementById('starfield');
+for (let i = 0; i < 200; i++) {
+  const star = document.createElement('div');
+  star.className = 'star';
+  star.style.left = Math.random() * 100 + '%';
+  star.style.top = Math.random() * 100 + '%';
+  star.style.width = star.style.height = (Math.random() * 3 + 1) + 'px';
+  star.style.animationDelay = Math.random() * 3 + 's';
+  starfield.appendChild(star);
+}
+</script>
+
+</body>
+</html>

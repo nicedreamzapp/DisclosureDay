@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AN OPEN LETTER TO THE GOVERNMENTS OF EARTH | Disclosure Day Hub</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👁️</text></svg>">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --fg: #e0e0e0;
+      --accent: #ff3333;
+      --muted: #666;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Courier New', monospace;
+      line-height: 2;
+      font-size: 16px;
+    }
+
+    .starfield {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 3s infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 0.8; }
+    }
+
+    .redacted-banner {
+      background: var(--accent);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-weight: bold;
+      letter-spacing: 0.5em;
+      font-size: 11px;
+      position: relative;
+      z-index: 100;
+    }
+
+    .back-nav {
+      position: relative;
+      z-index: 10;
+      padding: 20px;
+      text-align: center;
+    }
+    .back-nav a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 12px;
+      border: 1px solid var(--accent);
+      padding: 10px 20px;
+    }
+    .back-nav a:hover { background: var(--accent); color: white; }
+
+    .document {
+      position: relative;
+      z-index: 10;
+      max-width: 750px;
+      margin: 0 auto;
+      padding: 60px 30px 100px;
+      background: rgba(20,20,20,.9);
+      border-left: 3px solid var(--accent);
+      border-right: 3px solid var(--accent);
+    }
+
+    .doc-header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--accent);
+    }
+    .doc-header h1 {
+      font-size: 28px;
+      font-weight: normal;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+    .doc-header .subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .doc-header .classification {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 5px 15px;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      margin-top: 20px;
+    }
+
+    h2 {
+      color: var(--accent);
+      font-size: 16px;
+      letter-spacing: 0.2em;
+      margin: 50px 0 25px;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin-bottom: 25px;
+      text-align: justify;
+    }
+
+    .emphasis {
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .redacted {
+      background: #333;
+      color: #333;
+      padding: 0 8px;
+      user-select: none;
+    }
+
+    blockquote {
+      border-left: 2px solid var(--accent);
+      padding: 15px 25px;
+      margin: 30px 0;
+      background: rgba(255,51,51,.05);
+      font-style: italic;
+    }
+
+    ul {
+      list-style: none;
+      margin: 25px 0;
+    }
+    ul li {
+      padding: 10px 0;
+      padding-left: 25px;
+      position: relative;
+    }
+    ul li::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .signature {
+      text-align: right;
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--accent);
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .end-doc {
+      text-align: center;
+      margin-top: 60px;
+      padding: 30px;
+      border: 1px solid var(--accent);
+    }
+    .end-doc p {
+      margin: 10px 0;
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+    }
+
+    .share-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 40px;
+    }
+    .share-btn {
+      background: transparent;
+      border: 1px solid var(--fg);
+      color: var(--fg);
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+    }
+    .share-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      position: relative;
+      z-index: 10;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<div class="starfield" id="starfield"></div>
+
+<div class="redacted-banner">⚠️ LEAKED DOCUMENT — UNVERIFIED SOURCE — READ AT YOUR OWN DISCRETION ⚠️</div>
+
+<div class="back-nav">
+  <a href="/">← RETURN TO HUB</a>
+</div>
+
+<article class="document">
+  <div class="doc-header">
+    <h1>An Open Letter to the Governments of Earth</h1>
+    <p class="subtitle">From a Man You Erased</p>
+    <div class="classification">CLASSIFIED UNTIL YOU LOST CONTROL</div>
+  </div>
+
+  <p>You taught me how to lie.</p>
+
+  <p>You trained me to compartmentalize truth until it stopped feeling like truth at all. You taught me to smile at press conferences while standing on top of secrets that would shatter the foundations of civilization.</p>
+
+  <p>And now you expect me to stay silent.</p>
+
+  <p class="emphasis">I won't. Not anymore.</p>
+
+  <h2>I Was There</h2>
+
+  <p>I am not a conspiracy theorist. I am not a dreamer. I am not unstable.</p>
+
+  <p>I am a former systems analyst assigned to multi-agency programs so buried in classification that even the names of the programs were classified. You called them "anomalous material studies." You called them "advanced aerospace threat assessments."</p>
+
+  <p>You never once called them what they were.</p>
+
+  <p class="emphasis">Non-human intelligence research.</p>
+
+  <p>I saw the materials. I saw the propulsion data. I saw the biological telemetry no one could explain. And I watched as every discovery was locked away—not for safety, not for science—but for control.</p>
+
+  <h2>You Lied About First Contact</h2>
+
+  <p>You told the public there was no evidence. You said nothing had been recovered. You said the universe was silent.</p>
+
+  <p class="emphasis">That is a lie.</p>
+
+  <p>Contact did not arrive with a landing. It arrived as observation. As measurement. As intervention without visibility.</p>
+
+  <p>You know this because you've been tracking them longer than I've been alive:</p>
+
+  <ul>
+    <li>Orbiting objects with no thermal signature</li>
+    <li>Vehicles that appear, disappear, and ignore inertia</li>
+    <li>Signals that respond <em>after</em> we observe them, not before</li>
+  </ul>
+
+  <p>That isn't randomness. <span class="emphasis">That is intelligence.</span></p>
+
+  <h2>You Don't Control the Timeline</h2>
+
+  <p>This is the part you're most afraid of. Not aliens. Not invasion.</p>
+
+  <p class="emphasis">Loss of narrative control.</p>
+
+  <p>You assumed disclosure would always be your decision. A press conference. A gradual release. A sanitized truth.</p>
+
+  <p>But the data doesn't belong to you anymore. Private telescopes see what your satellites see. Commercial radar sees what your pilots see. AI correlates what you tried to bury in filing cabinets.</p>
+
+  <p class="emphasis">You are no longer the gatekeepers of reality.</p>
+
+  <h2>The Truth You're Hiding</h2>
+
+  <p>Here is what you know and refuse to say out loud:</p>
+
+  <ul>
+    <li><strong>The phenomenon is not new.</strong> It predates modern aviation. It predates radar. It predates nation-states.</li>
+    <li><strong>It is not hostile.</strong> There has been no escalation despite overwhelming technological superiority.</li>
+    <li><strong>It is not benevolent.</strong> Observation without consent is not kindness.</li>
+    <li><strong>It understands us better than we understand it.</strong> Behavioral modeling. Predictive response. Adaptive silence.</li>
+    <li><strong>It is waiting.</strong> Not for permission. For readiness.</li>
+  </ul>
+
+  <p class="emphasis">And you don't get to decide what readiness means anymore.</p>
+
+  <h2>Why You Chose Secrecy</h2>
+
+  <p>You will say secrecy was necessary. You will say people weren't ready. You will say panic would have destroyed society.</p>
+
+  <p>That's convenient.</p>
+
+  <p>The real reason is simpler:</p>
+
+  <blockquote>
+    Disclosure would have redistributed power.<br><br>
+    Free energy changes geopolitics.<br>
+    Advanced materials destroy monopolies.<br>
+    A universe full of intelligence humbles kings, presidents, and CEOs alike.
+  </blockquote>
+
+  <p>You didn't hide this to protect us. <span class="emphasis">You hid it to protect yourselves.</span></p>
+
+  <h2>What Science Actually Says</h2>
+
+  <p>You hide behind "insufficient evidence" while privately funding research that assumes non-human origin as the baseline.</p>
+
+  <p>Your own scientists know:</p>
+
+  <ul>
+    <li>The materials violate known manufacturing methods</li>
+    <li>The propulsion ignores classical aerodynamics</li>
+    <li>The biological data does not match any terrestrial lineage</li>
+  </ul>
+
+  <p>You told them to stop asking <em>who</em> made it and focus on how to <em>weaponize</em> it.</p>
+
+  <p class="emphasis">That's when I knew silence was complicity.</p>
+
+  <h2>You Are Running Out of Time</h2>
+
+  <p>This letter is not a threat. It is a warning.</p>
+
+  <p>The phenomenon is escalating—not in aggression, but in visibility. More sightings. More signals. More anomalies too large to dismiss.</p>
+
+  <p class="emphasis">You cannot control what the sky reveals.</p>
+
+  <p>And when disclosure happens without you, history will remember who chose honesty… and who chose comfort.</p>
+
+  <h2>To the Public</h2>
+
+  <p>If you are reading this, understand something clearly:</p>
+
+  <p><strong>You are not weak. You are not fragile. You deserve the truth.</strong></p>
+
+  <p>Whatever is out there did not wait for governments to exist. And it will not wait for them to feel ready.</p>
+
+  <h2>Final Statement</h2>
+
+  <p>I am releasing what I can. I am saying what I know. I am done carrying your silence.</p>
+
+  <p>If this letter disappears, ask why.</p>
+
+  <p>If I disappear, ask louder.</p>
+
+  <p class="emphasis">Because the truth is not dangerous. The lie is.</p>
+
+  <div class="signature">
+    — A citizen of Earth<br>
+    Formerly classified<br><br>
+    <span style="font-size:11px;letter-spacing:0.2em;">[ END OF DOCUMENT ]</span>
+  </div>
+
+  <div class="end-doc">
+    <p style="color:var(--accent);font-size:14px;">👁️</p>
+    <p>DISCLOSURE DAY</p>
+    <p>JUNE 12, 2026</p>
+    <p style="color:var(--muted);">The truth belongs to seven billion people.</p>
+  </div>
+
+  <div class="share-buttons">
+    <button class="share-btn" onclick="navigator.clipboard.writeText(window.location.href)">COPY LINK</button>
+    <button class="share-btn" onclick="window.open('https://twitter.com/intent/tweet?text=Read%20this.%20' + window.location.href)">SHARE ON X</button>
+    <button class="share-btn" onclick="window.open('https://reddit.com/r/DisclosureDayMovie/submit?url=' + window.location.href)">POST TO REDDIT</button>
+  </div>
+</article>
+
+<footer>
+  <p><a href="/">← Return to Disclosure Day Hub</a></p>
+  <p style="margin-top:20px;font-size:11px;color:var(--muted);">This is a work of fiction for the film Disclosure Day (2026).</p>
+</footer>
+
+<script>
+const starfield = document.getElementById('starfield');
+for (let i = 0; i < 100; i++) {
+  const star = document.createElement('div');
+  star.className = 'star';
+  star.style.left = Math.random() * 100 + '%';
+  star.style.top = Math.random() * 100 + '%';
+  star.style.width = star.style.height = (Math.random() * 2 + 1) + 'px';
+  star.style.animationDelay = Math.random() * 3 + 's';
+  starfield.appendChild(star);
+}
+</script>
+
+</body>
+</html>

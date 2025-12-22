@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Nimitz Incident | What They Saw | Disclosure Day Hub</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👁️</text></svg>">
+  <style>
+    :root {
+      --bg: #000408;
+      --fg: #e9eef7;
+      --muted: #8b95a5;
+      --accent: #00ffcc;
+      --alien: #39ff14;
+      --danger: #ff3333;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Courier New', monospace;
+      line-height: 1.8;
+    }
+
+    .starfield {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 3s infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    .scanlines {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px);
+      opacity: 0.3;
+    }
+
+    .classified-banner {
+      background: var(--danger);
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-weight: bold;
+      letter-spacing: 0.3em;
+      font-size: 12px;
+      position: relative;
+      z-index: 100;
+    }
+
+    header {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 60px 20px 40px;
+      border-bottom: 1px solid rgba(255,51,51,.5);
+    }
+    .back-link {
+      display: inline-block;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 12px;
+      margin-bottom: 30px;
+      padding: 8px 16px;
+      border: 1px solid var(--accent);
+    }
+    .back-link:hover { background: var(--accent); color: #000; }
+
+    .doc-header {
+      border: 2px solid var(--danger);
+      padding: 30px;
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(255,51,51,.05);
+    }
+    .doc-header h1 {
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      margin-bottom: 20px;
+      color: var(--danger);
+    }
+    .doc-header .title {
+      font-size: 28px;
+      color: var(--fg);
+      margin-bottom: 20px;
+    }
+    .doc-meta {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .doc-meta span {
+      display: block;
+      margin: 5px 0;
+    }
+    .redacted {
+      background: #333;
+      color: #333;
+      padding: 0 10px;
+      user-select: none;
+    }
+
+    article {
+      position: relative;
+      z-index: 10;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 20px 100px;
+    }
+
+    h2 {
+      color: var(--accent);
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      margin: 50px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--accent);
+    }
+
+    p {
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+
+    .timestamp {
+      color: var(--alien);
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+
+    .testimony {
+      background: rgba(0,255,204,.05);
+      border-left: 3px solid var(--accent);
+      padding: 20px;
+      margin: 30px 0;
+    }
+    .testimony .speaker {
+      font-size: 11px;
+      color: var(--alien);
+      margin-bottom: 10px;
+      letter-spacing: 0.1em;
+    }
+    .testimony p {
+      font-style: italic;
+      margin: 0;
+    }
+
+    .data-block {
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--muted);
+      padding: 20px;
+      margin: 30px 0;
+      font-size: 13px;
+    }
+    .data-block h3 {
+      color: var(--alien);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      margin-bottom: 15px;
+    }
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .data-label { color: var(--muted); }
+    .data-value { color: var(--accent); }
+
+    .warning-box {
+      background: rgba(255,51,51,.1);
+      border: 1px solid var(--danger);
+      padding: 20px;
+      margin: 40px 0;
+      text-align: center;
+    }
+    .warning-box h3 {
+      color: var(--danger);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      margin-bottom: 10px;
+    }
+
+    .highlight { color: var(--accent); }
+    .danger { color: var(--danger); }
+
+    ul {
+      list-style: none;
+      margin: 20px 0;
+    }
+    ul li {
+      padding: 8px 0 8px 20px;
+      position: relative;
+    }
+    ul li::before {
+      content: ">";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .end-transmission {
+      text-align: center;
+      margin-top: 80px;
+      padding: 40px;
+      border: 1px solid var(--accent);
+    }
+    .end-transmission h3 {
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      margin-bottom: 20px;
+    }
+    .end-transmission p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      position: relative;
+      z-index: 10;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<div class="starfield" id="starfield"></div>
+<div class="scanlines"></div>
+
+<div class="classified-banner">⚠️ UNCLASSIFIED // FOR PUBLIC RELEASE // VERIFIED INCIDENT</div>
+
+<header>
+  <a href="/" class="back-link">← RETURN TO HUB</a>
+  <div class="doc-header">
+    <h1>INCIDENT REPORT</h1>
+    <div class="title">THE NIMITZ ENCOUNTER</div>
+    <div class="doc-meta">
+      <span>DATE: November 14, 2004</span>
+      <span>LOCATION: Pacific Ocean, 100mi SW of San Diego</span>
+      <span>CLASSIFICATION: <span class="redacted">REDACTED</span> → UNCLASSIFIED (2017)</span>
+      <span>STATUS: OFFICIALLY ACKNOWLEDGED</span>
+    </div>
+  </div>
+</header>
+
+<article>
+  <p class="timestamp">> DOCUMENT RECOVERED FROM PUBLIC DOMAIN SOURCES</p>
+
+  <p>For thirteen years, this incident remained classified. Then in December 2017, the New York Times published what many considered impossible: official Pentagon confirmation of a UAP encounter.</p>
+
+  <p>This is what happened.</p>
+
+  <h2>INITIAL CONTACT</h2>
+
+  <p class="timestamp">> 14 NOV 2004 - APPROX 1400 HRS PST</p>
+
+  <p>The USS Nimitz Carrier Strike Group had been tracking anomalous radar contacts for <span class="highlight">two weeks</span>. Objects were appearing at 80,000+ feet, then dropping to sea level within seconds—maneuvers that would destroy any known aircraft.</p>
+
+  <div class="data-block">
+    <h3>RADAR DATA SUMMARY</h3>
+    <div class="data-row">
+      <span class="data-label">Initial Altitude</span>
+      <span class="data-value">80,000+ ft</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Final Altitude</span>
+      <span class="data-value">Sea Level</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Descent Time</span>
+      <span class="data-value">&lt; 1 second</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Calculated G-Force</span>
+      <span class="data-value">Unknown / Impossible</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Heat Signature</span>
+      <span class="data-value">None detected</span>
+    </div>
+    <div class="data-row">
+      <span class="data-label">Propulsion Signature</span>
+      <span class="data-value">None detected</span>
+    </div>
+  </div>
+
+  <h2>VISUAL ENCOUNTER</h2>
+
+  <p>Commander David Fravor and Lt. Commander Alex Dietrich were vectored to investigate. What they found defied explanation.</p>
+
+  <div class="testimony">
+    <div class="speaker">CDR DAVID FRAVOR, USN (RET)</div>
+    <p>"It was a white Tic Tac, about 40 feet long, with no wings, no rotors, no visible propulsion. It was just hovering there. When I approached, it accelerated and disappeared. Not fast. <span class="highlight">Instantaneous.</span>"</p>
+  </div>
+
+  <p>The object had been hovering above a disturbance in the water—a submerged object the size of a 737 creating a churning, cross-shaped pattern beneath the surface.</p>
+
+  <div class="testimony">
+    <div class="speaker">LCDR ALEX DIETRICH, USN (RET)</div>
+    <p>"We were not alone out there. What I saw that day... it performed maneuvers that should not be possible. No exhaust. No wings. No sound. And it knew we were there."</p>
+  </div>
+
+  <h2>THE SECOND INTERCEPT</h2>
+
+  <p>Another aircraft was launched. This time, the FLIR (Forward Looking Infrared) camera captured footage.</p>
+
+  <p>The video—now publicly released—shows an oblong object with no visible means of propulsion, rotating mid-flight, and accelerating beyond the tracking ability of military systems.</p>
+
+  <div class="warning-box">
+    <h3>⚠️ OFFICIAL PENTAGON STATEMENT</h3>
+    <p>"The Department of Defense confirms the authenticity of the released videos. The aerial phenomena observed remain unidentified."</p>
+  </div>
+
+  <h2>WHAT WASN'T RELEASED</h2>
+
+  <p>The public video is a fraction of what was recorded. According to witnesses:</p>
+
+  <ul>
+    <li>Full-length HD footage exists but remains classified</li>
+    <li>Multiple sensor systems captured corroborating data</li>
+    <li>The submarine-sized object beneath the surface was never explained</li>
+    <li>Similar encounters occurred over the following days</li>
+    <li>Crew members were instructed not to discuss the incident</li>
+  </ul>
+
+  <h2>THE FIVE OBSERVABLES</h2>
+
+  <p>Intelligence analyst Lue Elizondo, former director of the Pentagon's AATIP program, identified five characteristics that appeared in this and other encounters:</p>
+
+  <div class="data-block">
+    <h3>UAP CHARACTERISTICS</h3>
+    <ul>
+      <li><span class="highlight">Instantaneous Acceleration</span> — No gradual speed increase</li>
+      <li><span class="highlight">Hypersonic Velocity</span> — Without sonic boom or heat signature</li>
+      <li><span class="highlight">Low Observability</span> — Intermittent on radar despite visual contact</li>
+      <li><span class="highlight">Trans-Medium Travel</span> — Air to water without speed reduction</li>
+      <li><span class="highlight">Anti-Gravity Lift</span> — No visible propulsion or aerodynamic surfaces</li>
+    </ul>
+  </div>
+
+  <p>None of these characteristics match any known human technology. <span class="danger">In 2004 or today.</span></p>
+
+  <h2>IMPLICATIONS</h2>
+
+  <p>Three possibilities exist:</p>
+
+  <ul>
+    <li><span class="highlight">Option A:</span> A foreign adversary has technology centuries ahead of the United States</li>
+    <li><span class="highlight">Option B:</span> A classified US program exists that the military doesn't know about</li>
+    <li><span class="highlight">Option C:</span> The technology is not of human origin</li>
+  </ul>
+
+  <p>Congressional hearings in 2023 suggested that many within the intelligence community believe <span class="danger">Option C</span>.</p>
+
+  <div class="testimony">
+    <div class="speaker">DAVID GRUSCH, FORMER INTELLIGENCE OFFICER (2023 TESTIMONY)</div>
+    <p>"We have recovered craft of non-human origin. We have a multi-decade program to reverse-engineer this technology. I have been made aware of these programs through official channels."</p>
+  </div>
+
+  <h2>WHY THIS MATTERS FOR DISCLOSURE DAY</h2>
+
+  <p>The Nimitz incident wasn't fiction. It wasn't speculation. It was a documented military encounter, confirmed by the Pentagon, witnessed by trained pilots, and captured on sensor systems.</p>
+
+  <p>It happened.</p>
+
+  <p>And it's just one of thousands of similar reports.</p>
+
+  <p><em>Disclosure Day</em> asks: What happens when these incidents can no longer be isolated? When the evidence becomes undeniable? When the sky stops being something we look at—and becomes something that looks back?</p>
+
+  <div class="end-transmission">
+    <h3>[ END TRANSMISSION ]</h3>
+    <p>The Nimitz encounter remains unexplained.<br>
+    The footage remains authentic.<br>
+    The truth remains classified.</p>
+    <p style="margin-top:20px;color:var(--accent);">👁️ June 12, 2026</p>
+  </div>
+</article>
+
+<footer>
+  <p><a href="/">← Return to Disclosure Day Hub</a></p>
+  <p style="margin-top:20px;font-size:11px;color:var(--muted);">Sources: NYT, Pentagon FOIA releases, Congressional testimony</p>
+</footer>
+
+<script>
+const starfield = document.getElementById('starfield');
+for (let i = 0; i < 150; i++) {
+  const star = document.createElement('div');
+  star.className = 'star';
+  star.style.left = Math.random() * 100 + '%';
+  star.style.top = Math.random() * 100 + '%';
+  star.style.width = star.style.height = (Math.random() * 2 + 1) + 'px';
+  star.style.animationDelay = Math.random() * 3 + 's';
+  starfield.appendChild(star);
+}
+</script>
+
+</body>
+</html>

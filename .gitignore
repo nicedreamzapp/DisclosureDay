@@ -1,0 +1,10 @@
+# API keys - never commit these
+chat-api.php
+chat-api-v2.php
+
+# macOS
+.DS_Store
+
+# Editor files
+*.swp
+*.swo
