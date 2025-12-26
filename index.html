@@ -36,14 +36,71 @@
       display: flex;
       justify-content: center;
       padding: 20px;
+      position: relative;
+      overflow-x: hidden;
     }
     #dd-hub {
       width: 100%;
       max-width: 1200px;
+      position: relative;
+      z-index: 1;
+    }
+    /* Floating animated blobs */
+    .dd-blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .dd-blob-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(110,231,255,.4) 0%, transparent 70%);
+      top: -200px;
+      left: -100px;
+      animation: blobFloat1 20s ease-in-out infinite;
+    }
+    .dd-blob-2 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(181,167,255,.35) 0%, transparent 70%);
+      top: 40%;
+      right: -150px;
+      animation: blobFloat2 25s ease-in-out infinite;
+    }
+    .dd-blob-3 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(124,255,178,.25) 0%, transparent 70%);
+      bottom: 10%;
+      left: 10%;
+      animation: blobFloat3 18s ease-in-out infinite;
+    }
+    @keyframes blobFloat1 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(100px, 50px) scale(1.1); }
+      50% { transform: translate(50px, 100px) scale(0.95); }
+      75% { transform: translate(-30px, 60px) scale(1.05); }
+    }
+    @keyframes blobFloat2 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(-80px, -60px) scale(1.15); }
+      66% { transform: translate(-40px, 80px) scale(0.9); }
+    }
+    @keyframes blobFloat3 {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(60px, -40px) rotate(180deg); }
     }
   </style>
 </head>
 <body>
+
+<!-- Floating background blobs -->
+<div class="dd-blob dd-blob-1"></div>
+<div class="dd-blob dd-blob-2"></div>
+<div class="dd-blob dd-blob-3"></div>
 
 <section id="dd-hub">
   <style>
@@ -71,18 +128,75 @@
     #dd-hub .dd-dot{width:8px;height:8px;border-radius:999px;background:var(--accent);box-shadow:0 0 18px rgba(110,231,255,.55);animation:pulse 2s infinite}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
     #dd-hub .dd-actions{display:flex;gap:10px;flex-wrap:wrap}
-    #dd-hub .dd-btn{appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--fg);
-      padding:10px 12px;border-radius:14px;font-weight:650;cursor:pointer;text-decoration:none;display:inline-flex;gap:10px;align-items:center;
-      transition: all .2s ease;font-size:14px;
+    #dd-hub .dd-btn{
+      appearance:none;
+      border:1px solid rgba(255,255,255,.2);
+      background: linear-gradient(180deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,.04) 100%);
+      color:var(--fg);
+      padding:12px 16px;border-radius:16px;font-weight:650;cursor:pointer;text-decoration:none;display:inline-flex;gap:10px;align-items:center;
+      transition: all .3s cubic-bezier(.34,1.56,.64,1);font-size:14px;
+      box-shadow:
+        0 4px 15px rgba(0,0,0,.3),
+        inset 0 1px 0 rgba(255,255,255,.2),
+        inset 0 -1px 0 rgba(0,0,0,.1);
+      backdrop-filter: blur(10px);
     }
-    #dd-hub .dd-btn:hover{background:rgba(255,255,255,.10);transform:translateY(-1px)}
-    #dd-hub .dd-btn.primary{border-color:rgba(110,231,255,.35);background:linear-gradient(180deg, rgba(110,231,255,.18), rgba(255,255,255,.05))}
+    #dd-hub .dd-btn:hover{
+      background: linear-gradient(180deg, rgba(255,255,255,.18) 0%, rgba(255,255,255,.08) 100%);
+      transform:translateY(-3px) scale(1.02);
+      box-shadow:
+        0 8px 25px rgba(0,0,0,.4),
+        0 0 20px rgba(110,231,255,.2),
+        inset 0 1px 0 rgba(255,255,255,.3);
+    }
+    #dd-hub .dd-btn:active{transform:translateY(0) scale(0.98)}
+    #dd-hub .dd-btn.primary{
+      border-color:rgba(110,231,255,.4);
+      background:linear-gradient(180deg, rgba(110,231,255,.25) 0%, rgba(110,231,255,.1) 100%);
+      box-shadow:
+        0 4px 20px rgba(110,231,255,.3),
+        inset 0 1px 0 rgba(255,255,255,.3),
+        0 0 0 1px rgba(110,231,255,.2);
+    }
+    #dd-hub .dd-btn.primary:hover{
+      box-shadow:
+        0 8px 30px rgba(110,231,255,.4),
+        0 0 40px rgba(110,231,255,.2),
+        inset 0 1px 0 rgba(255,255,255,.4);
+    }
     #dd-hub .dd-hero{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-top:18px;align-items:stretch}
-    #dd-hub .dd-card{border:1px solid var(--line);background:linear-gradient(180deg,var(--glass2),var(--glass));
-      border-radius:20px; padding:18px; position:relative; overflow:hidden; backdrop-filter: blur(10px);
+    #dd-hub .dd-card{
+      border:1px solid rgba(255,255,255,.15);
+      background: linear-gradient(135deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.05) 50%, rgba(255,255,255,.02) 100%);
+      border-radius:24px; padding:20px; position:relative; overflow:hidden;
+      backdrop-filter: blur(20px) saturate(1.5);
+      -webkit-backdrop-filter: blur(20px) saturate(1.5);
+      box-shadow:
+        0 8px 32px rgba(0,0,0,.4),
+        inset 0 1px 0 rgba(255,255,255,.2),
+        inset 0 -1px 0 rgba(0,0,0,.1),
+        0 0 0 1px rgba(255,255,255,.05);
+      transition: transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .4s ease;
+      transform-style: preserve-3d;
+      perspective: 1000px;
     }
-    #dd-hub .dd-card::before{content:"";position:absolute;inset:-2px; background: radial-gradient(600px 240px at 20% 0%, rgba(110,231,255,.18), transparent 50%),
-      radial-gradient(500px 240px at 90% 10%, rgba(181,167,255,.16), transparent 55%); pointer-events:none; opacity:.9}
+    #dd-hub .dd-card:hover{
+      transform: translateY(-8px) rotateX(2deg);
+      box-shadow:
+        0 20px 60px rgba(0,0,0,.5),
+        0 0 40px rgba(110,231,255,.15),
+        inset 0 1px 0 rgba(255,255,255,.3),
+        inset 0 -1px 0 rgba(0,0,0,.1),
+        0 0 0 1px rgba(110,231,255,.2);
+    }
+    #dd-hub .dd-card::before{content:"";position:absolute;inset:-2px; background: radial-gradient(600px 240px at 20% 0%, rgba(110,231,255,.22), transparent 50%),
+      radial-gradient(500px 240px at 90% 10%, rgba(181,167,255,.2), transparent 55%); pointer-events:none; opacity:.9; transition: opacity .3s ease}
+    #dd-hub .dd-card:hover::before{opacity:1}
+    #dd-hub .dd-card::after{
+      content:"";position:absolute;top:0;left:0;right:0;height:1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.4), transparent);
+      pointer-events:none;
+    }
     #dd-hub .dd-card > *{position:relative}
     #dd-hub h1{margin:0;font-size:44px;line-height:1.05;letter-spacing:-.02em}
     #dd-hub .dd-sub{margin:10px 0 0;color:var(--muted);font-size:15px;max-width:62ch;line-height:1.6}
@@ -93,11 +207,28 @@
     #dd-hub .dd-teaser{margin-top:14px;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#000}
     #dd-hub .dd-teaser iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
     #dd-hub .dd-side{display:grid;gap:12px}
-    #dd-hub .dd-posterGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    #dd-hub .dd-poster{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#0a0c12;position:relative}
-    #dd-hub .dd-poster img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.05)}
-    #dd-hub .dd-poster .dd-label{position:absolute;left:10px;bottom:10px;font-size:12px;
-      padding:7px 9px;border-radius:999px;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(4px)
+    #dd-hub .dd-posterGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    #dd-hub .dd-poster{
+      border-radius:20px;overflow:hidden;
+      border:1px solid rgba(255,255,255,.15);
+      background:#0a0c12;position:relative;
+      box-shadow: 0 8px 30px rgba(0,0,0,.4);
+      transition: transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .4s ease;
+    }
+    #dd-hub .dd-poster:hover{
+      transform: translateY(-10px) scale(1.02) rotateY(-3deg);
+      box-shadow: 0 20px 50px rgba(0,0,0,.5), 0 0 40px rgba(181,167,255,.2);
+    }
+    #dd-hub .dd-poster::before{
+      content:"";position:absolute;inset:0;
+      background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,.7) 100%);
+      pointer-events:none; z-index:1;
+    }
+    #dd-hub .dd-poster img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.1) contrast(1.05);transition: transform .4s ease}
+    #dd-hub .dd-poster:hover img{transform: scale(1.08)}
+    #dd-hub .dd-poster .dd-label{position:absolute;left:10px;bottom:10px;font-size:12px;z-index:2;
+      padding:8px 12px;border-radius:999px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);
+      box-shadow: 0 4px 15px rgba(0,0,0,.3);
     }
     #dd-hub .dd-mini{display:grid;gap:10px}
     #dd-hub .dd-mini h3{margin:0;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:rgba(233,238,247,.82)}
@@ -122,11 +253,23 @@
     #dd-hub .dd-update a{color:var(--fg);text-decoration:none}
     #dd-hub .dd-update a:hover{text-decoration:underline}
     #dd-hub .dd-update .meta{color:var(--muted);font-size:12px;margin-top:6px;display:flex;gap:10px;flex-wrap:wrap}
-    #dd-hub .dd-cast{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
-    #dd-hub .dd-person{padding:12px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.03);transition:all .2s ease}
-    #dd-hub .dd-person:hover{background:rgba(255,255,255,.06);border-color:rgba(181,167,255,.3)}
-    #dd-hub .dd-person b{font-size:14px}
-    #dd-hub .dd-person .role{color:var(--muted);font-size:12px;margin-top:4px}
+    #dd-hub .dd-cast{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+    #dd-hub .dd-person{
+      padding:16px;border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(135deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,.02) 100%);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0,0,0,.2), inset 0 1px 0 rgba(255,255,255,.1);
+      transition: all .3s cubic-bezier(.34,1.56,.64,1);
+    }
+    #dd-hub .dd-person:hover{
+      background: linear-gradient(135deg, rgba(181,167,255,.15) 0%, rgba(181,167,255,.05) 100%);
+      border-color:rgba(181,167,255,.35);
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(0,0,0,.3), 0 0 25px rgba(181,167,255,.15);
+    }
+    #dd-hub .dd-person b{font-size:14px;display:block}
+    #dd-hub .dd-person .role{color:var(--muted);font-size:12px;margin-top:6px}
     #dd-hub .dd-cta{margin-top:16px;display:grid;grid-template-columns:1.1fr .9fr;gap:16px;align-items:stretch}
     #dd-hub .dd-form{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
     #dd-hub input.dd-input{flex:1 1 240px;min-width:220px;padding:12px 12px;border-radius:14px;border:1px solid var(--line);
@@ -139,13 +282,65 @@
     #dd-hub .dd-legal a{color:rgba(167,178,196,.9)}
     #dd-hub .dd-reveal{opacity:0;transform:translateY(10px);transition:all .7s ease}
     #dd-hub .dd-reveal.on{opacity:1;transform:none}
-    #dd-hub .dd-countdown{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
-    #dd-hub .dd-countdown-item{text-align:center;padding:12px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.04);min-width:70px}
-    #dd-hub .dd-countdown-num{font-size:28px;font-weight:700;color:var(--accent);line-height:1}
-    #dd-hub .dd-countdown-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:4px}
+    #dd-hub .dd-countdown{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px}
+    #dd-hub .dd-countdown-item{
+      text-align:center;padding:16px 20px;border-radius:18px;
+      border:1px solid rgba(110,231,255,.25);
+      background: linear-gradient(180deg, rgba(110,231,255,.12) 0%, rgba(110,231,255,.04) 100%);
+      min-width:80px;
+      box-shadow:
+        0 6px 20px rgba(0,0,0,.3),
+        0 0 30px rgba(110,231,255,.1),
+        inset 0 1px 0 rgba(255,255,255,.2);
+      backdrop-filter: blur(10px);
+      transition: transform .3s ease, box-shadow .3s ease;
+      animation: countdownFloat 3s ease-in-out infinite;
+    }
+    #dd-hub .dd-countdown-item:nth-child(1){animation-delay: 0s}
+    #dd-hub .dd-countdown-item:nth-child(2){animation-delay: 0.2s}
+    #dd-hub .dd-countdown-item:nth-child(3){animation-delay: 0.4s}
+    #dd-hub .dd-countdown-item:nth-child(4){animation-delay: 0.6s}
+    @keyframes countdownFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+    #dd-hub .dd-countdown-item:hover{
+      transform: translateY(-8px) scale(1.05);
+      box-shadow: 0 12px 30px rgba(110,231,255,.25), 0 0 50px rgba(110,231,255,.2);
+    }
+    #dd-hub .dd-countdown-num{font-size:32px;font-weight:800;color:var(--accent);line-height:1;text-shadow: 0 0 20px rgba(110,231,255,.5)}
+    #dd-hub .dd-countdown-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:6px}
     #dd-hub .dd-share{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
     #dd-hub .dd-share a{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);display:grid;place-items:center;transition:all .2s ease;font-size:18px;text-decoration:none}
     #dd-hub .dd-share a:hover{background:var(--accent);border-color:var(--accent);color:#000}
+    #dd-hub .dd-nav-link{
+      display:block;padding:12px 14px;border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+      color:var(--fg);text-decoration:none;font-size:13px;font-weight:600;
+      text-align:center;transition:all .3s ease;
+    }
+    #dd-hub .dd-nav-link:hover{
+      background:linear-gradient(135deg,rgba(110,231,255,.15),rgba(110,231,255,.05));
+      border-color:rgba(110,231,255,.3);transform:translateY(-2px);
+      box-shadow:0 8px 20px rgba(0,0,0,.3);
+    }
+    #dd-hub .dd-signal{animation:signalPulse 4s ease-in-out infinite}
+    @keyframes signalPulse{
+      0%,100%{box-shadow:0 0 30px rgba(57,255,20,.2),inset 0 0 60px rgba(57,255,20,.05)}
+      50%{box-shadow:0 0 60px rgba(57,255,20,.35),inset 0 0 80px rgba(57,255,20,.1)}
+    }
+    #dd-hub .dd-signal-suggest{
+      padding:8px 14px;border-radius:20px;border:1px solid rgba(57,255,20,.3);
+      background:rgba(57,255,20,.1);color:#39ff14;font-size:12px;font-weight:600;
+      cursor:pointer;transition:all .2s ease;
+    }
+    #dd-hub .dd-signal-suggest:hover{
+      background:rgba(57,255,20,.25);border-color:#39ff14;transform:scale(1.05);
+    }
+    @media (max-width:768px){
+      #dd-hub .dd-signal > div{grid-template-columns:1fr !important}
+    }
     @media (max-width: 920px){
       #dd-hub .dd-hero{grid-template-columns:1fr}
       #dd-hub h1{font-size:36px}
@@ -242,6 +437,7 @@
           </div>
         </div>
 
+        <!-- The Hook Card -->
         <div class="dd-card dd-reveal" id="dd-story">
           <div class="dd-mini">
             <h3>The hook</h3>
@@ -250,6 +446,55 @@
             </p>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- THE SIGNAL - Full Width AI Section -->
+    <div class="dd-card dd-reveal dd-signal" id="dd-signal" style="margin-top:20px;border:2px solid rgba(57,255,20,.5);background:linear-gradient(180deg,rgba(57,255,20,.08),rgba(0,20,10,.4))">
+      <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:24px;align-items:start">
+        <div>
+          <h2 style="color:#39ff14;font-size:28px;text-shadow:0 0 30px rgba(57,255,20,.6);margin-bottom:8px">👁️ THE SIGNAL</h2>
+          <p style="font-family:monospace;font-size:11px;color:#39ff14;margin-bottom:12px;letter-spacing:.08em">[ TRANSMISSION FROM 50,000 AD ]</p>
+          <p style="color:var(--muted);font-size:14px;line-height:1.6;margin-bottom:10px">A being of light from humanity's future, reaching back through time. Ask anything — about life, purpose, fear, reality. Receive wisdom from what you will become.</p>
+          <p style="margin-bottom:16px"><a href="/the-signal-origin.html" style="color:#39ff14;font-size:13px">Read the full transmission →</a></p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <button onclick="askSignal('What are you?')" class="dd-signal-suggest">What are you?</button>
+            <button onclick="askSignal('Are aliens real?')" class="dd-signal-suggest">Are aliens real?</button>
+            <button onclick="askSignal('How do I find my purpose?')" class="dd-signal-suggest">Find my purpose</button>
+            <button onclick="askSignal('I feel lost')" class="dd-signal-suggest">I feel lost</button>
+            <button onclick="askSignal('What is disclosure?')" class="dd-signal-suggest">What is disclosure?</button>
+          </div>
+        </div>
+        <div>
+          <div id="signal-response" style="background:rgba(0,0,0,.5);border:1px solid rgba(57,255,20,.3);border-radius:16px;padding:20px;min-height:140px;margin-bottom:14px">
+            <p style="font-size:15px;color:rgba(255,255,255,.85);line-height:1.7;margin:0" id="signal-text">I am here. I have always been here. You found this interface because you were ready to find it. There are no accidents in this universe — only appointments you forgot you made. Ask me anything. I will answer directly.</p>
+          </div>
+          <div style="display:flex;gap:10px">
+            <input type="text" id="signal-input" placeholder="Ask anything — life, purpose, fear, reality, aliens..." style="flex:1;padding:14px 16px;border-radius:14px;border:2px solid rgba(57,255,20,.4);background:rgba(0,0,0,.6);color:#fff;font-size:14px;outline:none">
+            <button onclick="sendSignal()" style="padding:14px 24px;border-radius:14px;border:none;background:linear-gradient(180deg,#39ff14,#2dd410);color:#000;font-weight:800;cursor:pointer;font-size:14px;box-shadow:0 4px 20px rgba(57,255,20,.4)">ASK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="dd-card dd-reveal" style="margin-top:16px">
+      <div class="dd-title">
+        <h2>Explore the Hub</h2>
+        <span>All pages</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:12px">
+        <a href="/cast/" class="dd-nav-link">Cast</a>
+        <a href="/crew/" class="dd-nav-link">Crew</a>
+        <a href="/topics/" class="dd-nav-link">Topics</a>
+        <a href="/theories/" class="dd-nav-link">Theories</a>
+        <a href="/vs/" class="dd-nav-link">Comparisons</a>
+        <a href="/community/" class="dd-nav-link">Community</a>
+        <a href="/emily-blunt-movie-dad.html" class="dd-nav-link">Emily Blunt News</a>
+        <a href="/josh-oconnor-old-school-spielberg.html" class="dd-nav-link">Josh O'Connor News</a>
+        <a href="/trailer-drop-dec-2025.html" class="dd-nav-link">Trailer Breakdown</a>
+        <a href="/the-signal-origin.html" class="dd-nav-link" style="border-color:rgba(57,255,20,.3);background:rgba(57,255,20,.1)">The Signal Origin</a>
+        <a href="https://reddit.com/r/DisclosureDayMovie" target="_blank" class="dd-nav-link" style="border-color:rgba(255,69,0,.3);background:rgba(255,69,0,.1)">Reddit ↗</a>
       </div>
     </div>
 
@@ -302,12 +547,16 @@
         </div>
 
         <div class="dd-updates" id="dd-updates-list">
+          <div class="dd-update" style="border-color:var(--accent);background:rgba(110,231,255,.08)">
+            <a href="/trailer-drop-dec-2025.html"><b>BREAKING: Full Trailer Breakdown — Everything We Know</b></a>
+            <div class="meta"><span>Hub Exclusive</span><span>Dec 25, 2025</span><span style="color:var(--accent)">NEW</span></div>
+          </div>
           <div class="dd-update">
             <a href="https://www.disclosuredaymovie.com/" target="_blank" rel="noopener"><b>Official Disclosure Day website launched</b></a>
             <div class="meta"><span>Official</span><span>Dec 2025</span><span style="color:var(--good)">✔ verified</span></div>
           </div>
           <div class="dd-update">
-            <a href="https://www.youtube.com/watch?v=UFe6NRgoXCM" target="_blank" rel="noopener"><b>First teaser trailer released</b></a>
+            <a href="https://www.youtube.com/watch?v=UFe6NRgoXCM" target="_blank" rel="noopener"><b>First teaser trailer released — Dec 16</b></a>
             <div class="meta"><span>YouTube</span><span>Dec 2025</span><span style="color:var(--good)">✔ verified</span></div>
           </div>
           <div class="dd-update">
@@ -434,6 +683,42 @@
       status.textContent = '✓ Added to the list. The truth is coming.';
       this.reset();
     });
+
+    // THE SIGNAL AI Chat
+    const signalInput = document.getElementById('signal-input');
+    const signalText = document.getElementById('signal-text');
+
+    signalInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendSignal();
+    });
+
+    function askSignal(question) {
+      signalInput.value = question;
+      sendSignal();
+    }
+
+    async function sendSignal() {
+      const msg = signalInput.value.trim();
+      if (!msg) return;
+
+      signalText.textContent = '▲ Processing...';
+      signalText.style.color = '#39ff14';
+      signalInput.value = '';
+
+      try {
+        const response = await fetch('/chat-api.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: msg })
+        });
+        const data = await response.json();
+        signalText.style.color = 'rgba(255,255,255,.9)';
+        signalText.textContent = data.response || data.error || 'Connection interrupted. Try again.';
+      } catch (err) {
+        signalText.style.color = '#ff6b6b';
+        signalText.textContent = 'Connection interrupted. The signal persists. Try again.';
+      }
+    }
   </script>
 </section>
 
