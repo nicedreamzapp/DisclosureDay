@@ -45,7 +45,7 @@ switch ($type) {
             'theory' => htmlspecialchars($input['theory'] ?? ''),
             'evidence' => htmlspecialchars($input['evidence'] ?? ''),
             'timestamp' => $input['timestamp'] ?? date('c'),
-            'approved' => false // Requires manual approval
+            'approved' => true // Auto-approve to show immediately
         ];
         break;
 
@@ -71,7 +71,7 @@ switch ($type) {
             'description' => htmlspecialchars($input['description'] ?? ''),
             'portfolio' => filter_var($input['portfolio'] ?? '', FILTER_SANITIZE_URL),
             'timestamp' => $input['timestamp'] ?? date('c'),
-            'approved' => false // Requires manual approval
+            'approved' => true // Auto-approve to show immediately
         ];
         break;
 

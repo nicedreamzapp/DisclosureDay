@@ -140,7 +140,7 @@ form.addEventListener('submit', async (e) => {
 });
 
 // Load existing theories
-fetch('/community/theories.json')
+fetch('/community/data/theories.json')
   .then(r => r.json())
   .then(theories => {
     const container = document.getElementById('theories-list');

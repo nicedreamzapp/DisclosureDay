@@ -135,7 +135,7 @@ document.getElementById('art-form').addEventListener('submit', async (e) => {
 });
 
 // Load gallery
-fetch('/community/art.json')
+fetch('/community/data/art.json')
   .then(r => r.json())
   .then(art => {
     const gallery = document.getElementById('gallery');

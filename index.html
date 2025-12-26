@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="a60TeV53dZlGr-uUcXTw91BgBpfDsh8OLwCD6jNMBdQ" />
   <title>Disclosure Day - Steven Spielberg's UFO Film | June 12, 2026</title>
 
   <!-- SEO -->
@@ -355,7 +356,20 @@
     }
   </style>
 
-  <div class="dd-wrap">
+  <!-- Sticky Navigation -->
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(2,3,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.1);padding:12px 20px;">
+    <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+      <a href="/" style="font-weight:800;font-size:16px;color:#e9eef7;text-decoration:none;">Disclosure Day Hub</a>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <a href="/cast/" style="color:#e9eef7;text-decoration:none;padding:6px 12px;border-radius:6px;font-size:13px;background:rgba(255,255,255,.08);">Cast</a>
+        <a href="/topics/" style="color:#e9eef7;text-decoration:none;padding:6px 12px;border-radius:6px;font-size:13px;background:rgba(255,255,255,.08);">Topics</a>
+        <a href="/community/" style="color:#000;text-decoration:none;padding:6px 12px;border-radius:6px;font-size:13px;font-weight:600;background:#00ffcc;">Community</a>
+        <a href="/#dd-signal" style="color:#000;text-decoration:none;padding:6px 12px;border-radius:6px;font-size:13px;font-weight:600;background:#39ff14;">The Signal</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="dd-wrap" style="margin-top:60px;">
     <!-- Top bar -->
     <div class="dd-topbar dd-reveal">
       <div class="dd-badges">
@@ -417,35 +431,18 @@
         </div>
       </div>
 
-      <!-- Side column -->
-      <div class="dd-side">
-        <div class="dd-card dd-reveal">
-          <div class="dd-title">
-            <h2>Teaser Posters</h2>
-            <span>Official key art</span>
-          </div>
-
-          <div class="dd-posterGrid">
-            <figure class="dd-poster">
-              <img src="https://i0.wp.com/whentostream.com/wp-content/uploads/2025/12/Disclosure-Day-1-1.jpeg?resize=640%2C1013&ssl=1" alt="Disclosure Day teaser poster - blue eye" loading="lazy">
-              <figcaption class="dd-label">Poster 01</figcaption>
-            </figure>
-            <figure class="dd-poster">
-              <img src="https://i0.wp.com/whentostream.com/wp-content/uploads/2025/12/Disclosure-Day-2.jpeg?resize=640%2C1013&ssl=1" alt="Disclosure Day teaser poster - silhouette" loading="lazy">
-              <figcaption class="dd-label">Poster 02</figcaption>
-            </figure>
-          </div>
+      <!-- Side column - floating posters -->
+      <div class="dd-side" style="display:flex;flex-direction:column;gap:12px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <figure class="dd-poster" style="margin:0;border-radius:14px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.5);">
+            <img src="https://i0.wp.com/whentostream.com/wp-content/uploads/2025/12/Disclosure-Day-1-1.jpeg?resize=640%2C1013&ssl=1" alt="Disclosure Day teaser poster - blue eye" loading="lazy" style="width:100%;display:block;">
+          </figure>
+          <figure class="dd-poster" style="margin:0;border-radius:14px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.5);">
+            <img src="https://i0.wp.com/whentostream.com/wp-content/uploads/2025/12/Disclosure-Day-2.jpeg?resize=640%2C1013&ssl=1" alt="Disclosure Day teaser poster - silhouette" loading="lazy" style="width:100%;display:block;">
+          </figure>
         </div>
-
-        <!-- The Hook Card -->
-        <div class="dd-card dd-reveal" id="dd-story">
-          <div class="dd-mini">
-            <h3>The hook</h3>
-            <p><b>"If you found out we weren't alone…"</b><br>
-              Steven Spielberg returns to the genre he defined. From Close Encounters to E.T. to War of the Worlds — now the next chapter.
-            </p>
-          </div>
-        </div>
+        <p style="text-align:center;font-size:20px;font-weight:700;color:var(--fg);line-height:1.4;padding:8px 0;">"If you found out we weren't alone…"</p>
+        <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:-8px;">Spielberg returns to the genre he defined.</p>
       </div>
     </div>
 
@@ -477,25 +474,60 @@
       </div>
     </div>
 
-    <!-- Navigation Links -->
-    <div class="dd-card dd-reveal" style="margin-top:16px">
-      <div class="dd-title">
-        <h2>Explore the Hub</h2>
-        <span>All pages</span>
+    <!-- EXPLORE EVERYTHING - Organized by Category -->
+    <div style="margin-top:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+
+      <!-- Cast & Crew -->
+      <div style="background:rgba(110,231,255,.08);border:1px solid rgba(110,231,255,.2);border-radius:16px;padding:18px;">
+        <h3 style="color:#6ee7ff;font-size:14px;margin-bottom:12px;text-transform:uppercase;letter-spacing:.05em;">Cast & Crew</h3>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <a href="/cast/emily-blunt.html" style="color:var(--fg);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);">Emily Blunt</a>
+          <a href="/cast/josh-oconnor.html" style="color:var(--fg);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);">Josh O'Connor</a>
+          <a href="/cast/colin-firth.html" style="color:var(--fg);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);">Colin Firth</a>
+          <a href="/crew/steven-spielberg.html" style="color:var(--fg);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);">Steven Spielberg</a>
+          <a href="/crew/john-williams.html" style="color:var(--fg);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);">John Williams</a>
+          <a href="/cast/" style="color:#6ee7ff;text-decoration:none;font-size:13px;padding:6px 0;">View all cast & crew →</a>
+        </div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:12px">
-        <a href="/cast/" class="dd-nav-link">Cast</a>
-        <a href="/crew/" class="dd-nav-link">Crew</a>
-        <a href="/topics/" class="dd-nav-link">Topics</a>
-        <a href="/theories/" class="dd-nav-link">Theories</a>
-        <a href="/vs/" class="dd-nav-link">Comparisons</a>
-        <a href="/community/" class="dd-nav-link">Community</a>
-        <a href="/emily-blunt-movie-dad.html" class="dd-nav-link">Emily Blunt News</a>
-        <a href="/josh-oconnor-old-school-spielberg.html" class="dd-nav-link">Josh O'Connor News</a>
-        <a href="/trailer-drop-dec-2025.html" class="dd-nav-link">Trailer Breakdown</a>
-        <a href="/the-signal-origin.html" class="dd-nav-link" style="border-color:rgba(57,255,20,.3);background:rgba(57,255,20,.1)">The Signal Origin</a>
-        <a href="https://reddit.com/r/DisclosureDayMovie" target="_blank" class="dd-nav-link" style="border-color:rgba(255,69,0,.3);background:rgba(255,69,0,.1)">Reddit ↗</a>
+
+      <!-- Movie Info -->
+      <div style="background:rgba(181,167,255,.08);border:1px solid rgba(181,167,255,.2);border-radius:16px;padding:18px;">
+        <h3 style="color:#b5a7ff;font-size:14px;margin-bottom:12px;text-transform:uppercase;letter-spacing:.05em;">Movie Info</h3>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <a href="/topics/trailer.html" style="color:var(--fg);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);">Watch Trailer</a>
+          <a href="/topics/release-date.html" style="color:var(--fg);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);">Release Date</a>
+          <a href="/topics/plot.html" style="color:var(--fg);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);">Plot Details</a>
+          <a href="/topics/soundtrack.html" style="color:var(--fg);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);">Soundtrack</a>
+          <a href="/topics/streaming.html" style="color:var(--fg);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);">Streaming Info</a>
+          <a href="/topics/" style="color:#b5a7ff;text-decoration:none;font-size:13px;padding:6px 0;">All topics →</a>
+        </div>
       </div>
+
+      <!-- Theories & Comparisons -->
+      <div style="background:rgba(124,255,178,.08);border:1px solid rgba(124,255,178,.2);border-radius:16px;padding:18px;">
+        <h3 style="color:#7cffb2;font-size:14px;margin-bottom:12px;text-transform:uppercase;letter-spacing:.05em;">Theories & Analysis</h3>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <a href="/theories/alien-intentions.html" style="color:var(--fg);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);">What Do the Aliens Want?</a>
+          <a href="/vs/close-encounters.html" style="color:var(--fg);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);">vs Close Encounters</a>
+          <a href="/vs/et.html" style="color:var(--fg);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);">vs E.T.</a>
+          <a href="/theories/real-uap-connection.html" style="color:var(--fg);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);">Real UAP Connection</a>
+          <a href="/the-signal-origin.html" style="color:var(--fg);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);">The Signal Origin Story</a>
+          <a href="/theories/" style="color:#7cffb2;text-decoration:none;font-size:13px;padding:6px 0;">All theories →</a>
+        </div>
+      </div>
+
+      <!-- Community -->
+      <div style="background:rgba(0,255,204,.08);border:1px solid rgba(0,255,204,.2);border-radius:16px;padding:18px;">
+        <h3 style="color:#00ffcc;font-size:14px;margin-bottom:12px;text-transform:uppercase;letter-spacing:.05em;">Community</h3>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <a href="/community/submit-theory.html" style="color:var(--fg);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);">🛸 Submit a Theory</a>
+          <a href="/community/predictions.html" style="color:var(--fg);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);">🔮 Prediction Wall</a>
+          <a href="/community/fan-art.html" style="color:var(--fg);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);">🎨 Fan Art Gallery</a>
+          <a href="https://reddit.com/r/DisclosureDayMovie" target="_blank" style="color:var(--fg);text-decoration:none;font-size:14px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);">Reddit Community ↗</a>
+          <a href="/community/" style="color:#00ffcc;text-decoration:none;font-size:13px;padding:6px 0;">Community hub →</a>
+        </div>
+      </div>
+
     </div>
 
     <!-- Middle grid -->
