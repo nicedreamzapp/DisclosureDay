@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /chat-api.php
+Disallow: /community/submit.php
 
 Sitemap: https://disclosureday.nicedreamzwholesale.com/sitemap.xml

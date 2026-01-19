@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DISCLOSURE DAY COUNTDOWN - Interactive Experience | June 12, 2026</title>
+  <meta name="description" content="The ultimate Disclosure Day countdown experience. Watch time slip away until the truth is revealed. Interactive, immersive, unforgettable.">
+  <meta name="keywords" content="Disclosure Day countdown, Disclosure Day timer, June 12 2026, Spielberg countdown, UFO movie countdown">
+  <link rel="canonical" href="https://disclosureday.nicedreamzwholesale.com/countdown-experience.html">
+
+  <meta property="og:title" content="DISCLOSURE DAY COUNTDOWN">
+  <meta property="og:description" content="The truth arrives in... Watch the countdown. Feel the anticipation.">
+  <meta property="og:type" content="website">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #000;
+      color: #fff;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      cursor: crosshair;
+    }
+
+    /* Starfield background */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .stars canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Scan lines effect */
+    .scanlines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.1) 0px,
+        rgba(0, 0, 0, 0.1) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      pointer-events: none;
+      z-index: 999;
+      animation: scanlineMove 10s linear infinite;
+    }
+    @keyframes scanlineMove {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(4px); }
+    }
+
+    /* Vignette */
+    .vignette {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.7) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .glitch-text {
+      font-size: clamp(14px, 3vw, 18px);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #00ffcc;
+      margin-bottom: 20px;
+      animation: glitch 3s infinite;
+    }
+    @keyframes glitch {
+      0%, 90%, 100% { opacity: 1; transform: translateX(0); }
+      92% { opacity: 0.8; transform: translateX(-2px); }
+      94% { opacity: 0.8; transform: translateX(2px); }
+      96% { opacity: 0.9; transform: translateX(-1px); }
+    }
+
+    .title {
+      font-size: clamp(48px, 12vw, 140px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      line-height: 0.9;
+      margin-bottom: 40px;
+      background: linear-gradient(180deg, #fff 0%, #6ee7ff 50%, #b5a7ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 80px rgba(110,231,255,0.5);
+      animation: titlePulse 4s ease-in-out infinite;
+    }
+    @keyframes titlePulse {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.2); }
+    }
+
+    .countdown {
+      display: flex;
+      gap: clamp(10px, 4vw, 40px);
+      margin-bottom: 60px;
+    }
+
+    .countdown-item {
+      background: rgba(0,255,204,0.05);
+      border: 2px solid rgba(0,255,204,0.3);
+      border-radius: 20px;
+      padding: clamp(20px, 4vw, 40px) clamp(15px, 3vw, 30px);
+      min-width: clamp(80px, 15vw, 140px);
+      position: relative;
+      overflow: hidden;
+      animation: itemFloat 3s ease-in-out infinite;
+    }
+    .countdown-item:nth-child(1) { animation-delay: 0s; }
+    .countdown-item:nth-child(2) { animation-delay: 0.5s; }
+    .countdown-item:nth-child(3) { animation-delay: 1s; }
+    .countdown-item:nth-child(4) { animation-delay: 1.5s; }
+
+    @keyframes itemFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .countdown-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0,255,204,0.2), transparent);
+      animation: shine 3s infinite;
+    }
+    @keyframes shine {
+      0% { left: -100%; }
+      50%, 100% { left: 100%; }
+    }
+
+    .countdown-num {
+      font-size: clamp(36px, 8vw, 72px);
+      font-weight: 800;
+      color: #00ffcc;
+      line-height: 1;
+      text-shadow: 0 0 40px rgba(0,255,204,0.8);
+      font-variant-numeric: tabular-nums;
+    }
+    .countdown-label {
+      font-size: clamp(10px, 2vw, 14px);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.6);
+      margin-top: 10px;
+    }
+
+    .tagline {
+      font-size: clamp(16px, 3vw, 24px);
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 40px;
+      max-width: 600px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .cta-btn {
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-btn.primary {
+      background: linear-gradient(135deg, #00ffcc, #6ee7ff);
+      color: #000;
+      border: none;
+    }
+    .cta-btn.primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(0,255,204,0.5);
+    }
+    .cta-btn.secondary {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    .cta-btn.secondary:hover {
+      border-color: #00ffcc;
+      color: #00ffcc;
+    }
+
+    .facts {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      max-width: 400px;
+      animation: factFade 8s infinite;
+    }
+    @keyframes factFade {
+      0%, 10% { opacity: 0; }
+      20%, 80% { opacity: 1; }
+      90%, 100% { opacity: 0; }
+    }
+
+    .eye {
+      position: fixed;
+      width: 100px;
+      height: 100px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      z-index: 100;
+    }
+    .eye.visible {
+      opacity: 0.3;
+      animation: eyePulse 2s ease-in-out infinite;
+    }
+    @keyframes eyePulse {
+      0%, 100% { transform: scale(1); filter: blur(0); }
+      50% { transform: scale(1.1); filter: blur(2px); }
+    }
+
+    .share-section {
+      margin-top: 60px;
+      padding: 30px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+    }
+    .share-section h3 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 16px;
+    }
+    .share-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+    .share-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.2);
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .share-btn:hover {
+      background: #00ffcc;
+      border-color: #00ffcc;
+      transform: scale(1.1);
+    }
+
+    /* Easter egg click effect */
+    .click-effect {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #00ffcc;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: clickRipple 0.6s ease-out forwards;
+      z-index: 1000;
+    }
+    @keyframes clickRipple {
+      0% { transform: scale(0); opacity: 1; }
+      100% { transform: scale(4); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+<div class="scanlines"></div>
+<div class="vignette"></div>
+<div class="eye" id="eye">👁️</div>
+
+<div class="container">
+  <div class="glitch-text">/// TRANSMISSION INCOMING ///</div>
+
+  <h1 class="title">DISCLOSURE<br>DAY</h1>
+
+  <div class="countdown" id="countdown">
+    <div class="countdown-item">
+      <div class="countdown-num" id="days">---</div>
+      <div class="countdown-label">Days</div>
+    </div>
+    <div class="countdown-item">
+      <div class="countdown-num" id="hours">--</div>
+      <div class="countdown-label">Hours</div>
+    </div>
+    <div class="countdown-item">
+      <div class="countdown-num" id="mins">--</div>
+      <div class="countdown-label">Minutes</div>
+    </div>
+    <div class="countdown-item">
+      <div class="countdown-num" id="secs">--</div>
+      <div class="countdown-label">Seconds</div>
+    </div>
+  </div>
+
+  <p class="tagline">"If you found out we weren't alone, if someone showed you, proved it to you, would that frighten you?"</p>
+
+  <div class="cta-buttons">
+    <a href="https://www.youtube.com/watch?v=UFe6NRgoXCM" target="_blank" class="cta-btn primary">Watch Trailer</a>
+    <a href="/" class="cta-btn secondary">Enter the Hub</a>
+    <a href="/ultimate-hub.html" class="cta-btn secondary">All Resources</a>
+  </div>
+
+  <div class="share-section">
+    <h3>Spread the Truth</h3>
+    <div class="share-buttons">
+      <a href="https://twitter.com/intent/tweet?text=The%20countdown%20has%20begun.%20DISCLOSURE%20DAY%20-%20June%2012%2C%202026%20🛸&url=https://disclosureday.nicedreamzwholesale.com/countdown-experience.html" target="_blank" class="share-btn" title="Share on X">𝕏</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://disclosureday.nicedreamzwholesale.com/countdown-experience.html" target="_blank" class="share-btn" title="Share on Facebook">f</a>
+      <a href="https://www.reddit.com/submit?url=https://disclosureday.nicedreamzwholesale.com/countdown-experience.html&title=Disclosure%20Day%20Countdown%20-%20The%20truth%20arrives%20June%2012%2C%202026" target="_blank" class="share-btn" title="Share on Reddit">r</a>
+      <a href="https://wa.me/?text=The%20countdown%20has%20begun.%20DISCLOSURE%20DAY%20-%20June%2012%2C%202026%20https://disclosureday.nicedreamzwholesale.com/countdown-experience.html" target="_blank" class="share-btn" title="Share on WhatsApp">w</a>
+    </div>
+  </div>
+</div>
+
+<div class="facts" id="facts"></div>
+
+<script>
+// Countdown
+const release = new Date('2026-06-12T00:00:00').getTime();
+function updateCountdown() {
+  const now = Date.now();
+  const diff = release - now;
+
+  if (diff <= 0) {
+    document.getElementById('days').textContent = '🛸';
+    document.getElementById('hours').textContent = 'NOW';
+    document.getElementById('mins').textContent = 'PLAYING';
+    document.getElementById('secs').textContent = '🛸';
+    return;
+  }
+
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+
+  document.getElementById('days').textContent = d;
+  document.getElementById('hours').textContent = h.toString().padStart(2, '0');
+  document.getElementById('mins').textContent = m.toString().padStart(2, '0');
+  document.getElementById('secs').textContent = s.toString().padStart(2, '0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// Star field
+const canvas = document.createElement('canvas');
+document.getElementById('stars').appendChild(canvas);
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+const stars = [];
+for (let i = 0; i < 200; i++) {
+  stars.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 2,
+    speed: Math.random() * 0.5 + 0.1,
+    opacity: Math.random()
+  });
+}
+
+function animateStars() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  stars.forEach(star => {
+    star.y += star.speed;
+    star.opacity += (Math.random() - 0.5) * 0.1;
+    star.opacity = Math.max(0.2, Math.min(1, star.opacity));
+
+    if (star.y > canvas.height) {
+      star.y = 0;
+      star.x = Math.random() * canvas.width;
+    }
+
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+    ctx.fill();
+  });
+
+  requestAnimationFrame(animateStars);
+}
+animateStars();
+
+// Random facts
+const facts = [
+  "Steven Spielberg has believed in extraterrestrial life since childhood.",
+  "The film was shot under the codename 'Non-View' to maintain secrecy.",
+  "John Williams came out of retirement at 93 to compose the score.",
+  "This is Spielberg's first original sci-fi since Close Encounters (1977).",
+  "The trailer has been analyzed frame-by-frame by thousands of fans.",
+  "Some believe the 'seven billion' line is intentionally incorrect.",
+  "Emily Blunt called Spielberg her 'movie dad' in interviews.",
+  "Colman Domingo cried reading the script.",
+  "David Koepp won't confirm or deny a Close Encounters connection.",
+  "The release coincides with Close Encounters' 50th anniversary.",
+  "Cryptic billboards appeared in NYC and LA before the title reveal.",
+  "The clicking sounds may spell 'Disclosure' using sine wave speech."
+];
+
+let factIndex = 0;
+function showFact() {
+  document.getElementById('facts').textContent = facts[factIndex];
+  factIndex = (factIndex + 1) % facts.length;
+}
+showFact();
+setInterval(showFact, 8000);
+
+// Eye follows cursor
+const eye = document.getElementById('eye');
+let eyeTimeout;
+document.addEventListener('mousemove', (e) => {
+  eye.style.left = (e.clientX - 50) + 'px';
+  eye.style.top = (e.clientY - 50) + 'px';
+  eye.classList.add('visible');
+
+  clearTimeout(eyeTimeout);
+  eyeTimeout = setTimeout(() => {
+    eye.classList.remove('visible');
+  }, 2000);
+});
+
+// Click ripple effect
+document.addEventListener('click', (e) => {
+  const ripple = document.createElement('div');
+  ripple.className = 'click-effect';
+  ripple.style.left = (e.clientX - 10) + 'px';
+  ripple.style.top = (e.clientY - 10) + 'px';
+  document.body.appendChild(ripple);
+  setTimeout(() => ripple.remove(), 600);
+});
+</script>
+
+</body>
+</html>

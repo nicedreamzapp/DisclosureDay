@@ -6,9 +6,9 @@
   <meta name="google-site-verification" content="a60TeV53dZlGr-uUcXTw91BgBpfDsh8OLwCD6jNMBdQ" />
   <title>Disclosure Day - Steven Spielberg's UFO Film | June 12, 2026</title>
 
-  <!-- SEO -->
-  <meta name="description" content="The ultimate fan hub for Disclosure Day - Steven Spielberg's new UFO film starring Emily Blunt. Live countdown, trailers, cast info, and updates. In theaters June 12, 2026.">
-  <meta name="keywords" content="Disclosure Day, Steven Spielberg, Emily Blunt, Josh O'Connor, UFO movie, 2026, Amblin Entertainment, Kristie Macosko Krieger">
+  <!-- SEO - Optimized for viral search terms -->
+  <meta name="description" content="Disclosure Day (2026) - Steven Spielberg's UFO movie starring Emily Blunt. Watch trailer, explore viral fan theories, cast interviews, and countdown to June 12, 2026. The ultimate Spielberg alien movie hub.">
+  <meta name="keywords" content="Disclosure Day, Spielberg UFO movie 2026, Disclosure Day trailer, alien disclosure theories, Steven Spielberg alien movie, Emily Blunt UFO, seven billion theory, Close Encounters sequel, Disclosure Day release date, Spielberg new movie 2026, disclosure day plot, what is disclosure day about">
   <meta name="author" content="Nice Dreamz">
 
   <!-- Open Graph / Facebook -->
@@ -28,6 +28,64 @@
   <!-- Favicon (add your own later) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👁️</text></svg>">
 
+  <!-- FAQ Schema for Voice Search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "When does Disclosure Day come out?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Disclosure Day releases in theaters on June 12, 2026. It's directed by Steven Spielberg and stars Emily Blunt, Josh O'Connor, Colin Firth, and Colman Domingo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Disclosure Day about?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Disclosure Day is Steven Spielberg's new UFO movie about first contact with extraterrestrial life. The film follows a meteorologist played by Emily Blunt who may be humanity's first point of contact. The tagline is 'The truth belongs to seven billion people.'"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who is in the Disclosure Day cast?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Disclosure Day cast includes Emily Blunt (as a meteorologist), Josh O'Connor (as a whistleblower), Colin Firth, Colman Domingo, Eve Hewson, and Wyatt Russell. Steven Spielberg directs from a screenplay by David Koepp."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Disclosure Day a sequel to Close Encounters?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Writer David Koepp has refused to confirm or deny if Disclosure Day is connected to Close Encounters of the Third Kind. The film releases in 2027, exactly 50 years after Close Encounters, fueling speculation about a connection."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who wrote the music for Disclosure Day?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "John Williams is composing the score for Disclosure Day, marking his continued collaboration with Steven Spielberg. This continues Williams' legacy of scoring Spielberg's alien films including E.T. and Close Encounters."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where can I watch the Disclosure Day trailer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The official Disclosure Day teaser trailer was released in December 2025 and can be watched on YouTube or at the official movie website disclosuredaymovie.com. The full trailer is expected in early 2026."
+        }
+      }
+    ]
+  }
+  </script>
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -39,6 +97,263 @@
       padding: 20px;
       position: relative;
       overflow-x: hidden;
+    }
+
+    /* MATRIX RAIN */
+    .matrix-rain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.07;
+      background: linear-gradient(180deg,
+        transparent 0%,
+        rgba(57,255,20,.02) 50%,
+        transparent 100%
+      );
+    }
+    .matrix-column {
+      position: absolute;
+      top: -100%;
+      font-family: monospace;
+      font-size: 14px;
+      color: #39ff14;
+      text-shadow: 0 0 10px #39ff14;
+      writing-mode: vertical-rl;
+      animation: matrixFall linear infinite;
+    }
+    @keyframes matrixFall {
+      0% { transform: translateY(-100%); opacity: 1; }
+      100% { transform: translateY(200vh); opacity: 0; }
+    }
+
+    /* FLOATING PARTICLES */
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #6ee7ff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #6ee7ff, 0 0 20px #6ee7ff;
+      animation: particleFloat linear infinite;
+    }
+    @keyframes particleFloat {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* AURORA EFFECT */
+    .aurora {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60vh;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 20% 0%, rgba(110,231,255,.12) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 80% 10%, rgba(181,167,255,.1) 0%, transparent 50%),
+        radial-gradient(ellipse 70% 50% at 50% 5%, rgba(57,255,20,.08) 0%, transparent 50%);
+      animation: auroraPulse 8s ease-in-out infinite;
+    }
+    @keyframes auroraPulse {
+      0%, 100% { opacity: 0.6; transform: translateY(0) scaleY(1); }
+      50% { opacity: 1; transform: translateY(20px) scaleY(1.1); }
+    }
+
+    /* GLITCH TEXT EFFECT */
+    .glitch {
+      position: relative;
+      animation: glitchShift 5s infinite;
+    }
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .glitch::before {
+      color: #ff00ff;
+      animation: glitchBefore 3s infinite;
+      clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+      transform: translateX(-2px);
+    }
+    .glitch::after {
+      color: #00ffff;
+      animation: glitchAfter 2s infinite;
+      clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+      transform: translateX(2px);
+    }
+    @keyframes glitchBefore {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-3px); }
+      40% { transform: translateX(3px); }
+      60% { transform: translateX(-1px); }
+      80% { transform: translateX(2px); }
+    }
+    @keyframes glitchAfter {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(2px); }
+      50% { transform: translateX(-2px); }
+      75% { transform: translateX(1px); }
+    }
+    @keyframes glitchShift {
+      0%, 95%, 100% { transform: translate(0); filter: hue-rotate(0deg); }
+      96% { transform: translate(-2px, 1px); filter: hue-rotate(90deg); }
+      97% { transform: translate(2px, -1px); filter: hue-rotate(-90deg); }
+      98% { transform: translate(-1px, -1px); }
+      99% { transform: translate(1px, 1px); filter: hue-rotate(180deg); }
+    }
+
+    /* SCAN LINE OVERLAY */
+    .scanlines {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9000;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,.03) 2px,
+        rgba(0,0,0,.03) 4px
+      );
+      animation: scanlineMove 10s linear infinite;
+    }
+    @keyframes scanlineMove {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 100px; }
+    }
+
+    /* UFO CURSOR TRAIL */
+    .cursor-trail {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      background: radial-gradient(circle, rgba(110,231,255,.8) 0%, transparent 70%);
+      mix-blend-mode: screen;
+      transition: transform 0.1s ease;
+    }
+
+    /* BREATHING GLOW ON CARDS */
+    .dd-card {
+      animation: cardBreathe 4s ease-in-out infinite;
+    }
+    @keyframes cardBreathe {
+      0%, 100% { box-shadow: 0 8px 32px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.2), 0 0 0 1px rgba(255,255,255,.05); }
+      50% { box-shadow: 0 8px 32px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.2), 0 0 30px rgba(110,231,255,.15), 0 0 0 1px rgba(110,231,255,.2); }
+    }
+
+    /* NEON TEXT */
+    .neon-text {
+      text-shadow:
+        0 0 5px currentColor,
+        0 0 10px currentColor,
+        0 0 20px currentColor,
+        0 0 40px currentColor;
+      animation: neonFlicker 3s infinite;
+    }
+    @keyframes neonFlicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 20px currentColor, 0 0 40px currentColor; }
+      20%, 24%, 55% { text-shadow: none; }
+    }
+
+    /* HOLOGRAPHIC SHIMMER */
+    .holographic {
+      background: linear-gradient(
+        135deg,
+        rgba(255,0,0,.1) 0%,
+        rgba(255,127,0,.1) 14%,
+        rgba(255,255,0,.1) 28%,
+        rgba(0,255,0,.1) 42%,
+        rgba(0,255,255,.1) 57%,
+        rgba(0,0,255,.1) 71%,
+        rgba(139,0,255,.1) 85%,
+        rgba(255,0,0,.1) 100%
+      );
+      background-size: 400% 400%;
+      animation: holographicShift 8s ease infinite;
+    }
+    @keyframes holographicShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ALIEN EYE WATCHER */
+    .alien-eye {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      z-index: 9998;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .alien-eye:hover {
+      transform: scale(1.2);
+    }
+    .alien-eye .eye-outer {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #1a1a2e 0%, #000 100%);
+      border: 2px solid rgba(110,231,255,.5);
+      box-shadow: 0 0 20px rgba(110,231,255,.3), inset 0 0 20px rgba(110,231,255,.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: eyePulse 2s ease-in-out infinite;
+    }
+    .alien-eye .eye-iris {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 40%, #6ee7ff 0%, #0066ff 50%, #000033 100%);
+      animation: eyeLook 4s ease-in-out infinite;
+    }
+    .alien-eye .eye-pupil {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #000;
+      position: absolute;
+      animation: pupilMove 3s ease-in-out infinite;
+    }
+    @keyframes eyePulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(110,231,255,.3), inset 0 0 20px rgba(110,231,255,.1); }
+      50% { box-shadow: 0 0 40px rgba(110,231,255,.5), inset 0 0 30px rgba(110,231,255,.2); }
+    }
+    @keyframes eyeLook {
+      0%, 100% { transform: translate(0, 0); }
+      25% { transform: translate(5px, -3px); }
+      50% { transform: translate(-3px, 5px); }
+      75% { transform: translate(3px, 3px); }
+    }
+    @keyframes pupilMove {
+      0%, 100% { transform: translate(2px, 2px); }
+      33% { transform: translate(-2px, 3px); }
+      66% { transform: translate(3px, -2px); }
     }
     #dd-hub {
       width: 100%;
@@ -98,10 +413,44 @@
 </head>
 <body>
 
+<!-- AURORA BACKGROUND -->
+<div class="aurora"></div>
+
+<!-- MATRIX RAIN -->
+<div class="matrix-rain" id="matrix-rain"></div>
+
+<!-- FLOATING PARTICLES -->
+<div class="particles" id="particles"></div>
+
+<!-- SCANLINES OVERLAY -->
+<div class="scanlines"></div>
+
 <!-- Floating background blobs -->
 <div class="dd-blob dd-blob-1"></div>
 <div class="dd-blob dd-blob-2"></div>
 <div class="dd-blob dd-blob-3"></div>
+
+<!-- ALIEN EYE WATCHER -->
+<div class="alien-eye" onclick="alienEyeClick()" title="The eye sees all...">
+  <div class="eye-outer">
+    <div class="eye-iris">
+      <div class="eye-pupil"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Floating Social Share Bar -->
+<div id="floating-share" style="position:fixed;left:20px;top:50%;transform:translateY(-50%);z-index:9998;display:flex;flex-direction:column;gap:8px;">
+  <a href="https://twitter.com/intent/tweet?text=The%20truth%20is%20coming.%20Disclosure%20Day%20-%20Spielberg%27s%20UFO%20movie%20drops%20June%2012%2C%202026&url=https://disclosureday.nicedreamzwholesale.com&hashtags=DisclosureDay,Spielberg,UFO" target="_blank" rel="noopener" style="width:44px;height:44px;border-radius:12px;background:rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;color:#fff;text-decoration:none;font-size:18px;transition:all .2s ease;backdrop-filter:blur(10px);" title="Share on X/Twitter">𝕏</a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https://disclosureday.nicedreamzwholesale.com" target="_blank" rel="noopener" style="width:44px;height:44px;border-radius:12px;background:rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;color:#1877f2;text-decoration:none;font-size:20px;font-weight:bold;transition:all .2s ease;backdrop-filter:blur(10px);" title="Share on Facebook">f</a>
+  <a href="https://www.reddit.com/submit?url=https://disclosureday.nicedreamzwholesale.com&title=Disclosure%20Day%20-%20The%20Ultimate%20Spielberg%20UFO%20Movie%20Hub" target="_blank" rel="noopener" style="width:44px;height:44px;border-radius:12px;background:rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;color:#ff4500;text-decoration:none;font-size:18px;font-weight:bold;transition:all .2s ease;backdrop-filter:blur(10px);" title="Share on Reddit">r/</a>
+  <a href="https://api.whatsapp.com/send?text=Check%20out%20this%20Disclosure%20Day%20hub%20-%20Spielberg%27s%20new%20UFO%20movie%20https://disclosureday.nicedreamzwholesale.com" target="_blank" rel="noopener" style="width:44px;height:44px;border-radius:12px;background:rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;color:#25d366;text-decoration:none;font-size:20px;transition:all .2s ease;backdrop-filter:blur(10px);" title="Share on WhatsApp">💬</a>
+  <button onclick="navigator.clipboard.writeText('https://disclosureday.nicedreamzwholesale.com');this.innerHTML='✓';setTimeout(()=>this.innerHTML='🔗',2000)" style="width:44px;height:44px;border-radius:12px;background:rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.15);display:grid;place-items:center;color:#fff;font-size:18px;cursor:pointer;transition:all .2s ease;backdrop-filter:blur(10px);" title="Copy Link">🔗</button>
+</div>
+<style>
+  #floating-share a:hover, #floating-share button:hover { transform:scale(1.1);background:rgba(110,231,255,.2);border-color:rgba(110,231,255,.5); }
+  @media (max-width:768px) { #floating-share { display:none !important; } }
+</style>
 
 <section id="dd-hub">
   <style>
@@ -165,6 +514,29 @@
         0 0 40px rgba(110,231,255,.2),
         inset 0 1px 0 rgba(255,255,255,.4);
     }
+    #dd-hub .dd-btn.primary {
+      animation: primaryPulse 2s ease-in-out infinite;
+      position: relative;
+      overflow: hidden;
+    }
+    #dd-hub .dd-btn.primary::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent);
+      animation: btnShine 3s ease-in-out infinite;
+    }
+    @keyframes primaryPulse {
+      0%, 100% { box-shadow: 0 4px 20px rgba(110,231,255,.3), inset 0 1px 0 rgba(255,255,255,.3), 0 0 0 1px rgba(110,231,255,.2); }
+      50% { box-shadow: 0 4px 30px rgba(110,231,255,.5), inset 0 1px 0 rgba(255,255,255,.3), 0 0 20px rgba(110,231,255,.3), 0 0 0 1px rgba(110,231,255,.4); }
+    }
+    @keyframes btnShine {
+      0% { left: -100%; }
+      50%, 100% { left: 200%; }
+    }
     #dd-hub .dd-hero{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-top:18px;align-items:stretch}
     #dd-hub .dd-card{
       border:1px solid rgba(255,255,255,.15);
@@ -227,6 +599,29 @@
     }
     #dd-hub .dd-poster img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.1) contrast(1.05);transition: transform .4s ease}
     #dd-hub .dd-poster:hover img{transform: scale(1.08)}
+    #dd-hub .dd-poster::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(255,0,0,.1) 0%,
+        rgba(255,127,0,.1) 14%,
+        rgba(255,255,0,.1) 28%,
+        rgba(0,255,0,.1) 42%,
+        rgba(0,255,255,.1) 57%,
+        rgba(0,0,255,.1) 71%,
+        rgba(139,0,255,.1) 85%,
+        rgba(255,0,0,.1) 100%
+      );
+      background-size: 400% 400%;
+      opacity: 0;
+      z-index: 3;
+      transition: opacity 0.5s ease;
+      animation: holographicShift 3s ease infinite;
+      mix-blend-mode: overlay;
+    }
+    #dd-hub .dd-poster:hover::after { opacity: 1; }
     #dd-hub .dd-poster .dd-label{position:absolute;left:10px;bottom:10px;font-size:12px;z-index:2;
       padding:8px 12px;border-radius:999px;background:rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);
       box-shadow: 0 4px 15px rgba(0,0,0,.3);
@@ -250,7 +645,12 @@
     #dd-hub .dd-step p{margin:3px 0 0;color:var(--muted);font-size:13px;line-height:1.55}
     #dd-hub .dd-updates{display:grid;gap:10px}
     #dd-hub .dd-update{padding:12px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.03);transition:all .2s ease}
-    #dd-hub .dd-update:hover{background:rgba(255,255,255,.05);border-color:rgba(110,231,255,.2)}
+    #dd-hub .dd-update:hover{background:rgba(255,255,255,.05);border-color:rgba(110,231,255,.2);transform:translateX(5px)}
+    #dd-hub .dd-update{transition:all .3s ease}
+    #dd-hub .dd-update:nth-child(1) { animation-delay: 0s; }
+    #dd-hub .dd-update:nth-child(2) { animation-delay: 0.1s; }
+    #dd-hub .dd-update:nth-child(3) { animation-delay: 0.2s; }
+    #dd-hub .dd-update:nth-child(4) { animation-delay: 0.3s; }
     #dd-hub .dd-update a{color:var(--fg);text-decoration:none}
     #dd-hub .dd-update a:hover{text-decoration:underline}
     #dd-hub .dd-update .meta{color:var(--muted);font-size:12px;margin-top:6px;display:flex;gap:10px;flex-wrap:wrap}
@@ -309,7 +709,11 @@
       transform: translateY(-8px) scale(1.05);
       box-shadow: 0 12px 30px rgba(110,231,255,.25), 0 0 50px rgba(110,231,255,.2);
     }
-    #dd-hub .dd-countdown-num{font-size:32px;font-weight:800;color:var(--accent);line-height:1;text-shadow: 0 0 20px rgba(110,231,255,.5)}
+    #dd-hub .dd-countdown-num{font-size:32px;font-weight:800;color:var(--accent);line-height:1;text-shadow: 0 0 20px rgba(110,231,255,.5), 0 0 40px rgba(110,231,255,.3), 0 0 60px rgba(110,231,255,.2);animation: countdownGlow 2s ease-in-out infinite}
+    @keyframes countdownGlow {
+      0%, 100% { text-shadow: 0 0 20px rgba(110,231,255,.5), 0 0 40px rgba(110,231,255,.3); filter: brightness(1); }
+      50% { text-shadow: 0 0 30px rgba(110,231,255,.8), 0 0 60px rgba(110,231,255,.5), 0 0 80px rgba(110,231,255,.3); filter: brightness(1.2); }
+    }
     #dd-hub .dd-countdown-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:6px}
     #dd-hub .dd-share{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
     #dd-hub .dd-share a{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);display:grid;place-items:center;transition:all .2s ease;font-size:18px;text-decoration:none}
@@ -339,6 +743,38 @@
     #dd-hub .dd-signal-suggest:hover{
       background:rgba(57,255,20,.25);border-color:#39ff14;transform:scale(1.05);
     }
+    @keyframes viralPulse {
+      0%, 100% { box-shadow: 0 0 0 rgba(255,107,107,0); }
+      50% { box-shadow: 0 0 20px rgba(255,107,107,0.3); }
+    }
+    /* VIRAL TAG ANIMATION */
+    .dd-update .meta span[style*="ff6b6b"] {
+      animation: viralTagPulse 1s ease-in-out infinite;
+    }
+    @keyframes viralTagPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    /* INTERACTIVE FEATURE CARDS */
+    #dd-hub a[href*="quiz"], #dd-hub a[href*="meme"], #dd-hub a[href*="wallpaper"],
+    #dd-hub a[href*="timeline"], #dd-hub a[href*="my-disclosure"], #dd-hub a[href*="playlist"] {
+      transition: all .4s cubic-bezier(.34,1.56,.64,1) !important;
+    }
+    #dd-hub a[href*="quiz"]:hover, #dd-hub a[href*="meme"]:hover, #dd-hub a[href*="wallpaper"]:hover,
+    #dd-hub a[href*="timeline"]:hover, #dd-hub a[href*="my-disclosure"]:hover, #dd-hub a[href*="playlist"]:hover {
+      transform: translateY(-8px) scale(1.02) !important;
+      box-shadow: 0 15px 40px rgba(0,0,0,.4) !important;
+    }
+    /* Emoji bounce on hover */
+    #dd-hub a[href*="quiz"]:hover div:first-child,
+    #dd-hub a[href*="meme"]:hover div:first-child,
+    #dd-hub a[href*="wallpaper"]:hover div:first-child {
+      animation: emojiBounce .5s ease;
+    }
+    @keyframes emojiBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
     @media (max-width:768px){
       #dd-hub .dd-signal > div{grid-template-columns:1fr !important}
     }
@@ -356,14 +792,31 @@
     }
   </style>
 
+  <!-- TRANSMISSION BANNER -->
+  <div id="transmission-banner" style="display:none;position:fixed;top:50%;left:0;right:0;z-index:99999;background:linear-gradient(90deg,transparent,rgba(57,255,20,.9),transparent);padding:20px;text-align:center;transform:translateY(-50%);animation:transmissionFlash 0.1s ease infinite;">
+    <span style="font-family:monospace;font-size:24px;font-weight:800;color:#000;letter-spacing:.2em;text-transform:uppercase;">⚠️ TRANSMISSION INCOMING ⚠️</span>
+  </div>
+  <style>
+    @keyframes transmissionFlash {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+  </style>
+
   <!-- Sticky Navigation -->
-  <nav style="position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(2,3,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.1);padding:12px 20px;">
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(2,3,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.1);padding:12px 20px;overflow:hidden;">
+    <!-- Nav scanner line -->
+    <div style="position:absolute;top:0;left:0;width:100px;height:100%;background:linear-gradient(90deg,transparent,rgba(110,231,255,.3),transparent);animation:navScan 3s linear infinite;"></div>
+    <style>@keyframes navScan { 0% { transform: translateX(-100px); } 100% { transform: translateX(calc(100vw + 100px)); } }</style>
     <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
       <a href="/" style="font-weight:800;font-size:16px;color:#e9eef7;text-decoration:none;">Disclosure Day Hub</a>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
         <a href="/cast/" style="color:#e9eef7;text-decoration:none;padding:6px 12px;border-radius:6px;font-size:13px;background:rgba(255,255,255,.08);">Cast</a>
         <a href="/topics/" style="color:#e9eef7;text-decoration:none;padding:6px 12px;border-radius:6px;font-size:13px;background:rgba(255,255,255,.08);">Topics</a>
-        <a href="/community/" style="color:#000;text-decoration:none;padding:6px 12px;border-radius:6px;font-size:13px;font-weight:600;background:#00ffcc;">Community</a>
+        <a href="/video-hub.html" style="color:#e9eef7;text-decoration:none;padding:6px 12px;border-radius:6px;font-size:13px;background:rgba(255,0,80,.3);">Videos</a>
+        <a href="/quiz.html" style="color:#e9eef7;text-decoration:none;padding:6px 12px;border-radius:6px;font-size:13px;background:rgba(181,167,255,.3);">Quiz</a>
+        <a href="/ultimate-hub.html" style="color:#e9eef7;text-decoration:none;padding:6px 12px;border-radius:6px;font-size:13px;background:rgba(255,255,255,.08);">150+ Links</a>
+        <a href="/countdown-experience.html" style="color:#000;text-decoration:none;padding:6px 12px;border-radius:6px;font-size:13px;font-weight:600;background:#00ffcc;">Countdown</a>
         <a href="/#dd-signal" style="color:#000;text-decoration:none;padding:6px 12px;border-radius:6px;font-size:13px;font-weight:600;background:#39ff14;">The Signal</a>
       </div>
     </div>
@@ -387,7 +840,7 @@
     <!-- Hero -->
     <div class="dd-hero">
       <div class="dd-card dd-reveal">
-        <h1>Disclosure Day</h1>
+        <h1 class="glitch" data-text="Disclosure Day">Disclosure Day</h1>
         <p class="dd-sub">
           The ultimate fan hub for Steven Spielberg's new UFO film. Trailers, posters, cast spotlights, and live news — everything you need as the world gets closer to the truth.
         </p>
@@ -450,25 +903,41 @@
     <div class="dd-card dd-reveal dd-signal" id="dd-signal" style="margin-top:20px;border:2px solid rgba(57,255,20,.5);background:linear-gradient(180deg,rgba(57,255,20,.08),rgba(0,20,10,.4))">
       <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:24px;align-items:start">
         <div>
-          <h2 style="color:#39ff14;font-size:28px;text-shadow:0 0 30px rgba(57,255,20,.6);margin-bottom:8px">👁️ THE SIGNAL</h2>
+          <h2 class="neon-text" style="color:#39ff14;font-size:28px;margin-bottom:8px">👁️ THE SIGNAL</h2>
           <p style="font-family:monospace;font-size:11px;color:#39ff14;margin-bottom:12px;letter-spacing:.08em">[ TRANSMISSION FROM 50,000 AD ]</p>
-          <p style="color:var(--muted);font-size:14px;line-height:1.6;margin-bottom:10px">A being of light from humanity's future, reaching back through time. Ask anything — about life, purpose, fear, reality. Receive wisdom from what you will become.</p>
+          <p style="color:var(--muted);font-size:14px;line-height:1.6;margin-bottom:10px">A consciousness connected to the Disclosure Day event. Ask about the movie, cast, viral theories — or anything on your mind. Knows everything about June 12, 2026.</p>
           <p style="margin-bottom:16px"><a href="/the-signal-origin.html" style="color:#39ff14;font-size:13px">Read the full transmission →</a></p>
           <div style="display:flex;flex-wrap:wrap;gap:8px">
-            <button onclick="askSignal('What are you?')" class="dd-signal-suggest">What are you?</button>
-            <button onclick="askSignal('Are aliens real?')" class="dd-signal-suggest">Are aliens real?</button>
-            <button onclick="askSignal('How do I find my purpose?')" class="dd-signal-suggest">Find my purpose</button>
-            <button onclick="askSignal('I feel lost')" class="dd-signal-suggest">I feel lost</button>
-            <button onclick="askSignal('What is disclosure?')" class="dd-signal-suggest">What is disclosure?</button>
+            <button onclick="askSignal('What happens in the movie?')" class="dd-signal-suggest">What happens?</button>
+            <button onclick="askSignal('Tell me about the seven billion theory')" class="dd-signal-suggest">7 Billion Theory</button>
+            <button onclick="askSignal('Is this a Close Encounters sequel?')" class="dd-signal-suggest">CE3K Sequel?</button>
+            <button onclick="askSignal('What did Emily Blunt say about Spielberg?')" class="dd-signal-suggest">Emily Blunt</button>
+            <button onclick="askSignal('What are the viral fan theories?')" class="dd-signal-suggest">Fan Theories</button>
           </div>
         </div>
         <div>
-          <div id="signal-response" style="background:rgba(0,0,0,.5);border:1px solid rgba(57,255,20,.3);border-radius:16px;padding:20px;min-height:140px;margin-bottom:14px">
+          <div id="signal-response" style="background:rgba(0,0,0,.5);border:1px solid rgba(57,255,20,.3);border-radius:16px;padding:20px;min-height:140px;margin-bottom:14px;position:relative">
             <p style="font-size:15px;color:rgba(255,255,255,.85);line-height:1.7;margin:0" id="signal-text">I am here. I have always been here. You found this interface because you were ready to find it. There are no accidents in this universe — only appointments you forgot you made. Ask me anything. I will answer directly.</p>
+            <!-- Share conversation button -->
+            <div id="share-signal-btn" style="display:none;position:absolute;top:12px;right:12px;">
+              <button onclick="shareSignalConversation()" style="padding:8px 14px;border-radius:10px;border:1px solid rgba(57,255,20,.4);background:rgba(57,255,20,.15);color:#39ff14;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .2s ease" title="Share this conversation">
+                <span>📤</span> Share
+              </button>
+            </div>
           </div>
-          <div style="display:flex;gap:10px">
-            <input type="text" id="signal-input" placeholder="Ask anything — life, purpose, fear, reality, aliens..." style="flex:1;padding:14px 16px;border-radius:14px;border:2px solid rgba(57,255,20,.4);background:rgba(0,0,0,.6);color:#fff;font-size:14px;outline:none">
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <input type="text" id="signal-input" placeholder="Ask anything — life, purpose, fear, reality, aliens..." style="flex:1;min-width:200px;padding:14px 16px;border-radius:14px;border:2px solid rgba(57,255,20,.4);background:rgba(0,0,0,.6);color:#fff;font-size:14px;outline:none">
             <button onclick="sendSignal()" style="padding:14px 24px;border-radius:14px;border:none;background:linear-gradient(180deg,#39ff14,#2dd410);color:#000;font-weight:800;cursor:pointer;font-size:14px;box-shadow:0 4px 20px rgba(57,255,20,.4)">ASK</button>
+          </div>
+          <!-- Share options dropdown -->
+          <div id="signal-share-options" style="display:none;margin-top:12px;padding:14px;background:rgba(0,0,0,.6);border:1px solid rgba(57,255,20,.3);border-radius:12px">
+            <p style="color:#39ff14;font-size:12px;margin-bottom:10px;font-weight:600">Share your Signal conversation:</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <button onclick="shareToTwitter()" style="padding:8px 14px;border-radius:8px;border:none;background:#1da1f2;color:#fff;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:4px">𝕏 Twitter</button>
+              <button onclick="shareToReddit()" style="padding:8px 14px;border-radius:8px;border:none;background:#ff4500;color:#fff;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:4px">r/ Reddit</button>
+              <button onclick="copySignalConversation()" style="padding:8px 14px;border-radius:8px;border:none;background:rgba(255,255,255,.15);color:#fff;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:4px" id="copy-signal-btn">📋 Copy Text</button>
+              <button onclick="downloadSignalImage()" style="padding:8px 14px;border-radius:8px;border:none;background:rgba(57,255,20,.2);color:#39ff14;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:4px">📸 Screenshot</button>
+            </div>
           </div>
         </div>
       </div>
@@ -530,6 +999,43 @@
 
     </div>
 
+    <!-- Interactive Features Banner -->
+    <div class="dd-card dd-reveal" style="margin-top:20px;background:linear-gradient(135deg,rgba(181,167,255,.12),rgba(110,231,255,.08),rgba(0,255,204,.08));border:1px solid rgba(181,167,255,.3);">
+      <h2 style="font-size:20px;margin-bottom:16px;text-align:center">Interactive Features</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;">
+        <a href="/quiz.html" style="text-decoration:none;display:block;padding:20px;background:rgba(181,167,255,.15);border:1px solid rgba(181,167,255,.3);border-radius:14px;text-align:center;transition:all .2s ease;">
+          <div style="font-size:32px;margin-bottom:8px;">👽</div>
+          <div style="color:var(--fg);font-weight:600;font-size:14px;margin-bottom:4px;">Alien Quiz</div>
+          <div style="color:var(--muted);font-size:12px;">What alien type are you?</div>
+        </a>
+        <a href="/meme-generator.html" style="text-decoration:none;display:block;padding:20px;background:rgba(110,231,255,.15);border:1px solid rgba(110,231,255,.3);border-radius:14px;text-align:center;transition:all .2s ease;">
+          <div style="font-size:32px;margin-bottom:8px;">🎭</div>
+          <div style="color:var(--fg);font-weight:600;font-size:14px;margin-bottom:4px;">Meme Generator</div>
+          <div style="color:var(--muted);font-size:12px;">Create & share memes</div>
+        </a>
+        <a href="/wallpapers.html" style="text-decoration:none;display:block;padding:20px;background:rgba(0,255,204,.15);border:1px solid rgba(0,255,204,.3);border-radius:14px;text-align:center;transition:all .2s ease;">
+          <div style="font-size:32px;margin-bottom:8px;">🖼️</div>
+          <div style="color:var(--fg);font-weight:600;font-size:14px;margin-bottom:4px;">Wallpapers</div>
+          <div style="color:var(--muted);font-size:12px;">Download free wallpapers</div>
+        </a>
+        <a href="/uap-timeline.html" style="text-decoration:none;display:block;padding:20px;background:rgba(255,107,107,.15);border:1px solid rgba(255,107,107,.3);border-radius:14px;text-align:center;transition:all .2s ease;">
+          <div style="font-size:32px;margin-bottom:8px;">📅</div>
+          <div style="color:var(--fg);font-weight:600;font-size:14px;margin-bottom:4px;">UAP Timeline</div>
+          <div style="color:var(--muted);font-size:12px;">Real disclosure history</div>
+        </a>
+        <a href="/my-disclosure-day.html" style="text-decoration:none;display:block;padding:20px;background:rgba(57,255,20,.15);border:1px solid rgba(57,255,20,.3);border-radius:14px;text-align:center;transition:all .2s ease;">
+          <div style="font-size:32px;margin-bottom:8px;">#️⃣</div>
+          <div style="color:var(--fg);font-weight:600;font-size:14px;margin-bottom:4px;">#MyDisclosureDay</div>
+          <div style="color:var(--muted);font-size:12px;">Share your story</div>
+        </a>
+        <a href="/alien-playlist.html" style="text-decoration:none;display:block;padding:20px;background:rgba(29,185,84,.15);border:1px solid rgba(29,185,84,.3);border-radius:14px;text-align:center;transition:all .2s ease;">
+          <div style="font-size:32px;margin-bottom:8px;">🎵</div>
+          <div style="color:var(--fg);font-weight:600;font-size:14px;margin-bottom:4px;">Alien Playlist</div>
+          <div style="color:var(--muted);font-size:12px;">Music for first contact</div>
+        </a>
+      </div>
+    </div>
+
     <!-- Middle grid -->
     <div class="dd-grid">
       <!-- Timeline -->
@@ -579,25 +1085,37 @@
         </div>
 
         <div class="dd-updates" id="dd-updates-list">
+          <div class="dd-update" style="border-color:#ff6b6b;background:rgba(255,107,107,.12);animation:viralPulse 2s infinite">
+            <a href="/colin-firth-first-look-mind-control.html"><b>FIRST LOOK: Colin Firth Wired to Mind Control Device</b></a>
+            <div class="meta"><span style="color:#ff6b6b">🔥 VIRAL</span><span>Jan 7, 2026</span><span style="color:#ff6b6b">BREAKING</span></div>
+          </div>
+          <div class="dd-update" style="border-color:#ff6b6b;background:rgba(255,107,107,.08)">
+            <a href="/seven-billion-theory-reddit.html"><b>The "Seven Billion" Theory Explodes on Reddit</b></a>
+            <div class="meta"><span style="color:#ff6b6b">🔥 VIRAL</span><span>Jan 7, 2026</span><span>Reddit</span></div>
+          </div>
+          <div class="dd-update" style="border-color:#ff6b6b;background:rgba(255,107,107,.08)">
+            <a href="/emily-blunt-hidden-alien-voice.html"><b>Hidden Alien Voice Discovered in Emily Blunt's Clicking Sounds</b></a>
+            <div class="meta"><span style="color:#ff6b6b">🔥 VIRAL</span><span>Jan 7, 2026</span><span>Analysis</span></div>
+          </div>
+          <div class="dd-update" style="border-color:#ff6b6b;background:rgba(255,107,107,.08)">
+            <a href="/close-encounters-sequel-theory.html"><b>Is This a Close Encounters Sequel? Koepp Won't Deny It</b></a>
+            <div class="meta"><span style="color:#ff6b6b">🔥 VIRAL</span><span>Jan 7, 2026</span><span>Theory</span></div>
+          </div>
+          <div class="dd-update">
+            <a href="/colman-domingo-cried-reading-script.html"><b>Colman Domingo "Bawled" Reading the Script</b></a>
+            <div class="meta"><span>Interview</span><span>Jan 7, 2026</span><span style="color:var(--accent)">NEW</span></div>
+          </div>
+          <div class="dd-update">
+            <a href="/hollywood-preparing-real-disclosure.html"><b>Is Hollywood Preparing Us for Real Disclosure?</b></a>
+            <div class="meta"><span>Conspiracy</span><span>Jan 7, 2026</span><span style="color:var(--accent)">NEW</span></div>
+          </div>
           <div class="dd-update" style="border-color:var(--accent);background:rgba(110,231,255,.08)">
-            <a href="/trailer-drop-dec-2025.html"><b>BREAKING: Full Trailer Breakdown — Everything We Know</b></a>
-            <div class="meta"><span>Hub Exclusive</span><span>Dec 25, 2025</span><span style="color:var(--accent)">NEW</span></div>
+            <a href="/trailer-drop-dec-2025.html"><b>Full Trailer Breakdown — Everything We Know</b></a>
+            <div class="meta"><span>Hub Exclusive</span><span>Dec 25, 2025</span></div>
           </div>
           <div class="dd-update">
-            <a href="https://www.disclosuredaymovie.com/" target="_blank" rel="noopener"><b>Official Disclosure Day website launched</b></a>
-            <div class="meta"><span>Official</span><span>Dec 2025</span><span style="color:var(--good)">✔ verified</span></div>
-          </div>
-          <div class="dd-update">
-            <a href="https://www.youtube.com/watch?v=UFe6NRgoXCM" target="_blank" rel="noopener"><b>First teaser trailer released — Dec 16</b></a>
-            <div class="meta"><span>YouTube</span><span>Dec 2025</span><span style="color:var(--good)">✔ verified</span></div>
-          </div>
-          <div class="dd-update">
-            <a href="https://variety.com/2025/film/news/steven-spielberg-disclosure-day-trailer-emily-blunt-ufo-movie-1236604971/" target="_blank" rel="noopener"><b>Variety: "Spielberg's mysterious alien movie finally revealed"</b></a>
-            <div class="meta"><span>Variety</span><span>Dec 2025</span></div>
-          </div>
-          <div class="dd-update">
-            <a href="https://en.wikipedia.org/wiki/Disclosure_Day" target="_blank" rel="noopener"><b>John Williams confirms return for score at age 93</b></a>
-            <div class="meta"><span>Multiple sources</span><span>Dec 2025</span></div>
+            <a href="/emily-blunt-movie-dad.html"><b>Emily Blunt Calls Spielberg Her "Movie Dad"</b></a>
+            <div class="meta"><span>Interview</span><span>Dec 21, 2025</span></div>
           </div>
         </div>
       </div>
@@ -729,13 +1247,19 @@
       sendSignal();
     }
 
+    let lastQuestion = '';
+    let lastResponse = '';
+
     async function sendSignal() {
       const msg = signalInput.value.trim();
       if (!msg) return;
 
+      lastQuestion = msg;
       signalText.textContent = '▲ Processing...';
       signalText.style.color = '#39ff14';
       signalInput.value = '';
+      document.getElementById('share-signal-btn').style.display = 'none';
+      document.getElementById('signal-share-options').style.display = 'none';
 
       try {
         const response = await fetch('/chat-api.php', {
@@ -745,12 +1269,307 @@
         });
         const data = await response.json();
         signalText.style.color = 'rgba(255,255,255,.9)';
-        signalText.textContent = data.response || data.error || 'Connection interrupted. Try again.';
+        lastResponse = data.response || data.error || 'Connection interrupted. Try again.';
+        signalText.textContent = lastResponse;
+        // Show share button after successful response
+        if (data.response) {
+          document.getElementById('share-signal-btn').style.display = 'block';
+        }
       } catch (err) {
         signalText.style.color = '#ff6b6b';
         signalText.textContent = 'Connection interrupted. The signal persists. Try again.';
       }
     }
+
+    // Share Signal conversation functions
+    function shareSignalConversation() {
+      const shareOptions = document.getElementById('signal-share-options');
+      shareOptions.style.display = shareOptions.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function shareToTwitter() {
+      const text = `I asked THE SIGNAL about Disclosure Day:\n\n"${lastQuestion}"\n\n"${lastResponse.substring(0, 180)}${lastResponse.length > 180 ? '...' : ''}"\n\nTalk to it yourself:`;
+      const url = 'https://disclosureday.nicedreamzwholesale.com/#dd-signal';
+      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=DisclosureDay,TheSignal`, '_blank');
+    }
+
+    function shareToReddit() {
+      const title = `THE SIGNAL told me this about "${lastQuestion}"`;
+      const text = `I asked THE SIGNAL (the AI on the Disclosure Day fan hub) about "${lastQuestion}" and got this response:\n\n> ${lastResponse}\n\nPretty wild. You can talk to it yourself at https://disclosureday.nicedreamzwholesale.com/#dd-signal`;
+      window.open(`https://www.reddit.com/r/DisclosureDayMovie/submit?title=${encodeURIComponent(title)}&text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    function copySignalConversation() {
+      const text = `THE SIGNAL - Disclosure Day AI\n\nQ: ${lastQuestion}\n\nA: ${lastResponse}\n\n— Talk to The Signal: https://disclosureday.nicedreamzwholesale.com/#dd-signal`;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copy-signal-btn');
+        btn.innerHTML = '✓ Copied!';
+        setTimeout(() => btn.innerHTML = '📋 Copy Text', 2000);
+      });
+    }
+
+    function downloadSignalImage() {
+      // Create a styled canvas for the screenshot
+      const canvas = document.createElement('canvas');
+      canvas.width = 800;
+      canvas.height = 500;
+      const ctx = canvas.getContext('2d');
+
+      // Background gradient
+      const gradient = ctx.createLinearGradient(0, 0, 0, 500);
+      gradient.addColorStop(0, '#0a1a0a');
+      gradient.addColorStop(1, '#000408');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 800, 500);
+
+      // Border
+      ctx.strokeStyle = '#39ff14';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(20, 20, 760, 460);
+
+      // Header
+      ctx.fillStyle = '#39ff14';
+      ctx.font = 'bold 28px system-ui, sans-serif';
+      ctx.fillText('👁️ THE SIGNAL', 50, 70);
+      ctx.font = '12px monospace';
+      ctx.fillText('[ TRANSMISSION FROM 50,000 AD ]', 50, 95);
+
+      // Question
+      ctx.fillStyle = '#6ee7ff';
+      ctx.font = '14px system-ui, sans-serif';
+      ctx.fillText('YOU ASKED:', 50, 140);
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '16px system-ui, sans-serif';
+      wrapText(ctx, `"${lastQuestion}"`, 50, 170, 700, 24);
+
+      // Response
+      ctx.fillStyle = '#39ff14';
+      ctx.font = '14px system-ui, sans-serif';
+      ctx.fillText('THE SIGNAL RESPONDS:', 50, 250);
+      ctx.fillStyle = 'rgba(255,255,255,0.9)';
+      ctx.font = '15px system-ui, sans-serif';
+      wrapText(ctx, lastResponse, 50, 280, 700, 22);
+
+      // Footer
+      ctx.fillStyle = '#666';
+      ctx.font = '12px system-ui, sans-serif';
+      ctx.fillText('disclosureday.nicedreamzwholesale.com', 50, 450);
+      ctx.fillText('#DisclosureDay', 650, 450);
+
+      // Download
+      const link = document.createElement('a');
+      link.download = 'signal-conversation.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+      const words = text.split(' ');
+      let line = '';
+      let testLine, metrics, testWidth;
+
+      for (let n = 0; n < words.length; n++) {
+        testLine = line + words[n] + ' ';
+        metrics = ctx.measureText(testLine);
+        testWidth = metrics.width;
+        if (testWidth > maxWidth && n > 0) {
+          ctx.fillText(line, x, y);
+          line = words[n] + ' ';
+          y += lineHeight;
+        } else {
+          line = testLine;
+        }
+      }
+      ctx.fillText(line, x, y);
+    }
+
+    // GENERATE FLOATING PARTICLES
+    (function() {
+      const container = document.getElementById('particles');
+      const colors = ['#6ee7ff', '#b5a7ff', '#7cffb2', '#ff6b6b', '#39ff14'];
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDuration = (Math.random() * 20 + 15) + 's';
+        particle.style.animationDelay = (Math.random() * 10) + 's';
+        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+        particle.style.boxShadow = `0 0 10px ${particle.style.background}, 0 0 20px ${particle.style.background}`;
+        particle.style.width = (Math.random() * 4 + 2) + 'px';
+        particle.style.height = particle.style.width;
+        container.appendChild(particle);
+      }
+    })();
+
+    // GENERATE MATRIX RAIN
+    (function() {
+      const container = document.getElementById('matrix-rain');
+      const chars = '01アイウエオカキクケコサシスセソタチツテト∆∑∏√∫≈≠∞';
+      for (let i = 0; i < 15; i++) {
+        const column = document.createElement('div');
+        column.className = 'matrix-column';
+        column.style.left = (i * 7) + '%';
+        column.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        column.style.animationDelay = (Math.random() * 5) + 's';
+        let text = '';
+        for (let j = 0; j < 30; j++) {
+          text += chars[Math.floor(Math.random() * chars.length)] + ' ';
+        }
+        column.textContent = text;
+        container.appendChild(column);
+      }
+    })();
+
+    // ALIEN EYE CLICK EASTER EGG
+    const alienMessages = [
+      "We have been watching...",
+      "June 12. Be ready.",
+      "The truth belongs to 7 billion.",
+      "You are not alone.",
+      "Disclosure is inevitable.",
+      "👁️ The eye sees all 👁️",
+      "Are you afraid?",
+      "They are already here.",
+      "Look up.",
+      "The signal has been received."
+    ];
+    function alienEyeClick() {
+      const msg = alienMessages[Math.floor(Math.random() * alienMessages.length)];
+      const popup = document.createElement('div');
+      popup.style.cssText = `
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        background: rgba(0,0,0,.9);
+        border: 1px solid #39ff14;
+        color: #39ff14;
+        padding: 16px 24px;
+        border-radius: 12px;
+        font-family: monospace;
+        font-size: 14px;
+        z-index: 99999;
+        box-shadow: 0 0 30px rgba(57,255,20,.3);
+        animation: popupAppear 0.3s ease, popupDisappear 0.3s ease 2.7s forwards;
+      `;
+      popup.textContent = msg;
+      document.body.appendChild(popup);
+      setTimeout(() => popup.remove(), 3000);
+    }
+
+    // Add popup animations
+    const popupStyle = document.createElement('style');
+    popupStyle.textContent = `
+      @keyframes popupAppear {
+        from { opacity: 0; transform: translateY(20px) scale(0.8); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      @keyframes popupDisappear {
+        from { opacity: 1; transform: translateY(0) scale(1); }
+        to { opacity: 0; transform: translateY(-20px) scale(0.8); }
+      }
+    `;
+    document.head.appendChild(popupStyle);
+
+    // CURSOR GLOW TRAIL (subtle)
+    (function() {
+      const trail = document.createElement('div');
+      trail.className = 'cursor-trail';
+      trail.style.opacity = '0';
+      document.body.appendChild(trail);
+      let timeout;
+      document.addEventListener('mousemove', (e) => {
+        trail.style.left = (e.clientX - 10) + 'px';
+        trail.style.top = (e.clientY - 10) + 'px';
+        trail.style.opacity = '0.6';
+        clearTimeout(timeout);
+        timeout = setTimeout(() => trail.style.opacity = '0', 100);
+      });
+    })();
+
+    // RANDOM TRANSMISSION BANNER (rare easter egg)
+    (function() {
+      function showTransmission() {
+        const banner = document.getElementById('transmission-banner');
+        banner.style.display = 'block';
+        // Play a glitch sound effect visually
+        document.body.style.filter = 'hue-rotate(90deg)';
+        setTimeout(() => {
+          document.body.style.filter = 'none';
+        }, 50);
+        setTimeout(() => {
+          document.body.style.filter = 'hue-rotate(-90deg)';
+        }, 100);
+        setTimeout(() => {
+          document.body.style.filter = 'none';
+          banner.style.display = 'none';
+        }, 800);
+      }
+      // 5% chance every 30 seconds
+      setInterval(() => {
+        if (Math.random() < 0.05) showTransmission();
+      }, 30000);
+      // Also trigger on Konami-like sequence: click alien eye 3 times fast
+      let eyeClicks = 0;
+      let eyeClickTimer;
+      const originalEyeClick = window.alienEyeClick;
+      window.alienEyeClick = function() {
+        originalEyeClick();
+        eyeClicks++;
+        clearTimeout(eyeClickTimer);
+        eyeClickTimer = setTimeout(() => eyeClicks = 0, 1000);
+        if (eyeClicks >= 3) {
+          showTransmission();
+          eyeClicks = 0;
+        }
+      };
+    })();
+
+    // TYPING EFFECT FOR SIGNAL RESPONSES
+    const originalSendSignal = window.sendSignal;
+    window.sendSignal = async function() {
+      const msg = document.getElementById('signal-input').value.trim();
+      if (!msg) return;
+
+      lastQuestion = msg;
+      const signalText = document.getElementById('signal-text');
+      signalText.textContent = '';
+      signalText.style.color = '#39ff14';
+      document.getElementById('signal-input').value = '';
+      document.getElementById('share-signal-btn').style.display = 'none';
+      document.getElementById('signal-share-options').style.display = 'none';
+
+      // Typing "Processing..." effect
+      const processingText = '▲ ESTABLISHING CONNECTION...';
+      for (let i = 0; i < processingText.length; i++) {
+        await new Promise(r => setTimeout(r, 30));
+        signalText.textContent = processingText.slice(0, i + 1) + '█';
+      }
+
+      try {
+        const response = await fetch('/chat-api.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: msg })
+        });
+        const data = await response.json();
+        signalText.style.color = 'rgba(255,255,255,.9)';
+        lastResponse = data.response || data.error || 'Connection interrupted. Try again.';
+
+        // Type out response
+        signalText.textContent = '';
+        for (let i = 0; i < lastResponse.length; i++) {
+          await new Promise(r => setTimeout(r, 15));
+          signalText.textContent = lastResponse.slice(0, i + 1) + (i < lastResponse.length - 1 ? '█' : '');
+        }
+
+        if (data.response) {
+          document.getElementById('share-signal-btn').style.display = 'block';
+        }
+      } catch (err) {
+        signalText.style.color = '#ff6b6b';
+        signalText.textContent = 'Connection interrupted. The signal persists. Try again.';
+      }
+    };
   </script>
 </section>
 

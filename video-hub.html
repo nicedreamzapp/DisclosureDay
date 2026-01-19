@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disclosure Day Video Hub - Every Trailer, Interview, Reaction & Analysis</title>
+  <meta name="description" content="Every Disclosure Day video in one place. Official trailers, cast interviews, viral reactions, podcast clips, and fan analysis. Your complete video guide to Spielberg's UFO epic.">
+  <meta name="keywords" content="Disclosure Day videos, Disclosure Day trailer, Disclosure Day interviews, Emily Blunt interview, Spielberg UFO movie videos, Disclosure Day reactions">
+  <link rel="canonical" href="https://disclosureday.nicedreamzwholesale.com/video-hub.html">
+
+  <meta property="og:title" content="Disclosure Day Video Hub - Complete Video Collection">
+  <meta property="og:description" content="Every video about Disclosure Day in one place. Trailers, interviews, reactions, analysis.">
+  <meta property="og:type" content="website">
+
+  <style>
+    :root {
+      --bg: #000408;
+      --card: #0a0d14;
+      --fg: #e9eef7;
+      --muted: #8b95a5;
+      --accent: #ff0050;
+      --accent2: #00ffcc;
+      --line: rgba(255,0,80,.15);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      line-height: 1.7;
+    }
+    a { color: var(--accent2); }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(2,3,10,.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+      padding: 12px 20px;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo { font-weight: 800; font-size: 16px; color: var(--fg); text-decoration: none; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 20px 60px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 56px);
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .section {
+      margin-bottom: 60px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--line);
+    }
+    .section-icon {
+      font-size: 32px;
+    }
+    .section-title {
+      font-size: 28px;
+    }
+    .section-count {
+      margin-left: auto;
+      background: var(--accent);
+      color: #fff;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 24px;
+    }
+
+    .video-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all .3s ease;
+    }
+    .video-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(255,0,80,.2);
+      border-color: var(--accent);
+    }
+
+    .video-thumb {
+      position: relative;
+      aspect-ratio: 16/9;
+      background: #000;
+    }
+    .video-thumb iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .video-thumb .play-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,.5);
+      display: grid;
+      place-items: center;
+      font-size: 48px;
+      cursor: pointer;
+      transition: background .3s ease;
+    }
+    .video-thumb .play-overlay:hover {
+      background: rgba(255,0,80,.3);
+    }
+
+    .video-info {
+      padding: 20px;
+    }
+    .video-source {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .video-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .video-desc {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .video-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .video-tag {
+      font-size: 10px;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: rgba(0,255,204,.1);
+      color: var(--accent2);
+    }
+    .video-tag.viral {
+      background: rgba(255,0,80,.15);
+      color: var(--accent);
+    }
+
+    .external-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent2);
+      font-size: 13px;
+      text-decoration: none;
+      margin-top: 12px;
+    }
+    .external-link:hover {
+      text-decoration: underline;
+    }
+
+    .featured-video {
+      background: linear-gradient(135deg, rgba(255,0,80,.1), rgba(0,255,204,.1));
+      border: 2px solid var(--accent);
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 60px;
+    }
+    .featured-video h2 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .featured-video .video-container {
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+    }
+    .featured-video iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 60px 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    @media (max-width: 768px) {
+      .video-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Disclosure Day Hub</a>
+    <a href="/">Back to Hub</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="hero">
+    <h1>VIDEO HUB</h1>
+    <p>Every Disclosure Day video in one place. Official trailers, interviews, reactions, and analysis.</p>
+  </div>
+
+  <!-- FEATURED: Official Trailer -->
+  <div class="featured-video">
+    <h2>Official Teaser Trailer</h2>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/UFe6NRgoXCM" title="Disclosure Day Official Teaser" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+
+  <!-- OFFICIAL VIDEOS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🎬</span>
+      <h2 class="section-title">Official Content</h2>
+      <span class="section-count">3 videos</span>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-thumb">
+          <iframe src="https://www.youtube.com/embed/UFe6NRgoXCM" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <div class="video-source">Universal Pictures</div>
+          <div class="video-title">Disclosure Day | Official Teaser</div>
+          <div class="video-desc">The first official teaser featuring Emily Blunt's chilling possession scene.</div>
+          <div class="video-tags">
+            <span class="video-tag">OFFICIAL</span>
+            <span class="video-tag viral">10M+ VIEWS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-thumb">
+          <a href="https://www.imdb.com/video/vi2460338969/" target="_blank" rel="noopener">
+            <img src="https://i0.wp.com/whentostream.com/wp-content/uploads/2025/12/Disclosure-Day-1-1.jpeg?resize=640%2C360" alt="Disclosure Day IMDb" loading="lazy">
+            <div class="play-overlay">▶</div>
+          </a>
+        </div>
+        <div class="video-info">
+          <div class="video-source">IMDb</div>
+          <div class="video-title">Teaser Trailer on IMDb</div>
+          <div class="video-desc">Watch the official teaser on IMDb with additional production details.</div>
+          <a href="https://www.imdb.com/video/vi2460338969/" target="_blank" rel="noopener" class="external-link">Watch on IMDb →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIRAL REACTIONS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🔥</span>
+      <h2 class="section-title">Viral Reactions & Analysis</h2>
+      <span class="section-count">8+ videos</span>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-thumb">
+          <a href="https://www.tiktok.com/@ign/video/7584588104447560974" target="_blank" rel="noopener">
+            <img src="https://i0.wp.com/whentostream.com/wp-content/uploads/2025/12/Disclosure-Day-2.jpeg?resize=640%2C360" alt="IGN TikTok" loading="lazy">
+            <div class="play-overlay">▶</div>
+          </a>
+        </div>
+        <div class="video-info">
+          <div class="video-source">TikTok - IGN</div>
+          <div class="video-title">IGN Trailer Announcement</div>
+          <div class="video-desc">121K+ likes. "Disclosure Day is a new sci-fi movie directed by Steven Spielberg!"</div>
+          <div class="video-tags">
+            <span class="video-tag viral">VIRAL</span>
+            <span class="video-tag">121K LIKES</span>
+          </div>
+          <a href="https://www.tiktok.com/@ign/video/7584588104447560974" target="_blank" rel="noopener" class="external-link">Watch on TikTok →</a>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-thumb">
+          <a href="https://www.instagram.com/reel/DSbBNAnkcG2/" target="_blank" rel="noopener">
+            <img src="https://i0.wp.com/whentostream.com/wp-content/uploads/2025/12/Disclosure-Day-1-1.jpeg?resize=640%2C360" alt="Instagram Reel" loading="lazy">
+            <div class="play-overlay">▶</div>
+          </a>
+        </div>
+        <div class="video-info">
+          <div class="video-source">Instagram</div>
+          <div class="video-title">Clicking Sound Analysis</div>
+          <div class="video-desc">Viral reel breaking down Emily Blunt's alien clicking sounds using sine wave speech analysis.</div>
+          <div class="video-tags">
+            <span class="video-tag viral">VIRAL</span>
+            <span class="video-tag">ANALYSIS</span>
+          </div>
+          <a href="https://www.instagram.com/reel/DSbBNAnkcG2/" target="_blank" rel="noopener" class="external-link">Watch on Instagram →</a>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-thumb">
+          <a href="https://www.tiktok.com/discover/disclosure-day-movie-reaction" target="_blank" rel="noopener">
+            <img src="https://i0.wp.com/whentostream.com/wp-content/uploads/2025/12/Disclosure-Day-2.jpeg?resize=640%2C360" alt="TikTok Reactions" loading="lazy">
+            <div class="play-overlay">▶</div>
+          </a>
+        </div>
+        <div class="video-info">
+          <div class="video-source">TikTok</div>
+          <div class="video-title">All Disclosure Day Reactions</div>
+          <div class="video-desc">TikTok discover page with all user reactions and breakdown videos.</div>
+          <div class="video-tags">
+            <span class="video-tag">REACTIONS</span>
+            <span class="video-tag">COLLECTION</span>
+          </div>
+          <a href="https://www.tiktok.com/discover/disclosure-day-movie-reaction" target="_blank" rel="noopener" class="external-link">Browse on TikTok →</a>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-thumb">
+          <a href="https://www.vetted.show/episodes/ufo-researcher-reacts-to-steven-spielberg-trailer-disclosure-day" target="_blank" rel="noopener">
+            <img src="https://i0.wp.com/whentostream.com/wp-content/uploads/2025/12/Disclosure-Day-1-1.jpeg?resize=640%2C360" alt="UFO Researcher" loading="lazy">
+            <div class="play-overlay">▶</div>
+          </a>
+        </div>
+        <div class="video-info">
+          <div class="video-source">Vetted Show</div>
+          <div class="video-title">UFO Researcher Reacts</div>
+          <div class="video-desc">Professional UFO researcher breaks down the symbolism and connections to real UAP phenomena.</div>
+          <div class="video-tags">
+            <span class="video-tag">UFO</span>
+            <span class="video-tag">EXPERT</span>
+          </div>
+          <a href="https://www.vetted.show/episodes/ufo-researcher-reacts-to-steven-spielberg-trailer-disclosure-day" target="_blank" rel="noopener" class="external-link">Watch Episode →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- YOUTUBE SEARCH LINKS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🔍</span>
+      <h2 class="section-title">Find More on YouTube</h2>
+      <span class="section-count">Live searches</span>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-info" style="padding:30px;">
+          <div class="video-title" style="font-size:20px;">Trailer Reactions</div>
+          <div class="video-desc">All YouTuber reactions to the Disclosure Day teaser trailer.</div>
+          <a href="https://www.youtube.com/results?search_query=disclosure+day+trailer+reaction" target="_blank" rel="noopener" class="external-link" style="font-size:16px;">Search YouTube →</a>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-info" style="padding:30px;">
+          <div class="video-title" style="font-size:20px;">Trailer Breakdowns</div>
+          <div class="video-desc">Frame-by-frame analysis and hidden details.</div>
+          <a href="https://www.youtube.com/results?search_query=disclosure+day+trailer+breakdown+analysis" target="_blank" rel="noopener" class="external-link" style="font-size:16px;">Search YouTube →</a>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-info" style="padding:30px;">
+          <div class="video-title" style="font-size:20px;">Fan Theories</div>
+          <div class="video-desc">Video essays on theories about the plot and meaning.</div>
+          <a href="https://www.youtube.com/results?search_query=disclosure+day+theory+spielberg" target="_blank" rel="noopener" class="external-link" style="font-size:16px;">Search YouTube →</a>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-info" style="padding:30px;">
+          <div class="video-title" style="font-size:20px;">Cast Interviews</div>
+          <div class="video-desc">Emily Blunt, Josh O'Connor, and more discuss the film.</div>
+          <a href="https://www.youtube.com/results?search_query=emily+blunt+disclosure+day+interview" target="_blank" rel="noopener" class="external-link" style="font-size:16px;">Search YouTube →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PODCASTS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🎙️</span>
+      <h2 class="section-title">Podcast Episodes</h2>
+      <span class="section-count">3+ episodes</span>
+    </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-info" style="padding:30px;">
+          <div class="video-source">Horror Press Podcast</div>
+          <div class="video-title">Episode 53: Disclosure Day & AI</div>
+          <div class="video-desc">Horror podcast discusses the trailer's impact and cultural significance.</div>
+          <a href="https://horrorpress.com/podcast/12430/the-horror-press-podcast-episode-53-disclosure-day-and-ai/" target="_blank" rel="noopener" class="external-link">Listen Now →</a>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <div class="video-info" style="padding:30px;">
+          <div class="video-source">Total Disclosure Podcast</div>
+          <div class="video-title">Spielberg Trailer Deep Dive</div>
+          <div class="video-desc">UFO researcher Ty Roberts breaks down connections to real disclosure.</div>
+          <a href="https://podcasts.apple.com/dk/podcast/total-disclosure-podcast/id1544297063" target="_blank" rel="noopener" class="external-link">Listen on Apple Podcasts →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <p><strong>Disclosure Day Video Hub</strong></p>
+  <p style="margin-top:12px;">Part of <a href="/">Disclosure Day Hub</a> — Fan site by Nice Dreamz</p>
+  <p style="margin-top:20px;"><a href="/ultimate-hub.html">All Resources</a> · <a href="/countdown-experience.html">Countdown</a> · <a href="/">Main Hub</a></p>
+</footer>
+
+</body>
+</html>

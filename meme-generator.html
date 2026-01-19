@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disclosure Day Meme Generator | Create & Share</title>
+  <meta name="description" content="Create your own Disclosure Day memes! Use official movie quotes, scenes, and themes. Share on social media and spread the word about June 12, 2026.">
+  <meta name="keywords" content="Disclosure Day meme, UFO meme generator, Spielberg meme, alien meme maker">
+  <link rel="canonical" href="https://disclosureday.nicedreamzwholesale.com/meme-generator.html">
+
+  <style>
+    :root {
+      --bg: #000408;
+      --card: #0a0d14;
+      --fg: #e9eef7;
+      --muted: #8b95a5;
+      --accent: #00ffcc;
+      --line: rgba(255,255,255,.1);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    }
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(2,3,10,.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+      padding: 12px 20px;
+    }
+    .nav-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav a { color: var(--fg); text-decoration: none; }
+    .nav-logo { font-weight: 800; font-size: 16px; }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 100px 20px 60px;
+    }
+    h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+    .generator {
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 30px;
+      align-items: start;
+    }
+    @media (max-width: 800px) {
+      .generator { grid-template-columns: 1fr; }
+    }
+    .preview-container {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+    }
+    .meme-preview {
+      width: 100%;
+      aspect-ratio: 1;
+      background: #000;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .meme-preview canvas {
+      width: 100%;
+      height: 100%;
+    }
+    .controls {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+    }
+    .control-group {
+      margin-bottom: 20px;
+    }
+    .control-group label {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .control-group input, .control-group select, .control-group textarea {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: rgba(0,0,0,.5);
+      color: var(--fg);
+      font-size: 14px;
+    }
+    .control-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .templates {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .template-btn {
+      aspect-ratio: 1;
+      border: 2px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255,255,255,.05);
+      cursor: pointer;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .template-btn:hover, .template-btn.active {
+      border-color: var(--accent);
+      background: rgba(0,255,204,.1);
+    }
+    .action-btns {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .action-btn {
+      flex: 1;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    .action-btn:hover { transform: scale(1.02); }
+    .action-btn.primary {
+      background: var(--accent);
+      color: #000;
+    }
+    .action-btn.secondary {
+      background: rgba(255,255,255,.1);
+      color: var(--fg);
+    }
+    .quick-texts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+    .quick-text {
+      padding: 6px 12px;
+      border-radius: 6px;
+      background: rgba(255,255,255,.08);
+      border: none;
+      color: var(--fg);
+      font-size: 11px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .quick-text:hover {
+      background: rgba(0,255,204,.2);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Disclosure Day Hub</a>
+    <a href="/">Back to Hub</a>
+  </div>
+</nav>
+
+<div class="container">
+  <h1>Meme Generator</h1>
+  <p class="subtitle">Create Disclosure Day memes and share the truth</p>
+
+  <div class="generator">
+    <div class="preview-container">
+      <div class="meme-preview">
+        <canvas id="meme-canvas" width="800" height="800"></canvas>
+      </div>
+      <div class="action-btns">
+        <button class="action-btn primary" onclick="downloadMeme()">Download</button>
+        <button class="action-btn secondary" onclick="shareMeme()">Share on 𝕏</button>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="control-group">
+        <label>Template</label>
+        <div class="templates">
+          <button class="template-btn active" onclick="setTemplate('eye')" title="The Eye">👁️</button>
+          <button class="template-btn" onclick="setTemplate('ufo')" title="UFO">🛸</button>
+          <button class="template-btn" onclick="setTemplate('alien')" title="Alien">👽</button>
+          <button class="template-btn" onclick="setTemplate('signal')" title="The Signal">📡</button>
+          <button class="template-btn" onclick="setTemplate('deer')" title="The Deer">🦌</button>
+          <button class="template-btn" onclick="setTemplate('brain')" title="Mind Control">🧠</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label>Top Text</label>
+        <input type="text" id="top-text" placeholder="Enter top text..." oninput="updateMeme()">
+        <div class="quick-texts">
+          <button class="quick-text" onclick="setQuickText('top', 'WHEN THEY ASK')">When they ask</button>
+          <button class="quick-text" onclick="setQuickText('top', 'ME WAITING FOR')">Me waiting for</button>
+          <button class="quick-text" onclick="setQuickText('top', 'NOBODY:')">Nobody:</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label>Bottom Text</label>
+        <input type="text" id="bottom-text" placeholder="Enter bottom text..." oninput="updateMeme()">
+        <div class="quick-texts">
+          <button class="quick-text" onclick="setQuickText('bottom', 'JUNE 12, 2026')">June 12, 2026</button>
+          <button class="quick-text" onclick="setQuickText('bottom', 'ALL WILL BE DISCLOSED')">All will be disclosed</button>
+          <button class="quick-text" onclick="setQuickText('bottom', 'SEVEN BILLION')">Seven Billion</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label>Style</label>
+        <select id="meme-style" onchange="updateMeme()">
+          <option value="classic">Classic Meme</option>
+          <option value="modern">Modern Minimal</option>
+          <option value="glitch">Glitch Effect</option>
+          <option value="classified">Classified Document</option>
+        </select>
+      </div>
+
+      <div class="control-group">
+        <label>Preset Memes</label>
+        <select id="preset" onchange="loadPreset()">
+          <option value="">-- Select a preset --</option>
+          <option value="waiting">Waiting for Disclosure</option>
+          <option value="truth">The Truth Is Coming</option>
+          <option value="billion">Seven Billion Theory</option>
+          <option value="signal">The Signal Speaks</option>
+          <option value="sequel">Close Encounters 2?</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px">
+    <a href="/" style="color:var(--accent)">← Back to Disclosure Day Hub</a>
+  </div>
+</div>
+
+<script>
+  const canvas = document.getElementById('meme-canvas');
+  const ctx = canvas.getContext('2d');
+  let currentTemplate = 'eye';
+  let currentStyle = 'classic';
+
+  const templates = {
+    eye: { emoji: '👁️', bg: ['#0a0d14', '#1a0a2e'] },
+    ufo: { emoji: '🛸', bg: ['#02030a', '#0d1a2d'] },
+    alien: { emoji: '👽', bg: ['#0a1a0a', '#000'] },
+    signal: { emoji: '📡', bg: ['#000', '#0a2020'] },
+    deer: { emoji: '🦌', bg: ['#1a1a0a', '#0a0a00'] },
+    brain: { emoji: '🧠', bg: ['#1a0a1a', '#0a0a1a'] }
+  };
+
+  const presets = {
+    waiting: { top: 'ME WAITING FOR', bottom: 'DISCLOSURE DAY', template: 'eye' },
+    truth: { top: 'THE TRUTH', bottom: 'BELONGS TO 7 BILLION', template: 'ufo' },
+    billion: { top: 'EARTH HAS 8 BILLION PEOPLE', bottom: "SPIELBERG: 'SEVEN BILLION'", template: 'alien' },
+    signal: { top: 'THE SIGNAL:', bottom: '"I AM HERE. I HAVE ALWAYS BEEN HERE."', template: 'signal' },
+    sequel: { top: 'CLOSE ENCOUNTERS 2?', bottom: "KOEPP: 'I'M NOT CONFIRMING THAT'", template: 'eye' }
+  };
+
+  updateMeme();
+
+  function setTemplate(t) {
+    currentTemplate = t;
+    document.querySelectorAll('.template-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    updateMeme();
+  }
+
+  function setQuickText(position, text) {
+    document.getElementById(position + '-text').value = text;
+    updateMeme();
+  }
+
+  function loadPreset() {
+    const preset = presets[document.getElementById('preset').value];
+    if (preset) {
+      document.getElementById('top-text').value = preset.top;
+      document.getElementById('bottom-text').value = preset.bottom;
+      currentTemplate = preset.template;
+      updateMeme();
+    }
+  }
+
+  function updateMeme() {
+    const topText = document.getElementById('top-text').value.toUpperCase();
+    const bottomText = document.getElementById('bottom-text').value.toUpperCase();
+    currentStyle = document.getElementById('meme-style').value;
+    const template = templates[currentTemplate];
+
+    // Background
+    const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+    gradient.addColorStop(0, template.bg[0]);
+    gradient.addColorStop(1, template.bg[1]);
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Style-specific effects
+    if (currentStyle === 'glitch') {
+      for (let i = 0; i < 10; i++) {
+        ctx.fillStyle = `rgba(255,0,100,${Math.random() * 0.1})`;
+        ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 100, 2);
+        ctx.fillStyle = `rgba(0,255,200,${Math.random() * 0.1})`;
+        ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 100, 2);
+      }
+    }
+
+    if (currentStyle === 'classified') {
+      ctx.strokeStyle = 'rgba(255,50,50,0.3)';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(30, 30, canvas.width - 60, canvas.height - 60);
+      ctx.font = 'bold 24px monospace';
+      ctx.fillStyle = 'rgba(255,50,50,0.4)';
+      ctx.save();
+      ctx.translate(canvas.width/2, canvas.height/2);
+      ctx.rotate(-Math.PI/6);
+      ctx.fillText('CLASSIFIED', -80, 0);
+      ctx.restore();
+    }
+
+    // Center emoji
+    ctx.font = '200px serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(template.emoji, canvas.width/2, canvas.height/2 + 60);
+
+    // Top text
+    if (topText) {
+      ctx.font = 'bold 48px Impact, sans-serif';
+      ctx.fillStyle = '#fff';
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = 4;
+      ctx.textAlign = 'center';
+      ctx.strokeText(topText, canvas.width/2, 80);
+      ctx.fillText(topText, canvas.width/2, 80);
+    }
+
+    // Bottom text
+    if (bottomText) {
+      ctx.font = 'bold 48px Impact, sans-serif';
+      ctx.fillStyle = '#fff';
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = 4;
+      ctx.strokeText(bottomText, canvas.width/2, canvas.height - 40);
+      ctx.fillText(bottomText, canvas.width/2, canvas.height - 40);
+    }
+
+    // Watermark
+    ctx.font = '14px sans-serif';
+    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+    ctx.fillText('disclosureday.nicedreamzwholesale.com', canvas.width/2, canvas.height - 10);
+  }
+
+  function downloadMeme() {
+    const link = document.createElement('a');
+    link.download = 'disclosure-day-meme.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  }
+
+  function shareMeme() {
+    const text = 'I made a Disclosure Day meme! The truth is coming June 12, 2026 🛸';
+    const url = 'https://disclosureday.nicedreamzwholesale.com/meme-generator.html';
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=DisclosureDay`, '_blank');
+  }
+</script>
+
+</body>
+</html>

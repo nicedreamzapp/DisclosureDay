@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Alien Type Are You? | Disclosure Day Quiz</title>
+  <meta name="description" content="Take the viral Disclosure Day quiz! Discover which alien archetype matches your personality. Are you a Grey, a Nordic, or something else entirely?">
+  <meta name="keywords" content="Disclosure Day quiz, alien personality quiz, what alien am I, UFO quiz, Spielberg movie quiz">
+  <link rel="canonical" href="https://disclosureday.nicedreamzwholesale.com/quiz.html">
+
+  <meta property="og:title" content="What Alien Type Are You? | Disclosure Day Quiz">
+  <meta property="og:description" content="Take the quiz and discover your alien archetype. Then share your result!">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://disclosureday.nicedreamzwholesale.com/quiz.html">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What Alien Type Are You?">
+  <meta name="twitter:description" content="I just took the Disclosure Day quiz. What's YOUR alien type?">
+
+  <style>
+    :root {
+      --bg: #000408;
+      --card: #0a0d14;
+      --fg: #e9eef7;
+      --muted: #8b95a5;
+      --accent: #00ffcc;
+      --purple: #b5a7ff;
+      --green: #39ff14;
+      --line: rgba(255,255,255,.1);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+    }
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(2,3,10,.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+      padding: 12px 20px;
+    }
+    .nav-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav a { color: var(--fg); text-decoration: none; }
+    .nav-logo { font-weight: 800; font-size: 16px; }
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 100px 20px 60px;
+    }
+    h1 {
+      font-size: clamp(28px, 6vw, 48px);
+      text-align: center;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+    .quiz-container {
+      background: linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 32px;
+      backdrop-filter: blur(10px);
+    }
+    .question {
+      display: none;
+    }
+    .question.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .question-num {
+      font-size: 12px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 12px;
+    }
+    .question-text {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      line-height: 1.4;
+    }
+    .answers {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .answer {
+      padding: 16px 20px;
+      background: rgba(255,255,255,.05);
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 16px;
+    }
+    .answer:hover {
+      background: rgba(0,255,204,.1);
+      border-color: var(--accent);
+      transform: translateX(8px);
+    }
+    .progress-bar {
+      height: 6px;
+      background: rgba(255,255,255,.1);
+      border-radius: 3px;
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--purple));
+      border-radius: 3px;
+      transition: width 0.4s ease;
+    }
+    .result {
+      display: none;
+      text-align: center;
+    }
+    .result.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    .result-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+    }
+    .result-title {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .result-type {
+      font-size: 24px;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .result-desc {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .share-result {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .share-btn {
+      padding: 12px 24px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s ease;
+    }
+    .share-btn:hover { transform: scale(1.05); }
+    .share-btn.twitter { background: #1da1f2; color: #fff; }
+    .share-btn.copy { background: rgba(255,255,255,.15); color: var(--fg); }
+    .retake {
+      color: var(--muted);
+      text-decoration: underline;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    .retake:hover { color: var(--fg); }
+    .traits {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .trait {
+      padding: 6px 14px;
+      background: rgba(0,255,204,.1);
+      border: 1px solid rgba(0,255,204,.3);
+      border-radius: 20px;
+      font-size: 13px;
+      color: var(--accent);
+    }
+    .movie-connection {
+      background: rgba(181,167,255,.1);
+      border: 1px solid rgba(181,167,255,.3);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 24px;
+    }
+    .movie-connection h4 {
+      color: var(--purple);
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    .movie-connection p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Disclosure Day Hub</a>
+    <a href="/">Back to Hub</a>
+  </div>
+</nav>
+
+<div class="container">
+  <h1>What Alien Type Are You?</h1>
+  <p class="subtitle">Answer 7 questions to discover your extraterrestrial archetype</p>
+
+  <div class="quiz-container">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress" style="width: 0%"></div>
+    </div>
+
+    <!-- Question 1 -->
+    <div class="question active" data-q="1">
+      <div class="question-num">Question 1 of 7</div>
+      <div class="question-text">You discover humanity isn't alone. What's your first instinct?</div>
+      <div class="answers">
+        <div class="answer" data-type="grey">Analyze the data. I need to understand everything before reacting.</div>
+        <div class="answer" data-type="nordic">Feel a deep sense of peace. I always knew we weren't alone.</div>
+        <div class="answer" data-type="mantis">Immediately start planning. This changes everything.</div>
+        <div class="answer" data-type="hybrid">Wonder if I somehow already knew... like a memory I forgot.</div>
+      </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question" data-q="2">
+      <div class="question-num">Question 2 of 7</div>
+      <div class="question-text">How do you prefer to communicate?</div>
+      <div class="answers">
+        <div class="answer" data-type="grey">Precisely. Every word should convey maximum information.</div>
+        <div class="answer" data-type="nordic">Through feeling. Words often fail what the heart knows.</div>
+        <div class="answer" data-type="mantis">Strategically. Communication is a tool for achieving goals.</div>
+        <div class="answer" data-type="hybrid">I adapt. Different situations call for different approaches.</div>
+      </div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question" data-q="3">
+      <div class="question-num">Question 3 of 7</div>
+      <div class="question-text">What draws you to the night sky?</div>
+      <div class="answers">
+        <div class="answer" data-type="grey">The mathematical precision of celestial mechanics.</div>
+        <div class="answer" data-type="nordic">The overwhelming beauty and sense of connection.</div>
+        <div class="answer" data-type="mantis">The possibilities. What civilizations might be out there?</div>
+        <div class="answer" data-type="hybrid">A strange feeling of homesickness I can't explain.</div>
+      </div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question" data-q="4">
+      <div class="question-num">Question 4 of 7</div>
+      <div class="question-text">If you could have one ability, which would it be?</div>
+      <div class="answers">
+        <div class="answer" data-type="grey">Perfect memory and instant data processing.</div>
+        <div class="answer" data-type="nordic">Telepathic communication and emotional healing.</div>
+        <div class="answer" data-type="mantis">Seeing all possible futures and outcomes.</div>
+        <div class="answer" data-type="hybrid">The ability to exist between two worlds simultaneously.</div>
+      </div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question" data-q="5">
+      <div class="question-num">Question 5 of 7</div>
+      <div class="question-text">What's your biggest fear about disclosure?</div>
+      <div class="answers">
+        <div class="answer" data-type="grey">That humans won't be rational about the information.</div>
+        <div class="answer" data-type="nordic">That fear will override humanity's capacity for love.</div>
+        <div class="answer" data-type="mantis">That it's already too late to prepare properly.</div>
+        <div class="answer" data-type="hybrid">That I'll have to choose a side.</div>
+      </div>
+    </div>
+
+    <!-- Question 6 -->
+    <div class="question" data-q="6">
+      <div class="question-num">Question 6 of 7</div>
+      <div class="question-text">How do others typically describe you?</div>
+      <div class="answers">
+        <div class="answer" data-type="grey">Intelligent, analytical, sometimes emotionally distant.</div>
+        <div class="answer" data-type="nordic">Compassionate, wise, almost otherworldly calm.</div>
+        <div class="answer" data-type="mantis">Ambitious, forward-thinking, always three steps ahead.</div>
+        <div class="answer" data-type="hybrid">Hard to read. Like I'm from somewhere else.</div>
+      </div>
+    </div>
+
+    <!-- Question 7 -->
+    <div class="question" data-q="7">
+      <div class="question-num">Question 7 of 7</div>
+      <div class="question-text">What role would you play on Disclosure Day?</div>
+      <div class="answers">
+        <div class="answer" data-type="grey">The scientist verifying the evidence.</div>
+        <div class="answer" data-type="nordic">The calm voice helping others process the truth.</div>
+        <div class="answer" data-type="mantis">The leader organizing humanity's response.</div>
+        <div class="answer" data-type="hybrid">The bridge between two species trying to understand each other.</div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="result" id="result-grey">
+      <div class="result-icon">👽</div>
+      <div class="result-title">You Are</div>
+      <div class="result-type">THE GREY</div>
+      <div class="traits">
+        <span class="trait">Analytical</span>
+        <span class="trait">Observant</span>
+        <span class="trait">Methodical</span>
+        <span class="trait">Curious</span>
+      </div>
+      <p class="result-desc">You process the world through logic and data. Emotions exist, but they're secondary to understanding. You've probably already analyzed this quiz to figure out how it works. The Greys are the classic observers — watching, learning, cataloging everything. In Disclosure Day, you'd be the one who spots the patterns everyone else misses.</p>
+      <div class="movie-connection">
+        <h4>Your Disclosure Day Connection</h4>
+        <p>Like the presence in Emily Blunt's broadcast, you operate on frequencies others can't perceive. You see what's hidden in plain sight.</p>
+      </div>
+      <div class="share-result">
+        <a href="#" class="share-btn twitter" onclick="shareResult('Grey', 'Analytical observer who sees patterns others miss')">Share on 𝕏</a>
+        <button class="share-btn copy" onclick="copyResult('Grey')">📋 Copy Result</button>
+      </div>
+      <span class="retake" onclick="retakeQuiz()">Take the quiz again</span>
+    </div>
+
+    <div class="result" id="result-nordic">
+      <div class="result-icon">✨</div>
+      <div class="result-title">You Are</div>
+      <div class="result-type">THE NORDIC</div>
+      <div class="traits">
+        <span class="trait">Empathic</span>
+        <span class="trait">Peaceful</span>
+        <span class="trait">Spiritual</span>
+        <span class="trait">Guiding</span>
+      </div>
+      <p class="result-desc">You lead with your heart. Connection, compassion, and the greater good drive everything you do. You've always felt like you're here for a purpose beyond the ordinary. The Nordics are the benevolent guides — here to help humanity evolve, not through force, but through awakening. In Disclosure Day, you'd help others find calm in the chaos.</p>
+      <div class="movie-connection">
+        <h4>Your Disclosure Day Connection</h4>
+        <p>Like what Colman Domingo felt reading the script — you understand that disclosure isn't about aliens. It's about "the possibility of the human beings we could be."</p>
+      </div>
+      <div class="share-result">
+        <a href="#" class="share-btn twitter" onclick="shareResult('Nordic', 'Empathic guide here to help humanity evolve')">Share on 𝕏</a>
+        <button class="share-btn copy" onclick="copyResult('Nordic')">📋 Copy Result</button>
+      </div>
+      <span class="retake" onclick="retakeQuiz()">Take the quiz again</span>
+    </div>
+
+    <div class="result" id="result-mantis">
+      <div class="result-icon">🦗</div>
+      <div class="result-title">You Are</div>
+      <div class="result-type">THE MANTIS</div>
+      <div class="traits">
+        <span class="trait">Strategic</span>
+        <span class="trait">Visionary</span>
+        <span class="trait">Commanding</span>
+        <span class="trait">Ancient</span>
+      </div>
+      <p class="result-desc">You think in timelines others can't comprehend. While everyone reacts to the present, you're already planning for outcomes decades away. The Mantis beings are said to be the architects — ancient intelligences who orchestrate events across vast stretches of time. In Disclosure Day, you'd be playing a game no one else even knows exists.</p>
+      <div class="movie-connection">
+        <h4>Your Disclosure Day Connection</h4>
+        <p>Like Colin Firth's mysterious character — wired into something bigger, seeing what others cannot, possibly orchestrating events from behind the scenes.</p>
+      </div>
+      <div class="share-result">
+        <a href="#" class="share-btn twitter" onclick="shareResult('Mantis', 'Strategic visionary playing a game others cannot see')">Share on 𝕏</a>
+        <button class="share-btn copy" onclick="copyResult('Mantis')">📋 Copy Result</button>
+      </div>
+      <span class="retake" onclick="retakeQuiz()">Take the quiz again</span>
+    </div>
+
+    <div class="result" id="result-hybrid">
+      <div class="result-icon">🌗</div>
+      <div class="result-title">You Are</div>
+      <div class="result-type">THE HYBRID</div>
+      <div class="traits">
+        <span class="trait">Adaptable</span>
+        <span class="trait">Mysterious</span>
+        <span class="trait">Between Worlds</span>
+        <span class="trait">Awakening</span>
+      </div>
+      <p class="result-desc">You've never quite fit in anywhere, and now you're starting to understand why. Part of something ancient, part of something new — you exist in the space between. The Hybrids are said to be the bridge between species, carrying DNA or consciousness from both worlds. In Disclosure Day, you might discover you were the disclosure all along.</p>
+      <div class="movie-connection">
+        <h4>Your Disclosure Day Connection</h4>
+        <p>Like the "Forgotten Origins" theory suggests — you're not waiting for aliens. You might BE what disclosure reveals. Remember: O'Connor says "seven billion" for a reason.</p>
+      </div>
+      <div class="share-result">
+        <a href="#" class="share-btn twitter" onclick="shareResult('Hybrid', 'Bridge between worlds, possibly the disclosure itself')">Share on 𝕏</a>
+        <button class="share-btn copy" onclick="copyResult('Hybrid')">📋 Copy Result</button>
+      </div>
+      <span class="retake" onclick="retakeQuiz()">Take the quiz again</span>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px">
+    <a href="/" style="color:var(--accent);font-size:14px">← Back to Disclosure Day Hub</a>
+  </div>
+</div>
+
+<script>
+  const questions = document.querySelectorAll('.question');
+  const progress = document.getElementById('progress');
+  let currentQ = 0;
+  let scores = { grey: 0, nordic: 0, mantis: 0, hybrid: 0 };
+
+  document.querySelectorAll('.answer').forEach(answer => {
+    answer.addEventListener('click', () => {
+      const type = answer.dataset.type;
+      scores[type]++;
+      currentQ++;
+
+      if (currentQ < questions.length) {
+        questions[currentQ - 1].classList.remove('active');
+        questions[currentQ].classList.add('active');
+        progress.style.width = ((currentQ) / questions.length * 100) + '%';
+      } else {
+        showResult();
+      }
+    });
+  });
+
+  function showResult() {
+    document.querySelectorAll('.question').forEach(q => q.classList.remove('active'));
+    progress.style.width = '100%';
+
+    const winner = Object.entries(scores).reduce((a, b) => a[1] > b[1] ? a : b)[0];
+    document.getElementById('result-' + winner).classList.add('active');
+  }
+
+  function shareResult(type, desc) {
+    const text = `I took the Disclosure Day quiz and I'm a ${type.toUpperCase()}! "${desc}" 👽\n\nWhat alien type are you?`;
+    const url = 'https://disclosureday.nicedreamzwholesale.com/quiz.html';
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=DisclosureDay,WhatAlienAreYou`, '_blank');
+  }
+
+  function copyResult(type) {
+    const text = `I took the Disclosure Day quiz and I'm a ${type.toUpperCase()}! 👽\n\nTake the quiz: https://disclosureday.nicedreamzwholesale.com/quiz.html\n\n#DisclosureDay`;
+    navigator.clipboard.writeText(text);
+    event.target.innerHTML = '✓ Copied!';
+    setTimeout(() => event.target.innerHTML = '📋 Copy Result', 2000);
+  }
+
+  function retakeQuiz() {
+    scores = { grey: 0, nordic: 0, mantis: 0, hybrid: 0 };
+    currentQ = 0;
+    document.querySelectorAll('.result').forEach(r => r.classList.remove('active'));
+    questions[0].classList.add('active');
+    progress.style.width = '0%';
+  }
+</script>
+
+</body>
+</html>

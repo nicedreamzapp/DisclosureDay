@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real UAP Disclosure Timeline | From Roswell to Today</title>
+  <meta name="description" content="Interactive timeline of real UAP/UFO disclosure events from 1947 to present. Congressional hearings, Pentagon releases, whistleblowers - the road to Disclosure Day.">
+  <meta name="keywords" content="UAP timeline, UFO disclosure history, Pentagon UAP, David Grusch, Nimitz UFO, congressional hearings">
+  <link rel="canonical" href="https://disclosureday.nicedreamzwholesale.com/uap-timeline.html">
+
+  <style>
+    :root {
+      --bg: #000408;
+      --card: #0a0d14;
+      --fg: #e9eef7;
+      --muted: #8b95a5;
+      --accent: #00ffcc;
+      --purple: #b5a7ff;
+      --line: rgba(255,255,255,.1);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+    }
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(2,3,10,.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+      padding: 12px 20px;
+    }
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav a { color: var(--fg); text-decoration: none; }
+    .nav-logo { font-weight: 800; font-size: 16px; }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 100px 20px 60px;
+    }
+    h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+    .intro {
+      text-align: center;
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+    .decade-filter {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .decade-btn {
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--fg);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .decade-btn:hover, .decade-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #000;
+    }
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent), var(--purple), var(--accent));
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 32px;
+      padding-left: 30px;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -25px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 20px rgba(0,255,204,0.5);
+    }
+    .timeline-item.major::before {
+      width: 18px;
+      height: 18px;
+      left: -28px;
+      top: 5px;
+      background: var(--purple);
+      box-shadow: 0 0 30px rgba(181,167,255,0.6);
+    }
+    .timeline-date {
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 6px;
+      letter-spacing: .05em;
+    }
+    .timeline-item.major .timeline-date {
+      color: var(--purple);
+    }
+    .timeline-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .timeline-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .timeline-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+    .tag-govt { background: rgba(255,107,107,.2); color: #ff6b6b; }
+    .tag-media { background: rgba(110,231,255,.2); color: #6ee7ff; }
+    .tag-witness { background: rgba(181,167,255,.2); color: #b5a7ff; }
+    .tag-movie { background: rgba(57,255,20,.2); color: #39ff14; }
+    .movie-connection {
+      background: linear-gradient(135deg, rgba(57,255,20,.1), rgba(0,0,0,.3));
+      border: 1px solid rgba(57,255,20,.3);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    .movie-connection h3 {
+      color: #39ff14;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .movie-connection p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Disclosure Day Hub</a>
+    <a href="/">Back to Hub</a>
+  </div>
+</nav>
+
+<div class="container">
+  <h1>The Road to Disclosure</h1>
+  <p class="subtitle">A Timeline of Real UAP Events</p>
+  <p class="intro">From Roswell to Congressional hearings, humanity has been building toward this moment. <em>Disclosure Day</em> arrives during unprecedented real-world transparency about UAPs. This is the history that led us here.</p>
+
+  <div class="decade-filter">
+    <button class="decade-btn active" onclick="filterDecade('all')">All</button>
+    <button class="decade-btn" onclick="filterDecade('1940')">1940s</button>
+    <button class="decade-btn" onclick="filterDecade('1950')">1950s-60s</button>
+    <button class="decade-btn" onclick="filterDecade('1970')">1970s-90s</button>
+    <button class="decade-btn" onclick="filterDecade('2000')">2000s</button>
+    <button class="decade-btn" onclick="filterDecade('2017')">2017+</button>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item major" data-decade="1940">
+      <div class="timeline-date">JULY 1947</div>
+      <div class="timeline-title">The Roswell Incident</div>
+      <div class="timeline-desc">A rancher discovers debris on his property near Roswell, New Mexico. The Army initially announces recovery of a "flying disc" before retracting the statement. The incident becomes the foundational event of modern UFO culture.</div>
+      <span class="timeline-tag tag-govt">Government</span>
+    </div>
+
+    <div class="timeline-item" data-decade="1950">
+      <div class="timeline-date">1952</div>
+      <div class="timeline-title">Project Blue Book Begins</div>
+      <div class="timeline-desc">The US Air Force launches Project Blue Book, the longest-running official UFO investigation program. It will investigate over 12,000 sightings before closing in 1969.</div>
+      <span class="timeline-tag tag-govt">Government</span>
+    </div>
+
+    <div class="timeline-item" data-decade="1950">
+      <div class="timeline-date">1952</div>
+      <div class="timeline-title">Washington D.C. UFO Incident</div>
+      <div class="timeline-desc">Multiple UFOs appear on radar and are witnessed visually over Washington D.C. on consecutive weekends. Fighter jets are scrambled. Headlines worldwide.</div>
+      <span class="timeline-tag tag-witness">Witness</span>
+    </div>
+
+    <div class="timeline-item" data-decade="1970">
+      <div class="timeline-date">1977</div>
+      <div class="timeline-title">Close Encounters Released</div>
+      <div class="timeline-desc">Steven Spielberg releases <em>Close Encounters of the Third Kind</em>, consulting with real UFO researcher J. Allen Hynek. The film transforms public perception of alien contact.</div>
+      <span class="timeline-tag tag-movie">Cinema</span>
+    </div>
+
+    <div class="timeline-item" data-decade="1970">
+      <div class="timeline-date">1980</div>
+      <div class="timeline-title">Rendlesham Forest Incident</div>
+      <div class="timeline-desc">US Air Force personnel witness unexplained lights and a craft in Rendlesham Forest, UK. Often called "Britain's Roswell." Witnesses include high-ranking officers.</div>
+      <span class="timeline-tag tag-witness">Witness</span>
+    </div>
+
+    <div class="timeline-item" data-decade="2000">
+      <div class="timeline-date">2004</div>
+      <div class="timeline-title">USS Nimitz "Tic Tac" Encounter</div>
+      <div class="timeline-desc">Navy pilots from the USS Nimitz encounter a "Tic Tac" shaped object performing impossible maneuvers off San Diego. The incident is recorded on FLIR systems.</div>
+      <span class="timeline-tag tag-witness">Witness</span>
+    </div>
+
+    <div class="timeline-item major" data-decade="2017">
+      <div class="timeline-date">DECEMBER 2017</div>
+      <div class="timeline-title">Pentagon UAP Program Revealed</div>
+      <div class="timeline-desc">The New York Times reveals AATIP (Advanced Aerospace Threat Identification Program), a secret Pentagon program investigating UAPs. The Nimitz video is officially released. The modern disclosure era begins.</div>
+      <span class="timeline-tag tag-media">Media</span>
+    </div>
+
+    <div class="timeline-item" data-decade="2017">
+      <div class="timeline-date">2020</div>
+      <div class="timeline-title">Pentagon Officially Releases UAP Videos</div>
+      <div class="timeline-desc">The Department of Defense officially releases three UAP videos (GIMBAL, GO FAST, TIC TAC), confirming their authenticity. The term "UAP" enters mainstream vocabulary.</div>
+      <span class="timeline-tag tag-govt">Government</span>
+    </div>
+
+    <div class="timeline-item" data-decade="2017">
+      <div class="timeline-date">2022</div>
+      <div class="timeline-title">First Congressional Hearing in 50 Years</div>
+      <div class="timeline-desc">Congress holds the first public hearing on UAPs since the 1970s. Pentagon officials testify about unexplained encounters. A new era of transparency begins.</div>
+      <span class="timeline-tag tag-govt">Government</span>
+    </div>
+
+    <div class="timeline-item major" data-decade="2017">
+      <div class="timeline-date">JULY 2023</div>
+      <div class="timeline-title">David Grusch Testimony</div>
+      <div class="timeline-desc">Intelligence officer David Grusch testifies to Congress that the US government possesses "non-human biologics" and recovered craft. The most explosive public testimony in UAP history.</div>
+      <span class="timeline-tag tag-govt">Government</span>
+    </div>
+
+    <div class="timeline-item" data-decade="2017">
+      <div class="timeline-date">2024</div>
+      <div class="timeline-title">NASA UAP Research Office</div>
+      <div class="timeline-desc">NASA establishes a dedicated office for UAP research, signaling institutional acceptance of the phenomenon as worthy of serious scientific study.</div>
+      <span class="timeline-tag tag-govt">Government</span>
+    </div>
+
+    <div class="timeline-item" data-decade="2017">
+      <div class="timeline-date">DECEMBER 2025</div>
+      <div class="timeline-title">Disclosure Day Trailer Drops</div>
+      <div class="timeline-desc">Steven Spielberg releases the trailer for <em>Disclosure Day</em>. The film's title directly references UFO community terminology. Conspiracy theorists ask: is this soft disclosure?</div>
+      <span class="timeline-tag tag-movie">Cinema</span>
+    </div>
+
+    <div class="timeline-item major" data-decade="2017">
+      <div class="timeline-date">JUNE 12, 2026</div>
+      <div class="timeline-title">Disclosure Day</div>
+      <div class="timeline-desc">Spielberg's <em>Disclosure Day</em> arrives in theaters. Fiction? Or preparation for what comes next?</div>
+      <span class="timeline-tag tag-movie">Cinema</span>
+    </div>
+  </div>
+
+  <div class="movie-connection">
+    <h3>Why This Timeline Matters</h3>
+    <p><em>Disclosure Day</em> doesn't exist in a vacuum. Spielberg is releasing a film about government disclosure of extraterrestrial contact during the most active period of real government disclosure in history. The title uses UFO community terminology. The timing aligns with Close Encounters' 50th anniversary. Coincidence? Or is the master of alien cinema telling us something?</p>
+  </div>
+
+  <div style="text-align:center;margin-top:40px">
+    <a href="/" style="color:var(--accent)">← Back to Disclosure Day Hub</a>
+  </div>
+</div>
+
+<script>
+  function filterDecade(decade) {
+    document.querySelectorAll('.decade-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    document.querySelectorAll('.timeline-item').forEach(item => {
+      if (decade === 'all' || item.dataset.decade === decade) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
