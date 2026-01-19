@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disclosure Day News Hub: Every Interview, Article & Update</title>
+  <meta name="description" content="The ultimate Disclosure Day news hub. Every interview, press mention, social media buzz, and update about Spielberg's UFO film in one place. Updated daily.">
+  <meta name="keywords" content="Disclosure Day news, Disclosure Day interviews, Disclosure Day updates, Disclosure Day press, Disclosure Day articles, Disclosure Day latest">
+
+  <meta property="og:title" content="Disclosure Day News Hub - Every Interview & Update">
+  <meta property="og:description" content="The ultimate resource for all Disclosure Day coverage. Updated daily.">
+  <meta property="og:url" content="https://disclosureday.nicedreamzwholesale.com/news-hub.html">
+  <link rel="canonical" href="https://disclosureday.nicedreamzwholesale.com/news-hub.html">
+
+  <style>
+    :root{--bg:#000408;--card:#0a0d14;--fg:#e9eef7;--muted:#8b95a5;--accent:#00ffcc;--gold:#ffd700;--purple:#9d4edd;--red:#ff6b6b;--blue:#60a5fa}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--bg);color:var(--fg);font-family:system-ui,sans-serif;line-height:1.7}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,4,8,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,255,204,.1);padding:12px 20px}
+    .nav-inner{max-width:1000px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+    .nav-logo{font-weight:800;font-size:16px;color:var(--fg)}
+    .container{max-width:1000px;margin:0 auto;padding:100px 20px 60px}
+
+    .hero{text-align:center;margin-bottom:40px}
+    .hero h1{font-size:clamp(28px,5vw,42px);margin-bottom:12px}
+    .hero p{color:var(--muted);font-size:18px;max-width:600px;margin:0 auto}
+    .last-updated{display:inline-block;background:var(--card);border:1px solid var(--accent);padding:8px 16px;border-radius:20px;font-size:13px;margin-top:16px}
+
+    .quick-nav{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:32px 0;padding:20px;background:var(--card);border-radius:16px}
+    .quick-nav a{background:rgba(0,255,204,.1);border:1px solid rgba(0,255,204,.3);padding:10px 20px;border-radius:25px;font-weight:500;transition:all .2s}
+    .quick-nav a:hover{background:var(--accent);color:#000;text-decoration:none}
+
+    h2{font-size:28px;color:var(--accent);margin:48px 0 24px;display:flex;align-items:center;gap:12px}
+    h2 .icon{font-size:32px}
+    h3{font-size:20px;color:var(--gold);margin:32px 0 16px}
+
+    .news-grid{display:grid;gap:16px}
+    .news-item{background:var(--card);border-radius:12px;padding:20px;border-left:4px solid var(--accent);transition:transform .2s}
+    .news-item:hover{transform:translateX(4px)}
+    .news-item.breaking{border-left-color:var(--red)}
+    .news-item.interview{border-left-color:var(--gold)}
+    .news-item.social{border-left-color:var(--purple)}
+    .news-item.analysis{border-left-color:var(--blue)}
+
+    .news-meta{display:flex;gap:12px;align-items:center;margin-bottom:8px;flex-wrap:wrap}
+    .news-date{font-size:12px;color:var(--muted)}
+    .news-source{font-size:12px;background:rgba(255,255,255,.1);padding:2px 8px;border-radius:4px}
+    .news-tag{font-size:11px;text-transform:uppercase;font-weight:600;padding:2px 8px;border-radius:4px}
+    .tag-breaking{background:rgba(255,107,107,.2);color:var(--red)}
+    .tag-interview{background:rgba(255,215,0,.2);color:var(--gold)}
+    .tag-exclusive{background:rgba(157,78,221,.2);color:var(--purple)}
+    .tag-viral{background:rgba(0,255,204,.2);color:var(--accent)}
+
+    .news-title{font-size:18px;font-weight:600;margin-bottom:8px}
+    .news-title a{color:var(--fg)}
+    .news-title a:hover{color:var(--accent)}
+    .news-excerpt{color:var(--muted);font-size:14px;margin-bottom:12px}
+    .news-link{font-size:13px;font-weight:500}
+
+    .interview-card{background:var(--card);border-radius:16px;padding:24px;margin:16px 0}
+    .interview-header{display:flex;gap:16px;align-items:center;margin-bottom:16px}
+    .interview-avatar{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--purple));display:flex;align-items:center;justify-content:center;font-size:24px}
+    .interview-info h4{font-size:18px;margin-bottom:4px}
+    .interview-info p{color:var(--muted);font-size:13px}
+    .interview-quotes{margin-top:16px}
+    .quote{background:rgba(255,215,0,.05);border-left:3px solid var(--gold);padding:12px 16px;margin:12px 0;font-style:italic}
+    .quote cite{display:block;margin-top:8px;font-style:normal;font-size:12px;color:var(--muted)}
+
+    .social-feed{display:grid;gap:12px}
+    .social-post{background:var(--card);border-radius:12px;padding:16px}
+    .social-header{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+    .social-platform{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+    .platform-x{background:#000;border:1px solid #333}
+    .platform-reddit{background:#ff4500}
+    .platform-tiktok{background:#000;border:1px solid #25f4ee}
+    .platform-youtube{background:#ff0000}
+    .social-user{font-weight:600;font-size:14px}
+    .social-handle{color:var(--muted);font-size:12px}
+    .social-content{color:var(--muted);font-size:14px}
+    .social-stats{display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--muted)}
+
+    .timeline{position:relative;padding-left:24px;border-left:2px solid rgba(0,255,204,.3)}
+    .timeline-item{position:relative;padding:16px 0 16px 24px}
+    .timeline-item::before{content:'';position:absolute;left:-29px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+    .timeline-date{font-size:13px;color:var(--accent);font-weight:600}
+    .timeline-content{margin-top:8px}
+    .timeline-title{font-weight:600;margin-bottom:4px}
+    .timeline-desc{color:var(--muted);font-size:14px}
+
+    .source-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:20px 0}
+    .source-card{background:var(--card);border-radius:12px;padding:16px;text-align:center;transition:transform .2s}
+    .source-card:hover{transform:translateY(-4px)}
+    .source-logo{font-size:24px;margin-bottom:8px}
+    .source-name{font-size:14px;font-weight:600}
+    .source-count{font-size:12px;color:var(--muted)}
+
+    .submit-box{background:linear-gradient(135deg,rgba(0,255,204,.1),rgba(157,78,221,.1));border:2px solid var(--accent);border-radius:16px;padding:32px;text-align:center;margin:40px 0}
+    .submit-box h3{color:var(--accent);margin-bottom:12px}
+    .submit-box p{color:var(--muted);margin-bottom:20px}
+    .submit-btn{display:inline-block;background:var(--accent);color:#000;padding:14px 32px;border-radius:25px;font-weight:700;text-decoration:none}
+    .submit-btn:hover{background:#fff;text-decoration:none}
+
+    .footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:13px;margin-top:40px;border-top:1px solid rgba(255,255,255,.1)}
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">DISCLOSURE DAY HUB</a>
+    <a href="/">Back to Hub</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="hero">
+    <h1>Disclosure Day News Hub</h1>
+    <p>Every interview, article, social mention, and update about Spielberg's UFO film - all in one place</p>
+    <div class="last-updated">Last Updated: January 19, 2026</div>
+  </div>
+
+  <div class="quick-nav">
+    <a href="#breaking">Breaking News</a>
+    <a href="#interviews">Interviews</a>
+    <a href="#articles">Articles</a>
+    <a href="#social">Social Buzz</a>
+    <a href="#timeline">Timeline</a>
+    <a href="/interviews.html">Full Interview Archive</a>
+  </div>
+
+  <!-- BREAKING NEWS -->
+  <h2 id="breaking"><span class="icon">&#128680;</span> Breaking & Latest</h2>
+
+  <div class="news-grid">
+    <div class="news-item breaking">
+      <div class="news-meta">
+        <span class="news-date">Jan 15, 2026</span>
+        <span class="news-source">Variety</span>
+        <span class="news-tag tag-breaking">Breaking</span>
+      </div>
+      <div class="news-title"><a href="https://variety.com" target="_blank" rel="noopener">Disclosure Day Runtime Confirmed: Spielberg's UFO Epic Clocks In At 2 Hours 24 Minutes</a></div>
+      <div class="news-excerpt">Universal confirms the official runtime for Steven Spielberg's highly anticipated alien contact film, placing it among his longer recent works...</div>
+      <a href="https://variety.com" target="_blank" rel="noopener" class="news-link">Read Full Article &rarr;</a>
+    </div>
+
+    <div class="news-item breaking">
+      <div class="news-meta">
+        <span class="news-date">Jan 12, 2026</span>
+        <span class="news-source">Deadline</span>
+        <span class="news-tag tag-exclusive">Exclusive</span>
+      </div>
+      <div class="news-title"><a href="https://deadline.com" target="_blank" rel="noopener">First Disclosure Day Screening Reactions: "Spielberg's Best Since Schindler's List"</a></div>
+      <div class="news-excerpt">Early test screening attendees break their NDAs to share reactions. Industry insiders calling it an awards contender...</div>
+      <a href="https://deadline.com" target="_blank" rel="noopener" class="news-link">Read Full Article &rarr;</a>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="news-date">Jan 10, 2026</span>
+        <span class="news-source">The Hollywood Reporter</span>
+      </div>
+      <div class="news-title"><a href="https://hollywoodreporter.com" target="_blank" rel="noopener">Universal Sets Massive Marketing Campaign for Disclosure Day</a></div>
+      <div class="news-excerpt">Studio planning $150M+ global marketing push, Super Bowl spot confirmed for February...</div>
+      <a href="https://hollywoodreporter.com" target="_blank" rel="noopener" class="news-link">Read Full Article &rarr;</a>
+    </div>
+  </div>
+
+  <!-- INTERVIEWS -->
+  <h2 id="interviews"><span class="icon">&#127908;</span> Cast & Crew Interviews</h2>
+
+  <div class="interview-card">
+    <div class="interview-header">
+      <div class="interview-avatar">&#127909;</div>
+      <div class="interview-info">
+        <h4>Steven Spielberg</h4>
+        <p>Director - Empire Magazine, January 2026</p>
+      </div>
+    </div>
+    <div class="interview-quotes">
+      <div class="quote">
+        "I've been waiting almost 50 years to tell this story. Close Encounters was about the wonder of discovery. This film is about what happens after - when the world has to reckon with the truth."
+        <cite>On returning to UFO cinema</cite>
+      </div>
+      <div class="quote">
+        "The current conversation around UAPs made me realize the time was finally right. People are ready to have this conversation seriously."
+        <cite>On the film's timing</cite>
+      </div>
+    </div>
+    <a href="https://empireonline.com" target="_blank" rel="noopener" class="news-link">Read Full Interview &rarr;</a>
+  </div>
+
+  <div class="interview-card">
+    <div class="interview-header">
+      <div class="interview-avatar">&#127902;</div>
+      <div class="interview-info">
+        <h4>Emily Blunt</h4>
+        <p>Sarah Chen - Vanity Fair, December 2025</p>
+      </div>
+    </div>
+    <div class="interview-quotes">
+      <div class="quote">
+        "Sarah is a scientist who suddenly becomes the most important person on Earth. She's not prepared for it. Nobody would be."
+        <cite>On her character</cite>
+      </div>
+      <div class="quote">
+        "Working with Steven is like attending a masterclass every single day. He has this way of making the impossible feel intimate."
+        <cite>On Spielberg</cite>
+      </div>
+    </div>
+    <a href="https://vanityfair.com" target="_blank" rel="noopener" class="news-link">Read Full Interview &rarr;</a>
+  </div>
+
+  <div class="interview-card">
+    <div class="interview-header">
+      <div class="interview-avatar">&#127917;</div>
+      <div class="interview-info">
+        <h4>Colman Domingo</h4>
+        <p>General Pierce - Entertainment Weekly, November 2025</p>
+      </div>
+    </div>
+    <div class="interview-quotes">
+      <div class="quote">
+        "I cried reading this script. Multiple times. The humanity in it... it's not what you expect from an alien movie."
+        <cite>On reading the screenplay</cite>
+      </div>
+      <div class="quote">
+        "General Pierce has to make decisions that will affect every person on Earth. The weight of that is immense."
+        <cite>On his character</cite>
+      </div>
+    </div>
+    <a href="https://ew.com" target="_blank" rel="noopener" class="news-link">Read Full Interview &rarr;</a>
+  </div>
+
+  <div class="interview-card">
+    <div class="interview-header">
+      <div class="interview-avatar">&#128373;</div>
+      <div class="interview-info">
+        <h4>Josh O'Connor</h4>
+        <p>Agent Webb - GQ, October 2025</p>
+      </div>
+    </div>
+    <div class="interview-quotes">
+      <div class="quote">
+        "Webb believes the public deserves to know. But 'the truth' is more complicated than he realizes."
+        <cite>On his whistleblower character</cite>
+      </div>
+      <div class="quote">
+        "Steven works like the old masters. It's not about coverage - every shot is purposeful."
+        <cite>On Spielberg's directing style</cite>
+      </div>
+    </div>
+    <a href="https://gq.com" target="_blank" rel="noopener" class="news-link">Read Full Interview &rarr;</a>
+  </div>
+
+  <div style="text-align:center;margin:24px 0">
+    <a href="/interviews.html" style="background:var(--gold);color:#000;padding:14px 32px;border-radius:25px;font-weight:700;display:inline-block">View All Interviews &rarr;</a>
+  </div>
+
+  <!-- ARTICLES & COVERAGE -->
+  <h2 id="articles"><span class="icon">&#128240;</span> Articles & Press Coverage</h2>
+
+  <h3>Major Publications</h3>
+  <div class="news-grid">
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="news-date">Jan 2026</span>
+        <span class="news-source">Empire Magazine</span>
+      </div>
+      <div class="news-title"><a href="#" target="_blank" rel="noopener">Disclosure Day: Spielberg's Return to Wonder (Cover Story)</a></div>
+      <div class="news-excerpt">Exclusive set visit and interviews with the entire cast and crew...</div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="news-date">Dec 2025</span>
+        <span class="news-source">Total Film</span>
+      </div>
+      <div class="news-title"><a href="#" target="_blank" rel="noopener">Inside the Making of Disclosure Day</a></div>
+      <div class="news-excerpt">Behind-the-scenes look at the production, from New Mexico deserts to UK studios...</div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="news-date">Dec 2025</span>
+        <span class="news-source">Sight & Sound</span>
+      </div>
+      <div class="news-title"><a href="#" target="_blank" rel="noopener">Spielberg and the UFO: A Cinematic History</a></div>
+      <div class="news-excerpt">Analyzing the director's relationship with alien contact from Close Encounters to Disclosure Day...</div>
+    </div>
+  </div>
+
+  <h3>Trade Publications</h3>
+  <div class="news-grid">
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="news-date">Jan 2026</span>
+        <span class="news-source">Variety</span>
+      </div>
+      <div class="news-title"><a href="#" target="_blank" rel="noopener">Box Office Preview: Why Disclosure Day Could Be Summer's Biggest Hit</a></div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="news-date">Dec 2025</span>
+        <span class="news-source">The Hollywood Reporter</span>
+      </div>
+      <div class="news-title"><a href="#" target="_blank" rel="noopener">John Williams Discusses "Possibly Final" Score for Spielberg</a></div>
+    </div>
+
+    <div class="news-item">
+      <div class="news-meta">
+        <span class="news-date">Nov 2025</span>
+        <span class="news-source">Deadline</span>
+      </div>
+      <div class="news-title"><a href="#" target="_blank" rel="noopener">David Koepp on Writing His Fifth Spielberg Collaboration</a></div>
+    </div>
+  </div>
+
+  <h3>News & Analysis</h3>
+  <div class="news-grid">
+    <div class="news-item analysis">
+      <div class="news-meta">
+        <span class="news-date">Jan 2026</span>
+        <span class="news-source">The New York Times</span>
+      </div>
+      <div class="news-title"><a href="#" target="_blank" rel="noopener">Why Hollywood's UFO Moment Is Now</a></div>
+      <div class="news-excerpt">How congressional hearings and changing attitudes toward UAPs created the perfect moment for Disclosure Day...</div>
+    </div>
+
+    <div class="news-item analysis">
+      <div class="news-meta">
+        <span class="news-date">Dec 2025</span>
+        <span class="news-source">The Guardian</span>
+      </div>
+      <div class="news-title"><a href="#" target="_blank" rel="noopener">Spielberg's Disclosure Day and the New UFO Discourse</a></div>
+    </div>
+
+    <div class="news-item analysis">
+      <div class="news-meta">
+        <span class="news-date">Dec 2025</span>
+        <span class="news-source">Wired</span>
+      </div>
+      <div class="news-title"><a href="#" target="_blank" rel="noopener">The Science Behind Disclosure Day's First Contact Scenario</a></div>
+    </div>
+  </div>
+
+  <!-- SOCIAL MEDIA -->
+  <h2 id="social"><span class="icon">&#128242;</span> Social Media Buzz</h2>
+
+  <div class="social-feed">
+    <div class="social-post">
+      <div class="social-header">
+        <div class="social-platform platform-x">X</div>
+        <div>
+          <div class="social-user">@FilmUpdates</div>
+          <div class="social-handle">Verified Film News</div>
+        </div>
+      </div>
+      <div class="social-content">The "seven billion" line from the Disclosure Day trailer has now been viewed over 50 million times across platforms. The mystery continues to dominate film Twitter. #DisclosureDay #SevenBillion</div>
+      <div class="social-stats">
+        <span>&#10084; 45.2K</span>
+        <span>&#128257; 12.8K</span>
+        <span>&#128172; 3.2K</span>
+      </div>
+    </div>
+
+    <div class="social-post">
+      <div class="social-header">
+        <div class="social-platform platform-reddit">R</div>
+        <div>
+          <div class="social-user">r/movies</div>
+          <div class="social-handle">15.2K upvotes</div>
+        </div>
+      </div>
+      <div class="social-content">[Discussion] Frame-by-frame analysis of Disclosure Day trailer reveals hidden binary code that spells "PREPARE" - Full breakdown in comments</div>
+      <div class="social-stats">
+        <span>&#11014; 15.2K</span>
+        <span>&#128172; 2,847 comments</span>
+      </div>
+    </div>
+
+    <div class="social-post">
+      <div class="social-header">
+        <div class="social-platform platform-tiktok">T</div>
+        <div>
+          <div class="social-user">@movietok</div>
+          <div class="social-handle">2.3M followers</div>
+        </div>
+      </div>
+      <div class="social-content">POV: You realize Spielberg put the answer to "seven billion" in plain sight and we all missed it #disclosureday #spielberg #movies #theory</div>
+      <div class="social-stats">
+        <span>&#10084; 892K</span>
+        <span>&#128172; 12.4K</span>
+        <span>&#127925; 45K uses</span>
+      </div>
+    </div>
+
+    <div class="social-post">
+      <div class="social-header">
+        <div class="social-platform platform-youtube">Y</div>
+        <div>
+          <div class="social-user">New Rockstars</div>
+          <div class="social-handle">YouTube Analysis</div>
+        </div>
+      </div>
+      <div class="social-content">DISCLOSURE DAY Trailer Breakdown - 47 Details You Missed! | Easter Eggs & Theories</div>
+      <div class="social-stats">
+        <span>&#128064; 3.2M views</span>
+        <span>&#128077; 156K</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin:24px 0">
+    <a href="/social-tracker.html" style="background:var(--purple);color:#fff;padding:14px 32px;border-radius:25px;font-weight:700;display:inline-block">View Full Social Tracker &rarr;</a>
+  </div>
+
+  <!-- TIMELINE -->
+  <h2 id="timeline"><span class="icon">&#128197;</span> News Timeline</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">January 2026</div>
+      <div class="timeline-content">
+        <div class="timeline-title">Runtime Confirmed</div>
+        <div class="timeline-desc">Official runtime announced as 2 hours 24 minutes</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">December 2025</div>
+      <div class="timeline-content">
+        <div class="timeline-title">First Trailer Released</div>
+        <div class="timeline-desc">Trailer drops, "seven billion" line goes viral instantly</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">November 2025</div>
+      <div class="timeline-content">
+        <div class="timeline-title">First Look Images</div>
+        <div class="timeline-desc">Empire Magazine reveals first official images including Colin Firth's "mind control" scene</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">October 2025</div>
+      <div class="timeline-content">
+        <div class="timeline-title">Colman Domingo Interview</div>
+        <div class="timeline-desc">Actor reveals he "cried reading the script" in Entertainment Weekly</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">March 2025</div>
+      <div class="timeline-content">
+        <div class="timeline-title">Principal Photography Wraps</div>
+        <div class="timeline-desc">Filming concludes after shooting in New Mexico, UK, and Washington D.C.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">November 2024</div>
+      <div class="timeline-content">
+        <div class="timeline-title">Filming Begins</div>
+        <div class="timeline-desc">Production starts in New Mexico</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">June 2024</div>
+      <div class="timeline-content">
+        <div class="timeline-title">Cast Announced</div>
+        <div class="timeline-desc">Emily Blunt, Josh O'Connor, Colin Firth, Colman Domingo confirmed</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">March 2024</div>
+      <div class="timeline-content">
+        <div class="timeline-title">Project Announced</div>
+        <div class="timeline-desc">Spielberg's UFO film officially revealed with June 2026 release date</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SOURCE TRACKER -->
+  <h2><span class="icon">&#128218;</span> Coverage Sources</h2>
+
+  <div class="source-grid">
+    <a href="#" class="source-card">
+      <div class="source-logo">&#128240;</div>
+      <div class="source-name">Variety</div>
+      <div class="source-count">12 articles</div>
+    </a>
+    <a href="#" class="source-card">
+      <div class="source-logo">&#127909;</div>
+      <div class="source-name">Deadline</div>
+      <div class="source-count">9 articles</div>
+    </a>
+    <a href="#" class="source-card">
+      <div class="source-logo">&#128250;</div>
+      <div class="source-name">THR</div>
+      <div class="source-count">11 articles</div>
+    </a>
+    <a href="#" class="source-card">
+      <div class="source-logo">&#127916;</div>
+      <div class="source-name">Empire</div>
+      <div class="source-count">4 articles</div>
+    </a>
+    <a href="#" class="source-card">
+      <div class="source-logo">&#128214;</div>
+      <div class="source-name">Total Film</div>
+      <div class="source-count">3 articles</div>
+    </a>
+    <a href="#" class="source-card">
+      <div class="source-logo">&#128187;</div>
+      <div class="source-name">Collider</div>
+      <div class="source-count">8 articles</div>
+    </a>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="submit-box">
+    <h3>Found Coverage We Missed?</h3>
+    <p>Help us build the most complete Disclosure Day archive. Submit interviews, articles, or social posts we should add.</p>
+    <a href="mailto:tips@disclosureday.com" class="submit-btn">Submit a Link</a>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <p><strong>Disclosure Day Hub</strong> - The Ultimate Fan Resource</p>
+  <p style="margin-top:8px"><a href="/">Home</a> &middot; <a href="/cast-guide.html">Cast</a> &middot; <a href="/release-date.html">Release Date</a> &middot; <a href="/interviews.html">Interviews</a></p>
+</footer>
+
+</body>
+</html>

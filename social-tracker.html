@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disclosure Day Social Media Tracker: X, Reddit, TikTok & YouTube Buzz</title>
+  <meta name="description" content="Track all Disclosure Day social media buzz. Viral tweets, Reddit theories, TikTok reactions, YouTube breakdowns. Real-time fan discussion tracker updated daily.">
+  <meta name="keywords" content="Disclosure Day Twitter, Disclosure Day Reddit, Disclosure Day TikTok, Disclosure Day reactions, Disclosure Day viral, Disclosure Day discussion, seven billion theory">
+
+  <meta property="og:title" content="Disclosure Day Social Media Tracker">
+  <meta property="og:description" content="All the viral moments, fan theories, and social buzz in one place.">
+  <meta property="og:url" content="https://disclosureday.nicedreamzwholesale.com/social-tracker.html">
+  <link rel="canonical" href="https://disclosureday.nicedreamzwholesale.com/social-tracker.html">
+
+  <style>
+    :root{--bg:#000408;--card:#0a0d14;--fg:#e9eef7;--muted:#8b95a5;--accent:#00ffcc;--gold:#ffd700;--purple:#9d4edd;--red:#ff6b6b;--blue:#60a5fa;--twitter:#000;--reddit:#ff4500;--tiktok:#25f4ee;--youtube:#ff0000}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--bg);color:var(--fg);font-family:system-ui,sans-serif;line-height:1.7}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(0,4,8,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,255,204,.1);padding:12px 20px}
+    .nav-inner{max-width:1000px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+    .nav-logo{font-weight:800;font-size:16px;color:var(--fg)}
+    .container{max-width:1000px;margin:0 auto;padding:100px 20px 60px}
+
+    .hero{text-align:center;margin-bottom:40px}
+    .hero h1{font-size:clamp(28px,5vw,42px);margin-bottom:12px}
+    .hero p{color:var(--muted);font-size:18px}
+
+    .stats-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin:32px 0;padding:20px;background:var(--card);border-radius:16px}
+    .stat{text-align:center}
+    .stat-value{font-size:28px;font-weight:800;color:var(--accent)}
+    .stat-label{font-size:11px;text-transform:uppercase;color:var(--muted);letter-spacing:1px}
+
+    h2{font-size:24px;color:var(--fg);margin:40px 0 20px;display:flex;align-items:center;gap:12px}
+    .platform-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:bold}
+    .icon-x{background:#000;border:1px solid #333}
+    .icon-reddit{background:var(--reddit)}
+    .icon-tiktok{background:#000;border:1px solid var(--tiktok)}
+    .icon-youtube{background:var(--youtube)}
+
+    .viral-banner{background:linear-gradient(135deg,rgba(255,107,107,.2),rgba(157,78,221,.2));border:2px solid var(--red);border-radius:16px;padding:24px;margin:24px 0;text-align:center}
+    .viral-banner h3{color:var(--red);margin-bottom:8px;font-size:20px}
+    .viral-banner p{color:var(--fg);margin:0}
+
+    .post-grid{display:grid;gap:16px}
+
+    .social-card{background:var(--card);border-radius:12px;padding:20px;transition:transform .2s}
+    .social-card:hover{transform:translateY(-2px)}
+    .social-card.viral{border:2px solid var(--red)}
+    .social-card.trending{border:2px solid var(--gold)}
+
+    .card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+    .user-info{display:flex;gap:12px;align-items:center}
+    .user-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--purple));display:flex;align-items:center;justify-content:center;font-size:18px}
+    .user-name{font-weight:600}
+    .user-handle{font-size:13px;color:var(--muted)}
+    .card-badge{font-size:11px;padding:4px 10px;border-radius:12px;font-weight:600}
+    .badge-viral{background:rgba(255,107,107,.2);color:var(--red)}
+    .badge-trending{background:rgba(255,215,0,.2);color:var(--gold)}
+    .badge-theory{background:rgba(157,78,221,.2);color:var(--purple)}
+    .badge-official{background:rgba(0,255,204,.2);color:var(--accent)}
+
+    .card-content{margin:12px 0;font-size:15px}
+    .card-content .hashtag{color:var(--accent)}
+
+    .card-media{background:rgba(255,255,255,.05);border-radius:8px;padding:40px;text-align:center;margin:12px 0;color:var(--muted);font-size:14px}
+
+    .card-stats{display:flex;gap:20px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.05);font-size:13px;color:var(--muted)}
+    .card-stats span{display:flex;align-items:center;gap:6px}
+
+    .card-link{display:block;margin-top:12px;font-size:13px}
+
+    .thread-indicator{background:rgba(0,255,204,.1);border-radius:8px;padding:12px;margin:12px 0;font-size:13px}
+    .thread-indicator strong{color:var(--accent)}
+
+    .subreddit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:20px 0}
+    .subreddit-card{background:var(--card);border-radius:12px;padding:16px;display:flex;gap:12px;align-items:center}
+    .subreddit-icon{width:40px;height:40px;border-radius:50%;background:var(--reddit);display:flex;align-items:center;justify-content:center;font-weight:bold}
+    .subreddit-info h4{font-size:14px;margin-bottom:2px}
+    .subreddit-info p{font-size:12px;color:var(--muted)}
+
+    .trending-topics{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
+    .topic-tag{background:var(--card);border:1px solid rgba(255,255,255,.1);padding:8px 16px;border-radius:20px;font-size:14px}
+    .topic-tag.hot{border-color:var(--red);color:var(--red)}
+
+    .youtube-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:20px 0}
+    .youtube-card{background:var(--card);border-radius:12px;overflow:hidden}
+    .youtube-thumb{background:rgba(255,255,255,.05);padding:60px;text-align:center;color:var(--muted);position:relative}
+    .youtube-thumb::after{content:'&#9658;';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:40px;opacity:.5}
+    .youtube-info{padding:16px}
+    .youtube-title{font-weight:600;margin-bottom:4px;font-size:14px}
+    .youtube-meta{font-size:12px;color:var(--muted)}
+
+    .footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:13px;margin-top:40px;border-top:1px solid rgba(255,255,255,.1)}
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">DISCLOSURE DAY HUB</a>
+    <a href="/news-hub.html">News Hub</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="hero">
+    <h1>Social Media Tracker</h1>
+    <p>Real-time fan discussions, viral moments, and trending theories across all platforms</p>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-value">127M</div>
+      <div class="stat-label">Total Reach</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">2.4M</div>
+      <div class="stat-label">Posts</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">#1</div>
+      <div class="stat-label">Trending Topic</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">89%</div>
+      <div class="stat-label">Positive Sentiment</div>
+    </div>
+  </div>
+
+  <div class="viral-banner">
+    <h3>&#128293; Currently Viral</h3>
+    <p>The "Seven Billion" theory has crossed 50 million views across platforms</p>
+  </div>
+
+  <div class="trending-topics">
+    <span class="topic-tag hot">#SevenBillion</span>
+    <span class="topic-tag hot">#DisclosureDay</span>
+    <span class="topic-tag">#Spielberg</span>
+    <span class="topic-tag">#EmilyBlunt</span>
+    <span class="topic-tag">#ColmanDomingoCried</span>
+    <span class="topic-tag">#MindControl</span>
+    <span class="topic-tag">#CloseEncounters</span>
+  </div>
+
+  <!-- X/TWITTER -->
+  <h2><span class="platform-icon icon-x">X</span> X (Twitter) Highlights</h2>
+
+  <div class="post-grid">
+    <div class="social-card viral">
+      <div class="card-header">
+        <div class="user-info">
+          <div class="user-avatar">&#128250;</div>
+          <div>
+            <div class="user-name">Film Updates</div>
+            <div class="user-handle">@FilmUpdates</div>
+          </div>
+        </div>
+        <span class="card-badge badge-viral">VIRAL</span>
+      </div>
+      <div class="card-content">
+        The "seven billion" line from the Disclosure Day trailer has now been viewed over 50 million times across platforms. The mystery continues to dominate film Twitter. <span class="hashtag">#DisclosureDay</span> <span class="hashtag">#SevenBillion</span>
+      </div>
+      <div class="card-stats">
+        <span>&#10084; 45.2K</span>
+        <span>&#128257; 12.8K</span>
+        <span>&#128172; 3.2K</span>
+        <span>&#128065; 8.2M</span>
+      </div>
+      <a href="#" class="card-link">View on X &rarr;</a>
+    </div>
+
+    <div class="social-card trending">
+      <div class="card-header">
+        <div class="user-info">
+          <div class="user-avatar">&#127909;</div>
+          <div>
+            <div class="user-name">Spielberg Fan Club</div>
+            <div class="user-handle">@SpielbergFans</div>
+          </div>
+        </div>
+        <span class="card-badge badge-trending">TRENDING</span>
+      </div>
+      <div class="card-content">
+        <div class="thread-indicator"><strong>Thread:</strong> Every hidden detail in the Disclosure Day trailer (1/27)</div>
+        We spent 48 hours analyzing every frame of the Disclosure Day trailer. What we found will blow your mind. <span class="hashtag">#DisclosureDay</span>
+      </div>
+      <div class="card-stats">
+        <span>&#10084; 28.7K</span>
+        <span>&#128257; 9.4K</span>
+        <span>&#128172; 1.8K</span>
+      </div>
+      <a href="#" class="card-link">Read Full Thread &rarr;</a>
+    </div>
+
+    <div class="social-card">
+      <div class="card-header">
+        <div class="user-info">
+          <div class="user-avatar">&#127908;</div>
+          <div>
+            <div class="user-name">Emily Blunt</div>
+            <div class="user-handle">@emilyblunt (Official)</div>
+          </div>
+        </div>
+        <span class="card-badge badge-official">OFFICIAL</span>
+      </div>
+      <div class="card-content">
+        Can't wait for you all to see what we've been working on. June can't come soon enough. <span class="hashtag">#DisclosureDay</span>
+      </div>
+      <div class="card-stats">
+        <span>&#10084; 156K</span>
+        <span>&#128257; 34K</span>
+        <span>&#128172; 8.9K</span>
+      </div>
+      <a href="#" class="card-link">View on X &rarr;</a>
+    </div>
+  </div>
+
+  <!-- REDDIT -->
+  <h2><span class="platform-icon icon-reddit">R</span> Reddit Discussions</h2>
+
+  <div class="subreddit-grid">
+    <div class="subreddit-card">
+      <div class="subreddit-icon">r/</div>
+      <div class="subreddit-info">
+        <h4>r/movies</h4>
+        <p>847K discussing</p>
+      </div>
+    </div>
+    <div class="subreddit-card">
+      <div class="subreddit-icon">r/</div>
+      <div class="subreddit-info">
+        <h4>r/DisclosureDay</h4>
+        <p>124K members</p>
+      </div>
+    </div>
+    <div class="subreddit-card">
+      <div class="subreddit-icon">r/</div>
+      <div class="subreddit-info">
+        <h4>r/UFOs</h4>
+        <p>392K discussing</p>
+      </div>
+    </div>
+    <div class="subreddit-card">
+      <div class="subreddit-icon">r/</div>
+      <div class="subreddit-info">
+        <h4>r/FanTheories</h4>
+        <p>156K discussing</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-grid">
+    <div class="social-card viral">
+      <div class="card-header">
+        <div class="user-info">
+          <div class="user-avatar">&#128100;</div>
+          <div>
+            <div class="user-name">u/TrailerDetective</div>
+            <div class="user-handle">r/movies</div>
+          </div>
+        </div>
+        <span class="card-badge badge-viral">15.2K &#11014;</span>
+      </div>
+      <div class="card-content">
+        [THEORY] Frame-by-frame analysis reveals binary code that spells "PREPARE" - here's what it means for the plot
+      </div>
+      <div class="card-stats">
+        <span>&#11014; 15.2K upvotes</span>
+        <span>&#128172; 2,847 comments</span>
+        <span>&#127942; 47 awards</span>
+      </div>
+      <a href="/seven-billion-theory-reddit.html" class="card-link">Read Full Analysis &rarr;</a>
+    </div>
+
+    <div class="social-card">
+      <div class="card-header">
+        <div class="user-info">
+          <div class="user-avatar">&#128100;</div>
+          <div>
+            <div class="user-name">u/SpielbergScholar</div>
+            <div class="user-handle">r/DisclosureDay</div>
+          </div>
+        </div>
+        <span class="card-badge badge-theory">THEORY</span>
+      </div>
+      <div class="card-content">
+        I found a connection between Disclosure Day and Close Encounters that nobody is talking about. The coordinates in both films...
+      </div>
+      <div class="card-stats">
+        <span>&#11014; 8.4K upvotes</span>
+        <span>&#128172; 1,234 comments</span>
+      </div>
+      <a href="#" class="card-link">Read on Reddit &rarr;</a>
+    </div>
+
+    <div class="social-card">
+      <div class="card-header">
+        <div class="user-info">
+          <div class="user-avatar">&#128100;</div>
+          <div>
+            <div class="user-name">u/FilmComposer</div>
+            <div class="user-handle">r/movies</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-content">
+        Audio analysis of the Disclosure Day trailer reveals a hidden 5-note motif that matches Close Encounters. John Williams is definitely telling us something.
+      </div>
+      <div class="card-stats">
+        <span>&#11014; 6.7K upvotes</span>
+        <span>&#128172; 892 comments</span>
+      </div>
+      <a href="#" class="card-link">Read on Reddit &rarr;</a>
+    </div>
+  </div>
+
+  <!-- TIKTOK -->
+  <h2><span class="platform-icon icon-tiktok">T</span> TikTok Trends</h2>
+
+  <div class="post-grid">
+    <div class="social-card viral">
+      <div class="card-header">
+        <div class="user-info">
+          <div class="user-avatar">&#127916;</div>
+          <div>
+            <div class="user-name">@movietok</div>
+            <div class="user-handle">2.3M followers</div>
+          </div>
+        </div>
+        <span class="card-badge badge-viral">892K &#10084;</span>
+      </div>
+      <div class="card-content">
+        POV: You realize Spielberg put the answer to "seven billion" in plain sight and we all missed it <span class="hashtag">#disclosureday</span> <span class="hashtag">#spielberg</span> <span class="hashtag">#movies</span> <span class="hashtag">#theory</span>
+      </div>
+      <div class="card-media">&#127909; Video: 0:47 | 4.2M views</div>
+      <div class="card-stats">
+        <span>&#10084; 892K</span>
+        <span>&#128172; 12.4K</span>
+        <span>&#127925; 45K uses</span>
+      </div>
+      <a href="#" class="card-link">Watch on TikTok &rarr;</a>
+    </div>
+
+    <div class="social-card trending">
+      <div class="card-header">
+        <div class="user-info">
+          <div class="user-avatar">&#127908;</div>
+          <div>
+            <div class="user-name">@filmtiktok</div>
+            <div class="user-handle">1.8M followers</div>
+          </div>
+        </div>
+        <span class="card-badge badge-trending">TRENDING</span>
+      </div>
+      <div class="card-content">
+        The Disclosure Day sound is EVERYWHERE right now. Here's how it became the most viral movie audio of 2026 <span class="hashtag">#disclosureday</span>
+      </div>
+      <div class="card-media">&#127909; Video: 1:23 | 2.8M views</div>
+      <div class="card-stats">
+        <span>&#10084; 456K</span>
+        <span>&#128172; 8.2K</span>
+      </div>
+      <a href="#" class="card-link">Watch on TikTok &rarr;</a>
+    </div>
+
+    <div class="social-card">
+      <div class="card-header">
+        <div class="user-info">
+          <div class="user-avatar">&#127912;</div>
+          <div>
+            <div class="user-name">@alientheory</div>
+            <div class="user-handle">890K followers</div>
+          </div>
+        </div>
+      </div>
+      <div class="card-content">
+        If this theory is right, Disclosure Day is going to break the internet when it comes out. Colman Domingo crying reading the script makes SO much more sense now <span class="hashtag">#disclosureday</span>
+      </div>
+      <div class="card-media">&#127909; Video: 2:14 | 1.6M views</div>
+      <div class="card-stats">
+        <span>&#10084; 312K</span>
+        <span>&#128172; 5.6K</span>
+      </div>
+      <a href="#" class="card-link">Watch on TikTok &rarr;</a>
+    </div>
+  </div>
+
+  <!-- YOUTUBE -->
+  <h2><span class="platform-icon icon-youtube">Y</span> YouTube Analysis</h2>
+
+  <div class="youtube-grid">
+    <div class="youtube-card">
+      <div class="youtube-thumb">&#127909;</div>
+      <div class="youtube-info">
+        <div class="youtube-title">DISCLOSURE DAY Trailer Breakdown - 47 Details You Missed!</div>
+        <div class="youtube-meta">New Rockstars &middot; 3.2M views &middot; 2 weeks ago</div>
+      </div>
+    </div>
+
+    <div class="youtube-card">
+      <div class="youtube-thumb">&#127909;</div>
+      <div class="youtube-info">
+        <div class="youtube-title">The Seven Billion Theory EXPLAINED - Disclosure Day</div>
+        <div class="youtube-meta">Screen Crush &middot; 1.8M views &middot; 1 week ago</div>
+      </div>
+    </div>
+
+    <div class="youtube-card">
+      <div class="youtube-thumb">&#127909;</div>
+      <div class="youtube-info">
+        <div class="youtube-title">Disclosure Day vs Close Encounters - Hidden Connections</div>
+        <div class="youtube-meta">FilmComicsExplained &middot; 945K views &middot; 3 weeks ago</div>
+      </div>
+    </div>
+
+    <div class="youtube-card">
+      <div class="youtube-thumb">&#127909;</div>
+      <div class="youtube-info">
+        <div class="youtube-title">John Williams' Disclosure Day Score - What We Know</div>
+        <div class="youtube-meta">Sideways &middot; 678K views &middot; 1 week ago</div>
+      </div>
+    </div>
+
+    <div class="youtube-card">
+      <div class="youtube-thumb">&#127909;</div>
+      <div class="youtube-info">
+        <div class="youtube-title">Disclosure Day Cast Interviews - Everything They've Said</div>
+        <div class="youtube-meta">The Movie Podcast &middot; 423K views &middot; 4 days ago</div>
+      </div>
+    </div>
+
+    <div class="youtube-card">
+      <div class="youtube-thumb">&#127909;</div>
+      <div class="youtube-info">
+        <div class="youtube-title">Why Disclosure Day Could Be Spielberg's Best Film</div>
+        <div class="youtube-meta">Nerdwriter1 &middot; 892K views &middot; 2 weeks ago</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:48px;padding:32px;background:var(--card);border-radius:16px">
+    <h3 style="margin-bottom:16px">Found Something We Missed?</h3>
+    <p style="color:var(--muted);margin-bottom:20px">Help us track all the Disclosure Day buzz across the internet</p>
+    <a href="mailto:tips@disclosureday.com" style="background:var(--accent);color:#000;padding:14px 32px;border-radius:25px;font-weight:700;display:inline-block">Submit a Link</a>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <p><strong>Disclosure Day Hub</strong> - The Ultimate Fan Resource</p>
+  <p style="margin-top:8px"><a href="/">Home</a> &middot; <a href="/news-hub.html">News Hub</a> &middot; <a href="/interviews.html">Interviews</a></p>
+</footer>
+
+</body>
+</html>

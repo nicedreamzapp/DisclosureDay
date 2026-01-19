@@ -132,6 +132,26 @@
     <priority>0.85</priority>
   </url>
 
+  <!-- News & Media Hub -->
+  <url>
+    <loc>https://disclosureday.nicedreamzwholesale.com/news-hub.html</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://disclosureday.nicedreamzwholesale.com/interviews.html</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://disclosureday.nicedreamzwholesale.com/social-tracker.html</loc>
+    <lastmod>2026-01-19</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- Interactive Features -->
   <url>
     <loc>https://disclosureday.nicedreamzwholesale.com/are-you-human.html</loc>
