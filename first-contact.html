@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First Contact Scenario | What Would You Do? | Disclosure Day</title>
+  <meta name="description" content="Interactive story game: What would you do on Disclosure Day? Make choices and see your fate when aliens arrive.">
+  <meta property="og:title" content="What Would You Do on Disclosure Day?">
+  <meta property="og:description" content="Interactive scenario game. The aliens have arrived. Your choices determine humanity's fate.">
+  <meta property="og:image" content="https://disclosureday.nicedreamzwholesale.com/public/images/first-contact-og.jpg">
+  <meta property="og:url" content="https://disclosureday.nicedreamzwholesale.com/first-contact.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root {
+      --bg: #02030a;
+      --card: #0a0d14;
+      --fg: #e9eef7;
+      --muted: #8b95a5;
+      --accent: #00ffcc;
+      --warning: #ff6b6b;
+      --purple: #9d4edd;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(2, 3, 10, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 255, 204, 0.1);
+      padding: 12px 20px;
+    }
+    .nav-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo { font-weight: 800; font-size: 16px; color: var(--fg); text-decoration: none; }
+    .nav a { color: var(--accent); text-decoration: none; font-size: 14px; }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 100px 20px 60px;
+      flex: 1;
+    }
+
+    .progress-bar {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      margin-bottom: 30px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--purple));
+      transition: width 0.5s ease;
+    }
+
+    .scenario-card {
+      background: var(--card);
+      border: 1px solid rgba(0, 255, 204, 0.15);
+      border-radius: 20px;
+      padding: 40px;
+      animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .scene-indicator {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .scenario-text {
+      font-size: 20px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .scenario-text .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .scenario-text .warning {
+      color: var(--warning);
+    }
+    .scenario-text .purple {
+      color: var(--purple);
+    }
+
+    .choices {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .choice-btn {
+      background: rgba(0, 255, 204, 0.05);
+      border: 1px solid rgba(0, 255, 204, 0.2);
+      border-radius: 12px;
+      padding: 18px 24px;
+      color: var(--fg);
+      font-size: 16px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .choice-btn:hover {
+      background: rgba(0, 255, 204, 0.1);
+      border-color: var(--accent);
+      transform: translateX(8px);
+    }
+    .choice-btn::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--accent);
+      transform: scaleY(0);
+      transition: transform 0.2s ease;
+    }
+    .choice-btn:hover::before {
+      transform: scaleY(1);
+    }
+
+    .choice-btn.danger {
+      border-color: rgba(255, 107, 107, 0.3);
+    }
+    .choice-btn.danger:hover {
+      background: rgba(255, 107, 107, 0.1);
+      border-color: var(--warning);
+    }
+    .choice-btn.danger::before {
+      background: var(--warning);
+    }
+
+    /* Ending screen */
+    .ending {
+      text-align: center;
+    }
+    .ending-type {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+    .ending-type.good { color: var(--accent); }
+    .ending-type.bad { color: var(--warning); }
+    .ending-type.neutral { color: var(--purple); }
+    .ending-type.secret { color: #ffd700; }
+
+    .ending-title {
+      font-size: clamp(28px, 5vw, 42px);
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+    .ending-desc {
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .stat-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+    }
+
+    .ending-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .action-btn {
+      padding: 14px 28px;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.2s;
+      border: none;
+    }
+    .action-btn.primary {
+      background: var(--accent);
+      color: #000;
+    }
+    .action-btn.secondary {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+    }
+    .action-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .share-btns {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .share-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 13px;
+    }
+    .share-btn.twitter { background: #1da1f2; color: #fff; }
+    .share-btn.reddit { background: #ff4500; color: #fff; }
+
+    /* Visual effects */
+    .glitch-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 100;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 204, 0.03) 2px,
+        rgba(0, 255, 204, 0.03) 4px
+      );
+    }
+
+    .alert-flash {
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 0, 0, 0.1);
+      pointer-events: none;
+      opacity: 0;
+      z-index: 50;
+    }
+    .alert-flash.active {
+      animation: alertPulse 0.5s ease;
+    }
+    @keyframes alertPulse {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="glitch-overlay"></div>
+  <div class="alert-flash" id="alert-flash"></div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">DISCLOSURE DAY HUB</a>
+      <a href="/">Back to Hub</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress" style="width: 0%"></div>
+    </div>
+
+    <div class="scenario-card" id="scenario-card">
+      <!-- Content inserted by JS -->
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p><strong>Disclosure Day Hub</strong></p>
+    <p style="margin-top: 8px;"><a href="/">Home</a> · <a href="/are-you-human.html">Are You Human?</a> · <a href="/trailer-breakdown.html">Trailer Breakdown</a></p>
+  </footer>
+
+  <script>
+    // Game state
+    let currentScene = 'intro';
+    let choices = [];
+    let traits = {
+      trust: 0,      // Trust in authorities vs skepticism
+      courage: 0,    // Bravery vs self-preservation
+      curiosity: 0,  // Seeking truth vs staying safe
+      humanity: 0    // Prioritizing others vs self
+    };
+
+    // Scenes data
+    const scenes = {
+      intro: {
+        indicator: 'JUNE 12, 2026 - 6:47 AM',
+        text: `You wake up to your phone <span class="highlight">buzzing uncontrollably</span>. Every notification app is going off. The TV in the living room turns on by itself—all channels showing the same thing.<br><br>A <span class="purple">massive craft</span> hovers over Washington D.C. The President will address the nation in one hour.<br><br>What do you do first?`,
+        choices: [
+          { text: 'Call your family immediately', next: 'family', trait: 'humanity', value: 2 },
+          { text: 'Turn on the news and gather information', next: 'news', trait: 'curiosity', value: 2 },
+          { text: 'Check social media for what people are saying', next: 'social', trait: 'curiosity', value: 1 },
+          { text: 'Go outside and look at the sky', next: 'outside', trait: 'courage', value: 2, danger: true }
+        ]
+      },
+
+      family: {
+        indicator: 'FAMILY FIRST',
+        text: `Your mother answers on the first ring. She's <span class="highlight">already crying</span>. Your father is trying to stay calm but you can hear the fear in his voice.<br><br>"Are you safe?" they ask. "Should we come to you?"<br><br>The news anchor just said the craft is <span class="warning">descending</span>.`,
+        choices: [
+          { text: '"Stay where you are. I\'ll come to you."', next: 'travel', trait: 'humanity', value: 2 },
+          { text: '"Let\'s all meet at the cabin upstate."', next: 'escape', trait: 'trust', value: -1 },
+          { text: '"Turn on the news. We need to understand what\'s happening."', next: 'news', trait: 'curiosity', value: 1 },
+          { text: '"I love you. No matter what happens."', next: 'acceptance', trait: 'courage', value: 2 }
+        ]
+      },
+
+      news: {
+        indicator: 'BREAKING NEWS',
+        text: `Every channel shows the same feed. The craft is <span class="highlight">three miles wide</span>. Military jets circle but maintain distance.<br><br>A panel of experts argues on CNN. One says it's <span class="purple">"first contact."</span> Another says it could be a <span class="warning">"false flag operation."</span><br><br>The President's address is in 30 minutes. Then—the broadcast <span class="warning">cuts to static</span>.`,
+        choices: [
+          { text: 'Try to find alternative news sources online', next: 'darkweb', trait: 'curiosity', value: 2 },
+          { text: 'Follow the emergency broadcast instructions', next: 'shelter', trait: 'trust', value: 2 },
+          { text: 'Head to the nearest government building for answers', next: 'government', trait: 'trust', value: 1, danger: true },
+          { text: 'Something\'s wrong. Start packing supplies.', next: 'prepare', trait: 'trust', value: -2 }
+        ]
+      },
+
+      social: {
+        indicator: 'VIRAL CHAOS',
+        text: `Twitter is <span class="warning">chaos</span>. #DisclosureDay is trending worldwide. Videos from every major city show similar crafts hovering silently.<br><br>One video catches your eye: a <span class="highlight">woman in New Mexico</span> is speaking in tongues, her eyes rolled back. The caption reads: <span class="purple">"They're already here. Inside us."</span><br><br>Your location services show 3 friends are nearby.`,
+        choices: [
+          { text: 'Go find your friends and stay together', next: 'friends', trait: 'humanity', value: 2 },
+          { text: 'Research the woman in the video', next: 'research', trait: 'curiosity', value: 2 },
+          { text: 'Start documenting everything for posterity', next: 'document', trait: 'courage', value: 1 },
+          { text: 'Delete your social media and go dark', next: 'dark', trait: 'trust', value: -2 }
+        ]
+      },
+
+      outside: {
+        indicator: 'THE SKY',
+        text: `The air feels <span class="purple">electric</span>. Neighbors are standing in their yards, all looking up. In the distance, you can see it—a <span class="highlight">faint shimmer</span> in the clouds.<br><br>Then you hear it. Not with your ears. <span class="warning">Inside your head.</span> A low hum that seems to say: <span class="purple">"Do not be afraid."</span><br><br>Others heard it too. Some are <span class="warning">crying</span>. Some are <span class="highlight">smiling</span>.`,
+        choices: [
+          { text: 'Focus on the voice. Try to communicate back.', next: 'communicate', trait: 'courage', value: 3, danger: true },
+          { text: 'Go back inside immediately.', next: 'news', trait: 'trust', value: 1 },
+          { text: 'Approach the smiling people. Ask what they felt.', next: 'believers', trait: 'curiosity', value: 2 },
+          { text: 'Check on the crying people. Offer comfort.', next: 'comfort', trait: 'humanity', value: 2 }
+        ]
+      },
+
+      communicate: {
+        indicator: 'CONTACT',
+        text: `You close your eyes and focus on the hum. You think: <span class="highlight">"Who are you?"</span><br><br>The response is instantaneous. Not words. <span class="purple">Images.</span> A dying planet. A desperate journey. Earth—seen from above, <span class="highlight">glowing with life</span>.<br><br>Then a question forms in your mind: <span class="warning">"Will you help us?"</span><br><br>You feel yourself being <span class="purple">drawn upward</span>.`,
+        choices: [
+          { text: '"Yes."', next: 'ending_chosen', trait: 'courage', value: 3 },
+          { text: '"I need to understand more first."', next: 'ending_bridge', trait: 'curiosity', value: 2 },
+          { text: 'Break the connection. This is too much.', next: 'escape_ending', trait: 'trust', value: -1 },
+          { text: '"Only if humanity survives."', next: 'ending_negotiator', trait: 'humanity', value: 3 }
+        ]
+      },
+
+      travel: {
+        indicator: 'ON THE ROAD',
+        text: `The highways are <span class="warning">gridlocked</span>. Everyone had the same idea. You see military convoys heading toward the cities while everyone else flees.<br><br>Your car radio picks up an <span class="highlight">emergency broadcast</span>: "Remain calm. Do not attempt to leave urban areas. The visitors are attempting communication."<br><br>In the distance, the craft begins to <span class="purple">emit a golden light</span>.`,
+        choices: [
+          { text: 'Abandon the car and walk to your family', next: 'walk', trait: 'humanity', value: 2 },
+          { text: 'Turn around and head toward the light', next: 'approach', trait: 'courage', value: 3, danger: true },
+          { text: 'Follow the military convoy for protection', next: 'military', trait: 'trust', value: 2 },
+          { text: 'Find shelter and wait this out', next: 'shelter', trait: 'trust', value: 1 }
+        ]
+      },
+
+      approach: {
+        indicator: 'THE LIGHT',
+        text: `As you get closer, the light feels <span class="purple">warm</span>. Others are walking toward it too—hundreds of people, moving in silence.<br><br>A figure emerges from the craft. It looks <span class="highlight">almost human</span>, but its eyes hold galaxies. It speaks without moving its lips:<br><br><span class="purple">"We have waited for you. The ones who are not afraid."</span>`,
+        choices: [
+          { text: 'Step forward and introduce yourself', next: 'ending_ambassador', trait: 'courage', value: 3 },
+          { text: 'Ask what they want from us', next: 'ending_question', trait: 'curiosity', value: 2 },
+          { text: 'Look around for anyone you can protect', next: 'ending_guardian', trait: 'humanity', value: 3 },
+          { text: 'Something feels wrong. Run.', next: 'ending_survivor', trait: 'trust', value: -2 }
+        ]
+      },
+
+      shelter: {
+        indicator: 'UNDERGROUND',
+        text: `You find a public shelter. It's <span class="warning">packed</span>. Families huddle together. A man in uniform is distributing water and trying to maintain order.<br><br>The lights flicker. On the emergency radio: <span class="highlight">"The visitors have made contact with world leaders. A message will be broadcast in one hour."</span><br><br>Someone whispers: <span class="purple">"What if they're lying to us?"</span>`,
+        choices: [
+          { text: 'Trust the authorities. They know more than us.', next: 'ending_citizen', trait: 'trust', value: 2 },
+          { text: 'Start organizing people. We need to be ready for anything.', next: 'ending_leader', trait: 'courage', value: 2 },
+          { text: 'Find a way to leave. Shelters could be traps.', next: 'ending_escape', trait: 'trust', value: -2 },
+          { text: 'Comfort the children. They need to know it will be okay.', next: 'ending_hope', trait: 'humanity', value: 3 }
+        ]
+      },
+
+      believers: {
+        indicator: 'THE AWAKENED',
+        text: `The smiling people speak in <span class="purple">unison</span>: "They showed us everything. There is no death. Only transformation."<br><br>One woman takes your hand. Her touch sends <span class="highlight">visions</span> through you—civilizations rising and falling, the birth of stars, a vast <span class="purple">cosmic network</span> of consciousness.<br><br>"Join us," they say. "Become part of something greater."`,
+        choices: [
+          { text: 'Accept the vision. Let go of fear.', next: 'ending_transcend', trait: 'courage', value: 3 },
+          { text: 'Pull away. This feels like mind control.', next: 'ending_resist', trait: 'trust', value: -2 },
+          { text: 'Ask to see more before deciding.', next: 'ending_seeker', trait: 'curiosity', value: 3 },
+          { text: 'Try to bring others here to share this experience.', next: 'ending_evangelist', trait: 'humanity', value: 2 }
+        ]
+      },
+
+      darkweb: {
+        indicator: 'UNDERGROUND NETWORKS',
+        text: `The regular internet is <span class="warning">overwhelmed</span>. But you know the back channels. A forum of conspiracy theorists—who now look like <span class="highlight">prophets</span>—is buzzing with leaked information.<br><br>One post stands out: <span class="purple">"Project ZODIAC was real. They've known for 77 years. The visitors aren't invading. They're RETURNING."</span><br><br>Attached is a classified document with a list of names. <span class="warning">Your name is on it.</span>`,
+        choices: [
+          { text: 'Download everything and hide.', next: 'ending_whistleblower', trait: 'curiosity', value: 3 },
+          { text: 'Try to contact others on the list.', next: 'ending_networked', trait: 'humanity', value: 2 },
+          { text: 'This has to be fake. Ignore it.', next: 'shelter', trait: 'trust', value: 1 },
+          { text: 'Share the information with everyone.', next: 'ending_truth', trait: 'courage', value: 3 }
+        ]
+      }
+    };
+
+    // Endings
+    const endings = {
+      ending_chosen: {
+        type: 'secret',
+        title: 'THE CHOSEN',
+        desc: 'You became humanity\'s first ambassador to the stars. The visitors chose you for your willingness to trust. You will never return to Earth—but you will ensure its survival.',
+        traits: ['Fearless', 'Open-minded', 'Transcendent']
+      },
+      ending_bridge: {
+        type: 'good',
+        title: 'THE BRIDGE',
+        desc: 'Your caution earned their respect. You became the translator between species—the one who asked the right questions. History will remember you as the voice of humanity.',
+        traits: ['Curious', 'Diplomatic', 'Wise']
+      },
+      ending_negotiator: {
+        type: 'good',
+        title: 'THE NEGOTIATOR',
+        desc: 'Your love for humanity moved them. The visitors agreed to your terms—a partnership, not a takeover. You saved billions of lives with one question.',
+        traits: ['Compassionate', 'Brave', 'Protector']
+      },
+      ending_ambassador: {
+        type: 'secret',
+        title: 'THE AMBASSADOR',
+        desc: 'You were the first human to shake hands with another species. Your courage inspired millions. The visitors chose Earth as their new home—with you as the voice of welcome.',
+        traits: ['Courageous', 'Historic', 'Pioneer']
+      },
+      ending_guardian: {
+        type: 'good',
+        title: 'THE GUARDIAN',
+        desc: 'While others sought contact, you protected the vulnerable. The visitors noticed. They chose you to oversee the transition—a shepherd for both species.',
+        traits: ['Protective', 'Selfless', 'Leader']
+      },
+      ending_survivor: {
+        type: 'bad',
+        title: 'THE SURVIVOR',
+        desc: 'Your instincts were right—but not in the way you thought. The visitors meant no harm to those who fled. You survived, but you\'ll always wonder what you missed.',
+        traits: ['Cautious', 'Alone', 'Haunted']
+      },
+      ending_citizen: {
+        type: 'neutral',
+        title: 'THE CITIZEN',
+        desc: 'You followed the rules. You trusted the system. When the visitors integrated with humanity, you adapted quietly. Not every story needs a hero—sometimes being human is enough.',
+        traits: ['Trusting', 'Adaptable', 'Ordinary']
+      },
+      ending_leader: {
+        type: 'good',
+        title: 'THE LEADER',
+        desc: 'In the chaos, you became the calm. You organized survivors, maintained order, and prepared humanity for change. When the dust settled, you were elected to lead the new world council.',
+        traits: ['Leader', 'Calm', 'Visionary']
+      },
+      ending_hope: {
+        type: 'good',
+        title: 'THE HOPE',
+        desc: 'You comforted the afraid. You told children stories of a better tomorrow. The visitors felt your hope and chose to appear first to you—to show the world there was nothing to fear.',
+        traits: ['Hopeful', 'Kind', 'Beloved']
+      },
+      ending_transcend: {
+        type: 'secret',
+        title: 'THE TRANSCENDED',
+        desc: 'You let go of your human limitations. Your consciousness merged with the cosmic network. You became something more—neither human nor visitor, but a new form of life entirely.',
+        traits: ['Evolved', 'Eternal', 'Beyond']
+      },
+      ending_resist: {
+        type: 'bad',
+        title: 'THE RESISTANT',
+        desc: 'You saw manipulation where there was only communication. You fought against the future. Years later, alone in a bunker, you wonder if you made the right choice.',
+        traits: ['Paranoid', 'Isolated', 'Stubborn']
+      },
+      ending_seeker: {
+        type: 'good',
+        title: 'THE SEEKER',
+        desc: 'Your endless questions delighted them. You became the first human scientist invited to study their technology. Your discoveries will reshape human civilization for millennia.',
+        traits: ['Curious', 'Brilliant', 'Revolutionary']
+      },
+      ending_whistleblower: {
+        type: 'neutral',
+        title: 'THE WHISTLEBLOWER',
+        desc: 'You exposed the truth—that they\'d known all along. The world was furious. But in the aftermath, you became a symbol of accountability. Trust, once broken, can be rebuilt.',
+        traits: ['Truth-seeker', 'Controversial', 'Historic']
+      },
+      ending_truth: {
+        type: 'good',
+        title: 'THE TRUTH-TELLER',
+        desc: 'You shared what you knew with everyone. No secrets. No gatekeepers. The world faced disclosure together, united by the truth you spread. History needed you.',
+        traits: ['Transparent', 'Brave', 'Revolutionary']
+      },
+      ending_escape: {
+        type: 'bad',
+        title: 'THE ESCAPIST',
+        desc: 'You ran when others stayed. You hid when others faced the unknown. The visitors came in peace—but you\'ll never know, because you never looked back.',
+        traits: ['Fearful', 'Survivor', 'Regretful']
+      },
+      escape_ending: {
+        type: 'neutral',
+        title: 'THE UNCERTAIN',
+        desc: 'You broke the connection, but the questions remain. The visitors respected your choice. They\'re still waiting. The door is still open—if you ever find the courage to return.',
+        traits: ['Hesitant', 'Human', 'Potential']
+      },
+      ending_question: {
+        type: 'good',
+        title: 'THE QUESTIONER',
+        desc: 'You asked the question everyone was afraid to ask. The answer changed everything: They needed us as much as we needed them. Partnership replaced fear.',
+        traits: ['Bold', 'Insightful', 'Catalyst']
+      },
+      ending_networked: {
+        type: 'good',
+        title: 'THE NETWORKED',
+        desc: 'You found others like you—people who\'d been marked for contact. Together, you formed a bridge between species. The network you built became humanity\'s greatest asset.',
+        traits: ['Connected', 'Strategic', 'Unified']
+      },
+      ending_evangelist: {
+        type: 'neutral',
+        title: 'THE EVANGELIST',
+        desc: 'You spread the vision to others. Some called you a prophet. Others called you delusional. But those who experienced what you showed them were forever changed.',
+        traits: ['Charismatic', 'Divisive', 'Transformed']
+      }
+    };
+
+    function renderScene(sceneId) {
+      if (sceneId.startsWith('ending_')) {
+        renderEnding(sceneId);
+        return;
+      }
+
+      const scene = scenes[sceneId];
+      if (!scene) return;
+
+      currentScene = sceneId;
+      updateProgress();
+
+      const card = document.getElementById('scenario-card');
+      card.innerHTML = `
+        <div class="scene-indicator">${scene.indicator}</div>
+        <div class="scenario-text">${scene.text}</div>
+        <div class="choices">
+          ${scene.choices.map((choice, i) => `
+            <button class="choice-btn ${choice.danger ? 'danger' : ''}" onclick="makeChoice(${i})">
+              ${choice.text}
+            </button>
+          `).join('')}
+        </div>
+      `;
+
+      // Animate in
+      card.style.animation = 'none';
+      card.offsetHeight; // Trigger reflow
+      card.style.animation = 'fadeIn 0.5s ease';
+    }
+
+    function makeChoice(index) {
+      const scene = scenes[currentScene];
+      const choice = scene.choices[index];
+
+      // Update traits
+      if (choice.trait && choice.value) {
+        traits[choice.trait] += choice.value;
+      }
+
+      // Store choice
+      choices.push({
+        scene: currentScene,
+        choice: choice.text
+      });
+
+      // Flash effect for danger choices
+      if (choice.danger) {
+        document.getElementById('alert-flash').classList.add('active');
+        setTimeout(() => {
+          document.getElementById('alert-flash').classList.remove('active');
+        }, 500);
+      }
+
+      // Go to next scene
+      renderScene(choice.next);
+    }
+
+    function renderEnding(endingId) {
+      const ending = endings[endingId];
+      if (!ending) return;
+
+      updateProgress(100);
+
+      const card = document.getElementById('scenario-card');
+      card.innerHTML = `
+        <div class="ending">
+          <div class="ending-type ${ending.type}">${ending.type.toUpperCase()} ENDING</div>
+          <h1 class="ending-title">${ending.title}</h1>
+          <p class="ending-desc">${ending.desc}</p>
+
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-value">${choices.length}</div>
+              <div class="stat-label">Choices Made</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">${Math.max(traits.courage, traits.trust, traits.curiosity, traits.humanity)}</div>
+              <div class="stat-label">Dominant Trait</div>
+            </div>
+          </div>
+
+          <p style="color: var(--muted); margin-bottom: 24px;">Your traits: ${ending.traits.join(' · ')}</p>
+
+          <div class="ending-actions">
+            <button class="action-btn primary" onclick="restart()">Play Again</button>
+            <a class="action-btn secondary" href="/">Back to Hub</a>
+          </div>
+
+          <div class="share-btns">
+            <a class="share-btn twitter" href="${getTwitterShare(ending)}" target="_blank">Share on Twitter</a>
+            <a class="share-btn reddit" href="${getRedditShare(ending)}" target="_blank">Post on Reddit</a>
+          </div>
+        </div>
+      `;
+
+      card.style.animation = 'none';
+      card.offsetHeight;
+      card.style.animation = 'fadeIn 0.5s ease';
+    }
+
+    function updateProgress(override) {
+      const totalScenes = Object.keys(scenes).length;
+      const progress = override || (choices.length / 5) * 100;
+      document.getElementById('progress').style.width = Math.min(progress, 100) + '%';
+    }
+
+    function restart() {
+      currentScene = 'intro';
+      choices = [];
+      traits = { trust: 0, courage: 0, curiosity: 0, humanity: 0 };
+      renderScene('intro');
+    }
+
+    function getTwitterShare(ending) {
+      const text = encodeURIComponent(`I got "${ending.title}" in the First Contact Scenario game! What would YOU do when the aliens arrive? #DisclosureDay`);
+      return `https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(window.location.href)}`;
+    }
+
+    function getRedditShare(ending) {
+      const title = encodeURIComponent(`Got "${ending.title}" in the First Contact scenario - what ending did you get?`);
+      return `https://reddit.com/submit?url=${encodeURIComponent(window.location.href)}&title=${title}`;
+    }
+
+    // Start the game
+    renderScene('intro');
+  </script>
+</body>
+</html>

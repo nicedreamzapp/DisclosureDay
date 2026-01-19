@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLASSIFIED Document Generator | Disclosure Day</title>
+  <meta name="description" content="Create your own classified UFO document. Generate redacted government files and share them on social media.">
+  <meta property="og:title" content="CLASSIFIED: [REDACTED] UFO Files">
+  <meta property="og:description" content="Generate your own classified UFO documents. What does the government know?">
+  <meta property="og:image" content="https://disclosureday.nicedreamzwholesale.com/public/images/classified-og.jpg">
+  <meta property="og:url" content="https://disclosureday.nicedreamzwholesale.com/classified-generator.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --paper: #f4e9d3;
+      --ink: #1a1a1a;
+      --stamp: #c41e3a;
+      --accent: #00ffcc;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: #e9eef7;
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 15, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 255, 204, 0.1);
+      padding: 12px 20px;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo { font-weight: 800; font-size: 16px; color: #e9eef7; text-decoration: none; }
+    .nav a { color: var(--accent); text-decoration: none; font-size: 14px; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 20px 60px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      margin-bottom: 12px;
+      color: var(--stamp);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+    }
+    .hero p {
+      color: #8b95a5;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .generator {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .generator { grid-template-columns: 1fr; }
+    }
+
+    .controls {
+      background: #0f0f18;
+      border: 1px solid rgba(0, 255, 204, 0.1);
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .control-section {
+      margin-bottom: 20px;
+    }
+    .control-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8b95a5;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .control-input {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: #e9eef7;
+      font-size: 14px;
+    }
+    .control-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    textarea.control-input {
+      min-height: 120px;
+      resize: vertical;
+      font-family: inherit;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    .checkbox-item:hover { border-color: var(--accent); }
+    .checkbox-item input { display: none; }
+    .checkbox-item.checked {
+      background: rgba(0, 255, 204, 0.1);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .classification-select {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+    .class-btn {
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: #e9eef7;
+      cursor: pointer;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .class-btn:hover { border-color: var(--stamp); }
+    .class-btn.selected {
+      background: var(--stamp);
+      border-color: var(--stamp);
+      color: white;
+    }
+
+    .generate-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--stamp);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.2s;
+      margin-top: 16px;
+    }
+    .generate-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 30px rgba(196, 30, 58, 0.3);
+    }
+
+    /* Document Preview */
+    .doc-preview {
+      position: sticky;
+      top: 80px;
+    }
+    .doc-frame {
+      background: var(--paper);
+      border-radius: 4px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      position: relative;
+    }
+
+    #doc-canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .doc-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .action-btn {
+      flex: 1;
+      padding: 12px;
+      background: #0f0f18;
+      border: 1px solid rgba(0, 255, 204, 0.3);
+      border-radius: 8px;
+      color: var(--accent);
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    .action-btn:hover {
+      background: rgba(0, 255, 204, 0.1);
+    }
+
+    .share-section {
+      margin-top: 20px;
+      padding: 20px;
+      background: #0f0f18;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .share-section h3 {
+      font-size: 13px;
+      color: #8b95a5;
+      margin-bottom: 12px;
+    }
+    .share-btns {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .share-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    .share-btn:hover { transform: scale(1.05); }
+    .share-btn.twitter { background: #1da1f2; color: #fff; }
+    .share-btn.reddit { background: #ff4500; color: #fff; }
+
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #8b95a5;
+      font-size: 13px;
+      margin-top: 60px;
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+
+    /* Glitch effect for page */
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.95; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">DISCLOSURE DAY HUB</a>
+      <a href="/">Back to Hub</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="hero">
+      <h1>CLASSIFIED</h1>
+      <p>Generate your own redacted government documents. What secrets are you hiding?</p>
+    </div>
+
+    <div class="generator">
+      <div class="controls">
+        <div class="control-section">
+          <label class="control-label">Document Title</label>
+          <input type="text" id="doc-title" class="control-input" value="UAP RETRIEVAL PROGRAM" maxlength="40">
+        </div>
+
+        <div class="control-section">
+          <label class="control-label">Classification Level</label>
+          <div class="classification-select" id="classification-select">
+            <button class="class-btn" data-class="CONFIDENTIAL">Confidential</button>
+            <button class="class-btn" data-class="SECRET">Secret</button>
+            <button class="class-btn selected" data-class="TOP SECRET">Top Secret</button>
+            <button class="class-btn" data-class="TOP SECRET/SCI">TS/SCI</button>
+          </div>
+        </div>
+
+        <div class="control-section">
+          <label class="control-label">Project Codename</label>
+          <input type="text" id="project-name" class="control-input" value="ZODIAC" maxlength="20">
+        </div>
+
+        <div class="control-section">
+          <label class="control-label">Document Content</label>
+          <textarea id="doc-content" class="control-input">Subject observed non-human craft at coordinates [REDACTED]. Materials recovered show properties inconsistent with known terrestrial technology.
+
+Analysis indicates craft utilizes [REDACTED] propulsion system. No conventional energy source detected.
+
+Recommend immediate escalation to [REDACTED] for further evaluation.</textarea>
+        </div>
+
+        <div class="control-section">
+          <label class="control-label">Your Name (Authorized Officer)</label>
+          <input type="text" id="officer-name" class="control-input" placeholder="Enter your name" maxlength="30">
+        </div>
+
+        <div class="control-section">
+          <label class="control-label">Redaction Level</label>
+          <div class="checkbox-group" id="redaction-options">
+            <label class="checkbox-item checked" data-option="names">
+              <input type="checkbox" checked> Names
+            </label>
+            <label class="checkbox-item checked" data-option="locations">
+              <input type="checkbox" checked> Locations
+            </label>
+            <label class="checkbox-item" data-option="dates">
+              <input type="checkbox"> Dates
+            </label>
+            <label class="checkbox-item checked" data-option="methods">
+              <input type="checkbox" checked> Methods
+            </label>
+          </div>
+        </div>
+
+        <div class="control-section">
+          <label class="checkbox-item" id="stained-toggle">
+            <input type="checkbox" checked> Coffee stains & aging
+          </label>
+        </div>
+
+        <button class="generate-btn" onclick="generateDoc()">GENERATE DOCUMENT</button>
+      </div>
+
+      <div class="doc-preview">
+        <div class="doc-frame">
+          <canvas id="doc-canvas" width="600" height="800"></canvas>
+        </div>
+
+        <div class="doc-actions">
+          <a class="action-btn" id="download-btn" download="classified-document.png">Download</a>
+          <button class="action-btn" onclick="copyDoc()">Copy</button>
+        </div>
+
+        <div class="share-section">
+          <h3>Share Your Classified Document</h3>
+          <div class="share-btns">
+            <a class="share-btn twitter" id="share-twitter" href="#" target="_blank">Twitter</a>
+            <a class="share-btn reddit" id="share-reddit" href="#" target="_blank">Reddit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p><strong>Disclosure Day Hub</strong> - For entertainment purposes only</p>
+    <p style="margin-top: 8px;"><a href="/">Home</a> · <a href="/are-you-human.html">Are You Human?</a> · <a href="/poster-generator.html">Poster Generator</a></p>
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('doc-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let currentClass = 'TOP SECRET';
+    let addStains = true;
+
+    // Initialize
+    function init() {
+      // Classification buttons
+      document.querySelectorAll('.class-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.class-btn').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          currentClass = btn.dataset.class;
+          generateDoc();
+        });
+      });
+
+      // Checkbox items
+      document.querySelectorAll('.checkbox-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+          if (item.id === 'stained-toggle') {
+            item.classList.toggle('checked');
+            addStains = item.classList.contains('checked');
+          } else {
+            item.classList.toggle('checked');
+          }
+          generateDoc();
+        });
+      });
+
+      // Input listeners
+      ['doc-title', 'project-name', 'doc-content', 'officer-name'].forEach(id => {
+        document.getElementById(id).addEventListener('input', generateDoc);
+      });
+
+      generateDoc();
+    }
+
+    function generateDoc() {
+      const w = canvas.width;
+      const h = canvas.height;
+
+      // Paper background
+      ctx.fillStyle = '#f4e9d3';
+      ctx.fillRect(0, 0, w, h);
+
+      // Paper texture
+      addPaperTexture();
+
+      if (addStains) {
+        addCoffeeStains();
+        addFoldLines();
+      }
+
+      // Header line
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(40, 60);
+      ctx.lineTo(w - 40, 60);
+      ctx.stroke();
+
+      // Classification stamp at top
+      drawStamp(w/2, 35, currentClass, '#c41e3a');
+
+      // Agency header
+      ctx.font = 'bold 14px "Courier New", monospace';
+      ctx.fillStyle = '#1a1a1a';
+      ctx.textAlign = 'center';
+      ctx.fillText('DEPARTMENT OF DEFENSE', w/2, 90);
+      ctx.font = '12px "Courier New", monospace';
+      ctx.fillText('UNIDENTIFIED AERIAL PHENOMENA TASK FORCE', w/2, 108);
+
+      // Document title
+      const title = document.getElementById('doc-title').value || 'UNTITLED';
+      ctx.font = 'bold 18px "Courier New", monospace';
+      ctx.fillText(title.toUpperCase(), w/2, 150);
+
+      // Project name
+      const project = document.getElementById('project-name').value;
+      if (project) {
+        ctx.font = '12px "Courier New", monospace';
+        ctx.fillText(`PROJECT: ${project.toUpperCase()}`, w/2, 175);
+      }
+
+      // Date
+      ctx.textAlign = 'left';
+      ctx.font = '11px "Courier New", monospace';
+      const date = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      ctx.fillText(`DATE: ${date}`, 50, 210);
+
+      // Document content with redactions
+      const content = document.getElementById('doc-content').value;
+      const lines = wrapText(content, 500);
+      let y = 250;
+
+      ctx.font = '13px "Courier New", monospace';
+      lines.forEach(line => {
+        const redactedLine = applyRedactions(line);
+        drawTextWithRedactions(redactedLine, 50, y);
+        y += 22;
+      });
+
+      // Classification footer
+      ctx.font = '10px "Courier New", monospace';
+      ctx.fillStyle = '#666';
+      ctx.textAlign = 'center';
+      ctx.fillText('UNAUTHORIZED DISCLOSURE SUBJECT TO CRIMINAL SANCTIONS', w/2, h - 120);
+
+      // Officer signature
+      const officer = document.getElementById('officer-name').value;
+      if (officer) {
+        ctx.textAlign = 'left';
+        ctx.font = '12px "Courier New", monospace';
+        ctx.fillStyle = '#1a1a1a';
+        ctx.fillText('AUTHORIZED BY:', 50, h - 80);
+
+        // Signature line
+        ctx.beginPath();
+        ctx.moveTo(180, h - 80);
+        ctx.lineTo(350, h - 80);
+        ctx.strokeStyle = '#1a1a1a';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        // Name
+        ctx.font = 'italic 14px "Courier New", monospace';
+        ctx.fillText(officer, 190, h - 85);
+      }
+
+      // Classification stamp at bottom
+      drawStamp(w - 100, h - 60, currentClass, '#c41e3a');
+
+      // "COPY" watermark
+      ctx.save();
+      ctx.globalAlpha = 0.06;
+      ctx.translate(w/2, h/2);
+      ctx.rotate(-30 * Math.PI / 180);
+      ctx.font = 'bold 120px Arial';
+      ctx.fillStyle = '#000';
+      ctx.textAlign = 'center';
+      ctx.fillText('COPY', 0, 0);
+      ctx.restore();
+
+      // Update download link
+      document.getElementById('download-btn').href = canvas.toDataURL('image/png');
+      updateShareLinks();
+    }
+
+    function drawStamp(x, y, text, color) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate((Math.random() - 0.5) * 0.1);
+
+      // Stamp border
+      const padding = 8;
+      const textWidth = ctx.measureText(text).width + padding * 2;
+      ctx.font = 'bold 16px "Courier New", monospace';
+
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 3;
+      ctx.strokeRect(-textWidth/2 - padding, -14, textWidth + padding * 2, 28);
+
+      // Stamp text
+      ctx.fillStyle = color;
+      ctx.textAlign = 'center';
+      ctx.fillText(text, 0, 6);
+
+      ctx.restore();
+    }
+
+    function applyRedactions(text) {
+      let result = text;
+
+      const isChecked = (opt) => document.querySelector(`[data-option="${opt}"]`)?.classList.contains('checked');
+
+      // Replace [REDACTED] markers with actual redaction blocks
+      result = result.replace(/\[REDACTED\]/g, '█████████');
+
+      // Auto-redact names (capitalized words)
+      if (isChecked('names')) {
+        result = result.replace(/\b([A-Z][a-z]+\s[A-Z][a-z]+)\b/g, '████ ████');
+      }
+
+      // Auto-redact numbers that look like coordinates or IDs
+      if (isChecked('locations')) {
+        result = result.replace(/\d+\.\d+°?\s*[NS]?,?\s*\d+\.\d+°?\s*[EW]?/g, '██.████° █, ███.████° █');
+        result = result.replace(/\b\d{5,}\b/g, '█████████');
+      }
+
+      // Auto-redact dates
+      if (isChecked('dates')) {
+        result = result.replace(/\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},?\s+\d{4}\b/gi, '████████ ██, ████');
+        result = result.replace(/\b\d{1,2}\/\d{1,2}\/\d{2,4}\b/g, '██/██/████');
+      }
+
+      return result;
+    }
+
+    function drawTextWithRedactions(text, x, y) {
+      const parts = text.split(/(█+)/);
+      let currentX = x;
+
+      parts.forEach(part => {
+        if (part.match(/█+/)) {
+          // Draw redaction bar
+          const width = ctx.measureText(part).width;
+          ctx.fillStyle = '#000';
+          ctx.fillRect(currentX, y - 12, width, 16);
+          currentX += width;
+        } else {
+          // Draw normal text
+          ctx.fillStyle = '#1a1a1a';
+          ctx.fillText(part, currentX, y);
+          currentX += ctx.measureText(part).width;
+        }
+      });
+    }
+
+    function wrapText(text, maxWidth) {
+      const words = text.split(/\s+/);
+      const lines = [];
+      let currentLine = '';
+
+      words.forEach(word => {
+        const testLine = currentLine ? `${currentLine} ${word}` : word;
+        const metrics = ctx.measureText(testLine);
+        if (metrics.width > maxWidth && currentLine) {
+          lines.push(currentLine);
+          currentLine = word;
+        } else {
+          currentLine = testLine;
+        }
+      });
+      if (currentLine) lines.push(currentLine);
+
+      return lines;
+    }
+
+    function addPaperTexture() {
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const data = imageData.data;
+
+      for (let i = 0; i < data.length; i += 4) {
+        const noise = (Math.random() - 0.5) * 15;
+        data[i] = Math.min(255, Math.max(0, data[i] + noise));
+        data[i + 1] = Math.min(255, Math.max(0, data[i + 1] + noise));
+        data[i + 2] = Math.min(255, Math.max(0, data[i + 2] + noise));
+      }
+
+      ctx.putImageData(imageData, 0, 0);
+    }
+
+    function addCoffeeStains() {
+      // Random coffee stain
+      ctx.save();
+      ctx.globalAlpha = 0.08;
+
+      const stainX = 100 + Math.random() * 400;
+      const stainY = 200 + Math.random() * 400;
+
+      const grad = ctx.createRadialGradient(stainX, stainY, 0, stainX, stainY, 40);
+      grad.addColorStop(0, 'transparent');
+      grad.addColorStop(0.5, '#8B4513');
+      grad.addColorStop(0.7, '#8B4513');
+      grad.addColorStop(1, 'transparent');
+
+      ctx.beginPath();
+      ctx.arc(stainX, stainY, 40, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      ctx.restore();
+    }
+
+    function addFoldLines() {
+      ctx.save();
+      ctx.globalAlpha = 0.1;
+      ctx.strokeStyle = '#888';
+      ctx.lineWidth = 1;
+
+      // Horizontal fold
+      ctx.beginPath();
+      ctx.moveTo(0, canvas.height / 3);
+      ctx.lineTo(canvas.width, canvas.height / 3);
+      ctx.stroke();
+
+      // Another fold
+      ctx.beginPath();
+      ctx.moveTo(0, canvas.height * 2 / 3);
+      ctx.lineTo(canvas.width, canvas.height * 2 / 3);
+      ctx.stroke();
+
+      ctx.restore();
+    }
+
+    function updateShareLinks() {
+      const tweetText = encodeURIComponent(`CLASSIFIED: I found this document about Project ${document.getElementById('project-name').value || 'ZODIAC'}. What is the government hiding? #DisclosureDay #UAP`);
+      document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${tweetText}&url=${encodeURIComponent(window.location.href)}`;
+
+      const redditTitle = encodeURIComponent(`[LEAKED] Classified document about Project ${document.getElementById('project-name').value || 'ZODIAC'}`);
+      document.getElementById('share-reddit').href = `https://reddit.com/submit?url=${encodeURIComponent(window.location.href)}&title=${redditTitle}`;
+    }
+
+    async function copyDoc() {
+      try {
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+        await navigator.clipboard.write([
+          new ClipboardItem({ 'image/png': blob })
+        ]);
+        alert('Document copied to clipboard!');
+      } catch (err) {
+        alert('Download the image instead.');
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>
