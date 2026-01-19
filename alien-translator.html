@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alien Translator | Disclosure Day - Translate to Extraterrestrial</title>
+  <meta name="description" content="Translate your message into alien language! Convert text to mysterious extraterrestrial symbols and share with friends.">
+  <meta property="og:title" content="Alien Translator - Speak Like the Visitors">
+  <meta property="og:description" content="Translate your message into alien symbols. Can your friends decode it?">
+  <meta property="og:image" content="https://disclosureday.nicedreamzwholesale.com/public/images/translator-og.jpg">
+  <meta property="og:url" content="https://disclosureday.nicedreamzwholesale.com/alien-translator.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root {
+      --bg: #000408;
+      --card: #0a0d14;
+      --fg: #e9eef7;
+      --muted: #8b95a5;
+      --accent: #00ffcc;
+      --purple: #9d4edd;
+      --glow: rgba(0, 255, 204, 0.4);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(0, 4, 8, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 255, 204, 0.1);
+      padding: 12px 20px;
+    }
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo { font-weight: 800; font-size: 16px; color: var(--fg); text-decoration: none; }
+    .nav a { color: var(--accent); text-decoration: none; font-size: 14px; }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 100px 20px 60px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 6vw, 48px);
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .translator {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 700px) {
+      .translator { grid-template-columns: 1fr; }
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid rgba(0, 255, 204, 0.15);
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .panel-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted);
+    }
+    .panel-icon {
+      font-size: 24px;
+    }
+
+    .input-area {
+      width: 100%;
+      min-height: 200px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 16px;
+      color: var(--fg);
+      font-size: 18px;
+      font-family: inherit;
+      resize: vertical;
+    }
+    .input-area:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .input-area::placeholder {
+      color: var(--muted);
+    }
+
+    .output-area {
+      width: 100%;
+      min-height: 200px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 255, 204, 0.2);
+      border-radius: 12px;
+      padding: 16px;
+      font-size: 32px;
+      line-height: 1.6;
+      letter-spacing: 4px;
+      word-wrap: break-word;
+      color: var(--accent);
+      text-shadow: 0 0 10px var(--glow);
+      font-family: 'Courier New', monospace;
+    }
+
+    .char-count {
+      text-align: right;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .mode-selector {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .mode-btn {
+      flex: 1;
+      min-width: 100px;
+      padding: 12px 16px;
+      background: rgba(0, 255, 204, 0.05);
+      border: 1px solid rgba(0, 255, 204, 0.2);
+      border-radius: 10px;
+      color: var(--fg);
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .mode-btn:hover {
+      border-color: var(--accent);
+    }
+    .mode-btn.selected {
+      background: rgba(0, 255, 204, 0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+    .action-btn {
+      flex: 1;
+      min-width: 120px;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.2s;
+      border: none;
+      text-align: center;
+    }
+    .action-btn.primary {
+      background: var(--accent);
+      color: #000;
+    }
+    .action-btn.secondary {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+    }
+    .action-btn:hover {
+      transform: scale(1.02);
+    }
+
+    .share-section {
+      margin-top: 30px;
+      padding: 24px;
+      background: var(--card);
+      border: 1px solid rgba(0, 255, 204, 0.1);
+      border-radius: 16px;
+      text-align: center;
+    }
+    .share-section h3 {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .share-btns {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .share-btn {
+      padding: 10px 24px;
+      border: none;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    .share-btn:hover { transform: scale(1.05); }
+    .share-btn.twitter { background: #1da1f2; color: #fff; }
+    .share-btn.reddit { background: #ff4500; color: #fff; }
+    .share-btn.copy { background: var(--purple); color: #fff; }
+
+    /* Legend */
+    .legend {
+      margin-top: 40px;
+      padding: 24px;
+      background: var(--card);
+      border: 1px solid rgba(0, 255, 204, 0.1);
+      border-radius: 16px;
+    }
+    .legend h3 {
+      font-size: 16px;
+      margin-bottom: 16px;
+      color: var(--accent);
+    }
+    .legend-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+      gap: 10px;
+    }
+    .legend-item {
+      text-align: center;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+    }
+    .legend-symbol {
+      font-size: 24px;
+      color: var(--accent);
+      text-shadow: 0 0 8px var(--glow);
+    }
+    .legend-char {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 40px;
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+
+    /* Glow effect */
+    @keyframes pulse-glow {
+      0%, 100% { text-shadow: 0 0 10px var(--glow); }
+      50% { text-shadow: 0 0 20px var(--glow), 0 0 30px var(--glow); }
+    }
+    .output-area.glowing {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">DISCLOSURE DAY HUB</a>
+      <a href="/">Back to Hub</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="hero">
+      <h1>ALIEN TRANSLATOR</h1>
+      <p>Convert your message to extraterrestrial symbols</p>
+    </div>
+
+    <div class="mode-selector">
+      <button class="mode-btn selected" data-mode="symbols">Symbols</button>
+      <button class="mode-btn" data-mode="geometric">Geometric</button>
+      <button class="mode-btn" data-mode="binary">Binary</button>
+      <button class="mode-btn" data-mode="cipher">Cipher</button>
+    </div>
+
+    <div class="translator">
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">Human Text</span>
+          <span class="panel-icon">🌍</span>
+        </div>
+        <textarea class="input-area" id="input" placeholder="Type your message here..."></textarea>
+        <div class="char-count"><span id="char-count">0</span> / 280</div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">Alien Translation</span>
+          <span class="panel-icon">👽</span>
+        </div>
+        <div class="output-area glowing" id="output">
+          <!-- Translation appears here -->
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="action-btn primary" onclick="copyTranslation()">Copy Translation</button>
+      <button class="action-btn secondary" onclick="downloadImage()">Download as Image</button>
+      <button class="action-btn secondary" onclick="clearAll()">Clear</button>
+    </div>
+
+    <div class="share-section">
+      <h3>Challenge your friends to decode your message!</h3>
+      <div class="share-btns">
+        <a class="share-btn twitter" id="share-twitter" href="#" target="_blank">Share on Twitter</a>
+        <a class="share-btn reddit" id="share-reddit" href="#" target="_blank">Post on Reddit</a>
+        <button class="share-btn copy" onclick="copyLink()">Copy Link</button>
+      </div>
+    </div>
+
+    <div class="legend" id="legend">
+      <h3>Symbol Legend (Current Mode: <span id="mode-name">Symbols</span>)</h3>
+      <div class="legend-grid" id="legend-grid">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p><strong>Disclosure Day Hub</strong></p>
+    <p style="margin-top: 8px;"><a href="/">Home</a> · <a href="/are-you-human.html">Are You Human?</a> · <a href="/decode-the-signal.html">Decode The Signal</a></p>
+  </footer>
+
+  <!-- Hidden canvas for image export -->
+  <canvas id="export-canvas" style="display: none;"></canvas>
+
+  <script>
+    // Translation modes
+    const modes = {
+      symbols: {
+        name: 'Symbols',
+        map: {
+          'a': '⊛', 'b': '⊜', 'c': '⊝', 'd': '⊞', 'e': '⊟',
+          'f': '⊠', 'g': '⊡', 'h': '⊢', 'i': '⊣', 'j': '⊤',
+          'k': '⊥', 'l': '⊦', 'm': '⊧', 'n': '⊨', 'o': '⊩',
+          'p': '⊪', 'q': '⊫', 'r': '⊬', 's': '⊭', 't': '⊮',
+          'u': '⊯', 'v': '⊰', 'w': '⊱', 'x': '⊲', 'y': '⊳',
+          'z': '⊴', ' ': ' ', '.': '◈', ',': '◇', '!': '◆',
+          '?': '◉', '0': '⓪', '1': '①', '2': '②', '3': '③',
+          '4': '④', '5': '⑤', '6': '⑥', '7': '⑦', '8': '⑧', '9': '⑨'
+        }
+      },
+      geometric: {
+        name: 'Geometric',
+        map: {
+          'a': '△', 'b': '▽', 'c': '◁', 'd': '▷', 'e': '○',
+          'f': '●', 'g': '◐', 'h': '◑', 'i': '◒', 'j': '◓',
+          'k': '◔', 'l': '◕', 'm': '◖', 'n': '◗', 'o': '◘',
+          'p': '◙', 'q': '◚', 'r': '◛', 's': '◜', 't': '◝',
+          'u': '◞', 'v': '◟', 'w': '◠', 'x': '◡', 'y': '◢',
+          'z': '◣', ' ': ' ', '.': '◦', ',': '◧', '!': '◨',
+          '?': '◩', '0': '⬡', '1': '⬢', '2': '⬣', '3': '⬤',
+          '4': '⬥', '5': '⬦', '6': '⬧', '7': '⬨', '8': '⬩', '9': '⬪'
+        }
+      },
+      binary: {
+        name: 'Binary',
+        encode: (char) => {
+          if (char === ' ') return '  ';
+          const code = char.toLowerCase().charCodeAt(0);
+          return code.toString(2).padStart(8, '0').replace(/0/g, '○').replace(/1/g, '●');
+        }
+      },
+      cipher: {
+        name: 'Cipher',
+        map: {
+          'a': 'ᛅ', 'b': 'ᛒ', 'c': 'ᚲ', 'd': 'ᛞ', 'e': 'ᛖ',
+          'f': 'ᚠ', 'g': 'ᚷ', 'h': 'ᚺ', 'i': 'ᛁ', 'j': 'ᛃ',
+          'k': 'ᚲ', 'l': 'ᛚ', 'm': 'ᛗ', 'n': 'ᚾ', 'o': 'ᛟ',
+          'p': 'ᛈ', 'q': 'ᛩ', 'r': 'ᚱ', 's': 'ᛊ', 't': 'ᛏ',
+          'u': 'ᚢ', 'v': 'ᚡ', 'w': 'ᚹ', 'x': 'ᛪ', 'y': 'ᚤ',
+          'z': 'ᛎ', ' ': ' ', '.': '᛫', ',': '᛬', '!': '᛭',
+          '?': '᛭', '0': 'ᛰ', '1': 'ᛱ', '2': 'ᛲ', '3': 'ᛳ',
+          '4': 'ᛴ', '5': 'ᛵ', '6': 'ᛶ', '7': 'ᛷ', '8': 'ᛸ', '9': '᛹'
+        }
+      }
+    };
+
+    let currentMode = 'symbols';
+
+    // Initialize
+    function init() {
+      // Mode buttons
+      document.querySelectorAll('.mode-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          currentMode = btn.dataset.mode;
+          document.getElementById('mode-name').textContent = modes[currentMode].name;
+          updateLegend();
+          translate();
+        });
+      });
+
+      // Input listener
+      document.getElementById('input').addEventListener('input', (e) => {
+        translate();
+        document.getElementById('char-count').textContent = e.target.value.length;
+      });
+
+      updateLegend();
+    }
+
+    function translate() {
+      const input = document.getElementById('input').value;
+      const output = document.getElementById('output');
+      const mode = modes[currentMode];
+
+      let result = '';
+
+      if (mode.encode) {
+        // Binary mode with custom encoder
+        for (const char of input) {
+          result += mode.encode(char) + ' ';
+        }
+      } else {
+        // Map-based translation
+        for (const char of input.toLowerCase()) {
+          result += mode.map[char] || char;
+        }
+      }
+
+      output.textContent = result;
+      updateShareLinks();
+    }
+
+    function updateLegend() {
+      const mode = modes[currentMode];
+      const grid = document.getElementById('legend-grid');
+
+      if (mode.encode) {
+        // Binary mode - show examples
+        grid.innerHTML = `
+          <div class="legend-item">
+            <div class="legend-symbol">○●○○○○○●</div>
+            <div class="legend-char">A</div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-symbol">○●○○○○●○</div>
+            <div class="legend-char">B</div>
+          </div>
+          <div class="legend-item">
+            <div class="legend-symbol">○●○○○○●●</div>
+            <div class="legend-char">C</div>
+          </div>
+        `;
+        return;
+      }
+
+      // Show first 26 mappings (alphabet)
+      const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+      grid.innerHTML = alphabet.split('').map(char => `
+        <div class="legend-item">
+          <div class="legend-symbol">${mode.map[char] || char}</div>
+          <div class="legend-char">${char.toUpperCase()}</div>
+        </div>
+      `).join('');
+    }
+
+    function copyTranslation() {
+      const output = document.getElementById('output').textContent;
+      navigator.clipboard.writeText(output);
+      alert('Translation copied!');
+    }
+
+    function downloadImage() {
+      const canvas = document.getElementById('export-canvas');
+      const ctx = canvas.getContext('2d');
+      const output = document.getElementById('output').textContent;
+
+      canvas.width = 800;
+      canvas.height = 400;
+
+      // Background
+      ctx.fillStyle = '#000408';
+      ctx.fillRect(0, 0, 800, 400);
+
+      // Border
+      ctx.strokeStyle = '#00ffcc';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(20, 20, 760, 360);
+
+      // Title
+      ctx.font = '24px system-ui';
+      ctx.fillStyle = '#00ffcc';
+      ctx.textAlign = 'center';
+      ctx.fillText('ALIEN TRANSLATION', 400, 70);
+
+      // Translation
+      ctx.font = '32px Courier New';
+      ctx.fillStyle = '#00ffcc';
+
+      // Word wrap
+      const words = output.split(' ');
+      let line = '';
+      let y = 150;
+      const maxWidth = 700;
+
+      for (const word of words) {
+        const testLine = line + word + ' ';
+        const metrics = ctx.measureText(testLine);
+        if (metrics.width > maxWidth && line !== '') {
+          ctx.fillText(line, 400, y);
+          line = word + ' ';
+          y += 50;
+        } else {
+          line = testLine;
+        }
+      }
+      ctx.fillText(line, 400, y);
+
+      // Footer
+      ctx.font = '14px system-ui';
+      ctx.fillStyle = '#8b95a5';
+      ctx.fillText('disclosureday.nicedreamzwholesale.com/alien-translator.html', 400, 370);
+
+      // Download
+      const link = document.createElement('a');
+      link.download = 'alien-translation.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    function clearAll() {
+      document.getElementById('input').value = '';
+      document.getElementById('output').textContent = '';
+      document.getElementById('char-count').textContent = '0';
+    }
+
+    function updateShareLinks() {
+      const input = document.getElementById('input').value;
+      const encoded = encodeURIComponent(input.substring(0, 100));
+
+      const tweetText = encodeURIComponent(`Can you decode this alien message? 👽 Translate yours at:`);
+      document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${tweetText}&url=${encodeURIComponent(window.location.href)}`;
+
+      document.getElementById('share-reddit').href = `https://reddit.com/submit?url=${encodeURIComponent(window.location.href)}&title=${encodeURIComponent('Alien Translator - Can you decode my message?')}`;
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Link copied!');
+    }
+
+    init();
+  </script>
+</body>
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disclosure Day Bingo | Movie Night Game</title>
+  <meta name="description" content="Generate your Disclosure Day movie bingo card! Mark off tropes and moments as you watch Spielberg's UFO epic.">
+  <meta property="og:title" content="Disclosure Day Bingo - Movie Night Game">
+  <meta property="og:description" content="Generate a bingo card for Disclosure Day! Mark off moments as you watch.">
+  <meta property="og:image" content="https://disclosureday.nicedreamzwholesale.com/public/images/bingo-og.jpg">
+  <meta property="og:url" content="https://disclosureday.nicedreamzwholesale.com/bingo.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root {
+      --bg: #02030a;
+      --card: #0a0d14;
+      --fg: #e9eef7;
+      --muted: #8b95a5;
+      --accent: #00ffcc;
+      --gold: #ffd700;
+      --purple: #9d4edd;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(2, 3, 10, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 255, 204, 0.1);
+      padding: 12px 20px;
+    }
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo { font-weight: 800; font-size: 16px; color: var(--fg); text-decoration: none; }
+    .nav a { color: var(--accent); text-decoration: none; font-size: 14px; }
+
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 100px 20px 60px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--gold), #fff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .bingo-card {
+      background: var(--card);
+      border: 3px solid var(--gold);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .bingo-header {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .bingo-letter {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--gold);
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    }
+
+    .bingo-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+
+    .bingo-cell {
+      aspect-ratio: 1;
+      background: rgba(0, 0, 0, 0.4);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8px;
+      font-size: clamp(10px, 2vw, 13px);
+      line-height: 1.3;
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .bingo-cell:hover {
+      border-color: var(--accent);
+      transform: scale(1.02);
+    }
+    .bingo-cell.marked {
+      background: linear-gradient(135deg, rgba(0, 255, 204, 0.2), rgba(157, 78, 221, 0.2));
+      border-color: var(--accent);
+    }
+    .bingo-cell.marked::after {
+      content: '✓';
+      position: absolute;
+      top: 4px;
+      right: 6px;
+      font-size: 16px;
+      color: var(--accent);
+    }
+
+    .free-space {
+      background: linear-gradient(135deg, var(--gold), #ff8c00) !important;
+      color: #000 !important;
+      font-weight: 700;
+      border-color: var(--gold) !important;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .action-btn {
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+      border: none;
+    }
+    .action-btn.primary {
+      background: var(--accent);
+      color: #000;
+    }
+    .action-btn.secondary {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+    }
+    .action-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .win-alert {
+      display: none;
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(157, 78, 221, 0.2));
+      border: 2px solid var(--gold);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 24px;
+      animation: celebration 0.5s ease;
+    }
+    .win-alert.show { display: block; }
+    .win-alert h2 {
+      font-size: 28px;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .win-alert p {
+      color: var(--muted);
+    }
+
+    @keyframes celebration {
+      0% { transform: scale(0.9); opacity: 0; }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .share-section {
+      padding: 24px;
+      background: var(--card);
+      border: 1px solid rgba(0, 255, 204, 0.1);
+      border-radius: 16px;
+      text-align: center;
+    }
+    .share-section h3 {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .share-btns {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .share-btn {
+      padding: 10px 24px;
+      border: none;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    .share-btn:hover { transform: scale(1.05); }
+    .share-btn.twitter { background: #1da1f2; color: #fff; }
+    .share-btn.reddit { background: #ff4500; color: #fff; }
+    .share-btn.download { background: var(--purple); color: #fff; }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 20px 0;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .stat-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 30px;
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+
+    /* Hidden canvas */
+    #export-canvas { display: none; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">DISCLOSURE DAY HUB</a>
+      <a href="/">Back to Hub</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="hero">
+      <h1>DISCLOSURE DAY BINGO</h1>
+      <p>Generate your movie night bingo card! Click squares as you spot them.</p>
+    </div>
+
+    <div class="win-alert" id="win-alert">
+      <h2>BINGO!</h2>
+      <p>You got 5 in a row! Share your winning card!</p>
+    </div>
+
+    <div class="bingo-card">
+      <div class="bingo-header">
+        <div class="bingo-letter">B</div>
+        <div class="bingo-letter">I</div>
+        <div class="bingo-letter">N</div>
+        <div class="bingo-letter">G</div>
+        <div class="bingo-letter">O</div>
+      </div>
+      <div class="bingo-grid" id="bingo-grid">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value" id="marked-count">0</div>
+        <div class="stat-label">Marked</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="remaining-count">24</div>
+        <div class="stat-label">Remaining</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="action-btn primary" onclick="generateNewCard()">New Card</button>
+      <button class="action-btn secondary" onclick="clearMarks()">Clear Marks</button>
+      <button class="action-btn secondary" onclick="downloadCard()">Download</button>
+    </div>
+
+    <div class="share-section">
+      <h3>Share your bingo card with friends!</h3>
+      <div class="share-btns">
+        <a class="share-btn twitter" id="share-twitter" href="#" target="_blank">Tweet Card</a>
+        <a class="share-btn reddit" id="share-reddit" href="#" target="_blank">Post on Reddit</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p><strong>Disclosure Day Hub</strong></p>
+    <p style="margin-top: 8px;"><a href="/">Home</a> · <a href="/first-contact.html">First Contact Game</a> · <a href="/trailer-breakdown.html">Trailer Breakdown</a></p>
+  </footer>
+
+  <canvas id="export-canvas"></canvas>
+
+  <script>
+    // All possible bingo squares
+    const allSquares = [
+      // Classic Spielberg moments
+      'Spielberg lens flare',
+      'Kids discover alien first',
+      'Government cover-up',
+      'Emotional John Williams swell',
+      'Character looks up in awe',
+      'Military overreacts',
+      'Small town setting',
+      'Family drama subplot',
+      'News broadcast exposition',
+      'Someone says "impossible"',
+
+      // UFO/Alien tropes
+      'Lights in the sky',
+      'Power goes out',
+      'Electronics malfunction',
+      'Crop circles appear',
+      'Strange sounds/frequencies',
+      'Animal behaves strangely',
+      'Time lost/missing time',
+      'Abduction scene',
+      'Telepathic communication',
+      'Alien language decoded',
+
+      // Thriller elements
+      'Someone doesn\'t believe',
+      'Evidence is destroyed',
+      'Chase scene',
+      'Dramatic revelation',
+      'Betrayal by authority',
+      'Countdown timer',
+      'Narrow escape',
+      'Self-sacrifice moment',
+      'Plot twist',
+      'Cliffhanger moment',
+
+      // Character moments
+      'Emily Blunt crying scene',
+      'Josh O\'Connor intense stare',
+      'Colin Firth being suspicious',
+      'Colman Domingo speech',
+      'Love interest moment',
+      'Flashback scene',
+      'Character sees proof',
+      'Someone runs toward danger',
+      'Heroic last stand',
+      'Reunion scene',
+
+      // Specific predictions
+      '"Seven billion" line',
+      'Close Encounters reference',
+      'White Sands/Roswell mention',
+      'Pentagon scene',
+      'First contact handshake',
+      'Mass sighting montage',
+      'Fake-out alien reveal',
+      'Real alien reveal',
+      'Post-credits scene',
+      'Happy ending'
+    ];
+
+    let currentCard = [];
+    let markedCells = new Set();
+
+    function generateNewCard() {
+      // Shuffle and pick 24 (center is free)
+      const shuffled = [...allSquares].sort(() => Math.random() - 0.5);
+      currentCard = shuffled.slice(0, 24);
+
+      // Insert free space in middle (index 12)
+      currentCard.splice(12, 0, 'FREE SPACE');
+
+      markedCells = new Set([12]); // Free space is always marked
+      renderCard();
+      updateStats();
+      hideWin();
+    }
+
+    function renderCard() {
+      const grid = document.getElementById('bingo-grid');
+      grid.innerHTML = currentCard.map((text, i) => {
+        const isMarked = markedCells.has(i);
+        const isFree = i === 12;
+        return `
+          <div class="bingo-cell ${isMarked ? 'marked' : ''} ${isFree ? 'free-space' : ''}"
+               onclick="toggleCell(${i})"
+               data-index="${i}">
+            ${text}
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleCell(index) {
+      if (index === 12) return; // Can't unmark free space
+
+      if (markedCells.has(index)) {
+        markedCells.delete(index);
+      } else {
+        markedCells.add(index);
+      }
+
+      renderCard();
+      updateStats();
+      checkWin();
+    }
+
+    function updateStats() {
+      document.getElementById('marked-count').textContent = markedCells.size;
+      document.getElementById('remaining-count').textContent = 25 - markedCells.size;
+    }
+
+    function checkWin() {
+      // Win patterns (5 in a row)
+      const winPatterns = [
+        // Rows
+        [0, 1, 2, 3, 4],
+        [5, 6, 7, 8, 9],
+        [10, 11, 12, 13, 14],
+        [15, 16, 17, 18, 19],
+        [20, 21, 22, 23, 24],
+        // Columns
+        [0, 5, 10, 15, 20],
+        [1, 6, 11, 16, 21],
+        [2, 7, 12, 17, 22],
+        [3, 8, 13, 18, 23],
+        [4, 9, 14, 19, 24],
+        // Diagonals
+        [0, 6, 12, 18, 24],
+        [4, 8, 12, 16, 20]
+      ];
+
+      for (const pattern of winPatterns) {
+        if (pattern.every(i => markedCells.has(i))) {
+          showWin();
+          return;
+        }
+      }
+    }
+
+    function showWin() {
+      document.getElementById('win-alert').classList.add('show');
+    }
+
+    function hideWin() {
+      document.getElementById('win-alert').classList.remove('show');
+    }
+
+    function clearMarks() {
+      markedCells = new Set([12]); // Keep free space
+      renderCard();
+      updateStats();
+      hideWin();
+    }
+
+    function downloadCard() {
+      const canvas = document.getElementById('export-canvas');
+      const ctx = canvas.getContext('2d');
+
+      canvas.width = 600;
+      canvas.height = 700;
+
+      // Background
+      ctx.fillStyle = '#02030a';
+      ctx.fillRect(0, 0, 600, 700);
+
+      // Border
+      ctx.strokeStyle = '#ffd700';
+      ctx.lineWidth = 4;
+      ctx.strokeRect(20, 20, 560, 660);
+
+      // Title
+      ctx.font = 'bold 32px system-ui';
+      ctx.fillStyle = '#ffd700';
+      ctx.textAlign = 'center';
+      ctx.fillText('DISCLOSURE DAY BINGO', 300, 60);
+
+      // BINGO letters
+      ctx.font = 'bold 24px system-ui';
+      const letters = ['B', 'I', 'N', 'G', 'O'];
+      letters.forEach((letter, i) => {
+        ctx.fillText(letter, 70 + i * 100, 100);
+      });
+
+      // Grid
+      const cellSize = 100;
+      const startX = 20;
+      const startY = 120;
+
+      currentCard.forEach((text, i) => {
+        const row = Math.floor(i / 5);
+        const col = i % 5;
+        const x = startX + col * cellSize;
+        const y = startY + row * cellSize;
+
+        // Cell background
+        ctx.fillStyle = markedCells.has(i) ? 'rgba(0, 255, 204, 0.2)' : 'rgba(0, 0, 0, 0.4)';
+        if (i === 12) ctx.fillStyle = '#ffd700';
+        ctx.fillRect(x + 5, y + 5, cellSize - 10, cellSize - 10);
+
+        // Cell border
+        ctx.strokeStyle = markedCells.has(i) ? '#00ffcc' : 'rgba(255, 255, 255, 0.2)';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(x + 5, y + 5, cellSize - 10, cellSize - 10);
+
+        // Text
+        ctx.font = '11px system-ui';
+        ctx.fillStyle = i === 12 ? '#000' : '#e9eef7';
+        ctx.textAlign = 'center';
+
+        // Word wrap
+        const words = text.split(' ');
+        let line = '';
+        let lineY = y + 35;
+        words.forEach(word => {
+          const testLine = line + word + ' ';
+          if (ctx.measureText(testLine).width > cellSize - 20) {
+            ctx.fillText(line, x + cellSize/2, lineY);
+            line = word + ' ';
+            lineY += 14;
+          } else {
+            line = testLine;
+          }
+        });
+        ctx.fillText(line, x + cellSize/2, lineY);
+
+        // Checkmark for marked cells
+        if (markedCells.has(i) && i !== 12) {
+          ctx.font = 'bold 20px system-ui';
+          ctx.fillStyle = '#00ffcc';
+          ctx.fillText('✓', x + cellSize - 15, y + 22);
+        }
+      });
+
+      // Footer
+      ctx.font = '12px system-ui';
+      ctx.fillStyle = '#8b95a5';
+      ctx.fillText('disclosureday.nicedreamzwholesale.com/bingo.html', 300, 680);
+
+      // Download
+      const link = document.createElement('a');
+      link.download = 'disclosure-day-bingo.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    // Initialize
+    generateNewCard();
+
+    // Update share links
+    document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent('Got my Disclosure Day Bingo card ready for June 12! Generate yours:')}&url=${encodeURIComponent(window.location.href)}`;
+    document.getElementById('share-reddit').href = `https://reddit.com/submit?url=${encodeURIComponent(window.location.href)}&title=${encodeURIComponent('Disclosure Day Bingo - Movie Night Game')}`;
+  </script>
+</body>
+</html>
