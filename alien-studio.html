@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alien Creative Studio | Make Music & Art | Disclosure Day Hub</title>
+  <meta name="description" content="Create your own alien music and art! Interactive synthesizer with UFO sounds, drawing canvas, and shareable creations. Disclosure Day fan experience.">
+  <meta name="keywords" content="alien music maker, UFO sounds, Disclosure Day, alien art creator, interactive, synthesizer, drawing">
+  <link rel="canonical" href="https://disclosureday.nicedreamzwholesale.com/alien-studio.html">
+
+  <meta property="og:title" content="Alien Creative Studio | Disclosure Day">
+  <meta property="og:description" content="Create your own alien music and art! Interactive synthesizer and drawing canvas.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://disclosureday.nicedreamzwholesale.com/alien-studio.html">
+  <meta property="og:image" content="https://disclosureday.nicedreamzwholesale.com/public/images/alien-studio-share.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Alien Creative Studio | Make Music & Art">
+  <meta name="twitter:description" content="Create otherworldly music and alien art. Share your transmissions.">
+  <meta name="twitter:image" content="https://disclosureday.nicedreamzwholesale.com/public/images/alien-studio-share.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Alien Creative Studio",
+    "description": "Create your own alien music and art with interactive synthesizer and drawing canvas",
+    "url": "https://disclosureday.nicedreamzwholesale.com/alien-studio.html",
+    "applicationCategory": "Entertainment",
+    "operatingSystem": "Web Browser",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #000408;
+      --card: #0a0d14;
+      --fg: #e9eef7;
+      --muted: #8b95a5;
+      --accent: #39ff14;
+      --accent2: #6ee7ff;
+      --accent3: #b5a7ff;
+      --line: rgba(57,255,20,.2);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Background effects */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(57,255,20,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(57,255,20,.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .bg-glow {
+      position: fixed;
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150%;
+      height: 100%;
+      background: radial-gradient(ellipse at center, rgba(57,255,20,.08) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Navigation */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(0,4,8,.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+      padding: 12px 20px;
+    }
+    .nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-weight: 800;
+      font-size: 16px;
+      color: var(--accent);
+      text-decoration: none;
+      text-shadow: 0 0 20px rgba(57,255,20,.5);
+    }
+    .nav a { color: var(--fg); text-decoration: none; }
+
+    /* Main container */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 80px 20px 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .header h1 {
+      font-size: clamp(32px, 6vw, 56px);
+      color: var(--accent);
+      text-shadow: 0 0 30px rgba(57,255,20,.5), 0 0 60px rgba(57,255,20,.3);
+      margin-bottom: 12px;
+      animation: titlePulse 3s ease-in-out infinite;
+    }
+    @keyframes titlePulse {
+      0%, 100% { text-shadow: 0 0 30px rgba(57,255,20,.5), 0 0 60px rgba(57,255,20,.3); }
+      50% { text-shadow: 0 0 50px rgba(57,255,20,.8), 0 0 100px rgba(57,255,20,.5); }
+    }
+    .header p {
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 14px 28px;
+      border: 2px solid var(--line);
+      background: rgba(57,255,20,.05);
+      color: var(--fg);
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all .3s ease;
+    }
+    .tab-btn:hover {
+      background: rgba(57,255,20,.15);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .tab-btn.active {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+      box-shadow: 0 0 30px rgba(57,255,20,.4);
+    }
+
+    /* Studio panels */
+    .studio-panel {
+      display: none;
+      background: rgba(10,13,20,.8);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(20px);
+    }
+    .studio-panel.active { display: block; }
+
+    /* ===== MUSIC MAKER ===== */
+    .synth-container {
+      display: grid;
+      gap: 24px;
+    }
+
+    /* Sequencer grid */
+    .sequencer {
+      display: grid;
+      grid-template-columns: 80px repeat(16, 1fr);
+      gap: 4px;
+    }
+    .seq-row {
+      display: contents;
+    }
+    .seq-label {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      font-family: monospace;
+    }
+    .seq-cell {
+      aspect-ratio: 1;
+      border: 1px solid rgba(57,255,20,.2);
+      border-radius: 4px;
+      background: rgba(57,255,20,.05);
+      cursor: pointer;
+      transition: all .15s ease;
+    }
+    .seq-cell:hover {
+      background: rgba(57,255,20,.2);
+      border-color: var(--accent);
+    }
+    .seq-cell.active {
+      background: var(--accent);
+      box-shadow: 0 0 15px rgba(57,255,20,.5);
+    }
+    .seq-cell.playing {
+      background: #fff !important;
+      box-shadow: 0 0 20px #fff;
+    }
+
+    /* Controls */
+    .controls {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+    .ctrl-btn {
+      padding: 14px 28px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+    .ctrl-btn.play {
+      background: linear-gradient(135deg, #39ff14, #00cc00);
+      color: #000;
+    }
+    .ctrl-btn.play:hover {
+      box-shadow: 0 0 30px rgba(57,255,20,.5);
+      transform: scale(1.05);
+    }
+    .ctrl-btn.stop {
+      background: linear-gradient(135deg, #ff4757, #cc0000);
+      color: #fff;
+    }
+    .ctrl-btn.clear {
+      background: rgba(255,255,255,.1);
+      color: var(--fg);
+      border: 1px solid var(--line);
+    }
+
+    /* Sound selector */
+    .sound-selector {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .sound-btn {
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      background: rgba(110,231,255,.1);
+      color: var(--accent2);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all .2s ease;
+    }
+    .sound-btn:hover, .sound-btn.active {
+      background: var(--accent2);
+      color: #000;
+      border-color: var(--accent2);
+    }
+
+    /* Tempo slider */
+    .tempo-control {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .tempo-control label {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .tempo-control input[type="range"] {
+      width: 150px;
+      accent-color: var(--accent);
+    }
+    .tempo-value {
+      color: var(--accent);
+      font-weight: 700;
+      font-family: monospace;
+    }
+
+    /* Presets */
+    .presets {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 16px;
+    }
+    .preset-btn {
+      padding: 8px 14px;
+      border: 1px solid rgba(181,167,255,.3);
+      background: rgba(181,167,255,.1);
+      color: var(--accent3);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all .2s ease;
+    }
+    .preset-btn:hover {
+      background: var(--accent3);
+      color: #000;
+    }
+
+    /* ===== DRAWING CANVAS ===== */
+    .canvas-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    #drawCanvas {
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      background: #000;
+      cursor: crosshair;
+      box-shadow: 0 0 40px rgba(57,255,20,.2);
+      max-width: 100%;
+      touch-action: none;
+    }
+    .canvas-tools {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+    .color-picker {
+      display: flex;
+      gap: 6px;
+    }
+    .color-swatch {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all .2s ease;
+    }
+    .color-swatch:hover, .color-swatch.active {
+      border-color: #fff;
+      transform: scale(1.15);
+      box-shadow: 0 0 15px currentColor;
+    }
+    .brush-size {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brush-size input {
+      width: 100px;
+      accent-color: var(--accent);
+    }
+    .tool-btn {
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      color: var(--fg);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+    .tool-btn:hover {
+      background: rgba(255,255,255,.15);
+    }
+    .tool-btn.active {
+      background: var(--accent);
+      color: #000;
+    }
+
+    /* Stamps */
+    .stamps {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .stamp-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 20px;
+      transition: all .2s ease;
+    }
+    .stamp-btn:hover, .stamp-btn.active {
+      background: rgba(110,231,255,.2);
+      border-color: var(--accent2);
+      transform: scale(1.1);
+    }
+
+    /* Share section */
+    .share-section {
+      margin-top: 30px;
+      padding: 20px;
+      background: rgba(57,255,20,.05);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      text-align: center;
+    }
+    .share-section h3 {
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .share-btns {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .share-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+    .share-btn.download { background: var(--accent); color: #000; }
+    .share-btn.twitter { background: #1da1f2; color: #fff; }
+    .share-btn.reddit { background: #ff4500; color: #fff; }
+    .share-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 20px rgba(0,0,0,.3); }
+
+    /* Visualizer */
+    #visualizer {
+      width: 100%;
+      height: 80px;
+      border-radius: 8px;
+      background: #000;
+      margin-bottom: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sequencer {
+        grid-template-columns: 50px repeat(8, 1fr);
+      }
+      .seq-cell:nth-child(n+10) { display: none; }
+      #drawCanvas {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer a { color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">ALIEN STUDIO</a>
+    <a href="/">Back to Hub</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="header">
+    <h1>ALIEN CREATIVE STUDIO</h1>
+    <p>Make otherworldly music and create alien art. Share your transmissions.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('music')">MUSIC MAKER</button>
+    <button class="tab-btn" onclick="showTab('draw')">DRAWING CANVAS</button>
+  </div>
+
+  <!-- MUSIC MAKER -->
+  <div id="music-panel" class="studio-panel active">
+    <div class="synth-container">
+
+      <canvas id="visualizer"></canvas>
+
+      <div class="controls">
+        <button class="ctrl-btn play" onclick="togglePlay()">PLAY</button>
+        <button class="ctrl-btn stop" onclick="stopSequencer()">STOP</button>
+        <button class="ctrl-btn clear" onclick="clearSequencer()">CLEAR</button>
+        <div class="tempo-control">
+          <label>TEMPO:</label>
+          <input type="range" id="tempo" min="60" max="200" value="120" oninput="updateTempo()">
+          <span class="tempo-value" id="tempo-value">120 BPM</span>
+        </div>
+      </div>
+
+      <div class="sound-selector">
+        <button class="sound-btn active" onclick="setSound('alien')" data-sound="alien">ALIEN CLICKS</button>
+        <button class="sound-btn" onclick="setSound('ufo')" data-sound="ufo">UFO HUM</button>
+        <button class="sound-btn" onclick="setSound('space')" data-sound="space">SPACE SYNTH</button>
+        <button class="sound-btn" onclick="setSound('transmission')" data-sound="transmission">TRANSMISSION</button>
+        <button class="sound-btn" onclick="setSound('pulse')" data-sound="pulse">PULSE</button>
+      </div>
+
+      <div class="sequencer" id="sequencer">
+        <!-- Generated by JS -->
+      </div>
+
+      <div class="presets">
+        <span style="color:var(--muted);font-size:12px;margin-right:8px;">PRESETS:</span>
+        <button class="preset-btn" onclick="loadPreset('contact')">First Contact</button>
+        <button class="preset-btn" onclick="loadPreset('signal')">The Signal</button>
+        <button class="preset-btn" onclick="loadPreset('invasion')">Invasion</button>
+        <button class="preset-btn" onclick="loadPreset('disclosure')">Disclosure</button>
+        <button class="preset-btn" onclick="loadPreset('random')">Random</button>
+      </div>
+
+      <div class="share-section">
+        <h3>SHARE YOUR TRANSMISSION</h3>
+        <div class="share-btns">
+          <button class="share-btn download" onclick="downloadAudio()">Download Audio</button>
+          <button class="share-btn twitter" onclick="shareTwitterMusic()">Share on Twitter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DRAWING CANVAS -->
+  <div id="draw-panel" class="studio-panel">
+    <div class="canvas-container">
+
+      <div class="canvas-tools">
+        <div class="color-picker">
+          <div class="color-swatch active" style="background:#39ff14" onclick="setColor('#39ff14')"></div>
+          <div class="color-swatch" style="background:#6ee7ff" onclick="setColor('#6ee7ff')"></div>
+          <div class="color-swatch" style="background:#b5a7ff" onclick="setColor('#b5a7ff')"></div>
+          <div class="color-swatch" style="background:#ff6b6b" onclick="setColor('#ff6b6b')"></div>
+          <div class="color-swatch" style="background:#ffdd59" onclick="setColor('#ffdd59')"></div>
+          <div class="color-swatch" style="background:#ffffff" onclick="setColor('#ffffff')"></div>
+        </div>
+
+        <div class="brush-size">
+          <span style="color:var(--muted);font-size:12px;">SIZE:</span>
+          <input type="range" id="brushSize" min="2" max="50" value="8" oninput="setBrushSize(this.value)">
+        </div>
+
+        <button class="tool-btn active" onclick="setTool('brush')" id="brush-tool">BRUSH</button>
+        <button class="tool-btn" onclick="setTool('glow')" id="glow-tool">GLOW</button>
+        <button class="tool-btn" onclick="setTool('spray')" id="spray-tool">SPRAY</button>
+        <button class="tool-btn" onclick="setTool('eraser')" id="eraser-tool">ERASER</button>
+      </div>
+
+      <div class="stamps">
+        <span style="color:var(--muted);font-size:12px;display:flex;align-items:center;margin-right:8px;">STAMPS:</span>
+        <button class="stamp-btn" onclick="setStamp('none')">-</button>
+        <button class="stamp-btn" onclick="setStamp(this.textContent)">UFO</button>
+        <button class="stamp-btn" onclick="setStamp(this.textContent)">ALIEN</button>
+        <button class="stamp-btn" onclick="setStamp(this.textContent)">STAR</button>
+        <button class="stamp-btn" onclick="setStamp(this.textContent)">EYE</button>
+        <button class="stamp-btn" onclick="setStamp(this.textContent)">PLANET</button>
+      </div>
+
+      <canvas id="drawCanvas" width="800" height="500"></canvas>
+
+      <div class="canvas-tools">
+        <button class="tool-btn" onclick="clearCanvas()">CLEAR</button>
+        <button class="tool-btn" onclick="undoCanvas()">UNDO</button>
+        <button class="tool-btn" onclick="addStarfield()">ADD STARFIELD</button>
+        <button class="tool-btn" onclick="addNebula()">ADD NEBULA</button>
+      </div>
+
+      <div class="share-section">
+        <h3>SHARE YOUR ART</h3>
+        <div class="share-btns">
+          <button class="share-btn download" onclick="downloadArt()">Download Image</button>
+          <button class="share-btn twitter" onclick="shareTwitterArt()">Share on Twitter</button>
+          <button class="share-btn reddit" onclick="shareRedditArt()">Post to Reddit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p><strong>Alien Creative Studio</strong> — Part of the <a href="/">Disclosure Day Hub</a></p>
+  <p>Create. Share. Await disclosure.</p>
+</footer>
+
+<script>
+// ===== TAB SWITCHING =====
+function showTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.studio-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector(`[onclick="showTab('${tab}')"]`).classList.add('active');
+  document.getElementById(tab === 'music' ? 'music-panel' : 'draw-panel').classList.add('active');
+}
+
+// ===== MUSIC MAKER =====
+let audioCtx = null;
+let isPlaying = false;
+let currentStep = 0;
+let intervalId = null;
+let tempo = 120;
+let currentSound = 'alien';
+const ROWS = 6;
+const COLS = 16;
+let grid = Array(ROWS).fill(null).map(() => Array(COLS).fill(false));
+
+const noteFreqs = [880, 660, 440, 330, 220, 110]; // High to low
+
+// Initialize audio context on user interaction
+function initAudio() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+}
+
+// Build sequencer grid
+function buildSequencer() {
+  const seq = document.getElementById('sequencer');
+  seq.innerHTML = '';
+  const labels = ['HIGH', 'MID-H', 'MID', 'MID-L', 'LOW', 'SUB'];
+  for (let row = 0; row < ROWS; row++) {
+    const labelDiv = document.createElement('div');
+    labelDiv.className = 'seq-label';
+    labelDiv.textContent = labels[row];
+    seq.appendChild(labelDiv);
+    for (let col = 0; col < COLS; col++) {
+      const cell = document.createElement('div');
+      cell.className = 'seq-cell' + (grid[row][col] ? ' active' : '');
+      cell.dataset.row = row;
+      cell.dataset.col = col;
+      cell.onclick = () => toggleCell(row, col, cell);
+      seq.appendChild(cell);
+    }
+  }
+}
+
+function toggleCell(row, col, cell) {
+  initAudio();
+  grid[row][col] = !grid[row][col];
+  cell.classList.toggle('active');
+  if (grid[row][col]) playNote(noteFreqs[row], 0.1);
+}
+
+function playNote(freq, duration) {
+  if (!audioCtx) return;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+
+  // Different waveforms for different sounds
+  switch(currentSound) {
+    case 'alien':
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(freq * 0.5, audioCtx.currentTime + duration);
+      break;
+    case 'ufo':
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq * 0.5, audioCtx.currentTime);
+      osc.frequency.linearRampToValueAtTime(freq * 1.5, audioCtx.currentTime + duration/2);
+      osc.frequency.linearRampToValueAtTime(freq * 0.5, audioCtx.currentTime + duration);
+      break;
+    case 'space':
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      break;
+    case 'transmission':
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq * 2, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(freq, audioCtx.currentTime + duration);
+      break;
+    case 'pulse':
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      break;
+  }
+
+  gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start();
+  osc.stop(audioCtx.currentTime + duration);
+}
+
+function togglePlay() {
+  initAudio();
+  if (isPlaying) {
+    stopSequencer();
+  } else {
+    isPlaying = true;
+    document.querySelector('.ctrl-btn.play').textContent = 'PAUSE';
+    const stepTime = (60 / tempo) * 1000 / 4;
+    intervalId = setInterval(playStep, stepTime);
+  }
+}
+
+function playStep() {
+  // Clear previous playing indicators
+  document.querySelectorAll('.seq-cell.playing').forEach(c => c.classList.remove('playing'));
+
+  // Highlight current column
+  document.querySelectorAll(`.seq-cell[data-col="${currentStep}"]`).forEach(c => c.classList.add('playing'));
+
+  // Play active notes
+  for (let row = 0; row < ROWS; row++) {
+    if (grid[row][currentStep]) {
+      playNote(noteFreqs[row], 0.15);
+    }
+  }
+
+  currentStep = (currentStep + 1) % COLS;
+  drawVisualizer();
+}
+
+function stopSequencer() {
+  isPlaying = false;
+  clearInterval(intervalId);
+  currentStep = 0;
+  document.querySelector('.ctrl-btn.play').textContent = 'PLAY';
+  document.querySelectorAll('.seq-cell.playing').forEach(c => c.classList.remove('playing'));
+}
+
+function clearSequencer() {
+  grid = Array(ROWS).fill(null).map(() => Array(COLS).fill(false));
+  buildSequencer();
+}
+
+function updateTempo() {
+  tempo = document.getElementById('tempo').value;
+  document.getElementById('tempo-value').textContent = tempo + ' BPM';
+  if (isPlaying) {
+    clearInterval(intervalId);
+    const stepTime = (60 / tempo) * 1000 / 4;
+    intervalId = setInterval(playStep, stepTime);
+  }
+}
+
+function setSound(sound) {
+  currentSound = sound;
+  document.querySelectorAll('.sound-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`[data-sound="${sound}"]`).classList.add('active');
+}
+
+// Presets
+const presets = {
+  contact: [[0,4,8,12],[1,2,6,10,14],[2,0,4,8,12],[3,2,6,10,14],[4,0,8],[5,4,12]],
+  signal: [[0,0,1,4,5,8,9,12,13],[1,2,3,6,7,10,11,14,15],[2,0,4,8,12],[3,],[4,0,2,4,6,8,10,12,14],[5,1,3,5,7,9,11,13,15]],
+  invasion: [[0,0,1,2,3,8,9,10,11],[1,4,5,6,7,12,13,14,15],[2,0,2,4,6,8,10,12,14],[3,1,3,5,7,9,11,13,15],[4,0,4,8,12],[5,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]],
+  disclosure: [[0,0,7,8,15],[1,1,6,9,14],[2,2,5,10,13],[3,3,4,11,12],[4,0,4,8,12],[5,2,6,10,14]]
+};
+
+function loadPreset(name) {
+  initAudio();
+  clearSequencer();
+  if (name === 'random') {
+    for (let row = 0; row < ROWS; row++) {
+      for (let col = 0; col < COLS; col++) {
+        grid[row][col] = Math.random() > 0.7;
+      }
+    }
+  } else {
+    const preset = presets[name];
+    preset.forEach((rowData, row) => {
+      rowData.forEach(col => {
+        if (typeof col === 'number') grid[row][col] = true;
+      });
+    });
+  }
+  buildSequencer();
+}
+
+// Visualizer
+function drawVisualizer() {
+  const canvas = document.getElementById('visualizer');
+  const ctx = canvas.getContext('2d');
+  canvas.width = canvas.offsetWidth;
+  canvas.height = 80;
+
+  ctx.fillStyle = '#000';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  const barWidth = canvas.width / COLS;
+  for (let col = 0; col < COLS; col++) {
+    let activeCount = 0;
+    for (let row = 0; row < ROWS; row++) {
+      if (grid[row][col]) activeCount++;
+    }
+    const height = (activeCount / ROWS) * canvas.height;
+    const hue = col === currentStep ? 120 : 160;
+    const brightness = col === currentStep ? '100%' : '50%';
+    ctx.fillStyle = `hsl(${hue}, 100%, ${brightness})`;
+    ctx.fillRect(col * barWidth + 2, canvas.height - height, barWidth - 4, height);
+  }
+}
+
+// Share functions
+function shareTwitterMusic() {
+  const text = "I just created an alien transmission in the Disclosure Day Creative Studio! Make your own:";
+  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(window.location.href)}&hashtags=DisclosureDay,AlienMusic`, '_blank');
+}
+
+function downloadAudio() {
+  alert('Recording feature coming soon! For now, use screen recording to capture your creation.');
+}
+
+// ===== DRAWING CANVAS =====
+const canvas = document.getElementById('drawCanvas');
+const ctx = canvas.getContext('2d');
+let isDrawing = false;
+let currentColor = '#39ff14';
+let brushSize = 8;
+let currentTool = 'brush';
+let currentStamp = 'none';
+let history = [];
+
+// Initialize canvas
+ctx.fillStyle = '#000';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+saveHistory();
+
+// Mouse events
+canvas.addEventListener('mousedown', startDraw);
+canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('mouseup', endDraw);
+canvas.addEventListener('mouseout', endDraw);
+
+// Touch events
+canvas.addEventListener('touchstart', handleTouch);
+canvas.addEventListener('touchmove', handleTouch);
+canvas.addEventListener('touchend', endDraw);
+
+function handleTouch(e) {
+  e.preventDefault();
+  const touch = e.touches[0];
+  const rect = canvas.getBoundingClientRect();
+  const x = touch.clientX - rect.left;
+  const y = touch.clientY - rect.top;
+
+  if (e.type === 'touchstart') {
+    isDrawing = true;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+  } else if (e.type === 'touchmove' && isDrawing) {
+    drawAt(x, y);
+  }
+}
+
+function startDraw(e) {
+  isDrawing = true;
+  ctx.beginPath();
+  ctx.moveTo(e.offsetX, e.offsetY);
+
+  if (currentStamp !== 'none') {
+    drawStamp(e.offsetX, e.offsetY);
+  }
+}
+
+function draw(e) {
+  if (!isDrawing) return;
+  if (currentStamp !== 'none') {
+    drawStamp(e.offsetX, e.offsetY);
+    return;
+  }
+  drawAt(e.offsetX, e.offsetY);
+}
+
+function drawAt(x, y) {
+  ctx.lineWidth = brushSize;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+
+  switch(currentTool) {
+    case 'brush':
+      ctx.strokeStyle = currentColor;
+      ctx.lineTo(x, y);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      break;
+    case 'glow':
+      ctx.shadowBlur = 20;
+      ctx.shadowColor = currentColor;
+      ctx.strokeStyle = currentColor;
+      ctx.lineTo(x, y);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.shadowBlur = 0;
+      break;
+    case 'spray':
+      for (let i = 0; i < 20; i++) {
+        const offsetX = (Math.random() - 0.5) * brushSize * 2;
+        const offsetY = (Math.random() - 0.5) * brushSize * 2;
+        ctx.fillStyle = currentColor;
+        ctx.fillRect(x + offsetX, y + offsetY, 2, 2);
+      }
+      break;
+    case 'eraser':
+      ctx.strokeStyle = '#000';
+      ctx.lineTo(x, y);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      break;
+  }
+}
+
+function endDraw() {
+  if (isDrawing) {
+    isDrawing = false;
+    saveHistory();
+  }
+}
+
+function setColor(color) {
+  currentColor = color;
+  document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+  document.querySelector(`.color-swatch[style*="${color}"]`).classList.add('active');
+}
+
+function setBrushSize(size) {
+  brushSize = size;
+}
+
+function setTool(tool) {
+  currentTool = tool;
+  currentStamp = 'none';
+  document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(tool + '-tool')?.classList.add('active');
+  document.querySelectorAll('.stamp-btn').forEach(b => b.classList.remove('active'));
+}
+
+function setStamp(stamp) {
+  currentStamp = stamp;
+  currentTool = 'stamp';
+  document.querySelectorAll('.tool-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.stamp-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+
+function drawStamp(x, y) {
+  ctx.font = `${brushSize * 3}px Arial`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  const stamps = {
+    'UFO': '\u{1F6F8}',
+    'ALIEN': '\u{1F47D}',
+    'STAR': '\u{2B50}',
+    'EYE': '\u{1F441}',
+    'PLANET': '\u{1FA90}'
+  };
+
+  ctx.fillText(stamps[currentStamp] || currentStamp, x, y);
+}
+
+function clearCanvas() {
+  ctx.fillStyle = '#000';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  saveHistory();
+}
+
+function saveHistory() {
+  if (history.length > 20) history.shift();
+  history.push(canvas.toDataURL());
+}
+
+function undoCanvas() {
+  if (history.length > 1) {
+    history.pop();
+    const img = new Image();
+    img.onload = () => ctx.drawImage(img, 0, 0);
+    img.src = history[history.length - 1];
+  }
+}
+
+function addStarfield() {
+  for (let i = 0; i < 100; i++) {
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height;
+    const size = Math.random() * 2 + 1;
+    const brightness = Math.random() * 155 + 100;
+    ctx.fillStyle = `rgba(${brightness}, ${brightness}, ${brightness + 50}, ${Math.random()})`;
+    ctx.beginPath();
+    ctx.arc(x, y, size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  saveHistory();
+}
+
+function addNebula() {
+  const colors = ['rgba(110,231,255,0.1)', 'rgba(181,167,255,0.1)', 'rgba(57,255,20,0.1)', 'rgba(255,107,107,0.1)'];
+  for (let i = 0; i < 5; i++) {
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height;
+    const radius = Math.random() * 150 + 50;
+    const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
+    gradient.addColorStop(0, colors[Math.floor(Math.random() * colors.length)]);
+    gradient.addColorStop(1, 'transparent');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(x - radius, y - radius, radius * 2, radius * 2);
+  }
+  saveHistory();
+}
+
+function downloadArt() {
+  const link = document.createElement('a');
+  link.download = 'alien-art-disclosure-day.png';
+  link.href = canvas.toDataURL();
+  link.click();
+}
+
+function shareTwitterArt() {
+  const text = "I created this alien art in the Disclosure Day Creative Studio! Make your own:";
+  window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(window.location.href)}&hashtags=DisclosureDay,AlienArt`, '_blank');
+}
+
+function shareRedditArt() {
+  const title = "Alien art I made in the Disclosure Day Creative Studio";
+  window.open(`https://www.reddit.com/r/DisclosureDayMovie/submit?title=${encodeURIComponent(title)}&url=${encodeURIComponent(window.location.href)}`, '_blank');
+}
+
+// Initialize
+buildSequencer();
+drawVisualizer();
+</script>
+
+</body>
+</html>

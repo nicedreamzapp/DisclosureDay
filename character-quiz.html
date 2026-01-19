@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Disclosure Day Character Are You? | Personality Quiz</title>
+  <meta name="description" content="Take the viral Disclosure Day personality quiz! Find out which character from Spielberg's UFO movie matches your personality. Get your shareable result card.">
+  <meta name="keywords" content="Disclosure Day quiz, personality quiz, which character am I, Spielberg quiz, Emily Blunt, Josh O'Connor, alien quiz">
+  <link rel="canonical" href="https://disclosureday.nicedreamzwholesale.com/character-quiz.html">
+
+  <meta property="og:title" content="What Disclosure Day Character Are You?">
+  <meta property="og:description" content="Take the quiz and find out which character from Spielberg's UFO movie matches your personality!">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://disclosureday.nicedreamzwholesale.com/character-quiz.html">
+  <meta property="og:image" content="https://disclosureday.nicedreamzwholesale.com/public/images/quiz-share.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="What Disclosure Day Character Are You?">
+  <meta name="twitter:description" content="I just took the Disclosure Day character quiz! Take it and share your result.">
+  <meta name="twitter:image" content="https://disclosureday.nicedreamzwholesale.com/public/images/quiz-share.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    "name": "What Disclosure Day Character Are You?",
+    "description": "Personality quiz to discover which character from Spielberg's UFO movie matches your personality",
+    "url": "https://disclosureday.nicedreamzwholesale.com/character-quiz.html",
+    "about": {
+      "@type": "Movie",
+      "name": "Disclosure Day",
+      "director": {
+        "@type": "Person",
+        "name": "Steven Spielberg"
+      }
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #000408;
+      --card: #0a0d14;
+      --fg: #e9eef7;
+      --muted: #8b95a5;
+      --accent: #6ee7ff;
+      --accent2: #39ff14;
+      --accent3: #b5a7ff;
+      --line: rgba(110,231,255,.2);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Background */
+    .bg-stars {
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,.8), transparent),
+        radial-gradient(2px 2px at 40% 70%, rgba(255,255,255,.5), transparent),
+        radial-gradient(1px 1px at 90% 40%, rgba(255,255,255,.6), transparent),
+        radial-gradient(2px 2px at 60% 20%, rgba(255,255,255,.7), transparent),
+        radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,.4), transparent),
+        radial-gradient(2px 2px at 70% 60%, rgba(255,255,255,.6), transparent),
+        radial-gradient(1px 1px at 10% 50%, rgba(255,255,255,.5), transparent),
+        radial-gradient(2px 2px at 80% 10%, rgba(255,255,255,.7), transparent);
+      background-size: 250px 250px;
+      animation: twinkle 8s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+    .bg-glow {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150%;
+      height: 60%;
+      background: radial-gradient(ellipse at center top, rgba(110,231,255,.1) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Nav */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(0,4,8,.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+      padding: 12px 20px;
+    }
+    .nav-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav a { color: var(--fg); text-decoration: none; font-weight: 600; }
+    .nav-logo { color: var(--accent) !important; }
+
+    /* Container */
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 80px 20px 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .header h1 {
+      font-size: clamp(28px, 6vw, 44px);
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .header p {
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    /* Progress bar */
+    .progress-container {
+      margin-bottom: 30px;
+    }
+    .progress-bar {
+      height: 6px;
+      background: rgba(255,255,255,.1);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      border-radius: 3px;
+      transition: width 0.5s ease;
+      width: 0%;
+    }
+    .progress-text {
+      text-align: center;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Question card */
+    .quiz-card {
+      background: rgba(10,13,20,.9);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 40px 30px;
+      backdrop-filter: blur(20px);
+      animation: cardIn 0.5s ease;
+    }
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .question-number {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .question-text {
+      font-size: clamp(20px, 4vw, 26px);
+      line-height: 1.4;
+      margin-bottom: 30px;
+    }
+
+    /* Answer options */
+    .answers {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .answer-btn {
+      display: block;
+      width: 100%;
+      padding: 18px 24px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 12px;
+      color: var(--fg);
+      font-size: 16px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .answer-btn:hover {
+      background: rgba(110,231,255,.1);
+      border-color: var(--accent);
+      transform: translateX(8px);
+    }
+    .answer-btn:active {
+      transform: translateX(8px) scale(0.98);
+    }
+    .answer-btn::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: var(--accent);
+      transform: scaleY(0);
+      transition: transform 0.3s ease;
+    }
+    .answer-btn:hover::before {
+      transform: scaleY(1);
+    }
+
+    /* Result screen */
+    .result-screen {
+      display: none;
+      text-align: center;
+    }
+    .result-screen.active {
+      display: block;
+      animation: resultIn 0.8s ease;
+    }
+    @keyframes resultIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .result-label {
+      font-size: 14px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 8px;
+    }
+    .result-character {
+      font-size: clamp(32px, 7vw, 52px);
+      font-weight: 800;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .result-subtitle {
+      font-size: 20px;
+      color: var(--accent3);
+      margin-bottom: 24px;
+    }
+    .result-description {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--fg);
+      margin-bottom: 30px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Result card canvas */
+    .result-card-container {
+      margin: 30px auto;
+      max-width: 400px;
+    }
+    #resultCard {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 40px rgba(110,231,255,.2);
+    }
+
+    /* Share buttons */
+    .share-section {
+      margin-top: 30px;
+    }
+    .share-section h3 {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .share-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .share-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.3);
+    }
+    .share-btn.twitter { background: #1da1f2; color: #fff; }
+    .share-btn.reddit { background: #ff4500; color: #fff; }
+    .share-btn.download { background: var(--accent2); color: #000; }
+    .share-btn.copy { background: rgba(255,255,255,.1); color: var(--fg); border: 1px solid var(--line); }
+
+    /* Retake */
+    .retake-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 14px 32px;
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .retake-btn:hover {
+      background: var(--accent);
+      color: #000;
+    }
+
+    /* Traits */
+    .traits {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    .trait {
+      padding: 8px 16px;
+      background: rgba(110,231,255,.1);
+      border: 1px solid rgba(110,231,255,.3);
+      border-radius: 20px;
+      font-size: 13px;
+      color: var(--accent);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer a { color: var(--accent); }
+
+    /* Hidden */
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+
+<div class="bg-stars"></div>
+<div class="bg-glow"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Disclosure Day Hub</a>
+    <a href="/">Back to Hub</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="header">
+    <h1>What Disclosure Day Character Are You?</h1>
+    <p>Answer 8 questions to discover your alien contact archetype</p>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-container" id="progress-container">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <div class="progress-text"><span id="progress-num">0</span> of 8</div>
+  </div>
+
+  <!-- Quiz -->
+  <div id="quiz-container">
+    <div class="quiz-card" id="quiz-card">
+      <div class="question-number" id="question-number">Question 1</div>
+      <div class="question-text" id="question-text"></div>
+      <div class="answers" id="answers"></div>
+    </div>
+  </div>
+
+  <!-- Result -->
+  <div class="result-screen" id="result-screen">
+    <div class="result-label">Your Disclosure Day archetype is...</div>
+    <div class="result-character" id="result-character"></div>
+    <div class="result-subtitle" id="result-subtitle"></div>
+    <div class="traits" id="result-traits"></div>
+    <div class="result-description" id="result-description"></div>
+
+    <div class="result-card-container">
+      <canvas id="resultCard" width="600" height="800"></canvas>
+    </div>
+
+    <div class="share-section">
+      <h3>Share your result!</h3>
+      <div class="share-buttons">
+        <button class="share-btn download" onclick="downloadCard()">Download Card</button>
+        <a class="share-btn twitter" id="twitter-share" target="_blank">Share on Twitter</a>
+        <a class="share-btn reddit" id="reddit-share" target="_blank">Post to Reddit</a>
+        <button class="share-btn copy" onclick="copyLink()">Copy Link</button>
+      </div>
+    </div>
+
+    <button class="retake-btn" onclick="restartQuiz()">Take Quiz Again</button>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>Part of the <a href="/">Disclosure Day Hub</a> | Not affiliated with Universal Pictures</p>
+</footer>
+
+<script>
+const questions = [
+  {
+    q: "If aliens made contact tomorrow, what would be your first instinct?",
+    answers: [
+      { text: "Document everything and share it with the world", type: "whistleblower" },
+      { text: "Try to communicate with them directly", type: "contact" },
+      { text: "Study them scientifically to understand their nature", type: "scientist" },
+      { text: "Protect my loved ones first, questions later", type: "protector" }
+    ]
+  },
+  {
+    q: "A friend tells you they saw something unexplainable in the sky. You:",
+    answers: [
+      { text: "Ask for every detail and start investigating", type: "whistleblower" },
+      { text: "Feel excited — maybe they're trying to reach us", type: "contact" },
+      { text: "Look for rational explanations first", type: "scientist" },
+      { text: "Worry about what it could mean for everyone's safety", type: "protector" }
+    ]
+  },
+  {
+    q: "The government has been hiding the truth about aliens. Your reaction?",
+    answers: [
+      { text: "Outraged — people deserve to know", type: "whistleblower" },
+      { text: "Unsurprised — I've always felt something was out there", type: "contact" },
+      { text: "Curious about what they've learned", type: "scientist" },
+      { text: "Maybe they had good reasons to protect us", type: "protector" }
+    ]
+  },
+  {
+    q: "You're alone at night and hear strange sounds. You:",
+    answers: [
+      { text: "Grab my phone to record evidence", type: "whistleblower" },
+      { text: "Go toward the sound — I need to know", type: "contact" },
+      { text: "Analyze the sound pattern logically", type: "scientist" },
+      { text: "Stay alert and prepare to defend myself", type: "protector" }
+    ]
+  },
+  {
+    q: "What's more important: the truth or people's peace of mind?",
+    answers: [
+      { text: "The truth, always — no matter the consequences", type: "whistleblower" },
+      { text: "Truth, but delivered with compassion", type: "contact" },
+      { text: "Knowledge is neutral — it's what we do with it", type: "scientist" },
+      { text: "Sometimes ignorance protects people", type: "protector" }
+    ]
+  },
+  {
+    q: "An alien intelligence could read your thoughts. How do you feel?",
+    answers: [
+      { text: "Exposed but defiant — I have nothing to hide", type: "whistleblower" },
+      { text: "Open to it — maybe true connection requires vulnerability", type: "contact" },
+      { text: "Fascinated by the mechanism of telepathy", type: "scientist" },
+      { text: "Deeply uncomfortable — some things should stay private", type: "protector" }
+    ]
+  },
+  {
+    q: "If you could ask aliens one question, it would be:",
+    answers: [
+      { text: "Why have you been hiding from us?", type: "whistleblower" },
+      { text: "What do you feel when you look at humanity?", type: "contact" },
+      { text: "How does your technology work?", type: "scientist" },
+      { text: "Are your intentions peaceful?", type: "protector" }
+    ]
+  },
+  {
+    q: "Disclosure Day arrives. Humanity learns we're not alone. You:",
+    answers: [
+      { text: "Feel vindicated — I knew something was out there", type: "whistleblower" },
+      { text: "Feel a strange sense of homecoming", type: "contact" },
+      { text: "Immediately want to learn everything possible", type: "scientist" },
+      { text: "Focus on keeping your community safe and calm", type: "protector" }
+    ]
+  }
+];
+
+const results = {
+  whistleblower: {
+    character: "THE TRUTH SEEKER",
+    subtitle: "Like Josh O'Connor's character",
+    description: "You believe the truth belongs to everyone. You'd risk everything to expose what's been hidden, driven by an unshakeable conviction that humanity deserves to know. In a world of secrets, you're the one who lights the match.",
+    traits: ["Defiant", "Courageous", "Relentless", "Principled"],
+    color: "#ff6b6b",
+    gradient: ["#ff6b6b", "#ff8e53"]
+  },
+  contact: {
+    character: "THE FIRST CONTACT",
+    subtitle: "Like Emily Blunt's character",
+    description: "Something in you has always been reaching toward the stars. You're uniquely receptive to the unknown, perhaps even chosen for it. When contact comes, you won't just witness it — you'll be the bridge between worlds.",
+    traits: ["Intuitive", "Open", "Empathic", "Destined"],
+    color: "#6ee7ff",
+    gradient: ["#6ee7ff", "#b5a7ff"]
+  },
+  scientist: {
+    character: "THE ANALYST",
+    subtitle: "Like Colin Firth's character",
+    description: "Your mind is a precision instrument. While others panic or celebrate, you observe, analyze, and understand. You'd volunteer to be wired into alien technology if it meant unlocking the secrets of the universe.",
+    traits: ["Brilliant", "Methodical", "Curious", "Fearless"],
+    color: "#39ff14",
+    gradient: ["#39ff14", "#00ff88"]
+  },
+  protector: {
+    character: "THE GUARDIAN",
+    subtitle: "Like Colman Domingo's character",
+    description: "Your first thought is always for others. In a world turned upside down by disclosure, you're the steady hand, the calm voice, the one who makes sure humanity doesn't lose itself in the chaos of first contact.",
+    traits: ["Steadfast", "Compassionate", "Strong", "Human"],
+    color: "#b5a7ff",
+    gradient: ["#b5a7ff", "#ffd93d"]
+  }
+};
+
+let currentQuestion = 0;
+let scores = { whistleblower: 0, contact: 0, scientist: 0, protector: 0 };
+
+function startQuiz() {
+  currentQuestion = 0;
+  scores = { whistleblower: 0, contact: 0, scientist: 0, protector: 0 };
+  document.getElementById('quiz-container').classList.remove('hidden');
+  document.getElementById('result-screen').classList.remove('active');
+  document.getElementById('progress-container').classList.remove('hidden');
+  showQuestion();
+}
+
+function showQuestion() {
+  const q = questions[currentQuestion];
+  document.getElementById('question-number').textContent = `Question ${currentQuestion + 1}`;
+  document.getElementById('question-text').textContent = q.q;
+  document.getElementById('progress-num').textContent = currentQuestion;
+  document.getElementById('progress-fill').style.width = `${(currentQuestion / questions.length) * 100}%`;
+
+  const answersDiv = document.getElementById('answers');
+  answersDiv.innerHTML = '';
+
+  // Shuffle answers
+  const shuffled = [...q.answers].sort(() => Math.random() - 0.5);
+
+  shuffled.forEach(a => {
+    const btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    btn.textContent = a.text;
+    btn.onclick = () => selectAnswer(a.type);
+    answersDiv.appendChild(btn);
+  });
+
+  // Animate card
+  const card = document.getElementById('quiz-card');
+  card.style.animation = 'none';
+  card.offsetHeight; // Trigger reflow
+  card.style.animation = 'cardIn 0.5s ease';
+}
+
+function selectAnswer(type) {
+  scores[type]++;
+  currentQuestion++;
+
+  if (currentQuestion < questions.length) {
+    showQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  document.getElementById('quiz-container').classList.add('hidden');
+  document.getElementById('progress-container').classList.add('hidden');
+
+  // Find highest score
+  let maxType = 'contact';
+  let maxScore = 0;
+  for (let type in scores) {
+    if (scores[type] > maxScore) {
+      maxScore = scores[type];
+      maxType = type;
+    }
+  }
+
+  const result = results[maxType];
+
+  document.getElementById('result-character').textContent = result.character;
+  document.getElementById('result-character').style.background = `linear-gradient(135deg, ${result.gradient[0]}, ${result.gradient[1]})`;
+  document.getElementById('result-character').style.webkitBackgroundClip = 'text';
+  document.getElementById('result-character').style.webkitTextFillColor = 'transparent';
+  document.getElementById('result-subtitle').textContent = result.subtitle;
+  document.getElementById('result-description').textContent = result.description;
+
+  // Traits
+  const traitsDiv = document.getElementById('result-traits');
+  traitsDiv.innerHTML = '';
+  result.traits.forEach(t => {
+    const span = document.createElement('span');
+    span.className = 'trait';
+    span.textContent = t;
+    span.style.borderColor = result.color;
+    span.style.color = result.color;
+    traitsDiv.appendChild(span);
+  });
+
+  // Generate card
+  generateResultCard(maxType, result);
+
+  // Set share links
+  const shareText = `I'm ${result.character} in the Disclosure Day character quiz! What's your alien contact archetype?`;
+  const shareUrl = 'https://disclosureday.nicedreamzwholesale.com/character-quiz.html';
+
+  document.getElementById('twitter-share').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}&hashtags=DisclosureDay`;
+  document.getElementById('reddit-share').href = `https://www.reddit.com/r/DisclosureDayMovie/submit?title=${encodeURIComponent(`I got ${result.character}! What's your Disclosure Day archetype?`)}&url=${encodeURIComponent(shareUrl)}`;
+
+  document.getElementById('result-screen').classList.add('active');
+}
+
+function generateResultCard(type, result) {
+  const canvas = document.getElementById('resultCard');
+  const ctx = canvas.getContext('2d');
+
+  // Background
+  const bgGrad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+  bgGrad.addColorStop(0, '#02030a');
+  bgGrad.addColorStop(1, '#0a1525');
+  ctx.fillStyle = bgGrad;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Stars
+  for (let i = 0; i < 100; i++) {
+    ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.8})`;
+    ctx.beginPath();
+    ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 1.5, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Glow at top
+  const glowGrad = ctx.createRadialGradient(canvas.width/2, 100, 0, canvas.width/2, 100, 300);
+  glowGrad.addColorStop(0, result.gradient[0] + '40');
+  glowGrad.addColorStop(1, 'transparent');
+  ctx.fillStyle = glowGrad;
+  ctx.fillRect(0, 0, canvas.width, 400);
+
+  // Border
+  ctx.strokeStyle = result.color;
+  ctx.lineWidth = 4;
+  ctx.strokeRect(20, 20, canvas.width - 40, canvas.height - 40);
+
+  // Inner glow border
+  ctx.strokeStyle = result.color + '40';
+  ctx.lineWidth = 20;
+  ctx.strokeRect(30, 30, canvas.width - 60, canvas.height - 60);
+
+  // "MY DISCLOSURE DAY ARCHETYPE IS"
+  ctx.fillStyle = '#8b95a5';
+  ctx.font = '600 18px ui-sans-serif, system-ui, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.letterSpacing = '0.2em';
+  ctx.fillText('MY DISCLOSURE DAY ARCHETYPE IS', canvas.width/2, 120);
+
+  // Character name
+  const charGrad = ctx.createLinearGradient(100, 180, 500, 260);
+  charGrad.addColorStop(0, result.gradient[0]);
+  charGrad.addColorStop(1, result.gradient[1]);
+  ctx.fillStyle = charGrad;
+  ctx.font = '800 56px ui-sans-serif, system-ui, sans-serif';
+  ctx.fillText(result.character, canvas.width/2, 220);
+
+  // Subtitle
+  ctx.fillStyle = result.color;
+  ctx.font = '500 22px ui-sans-serif, system-ui, sans-serif';
+  ctx.fillText(result.subtitle, canvas.width/2, 270);
+
+  // Divider
+  ctx.strokeStyle = result.color + '60';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(100, 320);
+  ctx.lineTo(canvas.width - 100, 320);
+  ctx.stroke();
+
+  // Traits
+  ctx.font = '600 20px ui-sans-serif, system-ui, sans-serif';
+  const traitY = 380;
+  const traitSpacing = 130;
+  const startX = canvas.width/2 - (result.traits.length - 1) * traitSpacing / 2;
+  result.traits.forEach((trait, i) => {
+    const x = startX + i * traitSpacing;
+
+    // Trait background
+    ctx.fillStyle = result.color + '20';
+    ctx.beginPath();
+    ctx.roundRect(x - 50, traitY - 18, 100, 36, 18);
+    ctx.fill();
+    ctx.strokeStyle = result.color + '60';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    // Trait text
+    ctx.fillStyle = result.color;
+    ctx.fillText(trait, x, traitY + 7);
+  });
+
+  // Description (wrapped)
+  ctx.fillStyle = '#e9eef7';
+  ctx.font = '400 18px ui-sans-serif, system-ui, sans-serif';
+  ctx.textAlign = 'center';
+  wrapText(ctx, result.description, canvas.width/2, 470, 480, 28);
+
+  // Bottom branding
+  ctx.fillStyle = '#8b95a5';
+  ctx.font = '600 16px ui-sans-serif, system-ui, sans-serif';
+  ctx.fillText('disclosureday.nicedreamzwholesale.com/character-quiz', canvas.width/2, 720);
+
+  // Movie title
+  ctx.fillStyle = '#6ee7ff';
+  ctx.font = '800 24px ui-sans-serif, system-ui, sans-serif';
+  ctx.fillText('DISCLOSURE DAY', canvas.width/2, 760);
+}
+
+function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+  const words = text.split(' ');
+  let line = '';
+  let lines = [];
+
+  for (let n = 0; n < words.length; n++) {
+    const testLine = line + words[n] + ' ';
+    const metrics = ctx.measureText(testLine);
+    if (metrics.width > maxWidth && n > 0) {
+      lines.push(line);
+      line = words[n] + ' ';
+    } else {
+      line = testLine;
+    }
+  }
+  lines.push(line);
+
+  lines.forEach((l, i) => {
+    ctx.fillText(l.trim(), x, y + i * lineHeight);
+  });
+}
+
+function downloadCard() {
+  const canvas = document.getElementById('resultCard');
+  const link = document.createElement('a');
+  link.download = 'my-disclosure-day-character.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+function copyLink() {
+  navigator.clipboard.writeText('https://disclosureday.nicedreamzwholesale.com/character-quiz.html');
+  event.target.textContent = 'Copied!';
+  setTimeout(() => event.target.textContent = 'Copy Link', 2000);
+}
+
+function restartQuiz() {
+  startQuiz();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Start
+startQuiz();
+</script>
+
+</body>
+</html>

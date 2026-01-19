@@ -1,6 +1,16 @@
 User-agent: *
 Allow: /
 Disallow: /chat-api.php
-Disallow: /community/submit.php
+Disallow: /chat-api-v2.php
+Disallow: /seo-pages/community/submit.php
+Disallow: /*.json$
+
+# Crawl-delay for politeness
+Crawl-delay: 1
 
 Sitemap: https://disclosureday.nicedreamzwholesale.com/sitemap.xml
+
+# Key pages for search engines
+# Homepage: https://disclosureday.nicedreamzwholesale.com/
+# Character Quiz: https://disclosureday.nicedreamzwholesale.com/character-quiz.html
+# Alien Studio: https://disclosureday.nicedreamzwholesale.com/alien-studio.html
