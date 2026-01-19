@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Decode The Signal | Disclosure Day Audio Experience</title>
+  <meta name="description" content="Can you decode the alien transmission? Train your brain to hear the hidden message in sine wave speech. Based on the Disclosure Day trailer mystery.">
+  <meta name="keywords" content="Decode The Signal, sine wave speech, Disclosure Day game, alien message decoder, Emily Blunt alien voice, hidden message game">
+  <link rel="canonical" href="https://disclosureday.nicedreamzwholesale.com/decode-the-signal.html">
+
+  <meta property="og:title" content="Decode The Signal | Can You Hear The Message?">
+  <meta property="og:description" content="Train your brain to decode alien transmissions using sine wave speech technology. How many can you decode?">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://disclosureday.nicedreamzwholesale.com/decode-the-signal.html">
+  <meta property="og:image" content="https://disclosureday.nicedreamzwholesale.com/public/images/decode-signal-share.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Decode The Signal | Alien Audio Game">
+  <meta name="twitter:description" content="I decoded alien transmissions. Can you? #DisclosureDay">
+  <meta name="twitter:image" content="https://disclosureday.nicedreamzwholesale.com/public/images/decode-signal-share.jpg">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;600;800&display=swap');
+
+    :root {
+      --bg: #000508;
+      --panel: #0a0f14;
+      --border: #1a2530;
+      --text: #e0e8f0;
+      --muted: #607080;
+      --accent: #00ffcc;
+      --signal: #39ff14;
+      --warning: #ff3366;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Waveform background */
+    .wave-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.1;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 40px 0;
+    }
+
+    .logo {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: clamp(28px, 5vw, 42px);
+      letter-spacing: 4px;
+      color: var(--signal);
+      text-shadow: 0 0 20px rgba(57,255,20,0.5);
+      margin-bottom: 8px;
+    }
+
+    .tagline {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    /* Score display */
+    .score-bar {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .score-item {
+      text-align: center;
+    }
+
+    .score-value {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 32px;
+      color: var(--accent);
+    }
+
+    .score-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* Game area */
+    .game-area {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 30px;
+    }
+
+    /* Intro screen */
+    #intro {
+      text-align: center;
+    }
+
+    .intro-text {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text);
+      margin-bottom: 30px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .intro-text strong {
+      color: var(--signal);
+    }
+
+    .how-it-works {
+      background: rgba(57,255,20,0.05);
+      border: 1px solid rgba(57,255,20,0.2);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .how-it-works h3 {
+      font-family: 'Share Tech Mono', monospace;
+      color: var(--signal);
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .how-it-works ol {
+      margin-left: 20px;
+      color: var(--text);
+      line-height: 2;
+    }
+
+    .start-btn {
+      background: linear-gradient(135deg, var(--signal), var(--accent));
+      border: none;
+      color: #000;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      padding: 20px 60px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+    }
+
+    .start-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(57,255,20,0.5);
+    }
+
+    /* Game screen */
+    #game {
+      display: none;
+    }
+
+    .level-indicator {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+
+    .waveform-display {
+      background: #000;
+      border: 2px solid var(--signal);
+      border-radius: 12px;
+      height: 150px;
+      margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .waveform-canvas {
+      width: 100%;
+      height: 100%;
+    }
+
+    .play-controls {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .control-btn {
+      background: var(--panel);
+      border: 2px solid var(--signal);
+      color: var(--signal);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 14px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .control-btn:hover {
+      background: var(--signal);
+      color: #000;
+    }
+
+    .control-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .hint-text {
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    /* Answer input */
+    .answer-section {
+      text-align: center;
+    }
+
+    .answer-input {
+      background: #000;
+      border: 2px solid var(--border);
+      color: var(--text);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 24px;
+      text-align: center;
+      padding: 16px 24px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 400px;
+      margin-bottom: 16px;
+      transition: border-color 0.3s;
+    }
+
+    .answer-input:focus {
+      outline: none;
+      border-color: var(--signal);
+      box-shadow: 0 0 20px rgba(57,255,20,0.2);
+    }
+
+    .answer-input::placeholder {
+      color: var(--muted);
+    }
+
+    .submit-btn {
+      background: var(--accent);
+      border: none;
+      color: #000;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 40px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .submit-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0,255,204,0.5);
+    }
+
+    /* Feedback */
+    .feedback {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 8px;
+      font-family: 'Share Tech Mono', monospace;
+      text-align: center;
+      display: none;
+    }
+
+    .feedback.correct {
+      background: rgba(57,255,20,0.1);
+      border: 1px solid var(--signal);
+      color: var(--signal);
+    }
+
+    .feedback.incorrect {
+      background: rgba(255,51,102,0.1);
+      border: 1px solid var(--warning);
+      color: var(--warning);
+    }
+
+    /* Results screen */
+    #results {
+      display: none;
+      text-align: center;
+    }
+
+    .results-title {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .results-title.excellent { color: var(--signal); }
+    .results-title.good { color: var(--accent); }
+    .results-title.average { color: #ffaa00; }
+    .results-title.poor { color: var(--warning); }
+
+    .results-subtitle {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    .final-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .final-stat {
+      background: #000;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+    }
+
+    .final-stat-value {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 36px;
+      color: var(--accent);
+    }
+
+    .final-stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .classification-box {
+      background: var(--panel);
+      border: 2px solid var(--signal);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 30px;
+    }
+
+    .classification-title {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .classification-level {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--signal);
+    }
+
+    .classification-desc {
+      font-size: 14px;
+      color: var(--text);
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+
+    /* Share buttons */
+    .share-section {
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+    }
+
+    .share-section h4 {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .share-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .share-btn.twitter { background: #1da1f2; color: #fff; }
+    .share-btn.reddit { background: #ff4500; color: #fff; }
+    .share-btn.retry { background: var(--signal); color: #000; }
+
+    .share-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Navigation */
+    .nav-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,5,8,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 14px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .game-area { padding: 24px; }
+      .final-stats { grid-template-columns: 1fr; }
+      .score-bar { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="nav-bar">
+    <a href="/" class="nav-logo">Disclosure Day Hub</a>
+    <a href="/" class="nav-link">Back to Hub</a>
+  </nav>
+
+  <!-- Animated waveform background -->
+  <canvas class="wave-bg" id="waveBg"></canvas>
+
+  <div class="container" style="padding-top:80px;">
+    <div class="header">
+      <div class="logo">DECODE THE SIGNAL</div>
+      <div class="tagline">Train your brain to hear the hidden message</div>
+    </div>
+
+    <div class="score-bar">
+      <div class="score-item">
+        <div class="score-value" id="currentScore">0</div>
+        <div class="score-label">Score</div>
+      </div>
+      <div class="score-item">
+        <div class="score-value" id="currentLevel">1</div>
+        <div class="score-label">Level</div>
+      </div>
+      <div class="score-item">
+        <div class="score-value" id="currentStreak">0</div>
+        <div class="score-label">Streak</div>
+      </div>
+    </div>
+
+    <div class="game-area">
+
+      <!-- Intro Screen -->
+      <div id="intro">
+        <p class="intro-text">
+          In the <strong>Disclosure Day</strong> trailer, Emily Blunt's character speaks in strange clicking sounds.
+          Researcher Brian Roemmele claims this is <strong>sine wave speech</strong> — audio that sounds like noise
+          until your brain learns to decode it.
+        </p>
+
+        <div class="how-it-works">
+          <h3>// HOW IT WORKS</h3>
+          <ol>
+            <li>You'll hear a distorted "alien" signal</li>
+            <li>Listen carefully — there's a hidden word</li>
+            <li>Type what you think you hear</li>
+            <li>Each correct answer trains your brain further</li>
+            <li>Difficulty increases as you progress</li>
+          </ol>
+        </div>
+
+        <p class="intro-text" style="color: var(--warning);">
+          Warning: After completing this training, you may start hearing patterns in audio you never noticed before.
+        </p>
+
+        <button class="start-btn" onclick="startGame()">BEGIN TRAINING</button>
+      </div>
+
+      <!-- Game Screen -->
+      <div id="game">
+        <div class="level-indicator" id="levelIndicator">LEVEL 1 — BASIC RECOGNITION</div>
+
+        <div class="waveform-display">
+          <canvas class="waveform-canvas" id="waveformCanvas"></canvas>
+        </div>
+
+        <div class="play-controls">
+          <button class="control-btn" id="playSignal" onclick="playSignal()">
+            <span>▶</span> PLAY SIGNAL
+          </button>
+          <button class="control-btn" id="playHint" onclick="playHint()">
+            <span>💡</span> HINT (-50pts)
+          </button>
+        </div>
+
+        <div class="hint-text" id="hintText">Listen carefully to the transmission...</div>
+
+        <div class="answer-section">
+          <input type="text" class="answer-input" id="answerInput" placeholder="Type what you hear..." autocomplete="off">
+          <br><br>
+          <button class="submit-btn" onclick="submitAnswer()">SUBMIT DECODE</button>
+        </div>
+
+        <div class="feedback" id="feedback"></div>
+      </div>
+
+      <!-- Results Screen -->
+      <div id="results">
+        <div class="results-title" id="resultsTitle">SIGNAL DECODED</div>
+        <div class="results-subtitle" id="resultsSubtitle">Your training is complete</div>
+
+        <div class="final-stats">
+          <div class="final-stat">
+            <div class="final-stat-value" id="finalScore">0</div>
+            <div class="final-stat-label">Final Score</div>
+          </div>
+          <div class="final-stat">
+            <div class="final-stat-value" id="finalCorrect">0/10</div>
+            <div class="final-stat-label">Decoded</div>
+          </div>
+          <div class="final-stat">
+            <div class="final-stat-value" id="finalStreak">0</div>
+            <div class="final-stat-label">Best Streak</div>
+          </div>
+        </div>
+
+        <div class="classification-box">
+          <div class="classification-title">DECODER CLASSIFICATION</div>
+          <div class="classification-level" id="classificationLevel">NOVICE</div>
+          <div class="classification-desc" id="classificationDesc">
+            Your brain is beginning to recognize patterns in alien transmissions.
+          </div>
+        </div>
+
+        <div class="share-section">
+          <h4>// SHARE YOUR SCORE</h4>
+          <div class="share-buttons">
+            <a href="#" class="share-btn twitter" id="shareTwitter">Share on X</a>
+            <a href="#" class="share-btn reddit" id="shareReddit">Post to Reddit</a>
+            <button class="share-btn retry" onclick="location.reload()">Try Again</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <p>Based on the <a href="/emily-blunt-hidden-alien-voice.html">sine wave speech theory</a> from Disclosure Day</p>
+      <p style="margin-top:8px;"><a href="/">Return to Disclosure Day Hub</a></p>
+    </div>
+  </div>
+
+  <script>
+    // Audio context for generating sine wave speech
+    let audioCtx = null;
+
+    // Game words organized by difficulty
+    const wordLevels = [
+      // Level 1 - Easy, short words
+      ["hello", "world", "alien", "truth", "stars", "space", "light"],
+      // Level 2 - Medium words
+      ["signal", "decode", "hidden", "reveal", "planet", "cosmic", "secret"],
+      // Level 3 - Harder words
+      ["message", "contact", "believe", "arrival", "mystery", "warning"],
+      // Level 4 - Disclosure themed
+      ["disclose", "presence", "universe", "watching", "remember"],
+      // Level 5 - Challenge
+      ["disclosure", "transmission", "awakening", "consciousness"]
+    ];
+
+    const levelNames = [
+      "BASIC RECOGNITION",
+      "PATTERN DETECTION",
+      "SIGNAL ANALYSIS",
+      "ADVANCED DECODING",
+      "FULL SPECTRUM"
+    ];
+
+    let currentWord = "";
+    let score = 0;
+    let level = 0;
+    let wordsCorrect = 0;
+    let currentStreak = 0;
+    let bestStreak = 0;
+    let totalWords = 10;
+    let wordsAttempted = 0;
+    let hintUsed = false;
+
+    // Initialize audio
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+    }
+
+    // Generate sine wave speech from text
+    function generateSineWaveSpeech(text, distortionLevel = 0.5) {
+      initAudio();
+
+      const duration = 0.15; // Duration per character
+      const sampleRate = audioCtx.sampleRate;
+      const totalDuration = text.length * duration + 0.5;
+      const buffer = audioCtx.createBuffer(1, sampleRate * totalDuration, sampleRate);
+      const data = buffer.getChannelData(0);
+
+      // Character to frequency mapping (simplified)
+      const charToFreq = {};
+      for (let i = 0; i < 26; i++) {
+        charToFreq[String.fromCharCode(97 + i)] = 200 + (i * 50); // a=200Hz, z=1450Hz
+      }
+      charToFreq[' '] = 0;
+
+      let pos = 0;
+      for (let c = 0; c < text.length; c++) {
+        const char = text[c].toLowerCase();
+        const freq = charToFreq[char] || 300;
+        const startSample = Math.floor(c * duration * sampleRate);
+        const endSample = Math.floor((c + 1) * duration * sampleRate);
+
+        for (let i = startSample; i < endSample && i < data.length; i++) {
+          const t = (i - startSample) / sampleRate;
+          // Mix of sine waves with harmonics
+          let sample = Math.sin(2 * Math.PI * freq * t) * 0.5;
+          sample += Math.sin(2 * Math.PI * freq * 2 * t) * 0.3;
+          sample += Math.sin(2 * Math.PI * freq * 3 * t) * 0.2;
+
+          // Add noise based on distortion level
+          sample += (Math.random() - 0.5) * distortionLevel;
+
+          // Envelope
+          const env = Math.sin(Math.PI * (i - startSample) / (endSample - startSample));
+          data[i] = sample * env * 0.5;
+        }
+      }
+
+      return buffer;
+    }
+
+    // Play the signal
+    function playSignal() {
+      initAudio();
+
+      // Distortion increases with level
+      const distortion = 0.3 + (level * 0.15);
+      const buffer = generateSineWaveSpeech(currentWord, distortion);
+
+      const source = audioCtx.createBufferSource();
+      source.buffer = buffer;
+
+      // Add some processing for more alien effect
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.value = 800 + (Math.random() * 400);
+      filter.Q.value = 2;
+
+      source.connect(filter);
+      filter.connect(audioCtx.destination);
+      source.start();
+
+      // Animate waveform
+      animateWaveform(buffer);
+    }
+
+    // Play hint (clearer version)
+    function playHint() {
+      if (hintUsed) return;
+      hintUsed = true;
+      score = Math.max(0, score - 50);
+      updateScore();
+
+      initAudio();
+      const buffer = generateSineWaveSpeech(currentWord, 0.1); // Less distortion
+      const source = audioCtx.createBufferSource();
+      source.buffer = buffer;
+      source.connect(audioCtx.destination);
+      source.start();
+
+      document.getElementById('playHint').disabled = true;
+      document.getElementById('hintText').textContent = `Hint: The word has ${currentWord.length} letters`;
+    }
+
+    // Animate waveform canvas
+    function animateWaveform(buffer) {
+      const canvas = document.getElementById('waveformCanvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.offsetWidth * 2;
+      canvas.height = canvas.offsetHeight * 2;
+
+      const data = buffer.getChannelData(0);
+      const step = Math.ceil(data.length / canvas.width);
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = '#39ff14';
+      ctx.lineWidth = 2;
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = '#39ff14';
+
+      let frame = 0;
+      const animate = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+
+        for (let i = 0; i < canvas.width; i++) {
+          const idx = Math.min(frame + i * step, data.length - 1);
+          const y = (0.5 + data[Math.floor(idx)] * 0.4) * canvas.height;
+          if (i === 0) {
+            ctx.moveTo(i, y);
+          } else {
+            ctx.lineTo(i, y);
+          }
+        }
+
+        ctx.stroke();
+        frame += step * 2;
+
+        if (frame < data.length) {
+          requestAnimationFrame(animate);
+        }
+      };
+
+      animate();
+    }
+
+    // Start the game
+    function startGame() {
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('game').style.display = 'block';
+      nextWord();
+    }
+
+    // Get next word
+    function nextWord() {
+      if (wordsAttempted >= totalWords) {
+        showResults();
+        return;
+      }
+
+      hintUsed = false;
+      document.getElementById('playHint').disabled = false;
+      document.getElementById('answerInput').value = '';
+      document.getElementById('feedback').style.display = 'none';
+      document.getElementById('hintText').textContent = 'Listen carefully to the transmission...';
+
+      // Select word from current level
+      const levelWords = wordLevels[level];
+      currentWord = levelWords[Math.floor(Math.random() * levelWords.length)];
+
+      document.getElementById('levelIndicator').textContent =
+        `LEVEL ${level + 1} — ${levelNames[level]}`;
+
+      wordsAttempted++;
+    }
+
+    // Submit answer
+    function submitAnswer() {
+      const answer = document.getElementById('answerInput').value.toLowerCase().trim();
+      const feedback = document.getElementById('feedback');
+
+      if (answer === currentWord) {
+        // Correct!
+        const points = (level + 1) * 100 - (hintUsed ? 50 : 0);
+        score += points;
+        wordsCorrect++;
+        currentStreak++;
+        bestStreak = Math.max(bestStreak, currentStreak);
+
+        feedback.className = 'feedback correct';
+        feedback.innerHTML = `CORRECT! +${points} points<br>"${currentWord.toUpperCase()}"`;
+        feedback.style.display = 'block';
+
+        // Level up every 2 correct answers
+        if (wordsCorrect % 2 === 0 && level < wordLevels.length - 1) {
+          level++;
+        }
+
+        updateScore();
+
+        setTimeout(nextWord, 1500);
+      } else {
+        // Incorrect
+        currentStreak = 0;
+        feedback.className = 'feedback incorrect';
+        feedback.innerHTML = `INCORRECT. The word was: "${currentWord.toUpperCase()}"`;
+        feedback.style.display = 'block';
+
+        updateScore();
+
+        setTimeout(nextWord, 2000);
+      }
+    }
+
+    // Update score display
+    function updateScore() {
+      document.getElementById('currentScore').textContent = score;
+      document.getElementById('currentLevel').textContent = level + 1;
+      document.getElementById('currentStreak').textContent = currentStreak;
+    }
+
+    // Show results
+    function showResults() {
+      document.getElementById('game').style.display = 'none';
+      document.getElementById('results').style.display = 'block';
+
+      document.getElementById('finalScore').textContent = score;
+      document.getElementById('finalCorrect').textContent = `${wordsCorrect}/${totalWords}`;
+      document.getElementById('finalStreak').textContent = bestStreak;
+
+      // Determine classification
+      let title, classification, desc, titleClass;
+      const percentage = (wordsCorrect / totalWords) * 100;
+
+      if (percentage >= 90) {
+        title = "SIGNAL MASTER";
+        classification = "ELITE DECODER";
+        desc = "Your brain has achieved full spectrum recognition. You can decode transmissions that most humans cannot perceive. When the signal arrives on June 12, 2026, you'll be among the first to understand.";
+        titleClass = "excellent";
+      } else if (percentage >= 70) {
+        title = "SIGNAL DECODED";
+        classification = "ADVANCED DECODER";
+        desc = "Your pattern recognition abilities are exceptional. You've learned to hear beyond the noise. The hidden messages are becoming clear to you.";
+        titleClass = "good";
+      } else if (percentage >= 50) {
+        title = "SIGNAL DETECTED";
+        classification = "INTERMEDIATE DECODER";
+        desc = "You're beginning to perceive patterns in the noise. With more training, the full message will reveal itself. Keep listening.";
+        titleClass = "average";
+      } else {
+        title = "SIGNAL LOST";
+        classification = "NOVICE DECODER";
+        desc = "The transmission remains encrypted to your perception. Don't worry — some minds need more time to attune to the frequency. Try again.";
+        titleClass = "poor";
+      }
+
+      document.getElementById('resultsTitle').textContent = title;
+      document.getElementById('resultsTitle').className = `results-title ${titleClass}`;
+      document.getElementById('classificationLevel').textContent = classification;
+      document.getElementById('classificationDesc').textContent = desc;
+
+      // Share links
+      const shareText = encodeURIComponent(
+        `I decoded ${wordsCorrect}/${totalWords} alien transmissions and achieved "${classification}" status! Can you decode the signal? #DisclosureDay https://disclosureday.nicedreamzwholesale.com/decode-the-signal.html`
+      );
+
+      document.getElementById('shareTwitter').href =
+        `https://twitter.com/intent/tweet?text=${shareText}`;
+      document.getElementById('shareReddit').href =
+        `https://www.reddit.com/submit?url=https://disclosureday.nicedreamzwholesale.com/decode-the-signal.html&title=I%20got%20${encodeURIComponent(classification)}%20on%20Decode%20The%20Signal`;
+    }
+
+    // Enter key to submit
+    document.getElementById('answerInput').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') submitAnswer();
+    });
+
+    // Background waveform animation
+    function initBackgroundWave() {
+      const canvas = document.getElementById('waveBg');
+      const ctx = canvas.getContext('2d');
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      let phase = 0;
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.strokeStyle = '#39ff14';
+        ctx.lineWidth = 1;
+
+        for (let wave = 0; wave < 3; wave++) {
+          ctx.beginPath();
+          for (let x = 0; x < canvas.width; x++) {
+            const y = canvas.height / 2 +
+              Math.sin((x * 0.01) + phase + (wave * 0.5)) * 50 +
+              Math.sin((x * 0.02) + phase * 1.5 + (wave * 0.3)) * 30;
+            if (x === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+
+        phase += 0.02;
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+    initBackgroundWave();
+  </script>
+</body>
+</html>

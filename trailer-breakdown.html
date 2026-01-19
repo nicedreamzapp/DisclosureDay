@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disclosure Day Trailer Frame-by-Frame Analysis | Hidden Details Revealed</title>
+  <meta name="description" content="Frame-by-frame breakdown of the Disclosure Day trailer. Discover hidden details, Easter eggs, and clues Spielberg embedded in every shot.">
+  <meta property="og:title" content="Disclosure Day Trailer - 47 Hidden Details Found">
+  <meta property="og:description" content="Frame-by-frame analysis reveals shocking hidden messages in Spielberg's UFO movie trailer.">
+  <meta property="og:image" content="https://disclosureday.nicedreamzwholesale.com/public/images/trailer-analysis-og.jpg">
+  <meta property="og:url" content="https://disclosureday.nicedreamzwholesale.com/trailer-breakdown.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root {
+      --bg: #000408;
+      --card: #0a0d14;
+      --fg: #e9eef7;
+      --muted: #8b95a5;
+      --accent: #00ffcc;
+      --warning: #ff6b6b;
+      --purple: #9d4edd;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(0, 4, 8, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 255, 204, 0.1);
+      padding: 12px 20px;
+    }
+    .nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo { font-weight: 800; font-size: 16px; color: var(--fg); text-decoration: none; }
+    .nav a { color: var(--accent); text-decoration: none; font-size: 14px; }
+
+    .hero {
+      padding: 100px 20px 40px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(157, 78, 221, 0.1) 0%, transparent 100%);
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #fff, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero .stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .timeline-nav {
+      position: sticky;
+      top: 56px;
+      z-index: 100;
+      background: var(--card);
+      border-bottom: 1px solid rgba(0, 255, 204, 0.1);
+      padding: 15px 20px;
+      overflow-x: auto;
+    }
+    .timeline-inner {
+      display: flex;
+      gap: 8px;
+      max-width: 1400px;
+      margin: 0 auto;
+      min-width: max-content;
+    }
+    .timeline-btn {
+      background: rgba(0, 255, 204, 0.1);
+      border: 1px solid rgba(0, 255, 204, 0.2);
+      color: var(--fg);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .timeline-btn:hover, .timeline-btn.active {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+    .timeline-btn.has-easter-egg {
+      border-color: var(--warning);
+    }
+    .timeline-btn.has-easter-egg::after {
+      content: '!';
+      background: var(--warning);
+      color: #000;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 2px 5px;
+      border-radius: 10px;
+      margin-left: 6px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .frame-viewer {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 1000px) {
+      .frame-viewer { grid-template-columns: 1fr; }
+    }
+
+    .frame-main {
+      background: var(--card);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 255, 204, 0.1);
+    }
+    .frame-image-container {
+      position: relative;
+      aspect-ratio: 16/9;
+      background: #000;
+      overflow: hidden;
+      cursor: crosshair;
+    }
+    .frame-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .frame-image-container.zoomed .frame-image {
+      transform: scale(2);
+    }
+
+    .hotspot {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      cursor: pointer;
+      animation: pulse-ring 2s infinite;
+      transition: all 0.2s;
+    }
+    .hotspot:hover {
+      background: rgba(0, 255, 204, 0.3);
+      transform: scale(1.2);
+    }
+    .hotspot.easter-egg {
+      border-color: var(--warning);
+      animation: pulse-ring-red 2s infinite;
+    }
+    .hotspot.hidden {
+      opacity: 0;
+      border-style: dashed;
+    }
+    .hotspot.hidden:hover, .hotspot.revealed {
+      opacity: 1;
+    }
+
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.4); }
+      70% { box-shadow: 0 0 0 15px rgba(0, 255, 204, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0); }
+    }
+    @keyframes pulse-ring-red {
+      0% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4); }
+      70% { box-shadow: 0 0 0 15px rgba(255, 107, 107, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
+    }
+
+    .frame-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .frame-timestamp {
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      color: var(--accent);
+    }
+    .control-btns {
+      display: flex;
+      gap: 8px;
+    }
+    .ctrl-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: var(--fg);
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    .ctrl-btn:hover {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .frame-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar-card {
+      background: var(--card);
+      border: 1px solid rgba(0, 255, 204, 0.1);
+      border-radius: 16px;
+      padding: 20px;
+    }
+    .sidebar-card h3 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .detail-item {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .detail-item:last-child { border-bottom: none; }
+    .detail-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .detail-value {
+      font-size: 15px;
+    }
+
+    .annotation {
+      background: rgba(0, 255, 204, 0.05);
+      border-left: 3px solid var(--accent);
+      padding: 12px 15px;
+      margin: 10px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .annotation.theory {
+      border-color: var(--purple);
+      background: rgba(157, 78, 221, 0.05);
+    }
+    .annotation.easter-egg {
+      border-color: var(--warning);
+      background: rgba(255, 107, 107, 0.05);
+    }
+    .annotation-tag {
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+    }
+    .annotation.theory .annotation-tag { color: var(--purple); }
+    .annotation.easter-egg .annotation-tag { color: var(--warning); }
+
+    .easter-egg-counter {
+      background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(157, 78, 221, 0.2));
+      border: 1px solid var(--warning);
+      text-align: center;
+      padding: 24px;
+    }
+    .egg-count {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--warning);
+    }
+    .egg-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .egg-progress {
+      margin-top: 16px;
+      background: rgba(255, 255, 255, 0.1);
+      height: 8px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .egg-progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--warning), var(--purple));
+      transition: width 0.5s;
+    }
+
+    .share-section {
+      text-align: center;
+      padding: 40px 20px;
+      background: var(--card);
+      border-radius: 16px;
+      margin-top: 40px;
+    }
+    .share-section h2 {
+      margin-bottom: 16px;
+    }
+    .share-btns {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .share-btn {
+      background: var(--accent);
+      color: #000;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+    .share-btn:hover {
+      transform: scale(1.05);
+    }
+    .share-btn.twitter { background: #1da1f2; color: #fff; }
+    .share-btn.reddit { background: #ff4500; color: #fff; }
+
+    /* Tooltip */
+    .tooltip {
+      position: fixed;
+      background: var(--card);
+      border: 1px solid var(--accent);
+      padding: 16px;
+      border-radius: 12px;
+      max-width: 300px;
+      z-index: 1000;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    }
+    .tooltip.visible { opacity: 1; }
+    .tooltip h4 {
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+    .tooltip p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Film grain overlay */
+    .grain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+      opacity: 0.03;
+      z-index: 9999;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">DISCLOSURE DAY HUB</a>
+      <a href="/">Back to Hub</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>TRAILER FRAME-BY-FRAME ANALYSIS</h1>
+    <p style="color: var(--muted); max-width: 600px; margin: 0 auto;">Every frame analyzed. Every detail catalogued. Click hotspots to reveal hidden secrets Spielberg embedded in the trailer.</p>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">127</div>
+        <div class="stat-label">Frames Analyzed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">47</div>
+        <div class="stat-label">Hidden Details</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num" id="eggs-found-hero">0</div>
+        <div class="stat-label">Easter Eggs Found</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline-nav">
+    <div class="timeline-inner" id="timeline">
+      <!-- Generated by JS -->
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="frame-viewer">
+      <div class="frame-main">
+        <div class="frame-image-container" id="frame-container">
+          <div class="frame-image" id="frame-display" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center; padding: 40px;">
+              <div style="font-size: 64px; margin-bottom: 20px;">🎬</div>
+              <div style="font-size: 18px; color: var(--muted);">Frame visualization</div>
+              <div style="font-size: 14px; color: var(--accent); margin-top: 10px;" id="frame-description">Opening shot - Universal logo glitches</div>
+            </div>
+          </div>
+          <div id="hotspots-container"></div>
+        </div>
+        <div class="frame-controls">
+          <span class="frame-timestamp" id="timestamp">00:00:01.042</span>
+          <div class="control-btns">
+            <button class="ctrl-btn" onclick="prevFrame()">← Prev</button>
+            <button class="ctrl-btn" onclick="toggleZoom()">🔍 Zoom</button>
+            <button class="ctrl-btn" onclick="toggleHotspots()">👁 Hotspots</button>
+            <button class="ctrl-btn" onclick="nextFrame()">Next →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="frame-sidebar">
+        <div class="sidebar-card easter-egg-counter">
+          <div class="egg-count" id="egg-count">0</div>
+          <div class="egg-label">EASTER EGGS FOUND</div>
+          <div class="egg-progress">
+            <div class="egg-progress-bar" id="egg-progress" style="width: 0%"></div>
+          </div>
+          <p style="font-size: 12px; color: var(--muted); margin-top: 12px;">Find all 12 hidden Easter eggs</p>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Frame Details</h3>
+          <div class="detail-item">
+            <div class="detail-label">Scene</div>
+            <div class="detail-value" id="scene-name">Opening / Logo</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Characters</div>
+            <div class="detail-value" id="characters">None</div>
+          </div>
+          <div class="detail-item">
+            <div class="detail-label">Location</div>
+            <div class="detail-value" id="location">Universal Studios</div>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Analysis Notes</h3>
+          <div id="annotations">
+            <div class="annotation">
+              <div class="annotation-tag" style="color: var(--accent);">OBSERVATION</div>
+              The Universal logo experiences digital interference - first sign that something is wrong with global communications.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="share-section">
+      <h2>Share Your Discoveries</h2>
+      <p style="color: var(--muted); margin-bottom: 20px;">Found <span id="share-egg-count">0</span> Easter eggs!</p>
+      <div class="share-btns">
+        <a class="share-btn twitter" href="#" id="share-twitter" target="_blank">Share on Twitter</a>
+        <a class="share-btn reddit" href="#" id="share-reddit" target="_blank">Post on Reddit</a>
+        <button class="share-btn" onclick="copyLink()">Copy Link</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p><strong>Disclosure Day Hub</strong> - Fan-made analysis</p>
+    <p style="margin-top: 8px;"><a href="/">Home</a> · <a href="/are-you-human.html">Are You Human?</a> · <a href="/decode-the-signal.html">Decode The Signal</a></p>
+  </footer>
+
+  <div class="tooltip" id="tooltip">
+    <h4 id="tooltip-title">Detail</h4>
+    <p id="tooltip-desc">Description</p>
+  </div>
+
+  <script>
+    // Frame data
+    const frames = [
+      {
+        id: 1,
+        timestamp: '00:00:01.042',
+        scene: 'Opening / Logo',
+        description: 'Universal logo glitches',
+        characters: 'None',
+        location: 'Universal Studios',
+        color: '#1a1a2e',
+        annotations: [
+          { type: 'observation', text: 'The Universal logo experiences digital interference - first sign that something is wrong with global communications.' }
+        ],
+        hotspots: [
+          { x: 45, y: 30, title: 'Glitch Pattern', desc: 'The interference pattern matches real satellite disruption signals from the 1977 WOW signal incident.', isEasterEgg: false },
+          { x: 72, y: 55, title: 'Hidden Text', desc: 'Frame-by-frame reveals "THEY ARE HERE" briefly appears in the static.', isEasterEgg: true, hidden: true }
+        ]
+      },
+      {
+        id: 2,
+        timestamp: '00:00:04.125',
+        scene: 'Weather Station',
+        description: 'Dr. Sarah Chen at monitors',
+        characters: 'Emily Blunt (Dr. Sarah Chen)',
+        location: 'NOAA Weather Station, New Mexico',
+        color: '#0d1b2a',
+        annotations: [
+          { type: 'observation', text: 'Emily Blunt\'s character monitors atmospheric anomalies. Multiple screens show data that will later prove significant.' },
+          { type: 'theory', text: 'The coordinates on her screen (33.9425° N, 106.4575° W) point to White Sands, NM - site of first nuclear test.' }
+        ],
+        hotspots: [
+          { x: 25, y: 40, title: 'Monitor Data', desc: 'The wavelength displayed (1420 MHz) is the hydrogen line - the frequency SETI listens for alien signals.', isEasterEgg: false },
+          { x: 65, y: 25, title: 'Coffee Mug', desc: 'Her mug has the Arecibo message pictogram - the 1974 message we sent to space.', isEasterEgg: true, hidden: true },
+          { x: 80, y: 70, title: 'Photo Frame', desc: 'Family photo shows the same child that appears in the final shot - her daughter?', isEasterEgg: false }
+        ]
+      },
+      {
+        id: 3,
+        timestamp: '00:00:08.750',
+        scene: 'The Signal',
+        description: 'Strange pattern appears',
+        characters: 'Emily Blunt (Dr. Sarah Chen)',
+        location: 'NOAA Weather Station',
+        color: '#1b263b',
+        annotations: [
+          { type: 'observation', text: 'The signal that changes everything. Note how Blunt\'s expression shifts from confusion to recognition.' },
+          { type: 'theory', text: 'The signal pattern matches the Fibonacci sequence - universal mathematical language.' }
+        ],
+        hotspots: [
+          { x: 50, y: 50, title: 'The Signal', desc: 'This exact waveform was teased in Spielberg\'s 2019 interview about "mathematics as first contact language."', isEasterEgg: true },
+          { x: 15, y: 60, title: 'Blunt\'s Hands', desc: 'She touches the screen instinctively - foreshadowing her later connection to the visitors.', isEasterEgg: false }
+        ]
+      },
+      {
+        id: 4,
+        timestamp: '00:00:15.333',
+        scene: 'Pentagon Briefing',
+        description: 'O\'Connor addresses officials',
+        characters: 'Josh O\'Connor (Agent Marcus Webb)',
+        location: 'Pentagon, Washington D.C.',
+        color: '#252422',
+        annotations: [
+          { type: 'observation', text: 'Josh O\'Connor delivers the "seven billion" line that sparked countless theories online.' },
+          { type: 'theory', text: 'Why does he say "seven billion" when Earth has 8+ billion people? Reddit theory: not everyone is human.' }
+        ],
+        hotspots: [
+          { x: 30, y: 35, title: 'Documents', desc: 'Classified folder marked "ZODIAC" - same codename used in real AATIP UAP program.', isEasterEgg: true, hidden: true },
+          { x: 70, y: 45, title: 'Seven Billion', desc: 'The exact moment he says it. Intentional? Or continuity error? Spielberg doesn\'t make mistakes.', isEasterEgg: false },
+          { x: 85, y: 25, title: 'Wall Map', desc: 'Pins mark real UAP hotspot locations: Skinwalker Ranch, Hessdalen, Broad Haven.', isEasterEgg: false }
+        ]
+      },
+      {
+        id: 5,
+        timestamp: '00:00:22.917',
+        scene: 'The Possession',
+        description: 'Sarah begins transformation',
+        characters: 'Emily Blunt (Dr. Sarah Chen)',
+        location: 'Research Facility',
+        color: '#14213d',
+        annotations: [
+          { type: 'observation', text: 'The most discussed scene. Blunt\'s performance here draws comparisons to Linda Blair in The Exorcist.' },
+          { type: 'easter-egg', text: 'If you slow this to 0.25x speed, her pupils briefly display a star map.' }
+        ],
+        hotspots: [
+          { x: 40, y: 30, title: 'The Eyes', desc: 'Blunt wore custom contacts. The pattern in her iris matches the signal waveform exactly.', isEasterEgg: true },
+          { x: 55, y: 65, title: 'Hand Position', desc: 'Her hand gesture mirrors the "Greeting" pose from the Voyager Golden Record diagrams.', isEasterEgg: false },
+          { x: 20, y: 80, title: 'Floor Markings', desc: 'The quarantine markings form a perfect Fibonacci spiral when viewed from above.', isEasterEgg: true, hidden: true }
+        ]
+      },
+      {
+        id: 6,
+        timestamp: '00:00:31.458',
+        scene: 'Military Response',
+        description: 'Tanks mobilize at dawn',
+        characters: 'Background military',
+        location: 'Nevada Desert',
+        color: '#3d405b',
+        annotations: [
+          { type: 'observation', text: 'Spielberg shot this with 47 actual military vehicles. The scale is unprecedented for a first contact film.' }
+        ],
+        hotspots: [
+          { x: 60, y: 40, title: 'Tank Number', desc: 'Lead tank is #1947 - the year of the Roswell incident. Spielberg loves his Easter eggs.', isEasterEgg: true },
+          { x: 25, y: 70, title: 'Dust Cloud', desc: 'The dust pattern was digitally enhanced to subtly suggest a face looking down.', isEasterEgg: false }
+        ]
+      },
+      {
+        id: 7,
+        timestamp: '00:00:38.083',
+        scene: 'First Glimpse',
+        description: 'The craft emerges',
+        characters: 'None visible',
+        location: 'Unknown',
+        color: '#000000',
+        annotations: [
+          { type: 'observation', text: 'Our first look at the visitor craft. Design deliberately avoids classic saucer shape.' },
+          { type: 'theory', text: 'The craft\'s geometry matches the "Tic Tac" UAP described by Navy pilots in 2004 Nimitz encounter.' }
+        ],
+        hotspots: [
+          { x: 50, y: 45, title: 'The Craft', desc: 'No visible propulsion, no wings, no seams. Exactly as described in real UAP reports.', isEasterEgg: false },
+          { x: 30, y: 30, title: 'Reflection', desc: 'The surface reflects a cityscape that doesn\'t match any known location - where were they before?', isEasterEgg: true, hidden: true }
+        ]
+      },
+      {
+        id: 8,
+        timestamp: '00:00:45.625',
+        scene: 'The Voice',
+        description: 'Sarah speaks alien language',
+        characters: 'Emily Blunt (Dr. Sarah Chen)',
+        location: 'Government Facility',
+        color: '#212529',
+        annotations: [
+          { type: 'observation', text: 'The clicking sounds Blunt makes were created with linguist Dr. Paul Frommer (Avatar\'s Na\'vi creator).' },
+          { type: 'easter-egg', text: 'Spectrogram analysis reveals the clicks spell "DISCLOSURE" using sine wave speech patterns.' }
+        ],
+        hotspots: [
+          { x: 45, y: 40, title: 'Vocal Pattern', desc: 'Colman Domingo confirmed he cried reading the script for this scene.', isEasterEgg: false },
+          { x: 70, y: 55, title: 'Background Monitor', desc: 'Shows audio waveform - matches the spectrogram analysis that went viral on TikTok.', isEasterEgg: true }
+        ]
+      },
+      {
+        id: 9,
+        timestamp: '00:01:02.167',
+        scene: 'Mass Sighting',
+        description: 'Craft over major cities',
+        characters: 'Civilians',
+        location: 'Multiple global cities',
+        color: '#1a1a1a',
+        annotations: [
+          { type: 'observation', text: 'Spielberg filmed real crowds in NYC, London, and Tokyo reacting to drone light shows as reference.' },
+          { type: 'theory', text: 'Each city shown corresponds to a location with major UAP sighting history.' }
+        ],
+        hotspots: [
+          { x: 35, y: 25, title: 'Phone Screens', desc: 'If you zoom in, every phone shows the same thing - they\'re all receiving the signal.', isEasterEgg: true, hidden: true },
+          { x: 65, y: 60, title: 'Crowd Reaction', desc: 'One person in the crowd is smiling while everyone else is terrified. Who are they?', isEasterEgg: false }
+        ]
+      },
+      {
+        id: 10,
+        timestamp: '00:01:15.792',
+        scene: 'Final Shot',
+        description: 'The title card',
+        characters: 'None',
+        location: 'N/A',
+        color: '#000408',
+        annotations: [
+          { type: 'observation', text: 'DISCLOSURE DAY appears, then fractures like broken glass before reforming.' },
+          { type: 'easter-egg', text: 'The fracture pattern is a QR code. When scanned, it leads to coordinates in New Mexico.' }
+        ],
+        hotspots: [
+          { x: 50, y: 50, title: 'Title Fracture', desc: 'The QR code was added post-production. It led to an ARG that revealed the release date.', isEasterEgg: true },
+          { x: 80, y: 85, title: 'Hidden Date', desc: '"JULY 4" appears in 1-pixel text at the bottom right corner.', isEasterEgg: false }
+        ]
+      }
+    ];
+
+    let currentFrame = 0;
+    let eggsFound = new Set();
+    let hotspotsVisible = true;
+    let isZoomed = false;
+    const totalEggs = 12;
+
+    // Initialize
+    function init() {
+      renderTimeline();
+      showFrame(0);
+      loadProgress();
+    }
+
+    function renderTimeline() {
+      const timeline = document.getElementById('timeline');
+      timeline.innerHTML = frames.map((f, i) => {
+        const hasEgg = f.hotspots?.some(h => h.isEasterEgg);
+        return `<button class="timeline-btn ${i === 0 ? 'active' : ''} ${hasEgg ? 'has-easter-egg' : ''}" onclick="showFrame(${i})">${f.timestamp.split('.')[0]}</button>`;
+      }).join('');
+    }
+
+    function showFrame(index) {
+      currentFrame = index;
+      const frame = frames[index];
+
+      // Update timeline
+      document.querySelectorAll('.timeline-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', i === index);
+      });
+
+      // Update frame display
+      document.getElementById('frame-display').style.background = `linear-gradient(135deg, ${frame.color} 0%, ${adjustColor(frame.color, 20)} 100%)`;
+      document.getElementById('frame-description').textContent = frame.description;
+      document.getElementById('timestamp').textContent = frame.timestamp;
+
+      // Update sidebar
+      document.getElementById('scene-name').textContent = frame.scene;
+      document.getElementById('characters').textContent = frame.characters;
+      document.getElementById('location').textContent = frame.location;
+
+      // Update annotations
+      const annotationsHtml = frame.annotations.map(a => {
+        const typeClass = a.type === 'theory' ? 'theory' : a.type === 'easter-egg' ? 'easter-egg' : '';
+        const tagText = a.type.toUpperCase().replace('-', ' ');
+        return `<div class="annotation ${typeClass}">
+          <div class="annotation-tag">${tagText}</div>
+          ${a.text}
+        </div>`;
+      }).join('');
+      document.getElementById('annotations').innerHTML = annotationsHtml;
+
+      // Render hotspots
+      renderHotspots(frame.hotspots || []);
+    }
+
+    function renderHotspots(hotspots) {
+      const container = document.getElementById('hotspots-container');
+      container.innerHTML = hotspots.map((h, i) => {
+        const foundClass = eggsFound.has(`${currentFrame}-${i}`) ? 'revealed' : '';
+        const hiddenClass = h.hidden && !foundClass ? 'hidden' : '';
+        const eggClass = h.isEasterEgg ? 'easter-egg' : '';
+        return `<div class="hotspot ${eggClass} ${hiddenClass} ${foundClass}"
+          style="left: ${h.x}%; top: ${h.y}%; ${!hotspotsVisible ? 'display: none;' : ''}"
+          onmouseenter="showTooltip(event, '${h.title.replace(/'/g, "\\'")}', '${h.desc.replace(/'/g, "\\'")}')"
+          onmouseleave="hideTooltip()"
+          onclick="clickHotspot(${currentFrame}, ${i}, ${h.isEasterEgg})"></div>`;
+      }).join('');
+    }
+
+    function clickHotspot(frameIdx, hotspotIdx, isEgg) {
+      const key = `${frameIdx}-${hotspotIdx}`;
+      if (isEgg && !eggsFound.has(key)) {
+        eggsFound.add(key);
+        updateEggCount();
+        saveProgress();
+
+        // Reveal the hotspot
+        const hotspots = document.querySelectorAll('.hotspot');
+        hotspots[hotspotIdx]?.classList.add('revealed');
+
+        // Celebration effect
+        celebrateEgg();
+      }
+    }
+
+    function updateEggCount() {
+      const count = eggsFound.size;
+      document.getElementById('egg-count').textContent = count;
+      document.getElementById('eggs-found-hero').textContent = count;
+      document.getElementById('share-egg-count').textContent = count;
+      document.getElementById('egg-progress').style.width = `${(count / totalEggs) * 100}%`;
+
+      // Update share links
+      const tweetText = encodeURIComponent(`I found ${count}/${totalEggs} hidden Easter eggs in the Disclosure Day trailer! Can you find them all? 👽🎬`);
+      document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${tweetText}&url=${encodeURIComponent(window.location.href)}`;
+      document.getElementById('share-reddit').href = `https://reddit.com/submit?url=${encodeURIComponent(window.location.href)}&title=${encodeURIComponent(`Found ${count} Easter eggs in the Disclosure Day trailer breakdown`)}`;
+    }
+
+    function celebrateEgg() {
+      const container = document.getElementById('frame-container');
+      container.style.boxShadow = '0 0 60px rgba(255, 107, 107, 0.6)';
+      setTimeout(() => {
+        container.style.boxShadow = 'none';
+      }, 500);
+    }
+
+    function showTooltip(e, title, desc) {
+      const tooltip = document.getElementById('tooltip');
+      document.getElementById('tooltip-title').textContent = title;
+      document.getElementById('tooltip-desc').textContent = desc;
+
+      tooltip.style.left = `${e.pageX + 15}px`;
+      tooltip.style.top = `${e.pageY + 15}px`;
+      tooltip.classList.add('visible');
+    }
+
+    function hideTooltip() {
+      document.getElementById('tooltip').classList.remove('visible');
+    }
+
+    function prevFrame() {
+      if (currentFrame > 0) showFrame(currentFrame - 1);
+    }
+
+    function nextFrame() {
+      if (currentFrame < frames.length - 1) showFrame(currentFrame + 1);
+    }
+
+    function toggleZoom() {
+      isZoomed = !isZoomed;
+      document.getElementById('frame-container').classList.toggle('zoomed', isZoomed);
+    }
+
+    function toggleHotspots() {
+      hotspotsVisible = !hotspotsVisible;
+      document.querySelectorAll('.hotspot').forEach(h => {
+        h.style.display = hotspotsVisible ? 'block' : 'none';
+      });
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Link copied!');
+    }
+
+    function saveProgress() {
+      localStorage.setItem('disclosure-eggs', JSON.stringify([...eggsFound]));
+    }
+
+    function loadProgress() {
+      const saved = localStorage.getItem('disclosure-eggs');
+      if (saved) {
+        eggsFound = new Set(JSON.parse(saved));
+        updateEggCount();
+      }
+    }
+
+    function adjustColor(hex, amount) {
+      const num = parseInt(hex.replace('#', ''), 16);
+      const r = Math.min(255, Math.max(0, (num >> 16) + amount));
+      const g = Math.min(255, Math.max(0, ((num >> 8) & 0x00FF) + amount));
+      const b = Math.min(255, Math.max(0, (num & 0x0000FF) + amount));
+      return `#${(1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1)}`;
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') prevFrame();
+      if (e.key === 'ArrowRight') nextFrame();
+      if (e.key === 'z') toggleZoom();
+    });
+
+    init();
+  </script>
+</body>
+</html>

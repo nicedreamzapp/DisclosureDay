@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disclosure Day Poster Generator - Create Your Own Movie Poster</title>
+  <meta name="description" content="Create your own personalized Disclosure Day movie poster. Add your name to the cast and share on social media.">
+  <meta property="og:title" content="I'm Starring in Disclosure Day!">
+  <meta property="og:description" content="Create your own Disclosure Day poster with your name in the credits.">
+  <meta property="og:image" content="https://disclosureday.nicedreamzwholesale.com/public/images/poster-gen-og.jpg">
+  <meta property="og:url" content="https://disclosureday.nicedreamzwholesale.com/poster-generator.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    :root {
+      --bg: #000408;
+      --card: #0a0d14;
+      --fg: #e9eef7;
+      --muted: #8b95a5;
+      --accent: #00ffcc;
+      --gold: #ffd700;
+      --purple: #9d4edd;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(0, 4, 8, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 255, 204, 0.1);
+      padding: 12px 20px;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo { font-weight: 800; font-size: 16px; color: var(--fg); text-decoration: none; }
+    .nav a { color: var(--accent); text-decoration: none; font-size: 14px; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 20px 60px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--gold), #fff, var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      color: var(--muted);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .generator {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .generator { grid-template-columns: 1fr; }
+    }
+
+    .controls {
+      background: var(--card);
+      border: 1px solid rgba(0, 255, 204, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+    }
+    .control-section {
+      margin-bottom: 24px;
+    }
+    .control-section:last-child { margin-bottom: 0; }
+    .control-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .control-input {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      color: var(--fg);
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+    .control-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
+    }
+    .control-input::placeholder { color: var(--muted); }
+
+    .role-selector {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .role-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 12px;
+      border-radius: 10px;
+      color: var(--fg);
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+      font-size: 13px;
+    }
+    .role-btn:hover {
+      border-color: var(--accent);
+    }
+    .role-btn.selected {
+      background: rgba(0, 255, 204, 0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .style-selector {
+      display: flex;
+      gap: 10px;
+    }
+    .style-btn {
+      flex: 1;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .style-btn.selected { border-color: var(--accent); }
+    .style-preview {
+      height: 60px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+    }
+    .style-name {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .generate-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--accent), var(--purple));
+      border: none;
+      border-radius: 12px;
+      color: #000;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 20px;
+    }
+    .generate-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 255, 204, 0.3);
+    }
+
+    .poster-preview {
+      position: sticky;
+      top: 80px;
+    }
+    .poster-frame {
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Poster Canvas Styles */
+    #poster-canvas {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .download-btns {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .download-btn {
+      flex: 1;
+      padding: 14px;
+      background: var(--card);
+      border: 1px solid rgba(0, 255, 204, 0.3);
+      border-radius: 10px;
+      color: var(--accent);
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 14px;
+    }
+    .download-btn:hover {
+      background: rgba(0, 255, 204, 0.1);
+    }
+
+    .share-section {
+      margin-top: 20px;
+      padding: 20px;
+      background: var(--card);
+      border-radius: 12px;
+      text-align: center;
+    }
+    .share-section h3 {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+    .share-btns {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+    .share-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    .share-btn:hover { transform: scale(1.05); }
+    .share-btn.twitter { background: #1da1f2; color: #fff; }
+    .share-btn.reddit { background: #ff4500; color: #fff; }
+    .share-btn.insta { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: #fff; }
+
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 60px;
+    }
+    .footer a { color: var(--accent); text-decoration: none; }
+
+    /* Grain overlay */
+    .grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.02;
+      z-index: 9999;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+  </style>
+</head>
+<body>
+  <div class="grain"></div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">DISCLOSURE DAY HUB</a>
+      <a href="/">Back to Hub</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="hero">
+      <h1>CREATE YOUR POSTER</h1>
+      <p>Add your name to Spielberg's cast and create a shareable movie poster</p>
+    </div>
+
+    <div class="generator">
+      <div class="controls">
+        <div class="control-section">
+          <label class="control-label">Your Name</label>
+          <input type="text" id="user-name" class="control-input" placeholder="Enter your name" maxlength="30" value="">
+        </div>
+
+        <div class="control-section">
+          <label class="control-label">Your Role</label>
+          <div class="role-selector" id="role-selector">
+            <button class="role-btn selected" data-role="The Witness">The Witness</button>
+            <button class="role-btn" data-role="The Believer">The Believer</button>
+            <button class="role-btn" data-role="The Skeptic">The Skeptic</button>
+            <button class="role-btn" data-role="The Insider">The Insider</button>
+            <button class="role-btn" data-role="First Contact">First Contact</button>
+            <button class="role-btn" data-role="The Chosen">The Chosen</button>
+          </div>
+        </div>
+
+        <div class="control-section">
+          <label class="control-label">Tagline</label>
+          <select id="tagline" class="control-input">
+            <option value="THE TRUTH BELONGS TO SEVEN BILLION PEOPLE">The truth belongs to seven billion people</option>
+            <option value="SOME SECRETS CANNOT BE CONTAINED">Some secrets cannot be contained</option>
+            <option value="THEY'VE BEEN WATCHING. NOW THEY'RE HERE.">They've been watching. Now they're here.</option>
+            <option value="DISCLOSURE IS JUST THE BEGINNING">Disclosure is just the beginning</option>
+            <option value="WE ARE NOT ALONE. WE NEVER WERE.">We are not alone. We never were.</option>
+          </select>
+        </div>
+
+        <div class="control-section">
+          <label class="control-label">Poster Style</label>
+          <div class="style-selector" id="style-selector">
+            <button class="style-btn selected" data-style="dark">
+              <div class="style-preview" style="background: linear-gradient(180deg, #000 0%, #1a1a2e 50%, #000 100%);"></div>
+              <div class="style-name">Dark</div>
+            </button>
+            <button class="style-btn" data-style="signal">
+              <div class="style-preview" style="background: linear-gradient(180deg, #000 0%, #0a192f 50%, #00ffcc 100%);"></div>
+              <div class="style-name">Signal</div>
+            </button>
+            <button class="style-btn" data-style="fire">
+              <div class="style-preview" style="background: linear-gradient(180deg, #000 0%, #2d1f1f 50%, #ff6b35 100%);"></div>
+              <div class="style-name">Fire</div>
+            </button>
+            <button class="style-btn" data-style="classic">
+              <div class="style-preview" style="background: linear-gradient(180deg, #1a1a2e 0%, #2d2d44 50%, #ffd700 100%);"></div>
+              <div class="style-name">Classic</div>
+            </button>
+          </div>
+        </div>
+
+        <button class="generate-btn" onclick="generatePoster()">GENERATE POSTER</button>
+      </div>
+
+      <div class="poster-preview">
+        <div class="poster-frame">
+          <canvas id="poster-canvas" width="600" height="900"></canvas>
+        </div>
+
+        <div class="download-btns">
+          <a class="download-btn" id="download-btn" download="my-disclosure-day-poster.png">Download PNG</a>
+          <button class="download-btn" onclick="copyToClipboard()">Copy to Clipboard</button>
+        </div>
+
+        <div class="share-section">
+          <h3>Share Your Poster</h3>
+          <div class="share-btns">
+            <a class="share-btn twitter" id="share-twitter" href="#" target="_blank">Twitter</a>
+            <a class="share-btn reddit" id="share-reddit" href="#" target="_blank">Reddit</a>
+            <button class="share-btn insta" onclick="alert('Download the image and share it on Instagram!')">Instagram</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p><strong>Disclosure Day Hub</strong> - Fan-made poster generator</p>
+    <p style="margin-top: 8px;"><a href="/">Home</a> · <a href="/are-you-human.html">Are You Human?</a> · <a href="/trailer-breakdown.html">Trailer Breakdown</a></p>
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('poster-canvas');
+    const ctx = canvas.getContext('2d');
+
+    let currentName = '';
+    let currentRole = 'The Witness';
+    let currentTagline = 'THE TRUTH BELONGS TO SEVEN BILLION PEOPLE';
+    let currentStyle = 'dark';
+
+    const styles = {
+      dark: {
+        bg: ['#000000', '#1a1a2e', '#000000'],
+        accent: '#ffffff',
+        titleColor: '#ffffff',
+        glow: 'rgba(255, 255, 255, 0.3)'
+      },
+      signal: {
+        bg: ['#000000', '#0a192f', '#001a1a'],
+        accent: '#00ffcc',
+        titleColor: '#00ffcc',
+        glow: 'rgba(0, 255, 204, 0.5)'
+      },
+      fire: {
+        bg: ['#000000', '#1a0a0a', '#2d1f1f'],
+        accent: '#ff6b35',
+        titleColor: '#ff6b35',
+        glow: 'rgba(255, 107, 53, 0.5)'
+      },
+      classic: {
+        bg: ['#0a0a14', '#1a1a2e', '#1a1a2e'],
+        accent: '#ffd700',
+        titleColor: '#ffd700',
+        glow: 'rgba(255, 215, 0, 0.4)'
+      }
+    };
+
+    // Initialize
+    function init() {
+      // Role buttons
+      document.querySelectorAll('.role-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          currentRole = btn.dataset.role;
+          generatePoster();
+        });
+      });
+
+      // Style buttons
+      document.querySelectorAll('.style-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.style-btn').forEach(b => b.classList.remove('selected'));
+          btn.classList.add('selected');
+          currentStyle = btn.dataset.style;
+          generatePoster();
+        });
+      });
+
+      // Input listeners
+      document.getElementById('user-name').addEventListener('input', (e) => {
+        currentName = e.target.value;
+        generatePoster();
+      });
+
+      document.getElementById('tagline').addEventListener('change', (e) => {
+        currentTagline = e.target.value;
+        generatePoster();
+      });
+
+      // Initial render
+      generatePoster();
+    }
+
+    function generatePoster() {
+      const style = styles[currentStyle];
+      const w = canvas.width;
+      const h = canvas.height;
+
+      // Clear
+      ctx.clearRect(0, 0, w, h);
+
+      // Background gradient
+      const bgGrad = ctx.createLinearGradient(0, 0, 0, h);
+      bgGrad.addColorStop(0, style.bg[0]);
+      bgGrad.addColorStop(0.5, style.bg[1]);
+      bgGrad.addColorStop(1, style.bg[2]);
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, w, h);
+
+      // Add noise texture
+      addNoise(0.03);
+
+      // Light beam effect
+      drawLightBeam(style);
+
+      // Spielberg presents
+      ctx.font = '600 14px system-ui';
+      ctx.fillStyle = style.accent;
+      ctx.textAlign = 'center';
+      ctx.fillText('STEVEN SPIELBERG PRESENTS', w/2, 60);
+
+      // Main Title with glow
+      ctx.save();
+      ctx.shadowColor = style.glow;
+      ctx.shadowBlur = 30;
+      ctx.font = '800 72px system-ui';
+      ctx.fillStyle = style.titleColor;
+      ctx.fillText('DISCLOSURE', w/2, h/2 - 60);
+      ctx.fillText('DAY', w/2, h/2 + 20);
+      ctx.restore();
+
+      // Horizontal lines around title
+      ctx.strokeStyle = style.accent;
+      ctx.lineWidth = 1;
+      ctx.globalAlpha = 0.3;
+      ctx.beginPath();
+      ctx.moveTo(50, h/2 - 100);
+      ctx.lineTo(w - 50, h/2 - 100);
+      ctx.moveTo(50, h/2 + 60);
+      ctx.lineTo(w - 50, h/2 + 60);
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+
+      // Tagline
+      ctx.font = '500 16px system-ui';
+      ctx.fillStyle = '#888888';
+      ctx.fillText(currentTagline, w/2, h/2 + 110);
+
+      // User name and role
+      if (currentName.trim()) {
+        ctx.font = '700 28px system-ui';
+        ctx.fillStyle = style.accent;
+        ctx.fillText(currentName.toUpperCase(), w/2, h - 200);
+
+        ctx.font = '400 14px system-ui';
+        ctx.fillStyle = '#666666';
+        ctx.fillText('as', w/2, h - 175);
+
+        ctx.font = '600 18px system-ui';
+        ctx.fillStyle = '#ffffff';
+        ctx.fillText(currentRole.toUpperCase(), w/2, h - 150);
+      }
+
+      // Cast list
+      ctx.font = '400 13px system-ui';
+      ctx.fillStyle = '#555555';
+      const cast = 'EMILY BLUNT   JOSH O\'CONNOR   COLIN FIRTH   COLMAN DOMINGO';
+      ctx.fillText(cast, w/2, h - 100);
+
+      // Release date
+      ctx.font = '700 20px system-ui';
+      ctx.fillStyle = style.accent;
+      ctx.fillText('JUNE 12, 2026', w/2, h - 60);
+
+      // Universal logo text
+      ctx.font = '400 10px system-ui';
+      ctx.fillStyle = '#444444';
+      ctx.fillText('A UNIVERSAL PICTURES RELEASE', w/2, h - 30);
+
+      // UFO silhouette
+      drawUFO(w/2, 180, style.accent);
+
+      // Update download link
+      document.getElementById('download-btn').href = canvas.toDataURL('image/png');
+
+      // Update share links
+      updateShareLinks();
+    }
+
+    function drawLightBeam(style) {
+      const w = canvas.width;
+      const h = canvas.height;
+
+      ctx.save();
+      const grad = ctx.createLinearGradient(w/2, 0, w/2, h * 0.7);
+      grad.addColorStop(0, 'rgba(255,255,255,0.1)');
+      grad.addColorStop(0.5, 'rgba(255,255,255,0.02)');
+      grad.addColorStop(1, 'transparent');
+
+      ctx.beginPath();
+      ctx.moveTo(w/2, 0);
+      ctx.lineTo(w/2 - 200, h * 0.7);
+      ctx.lineTo(w/2 + 200, h * 0.7);
+      ctx.closePath();
+      ctx.fillStyle = grad;
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function drawUFO(x, y, color) {
+      ctx.save();
+      ctx.globalAlpha = 0.6;
+
+      // Main body
+      ctx.beginPath();
+      ctx.ellipse(x, y, 60, 15, 0, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.fill();
+
+      // Dome
+      ctx.beginPath();
+      ctx.ellipse(x, y - 10, 25, 12, 0, Math.PI, 0);
+      ctx.fill();
+
+      // Lights
+      ctx.globalAlpha = 0.8;
+      for (let i = -2; i <= 2; i++) {
+        ctx.beginPath();
+        ctx.arc(x + i * 18, y, 3, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffffff';
+        ctx.fill();
+      }
+
+      ctx.restore();
+    }
+
+    function addNoise(opacity) {
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const data = imageData.data;
+
+      for (let i = 0; i < data.length; i += 4) {
+        const noise = (Math.random() - 0.5) * 255 * opacity;
+        data[i] += noise;
+        data[i + 1] += noise;
+        data[i + 2] += noise;
+      }
+
+      ctx.putImageData(imageData, 0, 0);
+    }
+
+    function updateShareLinks() {
+      const name = currentName.trim() || 'I';
+      const tweetText = encodeURIComponent(`${name === 'I' ? 'I\'m' : name + ' is'} starring in Disclosure Day! Create your own poster: disclosureday.nicedreamzwholesale.com/poster-generator.html #DisclosureDay #Spielberg`);
+      document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${tweetText}`;
+
+      const redditTitle = encodeURIComponent(`Created my own Disclosure Day poster - ${name === 'I' ? 'I\'m' : name + ' is'} "${currentRole}"!`);
+      document.getElementById('share-reddit').href = `https://reddit.com/submit?url=${encodeURIComponent(window.location.href)}&title=${redditTitle}`;
+    }
+
+    async function copyToClipboard() {
+      try {
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+        await navigator.clipboard.write([
+          new ClipboardItem({ 'image/png': blob })
+        ]);
+        alert('Poster copied to clipboard!');
+      } catch (err) {
+        // Fallback for browsers that don't support clipboard API
+        alert('Download the image instead - clipboard copy not supported in this browser.');
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>

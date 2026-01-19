@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Are You Human? | Disclosure Day Screening Protocol</title>
+  <meta name="description" content="The truth belongs to seven billion people. But Earth has over 8 billion. Take the official screening protocol to discover your classification. Some results have been... flagged.">
+  <meta name="keywords" content="Are You Human test, Disclosure Day quiz, seven billion theory, am I human, alien test, Spielberg UFO movie, NHI test">
+  <link rel="canonical" href="https://disclosureday.nicedreamzwholesale.com/are-you-human.html">
+
+  <meta property="og:title" content="Are You Human? | Disclosure Day Screening Protocol">
+  <meta property="og:description" content="The truth belongs to seven billion people. But Earth has over 8 billion. Discover your classification.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://disclosureday.nicedreamzwholesale.com/are-you-human.html">
+  <meta property="og:image" content="https://disclosureday.nicedreamzwholesale.com/public/images/are-you-human-share.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Are You Human? | Take the Screening Protocol">
+  <meta name="twitter:description" content="Some results have been flagged. Discover your classification before June 12, 2026.">
+  <meta name="twitter:image" content="https://disclosureday.nicedreamzwholesale.com/public/images/are-you-human-share.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    "name": "Are You Human? Screening Protocol",
+    "description": "Psychological screening protocol inspired by the Disclosure Day seven billion theory",
+    "url": "https://disclosureday.nicedreamzwholesale.com/are-you-human.html"
+  }
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@400;600;800&display=swap');
+
+    :root {
+      --bg: #000000;
+      --panel: #0a0a0a;
+      --border: #1a1a1a;
+      --text: #e0e0e0;
+      --muted: #666;
+      --accent: #00ff88;
+      --warning: #ff3366;
+      --scan: #00ffcc;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Scanlines overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.15) 0px,
+        rgba(0,0,0,0.15) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      pointer-events: none;
+      z-index: 10000;
+    }
+
+    /* CRT flicker */
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      92% { opacity: 1; }
+      93% { opacity: 0.8; }
+      94% { opacity: 1; }
+    }
+
+    .crt-container {
+      animation: flicker 5s infinite;
+    }
+
+    /* Glitch effect */
+    @keyframes glitch {
+      0%, 100% { transform: translate(0); filter: none; }
+      20% { transform: translate(-2px, 2px); filter: hue-rotate(90deg); }
+      40% { transform: translate(2px, -2px); filter: hue-rotate(-90deg); }
+      60% { transform: translate(-1px, -1px); }
+      80% { transform: translate(1px, 1px); }
+    }
+
+    .glitch {
+      animation: glitch 0.3s ease-in-out;
+    }
+
+    @keyframes glitchText {
+      0%, 100% { text-shadow: none; }
+      25% { text-shadow: -2px 0 var(--warning), 2px 0 var(--scan); }
+      50% { text-shadow: 2px 0 var(--warning), -2px 0 var(--scan); }
+      75% { text-shadow: -1px 0 var(--accent), 1px 0 var(--warning); }
+    }
+
+    /* Screen container */
+    .screen {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Header bar */
+    .header-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0,0,0,0.95);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      z-index: 1000;
+    }
+
+    .header-bar .status {
+      color: var(--accent);
+    }
+
+    .header-bar .warning {
+      color: var(--warning);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Intro screen */
+    #intro {
+      text-align: center;
+    }
+
+    .logo-text {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: clamp(24px, 5vw, 40px);
+      letter-spacing: 8px;
+      color: var(--text);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .logo-sub {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 4px;
+      margin-bottom: 40px;
+    }
+
+    .intro-box {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 40px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .intro-box h2 {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 14px;
+      color: var(--warning);
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+
+    .intro-box p {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .intro-box .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .intro-box .redacted {
+      background: var(--warning);
+      color: var(--warning);
+      padding: 0 4px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .intro-box .redacted:hover {
+      color: #000;
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 32px;
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .begin-btn {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 16px;
+      letter-spacing: 4px;
+      padding: 20px 60px;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+    }
+
+    .begin-btn:hover {
+      background: var(--accent);
+      color: #000;
+      box-shadow: 0 0 30px rgba(0,255,136,0.5);
+    }
+
+    /* Question screen */
+    #questions {
+      display: none;
+    }
+
+    .progress-bar {
+      height: 2px;
+      background: var(--border);
+      margin-bottom: 40px;
+      border-radius: 1px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--scan));
+      transition: width 0.5s ease;
+      box-shadow: 0 0 10px var(--accent);
+    }
+
+    .question-number {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+
+    .question-text {
+      font-size: clamp(20px, 4vw, 28px);
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 40px;
+      min-height: 80px;
+    }
+
+    .question-text.creepy {
+      color: var(--warning);
+    }
+
+    .answers {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .answer-btn {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 16px;
+      padding: 20px 24px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-radius: 4px;
+    }
+
+    .answer-btn:hover {
+      border-color: var(--accent);
+      background: rgba(0,255,136,0.05);
+      transform: translateX(4px);
+    }
+
+    .answer-btn.selected {
+      border-color: var(--accent);
+      background: rgba(0,255,136,0.1);
+    }
+
+    /* Scanning screen */
+    #scanning {
+      display: none;
+      text-align: center;
+    }
+
+    .scan-animation {
+      width: 200px;
+      height: 200px;
+      margin: 0 auto 40px;
+      position: relative;
+    }
+
+    .scan-ring {
+      position: absolute;
+      border: 2px solid var(--scan);
+      border-radius: 50%;
+      animation: scanPulse 2s infinite;
+    }
+
+    .scan-ring:nth-child(1) { width: 100%; height: 100%; animation-delay: 0s; }
+    .scan-ring:nth-child(2) { width: 75%; height: 75%; top: 12.5%; left: 12.5%; animation-delay: 0.3s; }
+    .scan-ring:nth-child(3) { width: 50%; height: 50%; top: 25%; left: 25%; animation-delay: 0.6s; }
+    .scan-ring:nth-child(4) { width: 25%; height: 25%; top: 37.5%; left: 37.5%; animation-delay: 0.9s; }
+
+    @keyframes scanPulse {
+      0%, 100% { opacity: 0.3; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+
+    .scan-text {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 14px;
+      color: var(--scan);
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+
+    .scan-details {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 2;
+    }
+
+    .scan-details span {
+      display: block;
+    }
+
+    .scan-details .processing {
+      color: var(--accent);
+    }
+
+    .scan-details .flagged {
+      color: var(--warning);
+      animation: glitchText 0.5s infinite;
+    }
+
+    /* Results screen */
+    #results {
+      display: none;
+      text-align: center;
+    }
+
+    .result-classification {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 4px;
+      margin-bottom: 16px;
+    }
+
+    .result-title {
+      font-size: clamp(32px, 6vw, 56px);
+      font-weight: 800;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+
+    .result-title.human { color: var(--accent); }
+    .result-title.uncertain { color: #ffaa00; }
+    .result-title.flagged { color: var(--warning); animation: glitchText 2s infinite; }
+    .result-title.anomaly { color: #ff00ff; animation: glitchText 0.5s infinite; }
+
+    .result-subtitle {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    .result-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 30px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .result-card.flagged {
+      border-color: var(--warning);
+      box-shadow: 0 0 30px rgba(255,51,102,0.2);
+    }
+
+    .result-card h3 {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .result-card p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    .result-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .result-stat {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .result-stat-value {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 24px;
+      color: var(--accent);
+    }
+
+    .result-stat-label {
+      font-size: 10px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    /* Share section */
+    .share-section {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+    }
+
+    .share-section h4 {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .share-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .share-btn.twitter { background: #1da1f2; color: #fff; }
+    .share-btn.reddit { background: #ff4500; color: #fff; }
+    .share-btn.download { background: var(--accent); color: #000; }
+
+    .share-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    /* Canvas for result image */
+    #resultCanvas {
+      display: none;
+    }
+
+    /* Warning messages that appear randomly */
+    .system-warning {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: rgba(255,51,102,0.1);
+      border: 1px solid var(--warning);
+      padding: 12px 20px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      color: var(--warning);
+      border-radius: 4px;
+      z-index: 9999;
+      animation: slideUp 0.3s ease;
+      display: none;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Random glitch overlay */
+    .glitch-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--warning);
+      mix-blend-mode: multiply;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 9998;
+    }
+
+    /* Back to hub */
+    .back-link {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .back-link a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .back-link a:hover {
+      color: var(--accent);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .stat-row { gap: 20px; }
+      .result-stats { grid-template-columns: 1fr; }
+      .share-buttons { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="crt-container">
+
+    <!-- Header bar -->
+    <div class="header-bar">
+      <div class="status">PROTOCOL ACTIVE</div>
+      <div class="warning" id="headerWarning">SCREENING IN PROGRESS</div>
+    </div>
+
+    <!-- System warning popup -->
+    <div class="system-warning" id="systemWarning"></div>
+
+    <!-- Glitch overlay -->
+    <div class="glitch-overlay" id="glitchOverlay"></div>
+
+    <div class="screen">
+
+      <!-- INTRO SCREEN -->
+      <div id="intro">
+        <div class="logo-text">ARE YOU HUMAN?</div>
+        <div class="logo-sub">SCREENING PROTOCOL v2.026</div>
+
+        <div class="intro-box">
+          <h2>// CLASSIFIED BRIEFING</h2>
+          <p>On June 12, 2026, everything changes. The film <span class="highlight">Disclosure Day</span> contains a message: <em>"The truth belongs to seven billion people."</em></p>
+          <p>But Earth's population exceeds <span class="highlight">8 billion</span>.</p>
+          <p>The discrepancy is not an error. <span class="redacted" title="Click to reveal">Over one billion among us are not what they appear to be.</span></p>
+          <p>This screening protocol has been developed to identify <span class="redacted" title="Click to reveal">individuals who may have forgotten their true origin</span>. Your responses will be analyzed against established behavioral baselines.</p>
+          <p style="color: var(--warning); margin-top: 24px;"><strong>WARNING:</strong> Some results have been flagged for review. Proceed with caution.</p>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-num" id="testedCount">2,847,392</div>
+            <div class="stat-label">Subjects Tested</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num" id="flaggedCount">12.7%</div>
+            <div class="stat-label">Results Flagged</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">144</div>
+            <div class="stat-label">Days Until Disclosure</div>
+          </div>
+        </div>
+
+        <button class="begin-btn" onclick="beginTest()">Initialize Protocol</button>
+
+        <div class="footer">
+          <p>Based on the "Seven Billion" theory from <a href="/">Disclosure Day</a></p>
+          <p style="margin-top: 8px; color: var(--warning);">This is a fan experience. Or is it?</p>
+        </div>
+      </div>
+
+      <!-- QUESTIONS SCREEN -->
+      <div id="questions">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+        </div>
+
+        <div class="question-number" id="questionNumber">QUESTION 01 OF 12</div>
+        <div class="question-text" id="questionText"></div>
+
+        <div class="answers" id="answersContainer"></div>
+      </div>
+
+      <!-- SCANNING SCREEN -->
+      <div id="scanning">
+        <div class="scan-animation">
+          <div class="scan-ring"></div>
+          <div class="scan-ring"></div>
+          <div class="scan-ring"></div>
+          <div class="scan-ring"></div>
+        </div>
+
+        <div class="scan-text" id="scanText">ANALYZING RESPONSE PATTERNS</div>
+
+        <div class="scan-details" id="scanDetails">
+          <span class="processing">Cognitive baseline... MAPPED</span>
+          <span class="processing">Emotional markers... CATALOGUED</span>
+          <span class="processing">Memory patterns... SCANNED</span>
+          <span class="processing">Origin verification... PENDING</span>
+        </div>
+      </div>
+
+      <!-- RESULTS SCREEN -->
+      <div id="results">
+        <div class="result-classification" id="resultClassification">CLASSIFICATION CODE: ████████</div>
+        <div class="result-title" id="resultTitle">PROCESSING...</div>
+        <div class="result-subtitle" id="resultSubtitle"></div>
+
+        <div class="result-stats" id="resultStats">
+          <div class="result-stat">
+            <div class="result-stat-value" id="humanityScore">--</div>
+            <div class="result-stat-label">Humanity Index</div>
+          </div>
+          <div class="result-stat">
+            <div class="result-stat-value" id="anomalyLevel">--</div>
+            <div class="result-stat-label">Anomaly Level</div>
+          </div>
+          <div class="result-stat">
+            <div class="result-stat-value" id="originStatus">--</div>
+            <div class="result-stat-label">Origin Status</div>
+          </div>
+        </div>
+
+        <div class="result-card" id="resultCard">
+          <h3>// ANALYSIS REPORT</h3>
+          <p id="resultDescription"></p>
+        </div>
+
+        <div class="share-section">
+          <h4>// SHARE YOUR CLASSIFICATION</h4>
+          <div class="share-buttons">
+            <a href="#" class="share-btn twitter" id="shareTwitter">Share on X</a>
+            <a href="#" class="share-btn reddit" id="shareReddit">Post to Reddit</a>
+            <button class="share-btn download" id="downloadResult">Download Result</button>
+          </div>
+        </div>
+
+        <div class="back-link">
+          <a href="/">Return to Disclosure Day Hub</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <canvas id="resultCanvas" width="1200" height="630"></canvas>
+
+  <script>
+    // Questions that escalate in creepiness
+    const questions = [
+      {
+        text: "When you look at the night sky, what do you feel?",
+        answers: [
+          { text: "Wonder and curiosity about what's out there", score: 0 },
+          { text: "A strange sense of familiarity, like I've been there", score: 3 },
+          { text: "An inexplicable longing to return somewhere", score: 5 },
+          { text: "Nothing in particular", score: 1 }
+        ]
+      },
+      {
+        text: "How often do you experience vivid dreams of places you've never been?",
+        answers: [
+          { text: "Rarely or never", score: 0 },
+          { text: "Occasionally, but they feel like normal dreams", score: 1 },
+          { text: "Often, and they feel more real than waking life", score: 4 },
+          { text: "I have recurring dreams of the same unfamiliar place", score: 5 }
+        ]
+      },
+      {
+        text: "When meeting someone for the first time, do you ever feel like you've known them before?",
+        answers: [
+          { text: "No, that sounds strange", score: 0 },
+          { text: "Sometimes, but I assume it's just familiarity", score: 1 },
+          { text: "Yes, and I'm often right about their personality", score: 3 },
+          { text: "Yes, I sometimes know things about them I shouldn't", score: 5 }
+        ],
+        creepy: true
+      },
+      {
+        text: "Have you ever looked in a mirror and, for a split second, not recognized yourself?",
+        answers: [
+          { text: "No, never", score: 0 },
+          { text: "Maybe once or twice", score: 2 },
+          { text: "Yes, and it was deeply unsettling", score: 4 },
+          { text: "Yes, I sometimes wonder if I'm really me", score: 5 }
+        ],
+        creepy: true
+      },
+      {
+        text: "Do you ever sense what others are feeling without them telling you?",
+        answers: [
+          { text: "No more than anyone else", score: 0 },
+          { text: "Sometimes, I'm fairly empathetic", score: 1 },
+          { text: "Often, it's almost like I can read their minds", score: 3 },
+          { text: "Yes, and sometimes I feel things that aren't my own", score: 5 }
+        ]
+      },
+      {
+        text: "What is your earliest memory?",
+        answers: [
+          { text: "A normal childhood event, around age 3-4", score: 0 },
+          { text: "Something earlier, maybe age 2", score: 1 },
+          { text: "I remember things from before I should be able to", score: 4 },
+          { text: "I have memories that don't seem to be from this life", score: 5 }
+        ],
+        creepy: true
+      },
+      {
+        text: "When you hear certain frequencies or sounds, do you ever experience unexpected emotions?",
+        answers: [
+          { text: "No, sounds are just sounds", score: 0 },
+          { text: "Music can affect my mood", score: 1 },
+          { text: "Certain tones trigger strong, unexplainable feelings", score: 4 },
+          { text: "Some sounds feel like they're trying to tell me something", score: 5 }
+        ]
+      },
+      {
+        text: "Do you ever feel like you're waiting for something important to happen?",
+        answers: [
+          { text: "No, I live in the present", score: 0 },
+          { text: "Sometimes, but I assume everyone does", score: 1 },
+          { text: "Yes, and it feels like it's coming soon", score: 3 },
+          { text: "Yes, I've been waiting my whole life and I don't know what for", score: 5 }
+        ],
+        creepy: true
+      },
+      {
+        text: "How do you react when someone asks where you're \"really\" from?",
+        answers: [
+          { text: "I tell them my hometown", score: 0 },
+          { text: "I find the question slightly odd", score: 1 },
+          { text: "I hesitate, unsure how to answer", score: 3 },
+          { text: "I feel a strange anxiety, like they might know something", score: 5 }
+        ],
+        creepy: true
+      },
+      {
+        text: "When you see footage of unidentified aerial phenomena, what's your first instinct?",
+        answers: [
+          { text: "Skepticism - it's probably fake or explainable", score: 0 },
+          { text: "Curiosity about what it could be", score: 1 },
+          { text: "A feeling of recognition", score: 4 },
+          { text: "An urge to not look, as if remembering something forbidden", score: 5 }
+        ]
+      },
+      {
+        text: "Complete this sentence: When I'm completely alone, I sometimes feel...",
+        answers: [
+          { text: "Relaxed and at peace", score: 0 },
+          { text: "Slightly lonely", score: 1 },
+          { text: "Like I'm being watched, but not in a threatening way", score: 4 },
+          { text: "Like I'm not really alone at all", score: 5 }
+        ],
+        creepy: true
+      },
+      {
+        text: "If you discovered you weren't entirely human, how would you feel?",
+        answers: [
+          { text: "Terrified and in denial", score: 0 },
+          { text: "Shocked but curious", score: 2 },
+          { text: "Strangely relieved, like something finally makes sense", score: 4 },
+          { text: "I've already suspected this might be true", score: 5 }
+        ],
+        creepy: true
+      }
+    ];
+
+    // Result types
+    const resultTypes = {
+      human: {
+        title: "HUMAN VERIFIED",
+        subtitle: "Your responses align with established human behavioral patterns.",
+        classification: "H-7B-VERIFIED",
+        humanityScore: "97.3%",
+        anomalyLevel: "0.02",
+        originStatus: "TERRAN",
+        description: "Your cognitive patterns, emotional responses, and memory structures fall within normal human parameters. You are part of the seven billion. When Disclosure Day arrives, you will experience the truth as an outsider looking in. Your reality will shift, but you will remain... yourself.",
+        titleClass: "human"
+      },
+      uncertain: {
+        title: "ORIGIN UNCERTAIN",
+        subtitle: "Your responses contain patterns that require further analysis.",
+        classification: "U-7B-PENDING",
+        humanityScore: "71.8%",
+        anomalyLevel: "2.34",
+        originStatus: "UNKNOWN",
+        description: "Your responses deviate from baseline human patterns in ways that cannot be easily explained. This could indicate enhanced intuition, suppressed memories, or origin factors outside current classification parameters. You may be experiencing emergence - the gradual awakening of dormant aspects of consciousness. June 12, 2026 may hold answers you've been seeking.",
+        titleClass: "uncertain"
+      },
+      flagged: {
+        title: "FLAGGED FOR REVIEW",
+        subtitle: "Your responses have triggered multiple anomaly markers.",
+        classification: "F-7B-FLAGGED",
+        humanityScore: "44.2%",
+        anomalyLevel: "7.81",
+        originStatus: "NON-STANDARD",
+        description: "Your response patterns suggest significant deviation from human baseline consciousness. The memories you've attributed to dreams may be something else entirely. The familiarity you feel when looking at the stars is not coincidence. You are among those who may have forgotten. When all is disclosed, you may remember what you truly are.",
+        titleClass: "flagged"
+      },
+      anomaly: {
+        title: "ANOMALY DETECTED",
+        subtitle: "Your classification cannot be determined by standard protocols.",
+        classification: "A-0-UNDEFINED",
+        humanityScore: "ERROR",
+        anomalyLevel: "UNDEFINED",
+        originStatus: "SEE FILE",
+        description: "This screening protocol was not designed for subjects like you. Your responses indicate a consciousness structure that predates current classification systems. The question was never whether you are human. The question is whether you remember why you chose to forget. June 12, 2026. All will be disclosed. Including you.",
+        titleClass: "anomaly"
+      }
+    };
+
+    let currentQuestion = 0;
+    let totalScore = 0;
+    let answers = [];
+
+    // Random glitch effects
+    function triggerGlitch() {
+      const overlay = document.getElementById('glitchOverlay');
+      overlay.style.opacity = '0.3';
+      document.body.classList.add('glitch');
+      setTimeout(() => {
+        overlay.style.opacity = '0';
+        document.body.classList.remove('glitch');
+      }, 150);
+    }
+
+    // System warning messages
+    const warnings = [
+      "PATTERN ANOMALY DETECTED IN RESPONSE SEQUENCE",
+      "BASELINE DEVIATION EXCEEDS THRESHOLD",
+      "MEMORY MARKERS FLAGGED FOR REVIEW",
+      "CONSCIOUSNESS SIGNATURE UNSTABLE",
+      "ORIGIN VERIFICATION... INCONCLUSIVE",
+      "WARNING: SUBJECT MAY BE EXPERIENCING EMERGENCE"
+    ];
+
+    function showWarning() {
+      const warning = document.getElementById('systemWarning');
+      warning.textContent = warnings[Math.floor(Math.random() * warnings.length)];
+      warning.style.display = 'block';
+      setTimeout(() => {
+        warning.style.display = 'none';
+      }, 3000);
+    }
+
+    // Update stats counter (fake real-time)
+    function updateStats() {
+      const count = document.getElementById('testedCount');
+      if (count) {
+        let current = parseInt(count.textContent.replace(/,/g, ''));
+        current += Math.floor(Math.random() * 3);
+        count.textContent = current.toLocaleString();
+      }
+    }
+    setInterval(updateStats, 5000);
+
+    // Begin test
+    function beginTest() {
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('questions').style.display = 'block';
+      document.getElementById('headerWarning').textContent = 'ANALYZING SUBJECT';
+      showQuestion();
+    }
+
+    // Show question
+    function showQuestion() {
+      const q = questions[currentQuestion];
+
+      document.getElementById('questionNumber').textContent =
+        `QUESTION ${String(currentQuestion + 1).padStart(2, '0')} OF ${questions.length}`;
+
+      const questionText = document.getElementById('questionText');
+      questionText.textContent = q.text;
+      questionText.className = 'question-text' + (q.creepy ? ' creepy' : '');
+
+      document.getElementById('progressFill').style.width =
+        `${((currentQuestion) / questions.length) * 100}%`;
+
+      const container = document.getElementById('answersContainer');
+      container.innerHTML = '';
+
+      // Shuffle answers for variety
+      const shuffled = [...q.answers].sort(() => Math.random() - 0.5);
+
+      shuffled.forEach((answer, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'answer-btn';
+        btn.textContent = answer.text;
+        btn.onclick = () => selectAnswer(answer.score);
+        container.appendChild(btn);
+      });
+
+      // Random glitch on creepy questions
+      if (q.creepy && Math.random() > 0.5) {
+        setTimeout(triggerGlitch, 500);
+      }
+
+      // Random warning
+      if (currentQuestion > 5 && Math.random() > 0.7) {
+        setTimeout(showWarning, 1000);
+      }
+    }
+
+    // Select answer
+    function selectAnswer(score) {
+      totalScore += score;
+      answers.push(score);
+      currentQuestion++;
+
+      if (currentQuestion >= questions.length) {
+        showScanning();
+      } else {
+        showQuestion();
+      }
+    }
+
+    // Show scanning animation
+    function showScanning() {
+      document.getElementById('questions').style.display = 'none';
+      document.getElementById('scanning').style.display = 'block';
+      document.getElementById('headerWarning').textContent = 'PROCESSING RESULTS';
+
+      const scanSteps = [
+        { text: "COMPILING RESPONSE DATA", details: ["Response patterns... MAPPED", "Deviation markers... IDENTIFIED"] },
+        { text: "CROSS-REFERENCING BASELINE", details: ["Human baseline... COMPARED", "Anomaly threshold... CALCULATING"] },
+        { text: "VERIFYING ORIGIN MARKERS", details: ["Memory structures... ANALYZED", "Consciousness signature... EXTRACTED"] },
+        { text: "GENERATING CLASSIFICATION", details: ["Classification matrix... APPLIED", "Final analysis... COMPLETE"] }
+      ];
+
+      let step = 0;
+      const scanText = document.getElementById('scanText');
+      const scanDetails = document.getElementById('scanDetails');
+
+      function nextScanStep() {
+        if (step < scanSteps.length) {
+          scanText.textContent = scanSteps[step].text;
+          scanDetails.innerHTML = scanSteps[step].details
+            .map(d => `<span class="processing">${d}</span>`)
+            .join('');
+
+          if (step > 1 && totalScore > 30) {
+            scanDetails.innerHTML += '<span class="flagged">ANOMALY FLAG RAISED</span>';
+            triggerGlitch();
+          }
+
+          step++;
+          setTimeout(nextScanStep, 1500);
+        } else {
+          showResults();
+        }
+      }
+
+      nextScanStep();
+    }
+
+    // Show results
+    function showResults() {
+      document.getElementById('scanning').style.display = 'none';
+      document.getElementById('results').style.display = 'block';
+
+      // Determine result type based on score
+      let result;
+      if (totalScore <= 15) {
+        result = resultTypes.human;
+      } else if (totalScore <= 30) {
+        result = resultTypes.uncertain;
+      } else if (totalScore <= 45) {
+        result = resultTypes.flagged;
+      } else {
+        result = resultTypes.anomaly;
+      }
+
+      // Populate results
+      document.getElementById('resultClassification').textContent =
+        `CLASSIFICATION CODE: ${result.classification}`;
+
+      const title = document.getElementById('resultTitle');
+      title.textContent = result.title;
+      title.className = 'result-title ' + result.titleClass;
+
+      document.getElementById('resultSubtitle').textContent = result.subtitle;
+      document.getElementById('humanityScore').textContent = result.humanityScore;
+      document.getElementById('anomalyLevel').textContent = result.anomalyLevel;
+      document.getElementById('originStatus').textContent = result.originStatus;
+      document.getElementById('resultDescription').textContent = result.description;
+
+      // Add flagged class to card if needed
+      if (result.titleClass === 'flagged' || result.titleClass === 'anomaly') {
+        document.getElementById('resultCard').classList.add('flagged');
+        document.getElementById('headerWarning').textContent = 'SUBJECT FLAGGED';
+        document.getElementById('headerWarning').style.animation = 'glitchText 0.5s infinite';
+      } else {
+        document.getElementById('headerWarning').textContent = 'ANALYSIS COMPLETE';
+      }
+
+      // Set up share links
+      const shareText = encodeURIComponent(
+        `I took the "Are You Human?" screening protocol from #DisclosureDay. My result: ${result.title}. What are you? https://disclosureday.nicedreamzwholesale.com/are-you-human.html`
+      );
+
+      document.getElementById('shareTwitter').href =
+        `https://twitter.com/intent/tweet?text=${shareText}`;
+
+      document.getElementById('shareReddit').href =
+        `https://www.reddit.com/submit?url=https://disclosureday.nicedreamzwholesale.com/are-you-human.html&title=I%20got%20"${encodeURIComponent(result.title)}"%20on%20the%20Are%20You%20Human%20test`;
+
+      // Set up download
+      document.getElementById('downloadResult').onclick = () => downloadResult(result);
+
+      // Final glitch for dramatic results
+      if (result.titleClass === 'anomaly') {
+        triggerGlitch();
+        setTimeout(triggerGlitch, 200);
+        setTimeout(triggerGlitch, 400);
+      }
+    }
+
+    // Generate and download result image
+    function downloadResult(result) {
+      const canvas = document.getElementById('resultCanvas');
+      const ctx = canvas.getContext('2d');
+
+      // Background
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(0, 0, 1200, 630);
+
+      // Border
+      ctx.strokeStyle = result.titleClass === 'human' ? '#00ff88' :
+                        result.titleClass === 'uncertain' ? '#ffaa00' : '#ff3366';
+      ctx.lineWidth = 4;
+      ctx.strokeRect(20, 20, 1160, 590);
+
+      // Header
+      ctx.fillStyle = '#333';
+      ctx.fillRect(20, 20, 1160, 80);
+
+      ctx.font = '24px "Share Tech Mono", monospace';
+      ctx.fillStyle = '#666';
+      ctx.textAlign = 'left';
+      ctx.fillText('DISCLOSURE DAY // SCREENING PROTOCOL v2.026', 50, 70);
+
+      // Classification
+      ctx.font = '18px "Share Tech Mono", monospace';
+      ctx.fillStyle = '#666';
+      ctx.textAlign = 'center';
+      ctx.fillText(`CLASSIFICATION: ${result.classification}`, 600, 150);
+
+      // Main result
+      ctx.font = 'bold 72px Inter, sans-serif';
+      ctx.fillStyle = result.titleClass === 'human' ? '#00ff88' :
+                      result.titleClass === 'uncertain' ? '#ffaa00' : '#ff3366';
+      ctx.fillText(result.title, 600, 250);
+
+      // Subtitle
+      ctx.font = '24px Inter, sans-serif';
+      ctx.fillStyle = '#888';
+      ctx.fillText(result.subtitle, 600, 300);
+
+      // Stats
+      ctx.font = '20px "Share Tech Mono", monospace';
+      ctx.fillStyle = '#00ff88';
+      ctx.fillText(`Humanity Index: ${result.humanityScore}`, 300, 400);
+      ctx.fillText(`Anomaly Level: ${result.anomalyLevel}`, 600, 400);
+      ctx.fillText(`Origin: ${result.originStatus}`, 900, 400);
+
+      // Footer
+      ctx.font = '18px Inter, sans-serif';
+      ctx.fillStyle = '#666';
+      ctx.fillText('disclosureday.nicedreamzwholesale.com/are-you-human.html', 600, 550);
+
+      ctx.font = '16px Inter, sans-serif';
+      ctx.fillStyle = '#ff3366';
+      ctx.fillText('JUNE 12, 2026 // ALL WILL BE DISCLOSED', 600, 580);
+
+      // Download
+      const link = document.createElement('a');
+      link.download = 'my-classification.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    // Countdown calculation
+    function updateCountdown() {
+      const release = new Date('2026-06-12T00:00:00').getTime();
+      const now = Date.now();
+      const diff = release - now;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+      const countdownElements = document.querySelectorAll('.stat-num');
+      countdownElements.forEach(el => {
+        if (el.nextElementSibling && el.nextElementSibling.textContent.includes('Days')) {
+          el.textContent = days;
+        }
+      });
+    }
+    updateCountdown();
+
+    // Random ambient glitches
+    setInterval(() => {
+      if (Math.random() > 0.95) {
+        triggerGlitch();
+      }
+    }, 10000);
+  </script>
+</body>
+</html>
