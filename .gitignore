@@ -8,3 +8,16 @@ chat-api-v2.php
 # Editor files
 *.swp
 *.swo
+
+# Runtime generated data
+cache/
+chat-sessions/
+rate-limits/
+
+# Claude Code project memory
+.claude/
+
+# Backup image files
+._*.png
+._*.mp4
+._*.jpg
