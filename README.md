@@ -444,6 +444,12 @@ We built a complete marketing toolkit:
 
 <div align="center">
 
+## License
+
+The site's code is [MIT](LICENSE). This is an unofficial fan site: the film's title, trailers, stills,
+posters and other studio material belong to their owners and are not covered by that license.
+
+
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:9d4edd,50:00ffcc,100:000000&height=120&section=footer&text=THE%20SKY%20IS%20LISTENING&fontSize=24&fontColor=ffffff&animation=twinkling" width="100%"/>
 
 **June 12, 2026 — All Will Be Disclosed**
