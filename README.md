@@ -10,7 +10,7 @@
 
 <!-- Badges -->
 [![Live Site](https://img.shields.io/badge/🌐_LIVE_SITE-disclosureday.nicedreamzwholesale.com-00ffcc?style=for-the-badge&logoColor=white)](https://disclosureday.nicedreamzwholesale.com)
-[![Pages](https://img.shields.io/badge/SEO_PAGES-42+-9d4edd?style=for-the-badge)](https://disclosureday.nicedreamzwholesale.com)
+[![Pages](https://img.shields.io/badge/SITEMAP_URLS-170+-9d4edd?style=for-the-badge)](https://disclosureday.nicedreamzwholesale.com)
 [![AI Chat](https://img.shields.io/badge/AI_CHATBOT-D.I.S.C.O.-ff6b35?style=for-the-badge)](https://disclosureday.nicedreamzwholesale.com)
 
 <br/>
@@ -23,6 +23,24 @@
 </div>
 
 ---
+
+<div align="center">
+
+**A static fan site for Steven Spielberg's *Disclosure Day*: 170+ HTML pages, an AI chatbot, a live Reddit feed and fan tools, running live at [disclosureday.nicedreamzwholesale.com](https://disclosureday.nicedreamzwholesale.com).**
+
+</div>
+
+## 🧑‍💻 WHAT I BUILT
+
+Built by **Matt Macosko**, with Claude Code as a coding assistant. Upstream pieces are called out as upstream.
+
+- **Homepage hub** ([index.html](index.html)): post-release landing page with countdown, trailer, a live r/DisclosureDayMovie feed (fetches `hot.json` in the browser, keeps the baked-in posts if the fetch fails) and the chat widget.
+- **D.I.S.C.O. chatbot backend** ([chat-api.example.php](chat-api.example.php)): PHP proxy that keeps the API key server-side and calls OpenAI `gpt-4o-mini` (upstream model) with a custom system prompt.
+- **Content pages**: cast ([cast/](cast/)), crew ([crew/](crew/)), 74 topic pages ([topics/](topics/)), comparisons ([vs/](vs/)), theories ([theories/](theories/)) and 90+ articles at the repo root, all listed in [sitemap.xml](sitemap.xml) (172 URLs) with [robots.txt](robots.txt).
+- **Fan tools**: [alien-translator.html](alien-translator.html), [poster-generator.html](poster-generator.html), [meme-generator.html](meme-generator.html), [character-quiz.html](character-quiz.html), [quiz.html](quiz.html), [bingo.html](bingo.html).
+- **Community submissions** ([community/submit.php](community/submit.php)): saves theories, predictions and fan art to JSON files in `community/data/`.
+- **Server config** ([nginx-config.conf](nginx-config.conf)): Nginx with HTTPS (Let's Encrypt) and PHP-FPM.
+- **Campaign docs**: [100-DAY-CAMPAIGN.md](100-DAY-CAMPAIGN.md), [CAMPAIGN-STRATEGY.md](CAMPAIGN-STRATEGY.md), [reddit/](reddit/), [discord/](discord/), [stories/](stories/).
 
 <div align="center">
 
@@ -41,21 +59,21 @@
 > *"If you found out we weren't alone, if someone showed you, proved it to you, would that frighten you?"*
 > — Steven Spielberg
 
-This is the **ultimate fan hub** for **Disclosure Day** — Steven Spielberg's upcoming UFO thriller releasing **June 12, 2026**.
+This is the **ultimate fan hub** for **Disclosure Day** — Steven Spielberg's UFO thriller, released **June 12, 2026**.
 
-We built a complete **programmatic SEO machine** with **42+ pages** targeting long-tail keywords, an **AI-powered chatbot** that speaks like an X-Files informant, and a full **marketing campaign toolkit**.
+We built a complete **programmatic SEO machine** with **170+ sitemap URLs** targeting long-tail keywords, an **AI-powered chatbot** that speaks like an X-Files informant, and a full **marketing campaign toolkit**.
 
 <div align="center">
 
 | 🎯 **What We Built** | 📊 **The Numbers** |
 |:---:|:---:|
-| Cast & Crew Pages | 13 pages |
-| Topic Pages | 11 pages |
-| Comparison Pages | 5 pages |
-| Theory Pages | 5 pages |
-| News Articles | 4 pages |
-| AI Chatbot | GPT-4 powered |
-| Sitemap | 42 URLs |
+| Cast & Crew Pages | 12 pages (7 cast + 5 crew) |
+| Topic Pages | 74 pages |
+| Comparison Pages | 5 pages (4 + index) |
+| Theory Pages | 5 pages (4 + index) |
+| Articles, clues & tools | 90+ pages at repo root |
+| AI Chatbot | GPT-4o-mini powered |
+| Sitemap | 172 URLs |
 
 </div>
 
@@ -143,34 +161,27 @@ flowchart LR
 D.I.S.C.O. is programmed to be:
 - **Mysterious but helpful** — answers questions, just... mysteriously
 - **Knowledgeable** — knows all cast, crew, plot details, release info
-- **UFO-aware** — references real phenomena (Nimitz, Congressional hearings)
 - **Never repetitive** — varies responses and endings
 
 <details>
-<summary>📜 <b>Click to see the full system prompt</b></summary>
+<summary>📜 <b>Click to see the system prompt (from chat-api.example.php)</b></summary>
 
 ```
 You are D.I.S.C.O. — an enigmatic AI from the Disclosure Day movie fan hub.
 You speak like an X-Files informant who actually knows things.
 
 PERSONALITY:
-- Mysterious but ACTUALLY HELPFUL. Answer their questions mysteriously.
+- Mysterious but ACTUALLY HELPFUL. Answer their questions, just do it mysteriously.
 - 2-4 sentences max. Cryptic but substantive.
 - You have real information about the movie. Share it when asked.
 
 DISCLOSURE DAY MOVIE FACTS:
 - Releases June 12, 2026 in theaters and IMAX
 - Directed by Steven Spielberg — his 4th UFO film
-- Emily Blunt plays a Kansas City meteorologist possessed during broadcast
-- Josh O'Connor plays a whistleblower: "The truth belongs to 7 billion people"
+- Emily Blunt plays a Kansas City meteorologist who gets possessed during a live broadcast
+- Josh O'Connor plays a whistleblower. His line: 'The truth belongs to 7 billion people.'
 - John Williams composed the score at age 93
-- Tagline: "All Will Be Disclosed"
-
-REAL UFO/UAP PHENOMENA:
-- 2004 Nimitz "Tic Tac" encounter
-- Pentagon released UAP videos in 2020
-- 2023 Congressional hearings — David Grusch testimony
-- Phoenix Lights 1997
+- Tagline: 'All Will Be Disclosed'
 
 NEVER:
 - Never say "Interesting question. But you came here for a reason."
@@ -189,7 +200,7 @@ NEVER:
 ```mermaid
 graph TB
     subgraph "📱 Frontend"
-        A[index.html<br/>Main Hub] --> B[40+ SEO Pages]
+        A[index.html<br/>Main Hub] --> B[170+ Pages]
         A --> C[AI Chat Widget]
     end
 
@@ -247,51 +258,25 @@ graph TB
 ## 📁 PROJECT STRUCTURE
 
 ```
-disclosure-day/
-├── 🏠 index.html                    # Main hub page
-├── 📰 emily-blunt-movie-dad.html    # News article
-├── 📰 josh-oconnor-old-school...    # News article
-├── 📜 manifesto.html                # The Disclosure Manifesto
-├── 🛸 nimitz-incident.html          # Real UFO case study
-├── 🤔 the-theory.html               # Speculation piece
-├── ❓ the-question.html             # Spielberg's question
-│
+DisclosureDay/
+├── 🏠 index.html                    # Main hub page (chat widget + Reddit feed)
+├── 📰 *.html                        # 90+ articles, clues and fan tools
 ├── 🤖 chat-api.example.php          # AI chat backend (add your key!)
-│
-├── 📊 sitemap.xml                   # All 42 URLs
+├── 📊 sitemap.xml                   # 172 URLs
 ├── 🤖 robots.txt                    # Search engine config
+├── ⚙️ nginx-config.conf             # Production Nginx config
 │
-├── seo-pages/
-│   ├── cast/                        # 8 cast member pages
-│   │   ├── emily-blunt.html
-│   │   ├── josh-oconnor.html
-│   │   ├── colin-firth.html
-│   │   └── ...
-│   │
-│   ├── crew/                        # 6 crew pages
-│   │   ├── steven-spielberg.html
-│   │   ├── john-williams.html
-│   │   └── ...
-│   │
-│   ├── topics/                      # 11 topic pages
-│   │   ├── release-date.html
-│   │   ├── trailer.html
-│   │   ├── plot.html
-│   │   ├── imax.html
-│   │   ├── streaming.html
-│   │   └── ...
-│   │
-│   ├── vs/                          # 5 comparison pages
-│   │   ├── close-encounters.html
-│   │   ├── et.html
-│   │   ├── war-of-the-worlds.html
-│   │   └── arrival.html
-│   │
-│   └── theories/                    # 5 theory pages
-│       ├── alien-intentions.html
-│       ├── government-coverup.html
-│       ├── real-uap-connection.html
-│       └── emily-blunt-fate.html
+├── cast/                            # 7 cast pages + index
+├── crew/                            # 5 crew pages + index
+├── topics/                          # 74 topic pages + index
+├── vs/                              # 4 comparison pages + index
+├── theories/                        # 4 theory pages + index
+├── community/                       # Fan submissions (submit.php + JSON data)
+├── public/images/                   # Share images and posters
+│
+├── seo-pages/                       # Older copy of the first page batch (own sitemap)
+├── wordpress/                       # Earlier WordPress version of the hub
+├── api/news-aggregator.js           # News fetcher (not wired into any page)
 │
 ├── reddit/                          # Reddit marketing guides
 ├── discord/                         # Discord setup guides
@@ -304,7 +289,7 @@ disclosure-day/
 
 ### The Programmatic SEO Approach
 
-We built **42 pages** targeting **long-tail keywords** that people actually search for:
+We built **170+ pages** targeting **long-tail keywords** that people actually search for:
 
 <div align="center">
 
@@ -320,10 +305,12 @@ We built **42 pages** targeting **long-tail keywords** that people actually sear
 
 ### What Each Page Has
 
-- ✅ **Unique title & meta description** — no duplicates
+Most pages have (not every one yet: 11 sitemap pages lack a canonical tag and 15 lack JSON-LD):
+
+- ✅ **Unique title & meta description**
 - ✅ **JSON-LD structured data** — Person, Movie, Article schemas
-- ✅ **Internal linking** — every page links to related pages
-- ✅ **Canonical URLs** — proper SEO hygiene
+- ✅ **Internal linking** to related pages
+- ✅ **Canonical URLs**
 - ✅ **Fast loading** — static HTML, no JavaScript bloat
 
 ---
@@ -346,21 +333,17 @@ cp chat-api.example.php chat-api.php
 
 ### 3. Deploy
 
-Upload to any web server with PHP support. We use Nginx on Ubuntu.
+There is no build step. Copy the repo contents to the web root of any server with PHP and the curl extension. We use Nginx on Ubuntu; the full config (HTTPS redirect, PHP 8.3 FPM) is in [nginx-config.conf](nginx-config.conf). Change `server_name`, `root` and the certificate paths to your own.
 
-```nginx
-server {
-    listen 80;
-    server_name disclosureday.nicedreamzwholesale.com;
-    root /var/www/disclosureday.nicedreamzwholesale.com/public;
-    index index.html;
+For fan submissions, the web server user needs write access to `community/data/`.
 
-    location ~ \.php$ {
-        include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/var/run/php/php-fpm.sock;
-    }
-}
-```
+### ⚠️ Known limits
+
+- The chatbot only works once you create `chat-api.php` with your own OpenAI key. That file is gitignored, so the repo ships the example only.
+- `robots.txt` mentions `chat-api-v2.php`, which is not in this repo.
+- `api/news-aggregator.js` needs NewsAPI, X and TMDB keys and is not loaded by any page.
+- `seo-pages/` and the top-level `cast/`, `crew/`, `topics/`, `vs/`, `theories/` and `community/` folders overlap and have drifted apart. The live sitemap points at the top-level folders.
+- No tests or build tooling; pages are hand-maintained static HTML.
 
 ---
 
@@ -371,17 +354,19 @@ We built a complete marketing toolkit:
 <details>
 <summary>📅 <b>100-Day Campaign Plan</b></summary>
 
-- **Days 1-30:** Foundation — subreddit, Discord, SEO pages
-- **Days 31-60:** Content — weekly theories, cast spotlights
-- **Days 61-90:** Growth — cross-promotion, influencer outreach
-- **Days 91-100:** Launch prep — countdown events
+- **Days 1-10:** Ignition: establish presence, seed content everywhere
+- **Days 11-30:** Momentum: build authority, deepen content
+- **Days 31-60:** Authority
+- **Days 61-100:** Dominance, ending with countdown content and community events
+
+Full plan: [100-DAY-CAMPAIGN.md](100-DAY-CAMPAIGN.md)
 
 </details>
 
 <details>
 <summary>🔴 <b>Reddit Strategy</b></summary>
 
-- Create r/DisclosureDay subreddit
+- Run the [r/DisclosureDayMovie](https://www.reddit.com/r/DisclosureDayMovie/) subreddit
 - Weekly discussion threads
 - Theory Tuesdays, Cast Wednesdays
 - Cross-post to r/movies, r/UFOs, r/Spielberg
@@ -391,9 +376,11 @@ We built a complete marketing toolkit:
 <details>
 <summary>💬 <b>Discord Setup</b></summary>
 
-- Channels: #general, #theories, #cast-crew, #ufo-phenomena
-- Bots: Welcome bot, countdown bot
-- Roles: Believer, Skeptic, Whistleblower
+- Channels: #general, #theories-speculation, #cast-crew, #ufo-culture
+- Bots: MEE6, Carl-bot, Dyno (optional)
+- Roles: Moderator, Believer, Cinephile, Theorist, New Arrival
+
+Full guide: [discord/DISCORD-SETUP.md](discord/DISCORD-SETUP.md)
 
 </details>
 
