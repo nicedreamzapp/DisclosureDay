@@ -30,7 +30,10 @@
 
 </div>
 
-## 🧑‍💻 WHAT I BUILT
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s01-banner-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s01-banner-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s01-banner.svg" width="100%" alt="01. What I built. A static fan site, an AI chatbot and fan tools"></picture>
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s01-r1-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s01-r1-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s01-r1.svg" width="100%" alt="170+ HTML pages. 74 topic pages. 172 sitemap URLs."></picture>
+
+### 🧑‍💻 WHAT I BUILT
 
 Built by **Matt Macosko**, with Claude Code as a coding assistant. Upstream pieces are called out as upstream.
 
@@ -42,9 +45,9 @@ Built by **Matt Macosko**, with Claude Code as a coding assistant. Upstream piec
 - **Server config** ([nginx-config.conf](nginx-config.conf)): Nginx with HTTPS (Let's Encrypt) and PHP-FPM.
 - **Campaign docs**: [100-DAY-CAMPAIGN.md](100-DAY-CAMPAIGN.md), [CAMPAIGN-STRATEGY.md](CAMPAIGN-STRATEGY.md), [reddit/](reddit/), [discord/](discord/), [stories/](stories/).
 
-<div align="center">
+### 🎬 THE TRAILER
 
-## 🎬 THE TRAILER
+<div align="center">
 
 [![Disclosure Day Trailer](https://img.youtube.com/vi/UFe6NRgoXCM/maxresdefault.jpg)](https://www.youtube.com/watch?v=UFe6NRgoXCM)
 
@@ -52,9 +55,12 @@ Built by **Matt Macosko**, with Claude Code as a coding assistant. Upstream piec
 
 </div>
 
----
+<img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s01-rule.svg" width="100%" alt="">
 
-## 👁️ WHAT IS THIS?
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s02-banner-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s02-banner-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s02-banner.svg" width="100%" alt="02. The film. What this is, the movie, the cast and the plot"></picture>
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s02-r1-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s02-r1-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s02-r1.svg" width="100%" alt="Released June 12, 2026. Theaters and IMAX. Steven Spielberg. Director of Disclosure Day. A fan hub. An unofficial fan project."></picture>
+
+### 👁️ WHAT IS THIS?
 
 > *"If you found out we weren't alone, if someone showed you, proved it to you, would that frighten you?"*
 > — Steven Spielberg
@@ -77,9 +83,7 @@ We built a complete **programmatic SEO machine** with **170+ sitemap URLs** targ
 
 </div>
 
----
-
-## 🛸 THE MOVIE
+### 🛸 THE MOVIE
 
 <div align="center">
 
@@ -117,9 +121,12 @@ A Kansas City meteorologist (**Emily Blunt**) is delivering a routine weather re
 
 The secret of alien life is revealed not through government disclosure, but through involuntary, public contact.
 
----
+<img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s02-rule.svg" width="100%" alt="">
 
-## 🤖 D.I.S.C.O. — THE AI CHATBOT
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s03-banner-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s03-banner-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s03-banner.svg" width="100%" alt="03. D.I.S.C.O., the AI chatbot. Mysterious but helpful"></picture>
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s03-r1-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s03-r1-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s03-r1.svg" width="100%" alt="A PHP proxy. Keeps the API key server-side. GPT-4o-mini. Called with a custom system prompt. 2 to 4 sentences. Cryptic but substantive."></picture>
+
+### 🤖 D.I.S.C.O. — THE AI CHATBOT
 
 <div align="center">
 
@@ -191,9 +198,12 @@ NEVER:
 
 </details>
 
----
+<img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s03-rule.svg" width="100%" alt="">
 
-## 🏗️ ARCHITECTURE
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s04-banner-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s04-banner-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s04-banner.svg" width="100%" alt="04. Architecture and project structure. Static HTML, PHP and Nginx"></picture>
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s04-r1-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s04-r1-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s04-r1.svg" width="100%" alt="Frontend. Static HTML and CSS, no framework. Backend. PHP chat proxy to the OpenAI API. Server. Nginx on an Ubuntu VPS."></picture>
+
+### 🏗️ ARCHITECTURE
 
 <div align="center">
 
@@ -253,9 +263,7 @@ graph TB
 | Server | Nginx on Ubuntu | VPS hosting |
 | SEO | JSON-LD, Sitemap | Structured data for Google |
 
----
-
-## 📁 PROJECT STRUCTURE
+### 📁 PROJECT STRUCTURE
 
 ```
 DisclosureDay/
@@ -283,9 +291,12 @@ DisclosureDay/
 └── stories/                         # Long-form content drafts
 ```
 
----
+<img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s04-rule.svg" width="100%" alt="">
 
-## 🎯 SEO STRATEGY
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s05-banner-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s05-banner-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s05-banner.svg" width="100%" alt="05. SEO strategy. Long-tail keywords people actually search for"></picture>
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s05-r1-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s05-r1-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s05-r1.svg" width="100%" alt="170+ pages. Targeting long-tail keywords. Structured data. JSON-LD for Person, Movie and Article. Static and fast. No JavaScript bloat."></picture>
+
+### 🎯 SEO STRATEGY
 
 ### The Programmatic SEO Approach
 
@@ -313,9 +324,12 @@ Most pages have (not every one yet: 11 sitemap pages lack a canonical tag and 15
 - ✅ **Canonical URLs**
 - ✅ **Fast loading** — static HTML, no JavaScript bloat
 
----
+<img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s05-rule.svg" width="100%" alt="">
 
-## 🚀 QUICK START
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s06-banner-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s06-banner-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s06-banner.svg" width="100%" alt="06. Quick start. Clone it, add your key, deploy"></picture>
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s06-r1-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s06-r1-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s06-r1.svg" width="100%" alt="No build step. Copy the repo to any server with PHP and the curl extension. Your own key. The chatbot needs chat-api.php with your OpenAI key."></picture>
+
+### 🚀 QUICK START
 
 ### 1. Clone the repo
 
@@ -345,9 +359,12 @@ For fan submissions, the web server user needs write access to `community/data/`
 - `seo-pages/` and the top-level `cast/`, `crew/`, `topics/`, `vs/`, `theories/` and `community/` folders overlap and have drifted apart. The live sitemap points at the top-level folders.
 - No tests or build tooling; pages are hand-maintained static HTML.
 
----
+<img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s06-rule.svg" width="100%" alt="">
 
-## 📈 MARKETING CAMPAIGN
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s07-banner-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s07-banner-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s07-banner.svg" width="100%" alt="07. Marketing, links, credits and license. The campaign, built with, disclaimer"></picture>
+<picture><source media="(max-width: 610px), (min-width: 768px) and (max-width: 895px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s07-r1-m.svg"><source media="(max-width: 1149px)" srcset="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s07-r1-mid.svg"><img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s07-r1.svg" width="100%" alt="100-day plan. Ignition, momentum, authority, dominance. Reddit and Discord. Strategy and setup guides. Unofficial fan project. Not affiliated with the studio or Spielberg."></picture>
+
+### 📈 MARKETING CAMPAIGN
 
 We built a complete marketing toolkit:
 
@@ -384,9 +401,7 @@ Full guide: [discord/DISCORD-SETUP.md](discord/DISCORD-SETUP.md)
 
 </details>
 
----
-
-## 🔗 LINKS
+### 🔗 LINKS
 
 <div align="center">
 
@@ -399,9 +414,7 @@ Full guide: [discord/DISCORD-SETUP.md](discord/DISCORD-SETUP.md)
 
 </div>
 
----
-
-## 👥 BUILT WITH
+### 👥 BUILT WITH
 
 <div align="center">
 
@@ -413,9 +426,7 @@ Full guide: [discord/DISCORD-SETUP.md](discord/DISCORD-SETUP.md)
 
 </div>
 
----
-
-## 📜 DISCLAIMER
+### 📜 DISCLAIMER
 
 <div align="center">
 
@@ -427,15 +438,14 @@ Full guide: [discord/DISCORD-SETUP.md](discord/DISCORD-SETUP.md)
 
 </div>
 
----
-
-<div align="center">
-
-## License
+### License
 
 The site's code is [MIT](LICENSE). This is an unofficial fan site: the film's title, trailers, stills,
 posters and other studio material belong to their owners and are not covered by that license.
 
+<img src="https://raw.githubusercontent.com/nicedreamzapp/DisclosureDay/main/assets/readme/s07-rule.svg" width="100%" alt="">
+
+<div align="center">
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:9d4edd,50:00ffcc,100:000000&height=120&section=footer&text=THE%20SKY%20IS%20LISTENING&fontSize=24&fontColor=ffffff&animation=twinkling" width="100%"/>
 
