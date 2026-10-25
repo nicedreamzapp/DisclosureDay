@@ -35,7 +35,7 @@
 
 ### 🧑‍💻 WHAT I BUILT
 
-Built by **Matt Macosko**, with Claude Code as a coding assistant. Upstream pieces are called out as upstream.
+Built by **Matt Macosko**. Upstream pieces are called out as upstream.
 
 - **Homepage hub** ([index.html](index.html)): post-release landing page with countdown, trailer, a live r/DisclosureDayMovie feed (fetches `hot.json` in the browser, keeps the baked-in posts if the fetch fails) and the chat widget.
 - **D.I.S.C.O. chatbot backend** ([chat-api.example.php](chat-api.example.php)): PHP proxy that keeps the API key server-side and calls OpenAI `gpt-4o-mini` (upstream model) with a custom system prompt.
@@ -411,18 +411,6 @@ Full guide: [discord/DISCORD-SETUP.md](discord/DISCORD-SETUP.md)
 | 🎬 **Official Trailer** | [YouTube](https://www.youtube.com/watch?v=UFe6NRgoXCM) |
 | 📰 **Emily Blunt Interview** | [/emily-blunt-movie-dad.html](https://disclosureday.nicedreamzwholesale.com/emily-blunt-movie-dad.html) |
 | 📰 **Josh O'Connor Interview** | [/josh-oconnor-old-school-spielberg.html](https://disclosureday.nicedreamzwholesale.com/josh-oconnor-old-school-spielberg.html) |
-
-</div>
-
-### 👥 BUILT WITH
-
-<div align="center">
-
-<a href="https://claude.ai">
-  <img src="https://img.shields.io/badge/Built_with-Claude_Code-9d4edd?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude Code"/>
-</a>
-
-**Claude Opus 4.5** helped architect and build this entire project — from SEO strategy to code to content.
 
 </div>
 
